@@ -1,0 +1,107 @@
+name: template
+description: >
+  Starter app
+
+# Prevent accidental publishing to pub.dev.
+publish_to: "none"
+
+version: 0.0.1+1
+
+environment:
+  sdk: ">=3.0.5 <4.0.0"
+  flutter: ">=3.10.5 <4.0.0"
+
+dependencies:
+  # Flutter SDK
+  flutter:
+    sdk: flutter
+  collection: any
+  async: any
+  meta: any
+  intl: any
+
+  # Stream
+  stream_transform: ^2.1.0
+  rxdart: ^0.27.7
+
+  # -- service locator -- #
+  provider: ^6.1.2
+
+  # -- state manager -- #
+  mobx: ^2.3.0+1
+  flutter_mobx: ^2.2.0+2
+
+  # -- codegen -- #
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+
+  # -- networking -- #
+  dio: ^5.3.3
+
+  # Persisting
+  drift: ^2.13.1
+  sqlite3: ^2.3.0
+  shared_preferences: ^2.2.2
+  sqlite3_flutter_libs: ^0.5.18
+
+  # Logging
+  stack_trace: ^1.11.0
+  sentry_flutter: ^7.12.0
+  logging: ^1.2.0
+
+  # Utils
+  # pure: ^0.2.0
+  platform_info: ^4.0.2
+  path: ^1.8.3
+  path_provider: ^2.1.0
+  mocktail: ^1.0.1
+  reactive_forms: ^16.1.1
+
+  # -- navigation -- #
+  go_router: ^13.1.0
+
+  # -- localization -- #
+  flutter_localizations:
+    sdk: flutter
+  slang: ^3.25.0
+  slang_flutter: ^3.25.0
+
+  # -- ui -- #
+  flex_color_scheme: ^7.3.1
+
+dev_dependencies:
+  # -- testing -- #
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+  # -- utils -- #
+  flutter_gen_runner: ^5.3.2
+  flutter_native_splash: ^2.3.5
+
+  # -- codegen -- #
+  freezed: ^2.4.5
+  drift_dev: ^2.13.1
+  build_runner: ^2.4.6
+  mobx_codegen: ^2.6.0+1
+  json_serializable: ^6.7.1
+  slang_build_runner: ^3.25.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+
+flutter_gen:
+  output: lib/src/core/constant/generated
+  line_length: 80
+
+icons_launcher:
+  image_path: "assets/icon.jpg"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
