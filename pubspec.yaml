@@ -58,7 +58,7 @@ dependencies:
   reactive_forms: ^16.1.1
 
   # -- navigation -- #
-  go_router: ^13.1.0
+  go_router: ^14.2.7
 
   # -- localization -- #
   flutter_localizations:
