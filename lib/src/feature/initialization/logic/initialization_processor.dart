@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 final class InitializationProcessor {
   const InitializationProcessor(this.config);
@@ -54,8 +54,8 @@ final class InitializationProcessor {
       localeRepository: localeRepository,
       themeRepository: themeRepository,
       locale: locale ?? Locale(Intl.systemLocale),
-      appTheme:
-          theme ?? AppThemeStore(mode: ThemeMode.system, seed: Colors.blue),
+      appTheme: theme ??
+          AppThemeStore(mode: ThemeMode.light, seed: AppColors.primaryColor),
     );
     return settingsStore;
   }

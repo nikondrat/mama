@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 part 'settings_store.g.dart';
 

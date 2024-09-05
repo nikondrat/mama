@@ -1,4 +1,4 @@
-name: template
+name: mama
 description: >
   Starter app
 
@@ -21,7 +21,6 @@ dependencies:
   intl: any
 
   # Stream
-  stream_transform: ^2.1.0
   rxdart: ^0.27.7
 
   # -- service locator -- #
@@ -33,29 +32,29 @@ dependencies:
 
   # -- codegen -- #
   json_annotation: ^4.8.1
-  freezed_annotation: ^2.4.1
 
   # -- networking -- #
   dio: ^5.3.3
 
   # Persisting
-  drift: ^2.13.1
-  sqlite3: ^2.3.0
+  # drift: ^2.13.1
+  # sqlite3: ^2.3.0
   shared_preferences: ^2.2.2
-  sqlite3_flutter_libs: ^0.5.18
+  # sqlite3_flutter_libs: ^0.5.18
 
   # Logging
-  stack_trace: ^1.11.0
+  # stack_trace: ^1.11.0
   sentry_flutter: ^7.12.0
   logging: ^1.2.0
 
   # Utils
-  # pure: ^0.2.0
-  platform_info: ^4.0.2
+  # platform_info: ^4.0.2
   path: ^1.8.3
   path_provider: ^2.1.0
   mocktail: ^1.0.1
   reactive_forms: ^16.1.1
+
+  icons_launcher: ^2.1.7
 
   # -- navigation -- #
   go_router: ^13.1.0
@@ -99,7 +98,7 @@ flutter_gen:
   line_length: 80
 
 icons_launcher:
-  image_path: "assets/icon.jpg"
+  image_path: "assets/images/logo.png"
   platforms:
     android:
       enable: true

@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 /// Dependencies container
 base class Dependencies {
