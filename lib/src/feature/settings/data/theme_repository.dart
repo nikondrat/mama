@@ -1,5 +1,5 @@
-import 'package:template/src/feature/app/model/app_theme.dart';
-import 'package:template/src/feature/settings/data/theme_datasource.dart';
+import 'package:mama/src/feature/app/model/app_theme.dart';
+import 'package:mama/src/feature/settings/data/theme_datasource.dart';
 
 /// Theme repository that persists and retrieves theme information
 abstract interface class ThemeRepository {

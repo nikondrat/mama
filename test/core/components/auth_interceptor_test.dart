@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:template/src/core/components/rest_client/rest_client.dart';
-import 'package:template/src/core/components/rest_client/src/auth/refresh_client.dart';
+import 'package:mama/src/core/components/rest_client/rest_client.dart';
+import 'package:mama/src/core/components/rest_client/src/auth/refresh_client.dart';
 
 import 'rest_client_test.dart';
 

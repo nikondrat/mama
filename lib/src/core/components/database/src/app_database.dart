@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
-import 'package:template/src/core/components/database/database.dart';
-import 'package:template/src/data.dart';
+import 'package:mama/src/core/components/database/database.dart';
+import 'package:mama/src/data.dart';
 
 part 'app_database.g.dart';
 
