@@ -54,8 +54,8 @@ final class InitializationProcessor {
       localeRepository: localeRepository,
       themeRepository: themeRepository,
       locale: locale ?? Locale(Intl.systemLocale),
-      appTheme:
-          theme ?? AppThemeStore(mode: ThemeMode.system, seed: Colors.blue),
+      appTheme: theme ??
+          AppThemeStore(mode: ThemeMode.light, seed: AppColors.primaryColor),
     );
     return settingsStore;
   }

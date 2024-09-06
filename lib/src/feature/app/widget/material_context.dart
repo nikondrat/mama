@@ -17,7 +17,6 @@ class MaterialContext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Dependencies>(context).settingsStore;
-
     return Observer(builder: (_) {
       return MaterialApp.router(
         routerConfig: router,
