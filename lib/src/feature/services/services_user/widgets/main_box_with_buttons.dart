@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:template/src/feature/services/services_user/widgets/custom_button.dart';
 
 class MainBoxWithButtons extends StatelessWidget {
@@ -43,8 +42,13 @@ class MainBoxWithButtons extends StatelessWidget {
                 child: Column(
                   children: [
                     /// #image
+                    // Expanded(
+                    //   child: SvgPicture.asset(image),
+                    // ),
                     Expanded(
-                      child: SvgPicture.asset(image),
+                      child: Image(
+                        image: AssetImage(image),
+                      ),
                     ),
 
                     /// #main text

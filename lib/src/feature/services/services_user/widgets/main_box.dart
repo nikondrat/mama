@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class MainBox extends StatelessWidget {
   final String mainText;
@@ -37,9 +36,15 @@ class MainBox extends StatelessWidget {
               ),
 
               /// #image
+              // Expanded(
+              //   child: SvgPicture.asset(
+              //     image,
+              //   ),
+              // ),
               Expanded(
-                child: SvgPicture.asset(
-                  image,
+                child: Image(
+                  image: AssetImage(image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ],
