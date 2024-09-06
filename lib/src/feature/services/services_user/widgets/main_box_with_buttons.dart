@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template/src/feature/services/services_user/widgets/custom_button.dart';
+import 'package:mama/src/feature/services/services_user/widgets/custom_button.dart';
 
 class MainBoxWithButtons extends StatelessWidget {
   final String image;

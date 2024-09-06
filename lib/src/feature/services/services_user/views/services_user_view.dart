@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:template/src/data.dart';
-import 'package:template/src/feature/services/services_user/widgets/widgets.dart';
+import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/services/services_user/widgets/widgets.dart';
 
 class ServicesUserView extends StatelessWidget {
   const ServicesUserView({super.key});
