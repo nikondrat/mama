@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/feature/services/services_sleep_music/views/services_sleep_music_view.dart';
-import 'package:template/src/feature/services/services_user/views/services_user_view.dart';
+import 'package:mama/src/feature/services/services_sleep_music/views/services_sleep_music_view.dart';
+import 'package:mama/src/feature/services/services_user/views/services_user_view.dart';
 
 abstract class AppViews {
   static const servicesUserView = ServicesUserView();
