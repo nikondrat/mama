@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:template/src/core/utils/extensions/context_extension.dart';
-import 'package:template/src/feature/initialization/model/dependencies.dart';
+import 'package:mama/src/core/utils/extensions/context_extension.dart';
+import 'package:mama/src/feature/initialization/model/dependencies.dart';
 
 /// A widget which is responsible for providing the dependencies.
 class DependenciesScope extends InheritedWidget {

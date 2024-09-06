@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:template/src/core/components/rest_client/rest_client.dart';
+import 'package:mama/src/core/components/rest_client/rest_client.dart';
 
 /// Rest client that uses [Dio] as HTTP library.
 final class RestClientDio extends RestClientBase {

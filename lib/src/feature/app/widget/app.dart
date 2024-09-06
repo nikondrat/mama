@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 /// [App] is an entry point to the application.
 ///

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 /// A class which is responsible for initialization and running the app.
 final class AppRunner {

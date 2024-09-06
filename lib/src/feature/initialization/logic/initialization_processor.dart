@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 final class InitializationProcessor {
   const InitializationProcessor(this.config);

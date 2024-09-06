@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 /// [MaterialContext] is an entry point to the material context.
 ///
