@@ -20,6 +20,7 @@ class MaterialContext extends StatelessWidget {
 
     return Observer(builder: (_) {
       return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: router,
         theme: settings.lightTheme,
         darkTheme: settings.darkTheme,

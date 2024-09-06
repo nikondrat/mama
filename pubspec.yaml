@@ -68,6 +68,8 @@ dependencies:
 
   # -- ui -- #
   flex_color_scheme: ^7.3.1
+  flutter_svg: ^2.0.10+1
+  mask_text_input_formatter: ^2.9.0
 
 dev_dependencies:
   # -- testing -- #
@@ -93,6 +95,11 @@ flutter:
 
   assets:
     - assets/images/
+
+  fonts:
+    - family: SFProText
+      fonts:
+        - asset: fonts/SFProText-Regular.ttf
 
 flutter_gen:
   output: lib/src/core/constant/generated
