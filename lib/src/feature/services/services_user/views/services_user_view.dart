@@ -42,8 +42,6 @@ class ServicesUserView extends StatelessWidget {
                 secondButtonText: t.services.whiteNoise.title,
                 thirdButtonText: t.services.fairyTales.title,
               ),
-
-              // SvgPicture.asset(Assets.icons.imgMoonMusic),
             ],
           ),
         ),
