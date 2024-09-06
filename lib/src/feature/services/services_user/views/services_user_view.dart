@@ -7,6 +7,10 @@ class ServicesUserView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // void navigateToMyRecordsView() {
+    //   context.go('/services-consulting-view');
+    // }
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -19,27 +23,33 @@ class ServicesUserView extends StatelessWidget {
               /// #knowledge center box
               MainBox(
                 mainText: t.services.knowledgeCenter.title,
-                image: 'assets/icons/img_hat_4x.png',
+                image: Assets.icons.icHat4x.path,
               ),
               SizedBox(height: 8),
 
               /// #online consultation box
               MainBoxWithButtons(
-                image: 'assets/icons/img_chat_video_4x.png',
+                image: Assets.icons.icChatVideo4x.path,
                 mainText: t.services.onlineConsultation.title,
                 firstButtonText: t.services.myRecords.title,
                 secondButtonText: t.services.specialists.title,
                 thirdButtonText: t.services.onlineSchools.title,
+                onTapFirstButton: () {},
+                onTapSecondButton: () {},
+                onTapThirdButton: () {},
               ),
               SizedBox(height: 8),
 
               /// #music for sleep box
               MainBoxWithButtons(
-                image: 'assets/icons/img_moon_music_4x.png',
-                mainText: t.services.musicForSleep.title,
+                image: Assets.icons.icMoonMusic4x.path,
+                mainText: t.services.sleepMusic.title,
                 firstButtonText: t.services.music.title,
                 secondButtonText: t.services.whiteNoise.title,
                 thirdButtonText: t.services.fairyTales.title,
+                onTapFirstButton: () {},
+                onTapSecondButton: () {},
+                onTapThirdButton: () {},
               ),
             ],
           ),

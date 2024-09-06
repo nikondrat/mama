@@ -7,6 +7,9 @@ class MainBoxWithButtons extends StatelessWidget {
   final String firstButtonText;
   final String secondButtonText;
   final String thirdButtonText;
+  final VoidCallback onTapFirstButton;
+  final VoidCallback onTapSecondButton;
+  final VoidCallback onTapThirdButton;
 
   const MainBoxWithButtons({
     super.key,
@@ -15,6 +18,9 @@ class MainBoxWithButtons extends StatelessWidget {
     required this.firstButtonText,
     required this.secondButtonText,
     required this.thirdButtonText,
+    required this.onTapFirstButton,
+    required this.onTapSecondButton,
+    required this.onTapThirdButton,
   });
 
   @override
@@ -73,14 +79,17 @@ class MainBoxWithButtons extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomButton(
+                      onTap: onTapFirstButton,
                       text: firstButtonText,
                     ),
                     SizedBox(height: 8),
                     CustomButton(
+                      onTap: onTapSecondButton,
                       text: secondButtonText,
                     ),
                     SizedBox(height: 8),
                     CustomButton(
+                      onTap: onTapThirdButton,
                       text: thirdButtonText,
                     ),
                   ],
