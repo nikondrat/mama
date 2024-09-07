@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+// <<<<<<< bilol
+// <<<<<<< HEAD
 import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/services/services_user/widgets/widgets.dart';
-=======
+// =======
 import 'package:go_router/go_router.dart';
 import 'package:template/src/data.dart';
 import 'package:template/src/feature/services/services_user/widgets/widgets.dart';
->>>>>>> 60da382 (added icons into assets)
+// >>>>>>> 60da382 (added icons into assets)
+// =======
+import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/services/services_user/widgets/widgets.dart';
+// >>>>>>> dev
 
 class ServicesUserView extends StatelessWidget {
   const ServicesUserView({super.key});

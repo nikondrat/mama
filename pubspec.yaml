@@ -37,10 +37,7 @@ dependencies:
   dio: ^5.3.3
 
   # Persisting
-  # drift: ^2.13.1
-  # sqlite3: ^2.3.0
   shared_preferences: ^2.2.2
-  # sqlite3_flutter_libs: ^0.5.18
 
   # Logging
   # stack_trace: ^1.11.0
