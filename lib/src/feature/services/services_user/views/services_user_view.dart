@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+// <<<<<<< bilol
+// <<<<<<< HEAD
 import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/services/services_user/widgets/widgets.dart';
+// =======
+import 'package:go_router/go_router.dart';
+import 'package:template/src/data.dart';
+import 'package:template/src/feature/services/services_user/widgets/widgets.dart';
+// >>>>>>> 60da382 (added icons into assets)
+// =======
+import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/services/services_user/widgets/widgets.dart';
+// >>>>>>> dev
 
 class ServicesUserView extends StatelessWidget {
   const ServicesUserView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // void navigateToMyRecordsView() {
-    //   context.go('/services-consulting-view');
-    // }
+    void navigateToMyRecordsView() {
+      context.go('/services-user-view/services-sleep-music-view');
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -36,7 +47,7 @@ class ServicesUserView extends StatelessWidget {
                     firstButtonText: t.services.myRecords.title,
                     secondButtonText: t.services.specialists.title,
                     thirdButtonText: t.services.onlineSchools.title,
-                    onTapFirstButton: () {},
+                    onTapFirstButton: navigateToMyRecordsView,
                     onTapSecondButton: () {},
                     onTapThirdButton: () {},
                   ),
