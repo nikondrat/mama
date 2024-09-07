@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/feature/services/services_sleep_music/widgets/widgets.dart';
+import 'package:tab_container/tab_container.dart';
 
 class ServicesSleepMusicView extends StatefulWidget {
   const ServicesSleepMusicView({super.key});
@@ -29,7 +30,11 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
   }
 
   void _initAllController() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(
+      length: 3,
+      vsync: this,
+      initialIndex: 0,
+    );
   }
 
   void _disposeAllController() {
@@ -117,7 +122,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
           ),
           SizedBox(height: 10),
 
-          /// #
+          /// #tabs(selection options)
           TabBar(
             controller: _tabController,
             unselectedLabelStyle: TextStyle(color: AppColors.f8faff),
@@ -146,9 +151,9 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: TrackRow(
-                        name: 'Концерт для валторны №3 в ми-бемоль мажоре',
-                        author: 'Вольфгант Амадей Моцарт',
-                        timeRange: '3:34',
+                        name: t.services.placeholderOne.title,
+                        author: t.services.placeholderTwo.title,
+                        timeRange: t.services.placeholderThree.title,
                       ),
                     );
                   },
@@ -162,9 +167,9 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: TrackRow(
-                        name: 'Звуки утробы матери',
-                        author: 'Белый шум',
-                        timeRange: '2:10',
+                        name: t.services.placeholderFour.title,
+                        author: t.services.placeHhlderFive.title,
+                        timeRange: t.services.placeholderThree.title,
                       ),
                     );
                   },
@@ -178,9 +183,9 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: TrackRow(
-                        name: 'Конек-горбунок',
-                        author: 'Сказка',
-                        timeRange: '3:24',
+                        name: t.services.placeholderSix.title,
+                        author: t.services.placeholderSeven.title,
+                        timeRange: t.services.placeholderThree.title,
                       ),
                     );
                   },
