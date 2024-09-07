@@ -19,10 +19,10 @@ final GoRouter router = GoRouter(
       path: _Paths.servicesUserPath,
       builder: (context, state) => AppViews.servicesUserView,
       routes: [
-        // GoRoute(
-        //   path: _Paths.servicesSleepMusicPath,
-        //   builder: (context, state) => AppViews.servicesSleepMusicView,
-        // ),
+        GoRoute(
+          path: _Paths.servicesSleepMusicPath,
+          builder: (context, state) => AppViews.servicesSleepMusicView,
+        ),
       ],
     ),
   ],
@@ -30,5 +30,5 @@ final GoRouter router = GoRouter(
 
 abstract class _Paths {
   static const servicesUserPath = '/services-user-view';
-  static const servicesSleepMusicPath = '/services-sleep-music-view';
+  static const servicesSleepMusicPath = 'services-sleep-music-view';
 }
