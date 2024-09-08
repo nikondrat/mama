@@ -1,193 +1,239 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/core.dart';
+import 'package:mama/src/core/widgets/start_screen_body.dart';
+import 'package:mama/src/feature/auth/state/auth_state/auth_state.dart';
+import 'package:mama/src/feature/auth/state/stop_watch/stop_watch_state.dart';
+import 'package:mama/src/core/widgets/auth_screen_widgets.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:template/src/core/theme/color.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../../core/constant/colors.dart';
+import '../../../core/constant/constant.dart';
+
+part 'auth_verify_screen.dart';
 
 class AuthScreen extends StatelessWidget {
-  static String routeName = 'authScreen';
 
   const AuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                Color(0xFFE1EAFF),
-                Color(0xFFFFFFFF),
-              ])),
-          child: Column(
-            children: [
-              SvgPicture.asset('assets/images/auth_splash.svg'),
-              const SizedBox(height: 40),
-              SvgPicture.asset('assets/images/Mama&Co.svg'),
-              const _SubLogoText(),
-              const _RegistrationContainer(),
-              const Spacer(),
-              const _AlreadyHaveAccountButton(),
-              const SizedBox(height: 20)
-            ],
-          )),
-    );
+    return const StartScreenBody(
+        child: Column(
+          children: [
+            AuthSplashIcon(),
+            SizedBox(height: 40),
+            TextLogo(),
+            SubLogoText(),
+            _LoginContainer(),
+            Spacer(),
+            NoAccountButton(),
+            SizedBox(height: 20)
+          ],
+        ),
+      );
   }
 }
 
-class _RegistrationContainer extends StatefulWidget {
-  const _RegistrationContainer({super.key});
+
+class _LoginContainer extends StatefulWidget {
+  const _LoginContainer({super.key});
 
   @override
-  State<_RegistrationContainer> createState() => _RegistrationContainerState();
+  State<_LoginContainer> createState() => _LoginContainerState();
 }
 
-class _RegistrationContainerState extends State<_RegistrationContainer> {
-
+class _LoginContainerState extends State<_LoginContainer> {
+  final phoneController = TextEditingController();
+  var maskFormatter = MaskTextInputFormatter(
+      mask: '### ###-##-##', filter: {"#": RegExp(r'[0-9]')});
+  var textFieldFocused = false;
+  var clearSuffixShow = false;
   var checkValue = false;
-  var maskFormatter = MaskTextInputFormatter(mask: '### ###-##-##', filter: { "#": RegExp(r'[0-9]') });
+
+  final authState = AuthState();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          const BoxShadow(
-            color: Color(0xFF0D4CEA26)
-          )
-        ]
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const Text('Регистрация'),
-            const SizedBox(height: 10),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                border: Border.all(color: Colors.blue, width: 2),
-              ),
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      '+7',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  VerticalDivider(
-                    width: 1,
-                    color: Colors.grey.shade300,
-                  ),
-                  Expanded(
-                    child: TextField(
-                      inputFormatters: [maskFormatter],
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Номер телефона',
-                        contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
-                      ),
-                      keyboardType: TextInputType.phone,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+                color: const Color(0xFF0D4CEA).withOpacity(0.15),
+                blurRadius: 8,
+                spreadRadius: 0,
+                offset: const Offset(0, 3)),
+            BoxShadow(
+                color: const Color(0xFF0834A6).withOpacity(0.10),
+                blurRadius: 1,
+                spreadRadius: 0,
+                offset: const Offset(0, 2)),
+          ]),
+      child: Observer(
+        builder: (context) {
+          if(authState.state == AuthStateAction.sendCode){
+            final phone = "+7 ${phoneController.text}";
+            Future.microtask(() => context.pushNamed(AppViews.authVerify, extra: phone));
+          }
+          return Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
               children: [
-                Checkbox(
-                    value: checkValue,
-                    onChanged: (value){
-                      setState(() {
-                        checkValue = value!;
-                      });
-                    }),
-                Expanded(
-                  child: RichText(text: const TextSpan(
-                    children: [
-                      TextSpan(text: 'Согласен с ',
-                          style: TextStyle(
-                              fontFamily: "SFProText",
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.secondary
-                          )),
-                      TextSpan(text: 'условием использования',
-                      style: TextStyle(
-                          fontFamily: "SFProText",
-                          fontSize: 17,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primaryColor
-                      )),
-                    ]
-                  )),
+                Text(t.auth.login,
+                    style: getTextStyle(AppColors.greyBrighterColor)),
+                const SizedBox(height: 20),
+                Stack(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: authState.state == AuthStateAction.errorPhone
+                                ? Border.all(color: AppColors.redColor, width: 1)
+                                : textFieldFocused
+                                    ? Border.all(
+                                        color: AppColors.primaryColor, width: 2)
+                                    : Border.all(
+                                        color: AppColors.greyColor, width: 1),
+                          ),
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  '+7',
+                                  style: TextStyle(
+                                      fontFamily: "SFProText",
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 50,
+                                child: VerticalDivider(
+                                  width: 1,
+                                  color: AppColors.greyColor,
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  controller: phoneController,
+                                  onChanged: (value) {
+                                    authState.onChangeTextField(value);
+                                    setState(() {
+                                      if (value.isNotEmpty) {
+                                        clearSuffixShow = true;
+                                      } else {
+                                        clearSuffixShow = false;
+                                      }
+                                    });
+                                  },
+                                  onTap: () {
+                                    setState(() {
+                                      textFieldFocused = true;
+                                    });
+                                  },
+                                  inputFormatters: [maskFormatter],
+                                  decoration: InputDecoration(
+                                    hintStyle: const TextStyle(
+                                        fontFamily: "SFProText",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.greyBrighterColor),
+                                    border: InputBorder.none,
+                                    hintText: t.auth.phoneNumber,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                  ),
+                                  keyboardType: TextInputType.phone,
+                                ),
+                              ),
+                              clearSuffixShow
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: InkWell(
+                                        onTap: () {
+                                          phoneController.clear();
+                                          setState(() {
+                                            clearSuffixShow = false;
+                                          });
+                                        },
+                                        child: const Icon(
+                                          Icons.close,
+                                          color: AppColors.greyBrighterColor,
+                                        ),
+                                      ),
+                                    )
+                                  : Container(),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        )
+                      ],
+                    ),
+                    authState.state == AuthStateAction.errorPhone
+                        ? Positioned(
+                        bottom: 18,
+                        right: 90,
+                        left: 90,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: AppColors.redColor),
+                          child: const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text('Номер не зарегистрирован',
+                                  style: TextStyle(
+                                      fontFamily: "SFProText",
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white)),
+                            ),
+                          ),
+                        ))
+                        : Container(),
+                  ],
                 ),
-
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        disabledBackgroundColor: AppColors.greyColor,
+                        backgroundColor: AppColors.purpleLighterBackgroundColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        minimumSize: const Size.fromHeight(48)),
+                    onPressed: authState.state ==
+                            AuthStateAction.enableConfirmButton
+                        ? () {
+                            authState.confirmPhone("+7 ${phoneController.text}");
+                          }
+                        : null,
+                    child: authState.state == AuthStateAction.progress
+                        ? const CircularProgressIndicator(color: AppColors.primaryColor,)
+                        : Text(t.auth.confirm,
+                        style: getTextStyle(
+                            authState.state == AuthStateAction.enableConfirmButton
+                                ? AppColors.primaryColor
+                                : AppColors.textGreyColor)))
               ],
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
-                ),
-                minimumSize: const Size.fromHeight(48)
-              ),
-                onPressed: (){},
-                child: const Text('Подтвердить'))
-          ],
-        ),
+          );
+        }
       ),
     );
   }
 }
-
-
-class _SubLogoText extends StatelessWidget {
-  const _SubLogoText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(20),
-      child: Text('Приложение для мам, где есть\nвсё про детей до 2-х лет',
-       textAlign: TextAlign.center,
-       style: TextStyle(
-           fontFamily: "SFProText",
-           fontSize: 17,
-           fontWeight: FontWeight.w600,
-           color: AppColors.secondary
-       )),
-    );
-  }
-}
-
-
-class _AlreadyHaveAccountButton extends StatelessWidget {
-  const _AlreadyHaveAccountButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(onPressed: (){},
-        child: const Text('Уже есть аккаунт',
-          style: TextStyle(
-              fontFamily: "SFProText",
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-              color: AppColors.primaryColor
-          ),));
-  }
-}
-

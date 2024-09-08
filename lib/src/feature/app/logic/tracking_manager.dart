@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:template/src/core/utils/logger.dart';
+import 'package:mama/src/core/utils/logger.dart';
 
 /// A class which is responsible for enabling error tracking.
 abstract interface class ErrorTrackingManager {

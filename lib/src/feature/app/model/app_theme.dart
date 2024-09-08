@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
 part 'app_theme.g.dart';
@@ -12,8 +13,20 @@ class AppThemeStore extends _AppThemeStore with _$AppThemeStore {
 abstract class _AppThemeStore with Store {
   _AppThemeStore({required this.mode, required this.seed})
       : lightTheme = FlexThemeData.light(
+            fontFamily: "SFProText",
             useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(seedColor: seed)),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: seed,
+              primary: AppColors.primaryColor,
+            ),
+    textTheme: TextTheme(
+      bodyMedium: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+      )
+
+    )
+  ),
         darkTheme = FlexThemeData.dark(
             useMaterial3: true,
             colorScheme: ColorScheme.fromSeed(seedColor: seed));

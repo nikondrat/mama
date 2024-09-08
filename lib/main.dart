@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:template/src/data.dart';
+import 'package:mama/src/data.dart';
 
 void main() {
   logger.runLogging(

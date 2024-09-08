@@ -1,0 +1,1 @@
+export 'view/start_screen.dart';
