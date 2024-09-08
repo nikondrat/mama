@@ -6,12 +6,16 @@ class TrackRow extends StatefulWidget {
   final String name;
   final String author;
   final String timeRange;
+  final bool isPlaying;
+  final VoidCallback onPlayButtonPressed;
 
   const TrackRow({
     super.key,
     required this.name,
     required this.author,
     required this.timeRange,
+    required this.isPlaying,
+    required this.onPlayButtonPressed,
   });
 
   @override
@@ -19,14 +23,6 @@ class TrackRow extends StatefulWidget {
 }
 
 class _TrackRowState extends State<TrackRow> {
-  bool _isPlaying = false;
-
-  void _onPlayButtonPressed() {
-    setState(() {
-      _isPlaying = !_isPlaying;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -37,7 +33,7 @@ class _TrackRowState extends State<TrackRow> {
             children: [
               /// #play button
               GestureDetector(
-                onTap: _onPlayButtonPressed,
+                onTap: widget.onPlayButtonPressed,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -59,10 +55,10 @@ class _TrackRowState extends State<TrackRow> {
                           );
                         },
                         child: SvgPicture.asset(
-                          _isPlaying
+                          widget.isPlaying
                               ? Assets.icons.icPauseFilled
                               : Assets.icons.icPlayFilled,
-                          key: ValueKey<bool>(_isPlaying),
+                          key: ValueKey<bool>(widget.isPlaying),
                         ),
                       ),
                     ),
@@ -88,6 +84,7 @@ class _TrackRowState extends State<TrackRow> {
                     /// #author
                     Text(
                       widget.author,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: AppColors.greyBrighterColor,
                       ),

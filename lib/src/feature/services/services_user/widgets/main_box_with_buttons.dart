@@ -34,7 +34,6 @@ class MainBoxWithButtons extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       child: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
         height: 205,
         child: Row(
           children: [
