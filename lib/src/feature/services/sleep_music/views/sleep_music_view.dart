@@ -1,6 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/core.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mama/src/data.dart';
 
 class ServicesSleepMusicView extends StatefulWidget {
   const ServicesSleepMusicView({super.key});
@@ -35,10 +35,13 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
     final phonePadding = MediaQuery.of(context).padding;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF8FAFF),
+      backgroundColor: AppColors.lightBlue,
       body: Column(
         children: [
           SizedBox(height: phonePadding.top + 20),
@@ -50,35 +53,12 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 /// #arrow left, back text
-                Row(
-                  children: [
-                    /// #arrow left
-                    SvgPicture.asset(
-                      Assets.icons.icArrowLeftFilled,
-                      width: 12,
-                      height: 20,
-                    ),
-                    SizedBox(width: 12),
-
-                    // #back text
-                    Text(
-                      t.services.back.title,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Color(0xFF666E80),
-                      ),
-                    ),
-                  ],
-                ),
+                CustomBackButton(),
 
                 /// #sleep music text
-                Text(
+                AutoSizeText(
                   t.services.sleepMusic.title,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF4D4DE8),
-                  ),
+                  style: textTheme.titleLarge,
                 ),
 
                 /// #

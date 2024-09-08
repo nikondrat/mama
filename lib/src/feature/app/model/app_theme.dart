@@ -14,6 +14,20 @@ abstract class _AppThemeStore with Store {
   _AppThemeStore({required this.mode, required this.seed})
       : lightTheme = FlexThemeData.light(
             useMaterial3: true,
+            textTheme: TextTheme(
+                titleMedium: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                ),
+                titleLarge: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w700,
+                ),
+                bodySmall: TextStyle(
+                  fontSize: 17,
+                  color: AppColors.greyBrighterColor,
+                )),
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
               primary: AppColors.primaryColor,
