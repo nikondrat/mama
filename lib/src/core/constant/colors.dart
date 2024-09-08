@@ -17,7 +17,9 @@ class AppColors {
   static const Color iconColor = Color(0xFF000000);
 
   static const Color whiteDarkerButtonColor = Color(0xFFF0F2F7);
+  static const Color purpleLighterBackgroundColorScaffold = Color(0xFFE1EAFF);
   static const Color blackColor = Colors.black;
+  static const Color greyButton = Color(0xFFF8FAFF);
   static const Color blueBrightTextColor = Color(0xFF447CF3);
   static const Color greenTextColor = Color(0xFF2C9C2A);
   static const Color orangeTextColor = Color(0xFFE29520);
