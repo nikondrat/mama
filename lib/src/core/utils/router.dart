@@ -12,7 +12,6 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: _Paths.servicesUserPath,
-  // debugLogDiagnostics: true,
   routes: [
     GoRoute(
       name: AppViews.servicesUserView,
@@ -31,5 +30,5 @@ final GoRouter router = GoRouter(
 
 abstract class _Paths {
   static const servicesUserPath = '/${AppViews.servicesUserView}';
-  static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
+  static const servicesSleepMusicPath = '/${AppViews.servicesSleepMusicView}';
 }
