@@ -10,7 +10,7 @@ class ServicesUserView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void navigateToMyRecordsView() {
-      context.go('/services-user-view/services-sleep-music-view');
+      context.pushNamed(AppViews.servicesSleepMusicView);
     }
 
     return Scaffold(
