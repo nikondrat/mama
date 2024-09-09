@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/feature/services/services_user/model/button_model.dart';
 import 'package:mama/src/feature/services/services_user/widgets/custom_button.dart';
 
 class MainBoxWithButtons extends StatelessWidget {
   final String image;
   final String mainText;
-  final String firstButtonText;
-  final String secondButtonText;
-  final String thirdButtonText;
-  final VoidCallback onTapFirstButton;
-  final VoidCallback onTapSecondButton;
-  final VoidCallback onTapThirdButton;
+  final List<ButtonModel> buttons;
 
   const MainBoxWithButtons({
     super.key,
     required this.image,
     required this.mainText,
-    required this.firstButtonText,
-    required this.secondButtonText,
-    required this.thirdButtonText,
-    required this.onTapFirstButton,
-    required this.onTapSecondButton,
-    required this.onTapThirdButton,
+    required this.buttons,
   });
 
   @override
@@ -76,22 +67,14 @@ class MainBoxWithButtons extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Column(
-                  children: [
-                    CustomButton(
-                      onTap: onTapFirstButton,
-                      text: firstButtonText,
-                    ),
-                    SizedBox(height: 8),
-                    CustomButton(
-                      onTap: onTapSecondButton,
-                      text: secondButtonText,
-                    ),
-                    SizedBox(height: 8),
-                    CustomButton(
-                      onTap: onTapThirdButton,
-                      text: thirdButtonText,
-                    ),
-                  ],
+                  children: buttons.map(
+                    (button) {
+                      return CustomButton(
+                        text: button.title,
+                        onTap: button.onTap,
+                      );
+                    },
+                  ).toList(),
                 ),
               ),
             )

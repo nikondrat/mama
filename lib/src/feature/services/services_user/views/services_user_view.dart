@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/services/services_user/model/button_model.dart';
 import 'package:mama/src/feature/services/services_user/widgets/widgets.dart';
 import 'package:go_router/go_router.dart';
 
@@ -34,12 +35,20 @@ class ServicesUserView extends StatelessWidget {
                   MainBoxWithButtons(
                     image: Assets.icons.icChatVideo4x.path,
                     mainText: t.services.onlineConsultation.title,
-                    firstButtonText: t.services.myRecords.title,
-                    secondButtonText: t.services.specialists.title,
-                    thirdButtonText: t.services.onlineSchools.title,
-                    onTapFirstButton: navigateToMyRecordsView,
-                    onTapSecondButton: () {},
-                    onTapThirdButton: () {},
+                    buttons: [
+                      ButtonModel(
+                        title: t.services.myRecords.title,
+                        onTap: navigateToMyRecordsView,
+                      ),
+                      ButtonModel(
+                        title: t.services.specialists.title,
+                        onTap: () {},
+                      ),
+                      ButtonModel(
+                        title: t.services.onlineSchools.title,
+                        onTap: () {},
+                      )
+                    ],
                   ),
                   SizedBox(height: 8),
 
@@ -47,12 +56,20 @@ class ServicesUserView extends StatelessWidget {
                   MainBoxWithButtons(
                     image: Assets.icons.icMoonMusic4x.path,
                     mainText: t.services.sleepMusic.title,
-                    firstButtonText: t.services.music.title,
-                    secondButtonText: t.services.whiteNoise.title,
-                    thirdButtonText: t.services.fairyTales.title,
-                    onTapFirstButton: () {},
-                    onTapSecondButton: () {},
-                    onTapThirdButton: () {},
+                    buttons: [
+                      ButtonModel(
+                        title: t.services.music.title,
+                        onTap: () {},
+                      ),
+                      ButtonModel(
+                        title: t.services.whiteNoise.title,
+                        onTap: () {},
+                      ),
+                      ButtonModel(
+                        title: t.services.fairyTales.title,
+                        onTap: () {},
+                      )
+                    ],
                   ),
                 ],
               ),
