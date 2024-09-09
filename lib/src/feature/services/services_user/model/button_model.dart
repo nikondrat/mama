@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
+
 class ButtonModel {
   final String title;
-  final Function() onTap;
+  final VoidCallback onTap;
 
-  ButtonModel({
+  const ButtonModel({
     required this.title,
     required this.onTap,
   });

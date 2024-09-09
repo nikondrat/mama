@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:mama/src/data.dart';
+import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/services/services_user/model/button_model.dart';
+import 'package:mama/src/feature/services/services_user/widgets/custom_button.dart';
 
 class MainBoxWithButtons extends StatelessWidget {
   final String image;
   final String mainText;
-
   final List<ButtonModel> buttons;
 
   const MainBoxWithButtons({
@@ -61,20 +61,21 @@ class MainBoxWithButtons extends StatelessWidget {
                 ),
               ),
             ),
-            Gap(12),
+            SizedBox(width: 12),
 
             /// #three buttons
             Expanded(
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Column(
-                  children: buttons.map((e) {
-                    return Expanded(
-                        child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
-                      child: CustomButton(text: e.title, onTap: e.onTap),
-                    ));
-                  }).toList(),
+                  children: buttons.map(
+                    (button) {
+                      return CustomButton(
+                        text: button.title,
+                        onTap: button.onTap,
+                      );
+                    },
+                  ).toList(),
                 ),
               ),
             )
