@@ -22,6 +22,7 @@ class PlayerRow extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  /// #start
                   Text(
                     '1:17',
                     style: TextStyle(
@@ -30,6 +31,8 @@ class PlayerRow extends StatelessWidget {
                       color: AppColors.greyBrighterColor,
                     ),
                   ),
+
+                  /// #slider
                   Expanded(
                     child: SliderTheme(
                       data: SliderTheme.of(context).copyWith(
@@ -45,6 +48,8 @@ class PlayerRow extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  /// #end
                   Text(
                     '4:21',
                     style: TextStyle(
@@ -99,9 +104,10 @@ class PlayerRow extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
 
-                  /// #
+                  /// #infinity icon, music forward icon
                   Row(
                     children: [
+                      /// #infinity icon,
                       IconButton(
                         onPressed: () {},
                         icon: SvgPicture.asset(
@@ -109,6 +115,8 @@ class PlayerRow extends StatelessWidget {
                           width: 22,
                         ),
                       ),
+
+                      /// #music forward icon
                       IconButton(
                         icon: SvgPicture.asset(
                           Assets.icons.icMusicForward,

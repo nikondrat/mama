@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mama/src/feature/services/services_sleep_music/widgets/player_row.dart';
 import 'package:mama/src/feature/services/services_sleep_music/widgets/widgets.dart';
 
 class ServicesSleepMusicView extends StatefulWidget {
@@ -27,6 +26,8 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
   late List<bool> _isPlayingWhiteNoiseList;
   late List<bool> _isPlayingFairyTalesList;
 
+  bool _isPlayerRowVisible = false;
+
   @override
   void initState() {
     super.initState();
@@ -34,13 +35,13 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     _initPlayingLists();
   }
 
-  // funtions
   @override
   void dispose() {
     super.dispose();
     _disposeAllController();
   }
 
+  // funtions
   void _initAllController() {
     _tabController = TabController(
       length: 3,
@@ -77,10 +78,12 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
           _currentPlayingTab == currentPlayingTab) {
         _currentPlayingIndex = null;
         _currentPlayingTab = null;
+        _isPlayerRowVisible = false;
       } else {
         _startNewTrack(index, currentPlayingTab);
         _currentPlayingIndex = index;
         _currentPlayingTab = currentPlayingTab;
+        _isPlayerRowVisible = true;
       }
     });
   }
@@ -225,6 +228,34 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                     ListView.separated(
                       itemCount: 15,
                       itemBuilder: (context, index) {
+                        if (index == 14) {
+                          return Column(
+                            children: [
+                              /// #track row
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: TrackRow(
+                                  name: t.services.placeholderOne.title,
+                                  author: t.services.placeholderTwo.title,
+                                  timeRange: t.services.placeholderThree.title,
+                                  isPlaying: _isPlayingMusicList[index],
+                                  onPlayButtonPressed: () =>
+                                      _onPlayButtonPressed(
+                                    index: index,
+                                    currentPlayingTab: 0,
+                                  ),
+                                ),
+                              ),
+
+                              /// #bottom space
+                              _isPlayerRowVisible
+                                  ? SizedBox(height: phonePadding.bottom + 100)
+                                  : SizedBox.shrink()
+                            ],
+                          );
+                        }
+
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: TrackRow(
@@ -247,6 +278,34 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                     ListView.separated(
                       itemCount: 10,
                       itemBuilder: (context, index) {
+                        if (index == 9) {
+                          return Column(
+                            children: [
+                              /// #track row
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: TrackRow(
+                                  name: t.services.placeholderFour.title,
+                                  author: t.services.placeHhlderFive.title,
+                                  timeRange: t.services.placeholderThree.title,
+                                  isPlaying: _isPlayingWhiteNoiseList[index],
+                                  onPlayButtonPressed: () =>
+                                      _onPlayButtonPressed(
+                                    index: index,
+                                    currentPlayingTab: 1,
+                                  ),
+                                ),
+                              ),
+
+                              /// #bottom space
+                              _isPlayerRowVisible
+                                  ? SizedBox(height: phonePadding.bottom + 100)
+                                  : SizedBox.shrink()
+                            ],
+                          );
+                        }
+
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: TrackRow(
@@ -269,6 +328,34 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                     ListView.separated(
                       itemCount: 5,
                       itemBuilder: (context, index) {
+                        if (index == 4) {
+                          return Column(
+                            children: [
+                              /// #track row
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: TrackRow(
+                                  name: t.services.placeholderSix.title,
+                                  author: t.services.placeholderSeven.title,
+                                  timeRange: t.services.placeholderThree.title,
+                                  isPlaying: _isPlayingFairyTalesList[index],
+                                  onPlayButtonPressed: () =>
+                                      _onPlayButtonPressed(
+                                    index: index,
+                                    currentPlayingTab: 2,
+                                  ),
+                                ),
+                              ),
+
+                              /// #bottom space
+                              _isPlayerRowVisible
+                                  ? SizedBox(height: phonePadding.bottom + 100)
+                                  : SizedBox.shrink()
+                            ],
+                          );
+                        }
+
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: TrackRow(
@@ -293,7 +380,12 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
           ),
 
           /// #player row
-          PlayerRow(),
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+            bottom: _isPlayerRowVisible ? 0 : -(phonePadding.bottom + 100),
+            child: PlayerRow(),
+          ),
         ],
       ),
     );
