@@ -23,7 +23,7 @@ class PlayerRow extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /// #start
-                  Text(
+                  const Text(
                     '1:17',
                     style: TextStyle(
                       fontSize: 12,
@@ -50,7 +50,7 @@ class PlayerRow extends StatelessWidget {
                   ),
 
                   /// #end
-                  Text(
+                  const Text(
                     '4:21',
                     style: TextStyle(
                       fontSize: 12,
@@ -86,7 +86,7 @@ class PlayerRow extends StatelessWidget {
                         Text(
                           t.services.placeholderOne.title,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 17,
                           ),
                         ),
@@ -95,14 +95,14 @@ class PlayerRow extends StatelessWidget {
                         Text(
                           t.services.placeholderTwo.title,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.greyBrighterColor,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
 
                   /// #infinity icon, music forward icon
                   Row(

@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget {
           /// #arrow left, back text
           InkWell(
             onTap: navigateToServicesUserView,
-            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderRadius: const BorderRadius.all(Radius.circular(4)),
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Row(
@@ -30,12 +30,12 @@ class CustomAppBar extends StatelessWidget {
                     width: 12,
                     height: 20,
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
 
                   // #back text
                   Text(
                     t.services.back.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17,
                       color: Color(0xFF666E80),
                     ),
@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget {
           /// #sleep music text
           Text(
             t.services.sleepMusic.title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
               color: Color(0xFF4D4DE8),
@@ -56,7 +56,7 @@ class CustomAppBar extends StatelessWidget {
           ),
 
           /// #some space, placeholder(child image)
-          Row(
+          const Row(
             children: [
               SizedBox(width: 16),
 

@@ -35,7 +35,7 @@ class _TrackRowState extends State<TrackRow> {
               GestureDetector(
                 onTap: widget.onPlayButtonPressed,
                 child: DecoratedBox(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.primaryColor,
                   ),
@@ -44,7 +44,7 @@ class _TrackRowState extends State<TrackRow> {
                     height: 50,
                     child: Center(
                       child: AnimatedSwitcher(
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         transitionBuilder: (
                           Widget child,
                           Animation<double> animation,
@@ -65,7 +65,7 @@ class _TrackRowState extends State<TrackRow> {
                   ),
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
 
               /// #name, author
               Expanded(
@@ -76,7 +76,7 @@ class _TrackRowState extends State<TrackRow> {
                     Text(
                       widget.name,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 17,
                       ),
                     ),
@@ -85,7 +85,7 @@ class _TrackRowState extends State<TrackRow> {
                     Text(
                       widget.author,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.greyBrighterColor,
                       ),
                     ),

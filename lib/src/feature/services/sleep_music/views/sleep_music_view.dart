@@ -120,7 +120,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     final phonePadding = MediaQuery.of(context).padding;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF8FAFF),
+      backgroundColor: const Color(0xFFF8FAFF),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -130,13 +130,13 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
               SizedBox(height: phonePadding.top + 10),
 
               /// #custom app bar
-              CustomAppBar(),
-              SizedBox(height: 10),
+              const CustomAppBar(),
+              const SizedBox(height: 10),
 
               /// #tabs(selection options)
               TabBar(
                 controller: _tabController,
-                unselectedLabelStyle: TextStyle(color: AppColors.f8faff),
+                unselectedLabelStyle: const TextStyle(color: AppColors.f8faff),
                 tabs: [
                   Tab(
                     text: t.services.music.title,
@@ -182,7 +182,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                               /// #bottom space
                               _isPlayerRowVisible
                                   ? SizedBox(height: phonePadding.bottom + 100)
-                                  : SizedBox.shrink()
+                                  : const SizedBox.shrink()
                             ],
                           );
                         }
@@ -202,7 +202,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                         );
                       },
                       separatorBuilder: (context, index) =>
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                     ),
 
                     /// #white noise
@@ -232,7 +232,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                               /// #bottom space
                               _isPlayerRowVisible
                                   ? SizedBox(height: phonePadding.bottom + 100)
-                                  : SizedBox.shrink()
+                                  : const SizedBox.shrink()
                             ],
                           );
                         }
@@ -252,7 +252,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                         );
                       },
                       separatorBuilder: (context, index) =>
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                     ),
 
                     /// #failry tales
@@ -282,7 +282,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                               /// #bottom space
                               _isPlayerRowVisible
                                   ? SizedBox(height: phonePadding.bottom + 100)
-                                  : SizedBox.shrink()
+                                  : const SizedBox.shrink()
                             ],
                           );
                         }
@@ -302,7 +302,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
                         );
                       },
                       separatorBuilder: (context, index) =>
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                     ),
                   ],
                 ),
@@ -312,10 +312,10 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
 
           /// #player row
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeOut,
             bottom: _isPlayerRowVisible ? 0 : -(phonePadding.bottom + 100),
-            child: PlayerRow(),
+            child: const PlayerRow(),
           ),
         ],
       ),

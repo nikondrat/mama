@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:mama/src/data.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/services/services_user/model/button_model.dart';
 
 class ServicesUserView extends StatelessWidget {
   const ServicesUserView({super.key});
@@ -22,18 +20,19 @@ class ServicesUserView extends StatelessWidget {
               child: ListView(
                 children: [
                   /// #some space
-                  Gap(16),
+                  const SizedBox(height: 16),
 
                   /// #knowledge center box
                   MainBox(
                     mainText: t.services.knowledgeCenter.title,
                     image: Assets.icons.icHat4x.path,
                   ),
-                  Gap(8),
+                  const SizedBox(height: 8),
 
                   /// #online consultation box
                   MainBoxWithButtons(
                     image: Assets.icons.icChatVideo4x.path,
+                    mainText: t.services.onlineConsultation.title,
                     buttons: [
                       ButtonModel(
                         title: t.services.myRecords.title,
@@ -48,13 +47,13 @@ class ServicesUserView extends StatelessWidget {
                         onTap: () {},
                       )
                     ],
-                    mainText: t.services.onlineConsultation.title,
                   ),
-                  Gap(8),
+                  const SizedBox(height: 8),
 
                   /// #music for sleep box
                   MainBoxWithButtons(
                     image: Assets.icons.icMoonMusic4x.path,
+                    mainText: t.services.sleepMusic.title,
                     buttons: [
                       ButtonModel(
                         title: t.services.music.title,
@@ -69,7 +68,6 @@ class ServicesUserView extends StatelessWidget {
                         onTap: () {},
                       )
                     ],
-                    mainText: t.services.sleepMusic.title,
                   ),
                 ],
               ),
