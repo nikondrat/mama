@@ -238,7 +238,7 @@ class _RegisterContainerState extends State<_RegisterContainer> {
                             borderRadius: BorderRadius.circular(8)),
                         minimumSize: const Size.fromHeight(48)),
                     onPressed: (registerState.state == RegisterStateAction.enableConfirmButton) && checkValue ? () {
-                      registerState.confirmPhone("+7 ${phoneController.text}");
+                      registerState.confirmPhone(phone: "+7 ${phoneController.text}");
                       // context.pushNamed(AppViews.authVerify);
                     } : null,
                     child: registerState.state == RegisterStateAction.progress

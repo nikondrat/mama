@@ -131,7 +131,7 @@ class _VerifyContainerState extends State<_VerifyContainer> {
                               padding: const EdgeInsets.symmetric(horizontal: 15),
                               child: PinCodeTextField(
                                   onChanged: (value){
-                                    registerState.onCodeTextFieldChange(value);
+                                    registerState.onCodeTextFieldChange(value: value);
                                   },
                                   hintCharacter: "0",
                                   hintStyle: const TextStyle(
@@ -200,7 +200,7 @@ class _VerifyContainerState extends State<_VerifyContainer> {
                       onPressed:
                       registerState.state == RegisterStateAction.enableConfirmButton
                           ? () {
-                        registerState.checkCode(codeController.text);
+                        registerState.checkCode(code: codeController.text);
                         if(registerState.state == RegisterStateAction.correctCode){
                           context.pushNamed(AppViews.congratsScreen);
                         }

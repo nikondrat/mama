@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/feature/register/view/congrats_screen.dart';
-import 'package:mama/src/feature/register/view/register_fill_name.dart';
+import 'package:mama/src/feature/register/view/register_fill_name_screen.dart';
 import 'package:mama/src/feature/register/view/register_screen.dart';
+import 'package:mama/src/feature/register/view/welcome_screen.dart';
 import 'package:mama/src/feature/start_screen/start.dart';
 import '../../feature/auth/auth.dart';
+import '../../feature/register/view/register_city_screen.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
@@ -16,6 +18,9 @@ abstract class AppViews {
   static const String registerFillName = 'registerFillName';
   static const String registerFillBabyName = 'registerFillBabyName';
   static const String registerFillAnotherBabyInfo = 'registerFillAnotherBabyInfo';
+  static const String registerInfoAboutChildbirth = 'registerInfoAboutChildbirth';
+  static const String registerCity = 'registerCity';
+  static const String welcomeScreen = 'welcomeScreen';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -67,6 +72,21 @@ final GoRouter router = GoRouter(
            name: AppViews.registerFillAnotherBabyInfo,
             builder: (context, state) => const RegisterFillAnotherBabyInfoScreen(),
        ),
+      GoRoute(
+           path: _Paths.registerInfoAboutChildbirth,
+           name: AppViews.registerInfoAboutChildbirth,
+            builder: (context, state) => const RegisterInfoAboutChildbirth(),
+       ),
+      GoRoute(
+           path: _Paths.registerCity,
+           name: AppViews.registerCity,
+            builder: (context, state) => const RegisterCityScreen(),
+       ),
+      GoRoute(
+           path: _Paths.welcomeScreen,
+           name: AppViews.welcomeScreen,
+            builder: (context, state) => const WelcomeScreen(),
+       ),
 
 ]);
 
@@ -80,4 +100,7 @@ abstract class _Paths {
   static const String registerFillName = '/registerFillName';
   static const String registerFillBabyName = '/registerFillBabyName';
   static const String registerFillAnotherBabyInfo = '/registerFillAnotherBabyInfo';
+  static const String registerInfoAboutChildbirth = '/registerInfoAboutChildbirth';
+  static const String registerCity = '/registerCity';
+  static const String welcomeScreen = '/welcomeScreen';
 }

@@ -7,7 +7,8 @@ import '../../data.dart';
 class CustomButton extends StatefulWidget {
   final Function()? onTap;
   final Widget child;
-  const CustomButton({super.key, this.onTap, required this.child});
+  final Color? btnColor;
+  const CustomButton({super.key, this.onTap, required this.child, this.btnColor});
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -22,7 +23,7 @@ class _CustomButtonState extends State<CustomButton> {
           style: ElevatedButton.styleFrom(
               elevation: 0,
               disabledBackgroundColor: AppColors.greyColor,
-              backgroundColor: AppColors.purpleLighterBackgroundColor,
+              backgroundColor: widget.btnColor ?? AppColors.purpleLighterBackgroundColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
               minimumSize: const Size.fromHeight(48)),

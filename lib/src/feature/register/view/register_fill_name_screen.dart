@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
@@ -10,6 +11,7 @@ import '../../../core/core.dart';
 
 part 'register_baby_name_screen.dart';
 part 'register_fill_another_baby_info_screen.dart';
+part 'register_info_about_childbirth.dart';
 
 class RegisterFillName extends StatefulWidget {
   const RegisterFillName({super.key});
@@ -101,8 +103,8 @@ class _RegisterFillNameState extends State<RegisterFillName> {
                 onTap: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
                     ? () {
                     registerState.fillNameAndSurname(
-                        name: nameController.text,
-                        surname: surnameController.text);
+                        nameController.text,
+                        surnameController.text);
                     context.pushNamed(AppViews.registerFillBabyName);
                 }
                     : null,

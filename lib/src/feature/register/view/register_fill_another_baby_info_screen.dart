@@ -1,4 +1,4 @@
-part of 'register_fill_name.dart';
+part of 'register_fill_name_screen.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
   const RegisterFillAnotherBabyInfoScreen({super.key});
@@ -13,54 +13,102 @@ class _RegisterFillAnotherBabyInfoScreenState extends State<RegisterFillAnotherB
   final weightController = TextEditingController();
   final heightController = TextEditingController();
   final headCircumference = TextEditingController();
+  var isFull = false;
+
 
   @override
   Widget build(BuildContext context) {
-    return StartScreenBody(
-      child: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            children: [
-              const AuthSplashIcon(),
-              const SizedBox(height: 50,),
-              const _TitleWidget(text: 'Алла-Виктория, красивое имя 🙂'),
-              const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: _TitleWidget(text: 'А вы помните, какой она была, когда только родилась?'),
+
+    return Observer(
+      builder: (context) {
+        if(registerState.state == RegisterStateAction.savedSuccess){
+          Future.microtask(()=> context.pushNamed(AppViews.registerInfoAboutChildbirth));
+        }
+        return StartScreenBody(
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  const AuthSplashIcon(),
+                  const SizedBox(height: 50,),
+                  _TitleWidget(text: 'Алла-Виктория, ${t.register.beautifulName} 🙂'),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: _TitleWidget(text: t.register.rememberWhenShe),
+                  ),
+                  const SizedBox(height: 10),
+                  _RowContainer(
+                    controller: weightController,
+                    title: t.register.birthWeight,
+                    onChange: (String value) {
+
+                    },),
+                  _RowContainer(
+                    controller: heightController,
+                    title: t.register.heightAtBirth,
+                    onChange: (String value) {
+
+                    },),
+                  _RowContainer(
+                    controller: headCircumference,
+                    title: t.register.headCircumference,
+                    onChange: (String value) {
+                      setState(() {
+                        if(value.isNotEmpty){
+                          isFull = true;
+                        }
+                      });
+                    },),
+                  const SizedBox(height: 20),
+                  _TextWidget(
+                    text: isFull
+                        ? t.register.thankYou
+                        : t.register.ifInconvenientToSearch,),
+                  const Spacer(),
+                  CustomButton(
+                    onTap: (){
+                      registerState.fillBabyDetailInfo(
+                        height: heightController.text,
+                        headCircumference: headCircumference.text,
+                        weight: weightController.text,
+                      );
+
+                    },
+                      child: registerState.state == RegisterStateAction.progress
+                          ? const CircularProgressIndicator(color: AppColors.primaryColor,)
+                          : Text(t.register.next,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                          color: AppColors.primaryColor
+                        ),)),
+                  const SizedBox(height: 40)
+                ],
               ),
-              const SizedBox(height: 10),
-              _RowContainer(
-                controller: weightController,
-                title: 'Вес при рождении',),
-              _RowContainer(
-                controller: heightController,
-                title: 'Рост при рождении',),
-              _RowContainer(
-                controller: headCircumference,
-                title: 'Окружность головы при рождении',),
-              const SizedBox(height: 20),
-              const _TextWidget(
-                text: 'Если сейчас неудобно искать какие-то данные, можете добавить их позже',),
-              const Spacer(),
-              CustomButton(
-                onTap: (){},
-                  child: Text(t.register.next)),
-              const SizedBox(height: 40)
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 }
 
-class _RowContainer extends StatelessWidget {
+class _RowContainer extends StatefulWidget {
   final TextEditingController controller;
   final String title;
-  const _RowContainer({super.key, required this.controller, required this.title});
+  final Function(String value) onChange;
+  const _RowContainer({super.key, required this.controller, required this.title, required this.onChange});
+
+  @override
+  State<_RowContainer> createState() => _RowContainerState();
+}
+
+class _RowContainerState extends State<_RowContainer> {
+
+  var inProgress = false;
 
   @override
   Widget build(BuildContext context) {
@@ -70,60 +118,48 @@ class _RowContainer extends StatelessWidget {
         children: [
           Expanded(
             flex: 3,
-            child: Text(title ,
+            child: Text(widget.title ,
               style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w400
               ),),
           ),
           const Spacer(),
-          _TextFieldContainer(controller: controller,),
+          Container(
+            width: 80,
+            height: 36,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: inProgress ? AppColors.primaryColor : AppColors.purpleLighterBackgroundColor
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                onChanged: widget.onChange,
+                onTap: (){
+                  setState(() {
+                    inProgress = true;
+                  });
+                },
+                controller: widget.controller,
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w400,
+                    color: inProgress ? Colors.white : Colors.black
+                ),
+                decoration: InputDecoration(
+                  hintStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 17,
+                      color: inProgress ? Color(0xFFF0F2F7) : AppColors.greyColor
+                  ),
+                  hintText: t.register.enter,
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class _TextFieldContainer extends StatefulWidget {
-  final TextEditingController controller;
-  const _TextFieldContainer({super.key, required this.controller});
-
-  @override
-  State<_TextFieldContainer> createState() => _TextFieldContainerState();
-}
-
-class _TextFieldContainerState extends State<_TextFieldContainer> {
-
-  var inProgress = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 80,
-      height: 36,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: inProgress ? AppColors.primaryColor : AppColors.purpleLighterBackgroundColor
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: TextField(
-          onTap: (){
-            setState(() {
-              inProgress = true;
-            });
-          },
-          controller: widget.controller,
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w400,
-            color: inProgress ? Colors.white : Colors.black
-          ),
-          decoration: const InputDecoration(
-            hintText: "Ввести",
-             border: InputBorder.none,
-          ),
-        ),
       ),
     );
   }

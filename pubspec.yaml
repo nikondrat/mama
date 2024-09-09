@@ -71,6 +71,8 @@ dependencies:
   mask_text_input_formatter: ^2.9.0
   pin_code_fields: ^8.0.1
   flutter_toggle_button: ^0.0.3
+  smooth_page_indicator: ^1.2.0+3
+  card_swiper: ^3.0.1
 
 dev_dependencies:
   # -- testing -- #

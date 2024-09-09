@@ -1,4 +1,4 @@
-part of 'register_fill_name.dart';
+part of 'register_fill_name_screen.dart';
 
 class RegisterBabyNameScreen extends StatefulWidget {
   const RegisterBabyNameScreen({super.key});
@@ -96,7 +96,7 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               CustomButton(
                 onTap: nameTextFieldIsNotEmpty
                     ? () {
-                        registerState.fillBabyName(name: nameController.text, gender: gender);
+                        registerState.fillBabyName(name: nameController.text, gender: gender,);
                         context.pushNamed(AppViews.registerFillAnotherBabyInfo);
                       }
                     : null,
