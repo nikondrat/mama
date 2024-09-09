@@ -322,7 +322,7 @@ final class MockHttpAdapter implements HttpClientAdapter {
     Stream<Uint8List>? requestStream,
     Future<void>? cancelFuture,
   ) async {
-    final req = options.path.replaceAll("?", "");
+    final req = options.path.replaceAll('?', '');
 
     if (_responses.containsKey(req)) {
       final response = _responses[req]!;

@@ -19,10 +19,10 @@ class MainBoxWithButtons extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Color(0xFFE1E6FF),
+          color: const Color(0xFFE1E6FF),
           width: 2,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
       child: SizedBox(
         height: 205,
@@ -31,7 +31,7 @@ class MainBoxWithButtons extends StatelessWidget {
             /// #image and main text
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 16,
                   horizontal: 8,
                 ),
@@ -50,7 +50,7 @@ class MainBoxWithButtons extends StatelessWidget {
                     /// #main text
                     Text(
                       mainText,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF4D4DE8),
@@ -60,12 +60,12 @@ class MainBoxWithButtons extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
 
             /// #three buttons
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   children: buttons.map(
                     (button) {

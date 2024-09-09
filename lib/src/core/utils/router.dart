@@ -17,12 +17,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: AppViews.servicesUserView,
       path: _Paths.servicesUserPath,
-      builder: (context, state) => ServicesUserView(),
+      builder: (context, state) => const ServicesUserView(),
       routes: [
         GoRoute(
           name: AppViews.servicesSleepMusicView,
           path: _Paths.servicesSleepMusicPath,
-          builder: (context, state) => ServicesSleepMusicView(),
+          builder: (context, state) => const ServicesSleepMusicView(),
         ),
       ],
     ),

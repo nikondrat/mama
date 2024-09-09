@@ -22,14 +22,14 @@ class ServicesUserView extends StatelessWidget {
               child: ListView(
                 children: [
                   /// #some space
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
                   /// #knowledge center box
                   MainBox(
                     mainText: t.services.knowledgeCenter.title,
                     image: Assets.icons.icHat4x.path,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
 
                   /// #online consultation box
                   MainBoxWithButtons(
@@ -50,7 +50,7 @@ class ServicesUserView extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
 
                   /// #music for sleep box
                   MainBoxWithButtons(

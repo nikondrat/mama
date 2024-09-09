@@ -9,7 +9,7 @@ class MainBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFFE1E6FF),
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
@@ -26,7 +26,7 @@ class MainBox extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     mainText,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF4D4DE8),

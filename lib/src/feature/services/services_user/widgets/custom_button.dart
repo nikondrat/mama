@@ -15,9 +15,9 @@ class CustomButton extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         child: Ink(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFFE1E6FF),
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 text,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF4D4DE8),
