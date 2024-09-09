@@ -117,6 +117,8 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     final phonePadding = MediaQuery.of(context).padding;
 
     return Scaffold(
