@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/core/core.dart';
 
-class PlayerRow extends StatelessWidget {
-  const PlayerRow({super.key});
+class TrackPlayer extends StatelessWidget {
+  const TrackPlayer({super.key});
 
   @override
   Widget build(BuildContext context) {

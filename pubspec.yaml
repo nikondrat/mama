@@ -51,6 +51,8 @@ dependencies:
   mocktail: ^1.0.1
   reactive_forms: ^16.1.1
 
+  json_serializable: ^6.8.0
+
   icons_launcher: ^2.1.7
 
   # -- navigation -- #

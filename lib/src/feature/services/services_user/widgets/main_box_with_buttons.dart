@@ -70,9 +70,14 @@ class MainBoxWithButtons extends StatelessWidget {
                 child: Column(
                   children: buttons.map(
                     (button) {
-                      return CustomButton(
-                        text: button.title,
-                        onTap: button.onTap,
+                      return Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: CustomButton(
+                            text: button.title,
+                            onTap: button.onTap,
+                          ),
+                        ),
                       );
                     },
                   ).toList(),

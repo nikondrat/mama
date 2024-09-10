@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
@@ -16,8 +15,16 @@ class CustomBackButton extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 
-    return GestureDetector(
-        onTap: () => context.pop(),
+    return InkWell(
+      onTap: onTap != null
+          ? () {
+              onTap!();
+              context.pop();
+            }
+          : context.pop,
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
         child: Row(
           children: [
             /// #arrow left
@@ -26,8 +33,7 @@ class CustomBackButton extends StatelessWidget {
               width: 12,
               height: 20,
             ),
-
-            Gap(12),
+            const SizedBox(width: 12),
 
             // #back text
             Text(
@@ -35,6 +41,8 @@ class CustomBackButton extends StatelessWidget {
               style: textTheme.bodySmall,
             ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
