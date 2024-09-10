@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:mama/src/feature/auth/data/entity/city.dart';
 import 'package:mama/src/feature/auth/data/repository/repository.dart';
 import 'package:mobx/mobx.dart';

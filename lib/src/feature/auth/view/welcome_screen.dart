@@ -1,10 +1,6 @@
-import 'dart:developer';
-
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/core.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/auth/data/entity/content.dart';
 import 'package:mama/src/feature/auth/data/repository/on_board_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -28,7 +24,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return StartScreenBody(
         child: Column(
       children: [
-        Container(
+        SizedBox(
           height: MediaQuery.of(context).size.height * 0.9,
           width: MediaQuery.of(context).size.width,
           child: Swiper(

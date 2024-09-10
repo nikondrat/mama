@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -8,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/auth/state/register_state/register_state.dart';
 import 'package:mama/src/feature/auth/widgets/register_widget.dart';
-import '../../../core/core.dart';
 
 part 'register_baby_name_screen.dart';
 part 'register_fill_another_baby_info_screen.dart';

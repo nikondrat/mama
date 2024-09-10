@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -11,9 +10,6 @@ import 'package:mama/src/feature/auth/state/stop_watch/stop_watch_state.dart';
 import 'package:mama/src/feature/auth/widgets/auth_screen_widgets.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import '../../../core/constant/colors.dart';
-import '../../../core/constant/constant.dart';
 
 part 'auth_verify_screen.dart';
 
