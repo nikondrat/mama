@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/feature/register/view/congrats_screen.dart';
+import 'package:mama/src/feature/register/view/register_fill_name_screen.dart';
+import 'package:mama/src/feature/register/view/register_screen.dart';
+import 'package:mama/src/feature/register/view/welcome_screen.dart';
+import 'package:mama/src/feature/start_screen/start.dart';
+import '../../feature/auth/auth.dart';
+import '../../feature/register/view/register_city_screen.dart';
 import 'package:mama/src/data.dart';
 
 abstract class AppViews {
+  static const String startScreen = 'startScreen';
+  static const String auth = 'authScreen';
+  static const String authVerify = 'authVerify';
+  static const String registerVerify = 'registerVerify';
+  static const String register = 'registerScreen';
+  static const String congratsScreen = 'congrats';
+  static const String registerFillName = 'registerFillName';
+  static const String registerFillBabyName = 'registerFillBabyName';
+  static const String registerFillAnotherBabyInfo =
+      'registerFillAnotherBabyInfo';
+  static const String registerInfoAboutChildbirth =
+      'registerInfoAboutChildbirth';
+  static const String registerCity = 'registerCity';
+  static const String welcomeScreen = 'welcomeScreen';
+
   static const servicesUserView = 'services-user-view';
   static const servicesSleepMusicView = 'services-sleep-music-view';
 }
@@ -13,6 +35,70 @@ final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: _Paths.servicesUserPath,
   routes: [
+    GoRoute(
+      path: _Paths.startScreen,
+      name: AppViews.startScreen,
+      builder: (context, state) => const StartScreen(),
+    ),
+    GoRoute(
+      path: _Paths.auth,
+      name: AppViews.auth,
+      builder: (context, state) => const AuthScreen(),
+    ),
+    GoRoute(
+      path: _Paths.authVerify,
+      name: AppViews.authVerify,
+      builder: (context, state) => AuthVerifyScreen(
+        phone: state.extra! as String,
+      ),
+    ),
+    GoRoute(
+      path: _Paths.registerVerify,
+      name: AppViews.registerVerify,
+      builder: (context, state) => RegisterVerifyScreen(
+        phone: state.extra! as String,
+      ),
+    ),
+    GoRoute(
+      path: _Paths.register,
+      name: AppViews.register,
+      builder: (context, state) => const RegisterScreen(),
+    ),
+    GoRoute(
+      path: _Paths.congratsScreen,
+      name: AppViews.congratsScreen,
+      builder: (context, state) => const CongratsScreen(),
+    ),
+    GoRoute(
+      path: _Paths.registerFillName,
+      name: AppViews.registerFillName,
+      builder: (context, state) => const RegisterFillName(),
+    ),
+    GoRoute(
+      path: _Paths.registerFillBabyName,
+      name: AppViews.registerFillBabyName,
+      builder: (context, state) => const RegisterBabyNameScreen(),
+    ),
+    GoRoute(
+      path: _Paths.registerFillAnotherBabyInfo,
+      name: AppViews.registerFillAnotherBabyInfo,
+      builder: (context, state) => const RegisterFillAnotherBabyInfoScreen(),
+    ),
+    GoRoute(
+      path: _Paths.registerInfoAboutChildbirth,
+      name: AppViews.registerInfoAboutChildbirth,
+      builder: (context, state) => const RegisterInfoAboutChildbirth(),
+    ),
+    GoRoute(
+      path: _Paths.registerCity,
+      name: AppViews.registerCity,
+      builder: (context, state) => const RegisterCityScreen(),
+    ),
+    GoRoute(
+      path: _Paths.welcomeScreen,
+      name: AppViews.welcomeScreen,
+      builder: (context, state) => const WelcomeScreen(),
+    ),
     GoRoute(
       name: AppViews.servicesUserView,
       path: _Paths.servicesUserPath,
@@ -29,6 +115,21 @@ final GoRouter router = GoRouter(
 );
 
 abstract class _Paths {
+  static const String startScreen = '/';
+  static const String auth = '/authScreen';
+  static const String authVerify = '/authVerify';
+  static const String registerVerify = '/registerVerify';
+  static const String register = '/register';
+  static const String congratsScreen = '/congrats';
+  static const String registerFillName = '/registerFillName';
+  static const String registerFillBabyName = '/registerFillBabyName';
+  static const String registerFillAnotherBabyInfo =
+      '/registerFillAnotherBabyInfo';
+  static const String registerInfoAboutChildbirth =
+      '/registerInfoAboutChildbirth';
+  static const String registerCity = '/registerCity';
+  static const String welcomeScreen = '/welcomeScreen';
+
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
 }

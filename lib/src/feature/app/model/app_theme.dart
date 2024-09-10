@@ -13,6 +13,7 @@ class AppThemeStore extends _AppThemeStore with _$AppThemeStore {
 abstract class _AppThemeStore with Store {
   _AppThemeStore({required this.mode, required this.seed})
       : lightTheme = FlexThemeData.light(
+            fontFamily: "SFProText",
             useMaterial3: true,
             textTheme: TextTheme(
                 titleMedium: TextStyle(
@@ -31,7 +32,15 @@ abstract class _AppThemeStore with Store {
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
               primary: AppColors.primaryColor,
-            )),
+            ),
+    textTheme: TextTheme(
+      bodyMedium: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+      )
+
+    )
+  ),
         darkTheme = FlexThemeData.dark(
             useMaterial3: true,
             colorScheme: ColorScheme.fromSeed(seedColor: seed));
