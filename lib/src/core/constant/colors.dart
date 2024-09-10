@@ -34,6 +34,9 @@ abstract class AppColors {
   static const Color blueChildStatusBackgroundColor = Color(0xFFAAE0FF);
   static const Color purpleChildStatusBackgroundColor = Color(0xFFCEDCFF);
   static const Color greenBrighterBackgroundColor = Color(0xFF93DD91);
-  
+
   static const Color f8faff = Color(0xFFF8FAFF);
+
+  static const Color midnightPurple = Color(0xFF1E0F30);
+  static const Color deepViolet = Color(0xFF371C5A);
 }

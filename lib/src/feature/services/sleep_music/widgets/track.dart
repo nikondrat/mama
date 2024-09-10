@@ -74,7 +74,7 @@ class TrackWidget extends StatelessWidget {
                     ),
 
                     /// #author
-                    AutoSizeText(model.author,
+                    AutoSizeText(model.author ?? '',
                         overflow: TextOverflow.ellipsis,
                         style: textTheme.bodySmall),
                   ],

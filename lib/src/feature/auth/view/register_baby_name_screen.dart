@@ -73,44 +73,44 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: FlutterToggleButton(
                   outerContainerMargin: 3,
-                  buttonWidth: (MediaQuery.of(context).size.width /2) * 0.85,
+                  buttonWidth: (MediaQuery.of(context).size.width / 2) * 0.85,
                   buttonHeight: 38,
                   buttonColor: Colors.white,
                   enableTextColor: AppColors.primaryColor,
                   buttonTextFontSize: 17,
                   borderRadius: 6,
                   outerContainerColor: const Color(0xFFE1E6FF),
-                  onTap: (index){
+                  onTap: (index) {
                     setState(() {
                       gender = index;
                     });
                   },
-                  items: [
-                    t.register.girl,
-                    t.register.boy
-                  ],
-
+                  items: [t.register.girl, t.register.boy],
                 ),
               ),
               const Spacer(),
               CustomButton(
                 onTap: nameTextFieldIsNotEmpty
                     ? () {
-                        registerState.fillBabyName(name: nameController.text, gender: gender,);
+                        registerState.fillBabyName(
+                          name: nameController.text,
+                          gender: gender,
+                        );
                         context.pushNamed(AppViews.registerFillAnotherBabyInfo);
                       }
                     : null,
                 child: registerState.state == RegisterStateAction.progress
-                    ? const CircularProgressIndicator(color: AppColors.primaryColor)
+                    ? const CircularProgressIndicator(
+                        color: AppColors.primaryColor)
                     : Text(
-                  t.register.next,
-                  style: TextStyle(
-                      color: nameTextFieldIsNotEmpty
-                          ? AppColors.primaryColor
-                          : AppColors.greyBrighterColor,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600),
-                ),
+                        t.register.next,
+                        style: TextStyle(
+                            color: nameTextFieldIsNotEmpty
+                                ? AppColors.primaryColor
+                                : AppColors.greyBrighterColor,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600),
+                      ),
               ),
               const SizedBox(height: 50)
             ],

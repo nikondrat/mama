@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -6,7 +5,7 @@ import 'package:mama/src/core/constant/colors.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/auth/auth.dart';
 
-import '../constant/generated/strings.g.dart';
+import '../../../core/constant/generated/strings.g.dart';
 
 class AlreadyHaveAccountButton extends StatelessWidget {
   const AlreadyHaveAccountButton({super.key});
@@ -14,16 +13,17 @@ class AlreadyHaveAccountButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: (){
+        onPressed: () {
           context.pushNamed(AppViews.auth);
-    },
-        child: Text(t.auth.alreadyHaveAccount,
+        },
+        child: Text(
+          t.auth.alreadyHaveAccount,
           style: const TextStyle(
               fontFamily: "SFProText",
               fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: AppColors.primaryColor
-          ),));
+              color: AppColors.primaryColor),
+        ));
   }
 }
 
@@ -33,16 +33,17 @@ class NoAccountButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: (){
-      context.pushNamed(AppViews.register);
-    },
-        child: Text(t.auth.noAccount,
+        onPressed: () {
+          context.pushNamed(AppViews.register);
+        },
+        child: Text(
+          t.auth.noAccount,
           style: const TextStyle(
               fontFamily: "SFProText",
               fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: AppColors.primaryColor
-          ),));
+              color: AppColors.primaryColor),
+        ));
   }
 }
 
@@ -60,7 +61,7 @@ class SubLogoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 35),
       child: Text(t.auth.slogan,
           textAlign: TextAlign.center,
@@ -68,8 +69,7 @@ class SubLogoText extends StatelessWidget {
               fontFamily: "SFProText",
               fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: AppColors.greyBrighterColor
-          )),
+              color: AppColors.greyBrighterColor)),
     );
   }
 }
@@ -83,13 +83,6 @@ class AuthSplashIcon extends StatelessWidget {
   }
 }
 
-TextStyle getTextStyle(Color color){
-  return TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w600,
-      color: color
-  );
+TextStyle getTextStyle(Color color) {
+  return TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: color);
 }
-
-
-

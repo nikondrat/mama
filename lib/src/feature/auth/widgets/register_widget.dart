@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/constant/colors.dart';
-import 'package:mama/src/feature/register/data/entity/city.dart';
-import 'package:mama/src/feature/register/state/register_state/register_state.dart';
+import 'package:mama/src/feature/auth/data/entity/city.dart';
 
 import '../../../core/core.dart';
 import '../data/entity/content.dart';
@@ -14,16 +11,15 @@ class FillTextField extends StatefulWidget {
 
   const FillTextField(
       {super.key,
-        required this.controller,
-        required this.isName,
-        required this.child});
+      required this.controller,
+      required this.isName,
+      required this.child});
 
   @override
   State<FillTextField> createState() => _FillTextFieldState();
 }
 
 class _FillTextFieldState extends State<FillTextField> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -107,7 +103,6 @@ class _CityTextFieldState extends State<CityTextField> {
   }
 }
 
-
 class CityContainer extends StatelessWidget {
   final City city;
   final Function() onTap;
@@ -141,16 +136,15 @@ class CityContainer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(city.city,
+                Text(
+                  city.city,
                   style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400
-                  ) ,),
-                Text(city.republic,
+                      fontSize: 17, fontWeight: FontWeight.w400),
+                ),
+                Text(
+                  city.republic,
                   style: const TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w400
-                  ),
+                      fontSize: 10, fontWeight: FontWeight.w400),
                 )
               ],
             ),
@@ -173,24 +167,26 @@ class WelcomeContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.06,
+          ),
           Image.asset(content.assetImage),
-          Text(content.title,
+          Text(
+            content.title,
             style: const TextStyle(
-              color: AppColors.primaryColor,
-              fontSize: 24,
-              fontWeight: FontWeight.w700
-            ),),
-          SizedBox(height: 15,),
-          Text(content.text,
-            style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w400
-          ),)
+                color: AppColors.primaryColor,
+                fontSize: 24,
+                fontWeight: FontWeight.w700),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            content.text,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+          )
         ],
       ),
     );
   }
 }
-
-

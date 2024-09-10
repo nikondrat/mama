@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/register/state/register_state/register_state.dart';
-import 'package:mama/src/feature/register/widget/register_widget.dart';
+import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/auth/state/register_state/register_state.dart';
+import 'package:mama/src/feature/auth/widgets/register_widget.dart';
 import '../../../core/core.dart';
 
 part 'register_baby_name_screen.dart';
@@ -102,20 +103,21 @@ class _RegisterFillNameState extends State<RegisterFillName> {
               CustomButton(
                 onTap: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
                     ? () {
-                    registerState.fillNameAndSurname(
-                        nameController.text,
-                        surnameController.text);
-                    context.pushNamed(AppViews.registerFillBabyName);
-                }
+                        registerState.fillNameAndSurname(
+                            nameController.text, surnameController.text);
+                        context.pushNamed(AppViews.registerFillBabyName);
+                      }
                     : null,
-                child: Text(t.register.next,
+                child: Text(
+                  t.register.next,
                   style: TextStyle(
-                    color: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
-                        ? AppColors.primaryColor
-                        : AppColors.greyBrighterColor,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600
-                ),),
+                      color:
+                          nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
+                              ? AppColors.primaryColor
+                              : AppColors.greyBrighterColor,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
               const SizedBox(height: 50)
             ],
@@ -132,13 +134,13 @@ class _TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
+    return Text(
+      text,
       textAlign: TextAlign.center,
       style: const TextStyle(
           color: AppColors.primaryColor,
           fontSize: 20,
-          fontWeight: FontWeight.w700
-      ),);
+          fontWeight: FontWeight.w700),
+    );
   }
 }
-

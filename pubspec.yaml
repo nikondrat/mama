@@ -70,7 +70,6 @@ dependencies:
 
   # -- image -- #
   flutter_svg: ^2.0.10+1
-  gap: ^3.0.1
   auto_size_text: ^3.0.0
   mask_text_input_formatter: ^2.9.0
   pin_code_fields: ^8.0.1
@@ -90,10 +89,8 @@ dev_dependencies:
 
   # -- codegen -- #
   freezed: ^2.4.5
-  drift_dev: ^2.13.1
   build_runner: ^2.4.6
   mobx_codegen: ^2.6.0+1
-  json_serializable: ^6.7.1
   slang_build_runner: ^3.25.0
 
 flutter:
@@ -103,11 +100,12 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/fonts/
 
   fonts:
     - family: SFProText
       fonts:
-        - asset: fonts/SFProText-Regular.ttf
+        - asset: assets/fonts/SFProText-Regular.ttf
 
 flutter_gen:
   output: lib/src/core/constant/generated

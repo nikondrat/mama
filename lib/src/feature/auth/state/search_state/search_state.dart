@@ -1,14 +1,14 @@
-
 import 'dart:developer';
 
-import 'package:mama/src/feature/register/data/entity/city.dart';
-import 'package:mama/src/feature/register/data/repository/repository.dart';
+import 'package:mama/src/feature/auth/data/entity/city.dart';
+import 'package:mama/src/feature/auth/data/repository/repository.dart';
 import 'package:mobx/mobx.dart';
 
 part 'search_state.g.dart';
 
 class SearchState = SearchStateBase with _$SearchState;
-abstract class SearchStateBase with Store{
+
+abstract class SearchStateBase with Store {
   @observable
   List<City> newList = [];
 
@@ -16,7 +16,10 @@ abstract class SearchStateBase with Store{
 
   @action
   Future<void> searchCity({required String city}) async {
-    var result = repository.data.where((value) => value.city.toLowerCase().toLowerCase().contains(city.toLowerCase())).toList();
+    var result = repository.data
+        .where((value) =>
+            value.city.toLowerCase().toLowerCase().contains(city.toLowerCase()))
+        .toList();
     newList = result;
   }
 
@@ -25,5 +28,4 @@ abstract class SearchStateBase with Store{
     ///save city to db
     newList = [];
   }
-
 }

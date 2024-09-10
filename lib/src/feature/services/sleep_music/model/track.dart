@@ -13,7 +13,7 @@ class TrackModel extends _TrackModel with _$TrackModel {
   final String description;
 
   @JsonKey(includeFromJson: false, includeToJson: false)
-  final String author;
+  final String? author;
 
   final String duration;
 
@@ -24,10 +24,15 @@ class TrackModel extends _TrackModel with _$TrackModel {
     required this.id,
     required this.title,
     required this.description,
-    required this.author,
+    this.author,
     required this.duration,
     required this.createdAt,
   });
+
+  factory TrackModel.fromJson(Map<String, dynamic> json) =>
+      _$TrackModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TrackModelToJson(this);
 }
 
 abstract class _TrackModel with Store {
