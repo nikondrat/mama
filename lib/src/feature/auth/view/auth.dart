@@ -3,60 +3,75 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/services/services_user/views/services_user_view.dart';
+import 'package:provider/provider.dart';
 
 class AuthView extends StatelessWidget {
-  const AuthView({super.key});
+  final bool isLogin;
+  const AuthView({
+    super.key,
+    this.isLogin = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 
-    return Scaffold(
-      body: BodyDecoration(
-          backgroundImage: DecorationImage(
-            image: AssetImage(
-              Assets.images.authDecor.path,
-            ),
-            alignment: Alignment.topLeft,
-          ),
-          child: ListView(
-            children: [
-              SvgPicture.asset(
-                Assets.images.mamaCo,
+    return Provider(
+      create: (context) => AuthViewStore(),
+      dispose: (context, value) => value.dispose(),
+      child: Scaffold(
+        body: BodyDecoration(
+            backgroundImage: DecorationImage(
+              image: AssetImage(
+                Assets.images.authDecor.path,
               ),
-              20.h,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: AutoSizeText(
-                      t.auth.slogan,
-                      textAlign: TextAlign.center,
-                      style: textTheme.bodySmall!.copyWith(
-                        fontWeight: FontWeight.w600,
+              alignment: Alignment.topLeft,
+            ),
+            child: Column(
+              children: [
+                Spacer(),
+                SvgPicture.asset(
+                  Assets.images.mamaCo,
+                ),
+                20.h,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: AutoSizeText(
+                        t.auth.slogan,
+                        textAlign: TextAlign.center,
+                        style: textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              AuthInputWidget(),
-              Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                      onPressed: () => context.pushNamed(AppViews.auth),
-                      child: AutoSizeText(
-                        t.auth.alreadyHaveAccount,
-                        style: textTheme.titleMedium,
-                      )),
-                ],
-              ),
-              20.h,
-            ],
-          )),
+                  ],
+                ),
+                20.h,
+                AuthInputBodyWidget(
+                  isLogin: isLogin,
+                ),
+                Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () => context.pushNamed(
+                            isLogin ? AppViews.register : AppViews.auth),
+                        child: AutoSizeText(
+                          isLogin
+                              ? t.auth.noAccount
+                              : t.auth.alreadyHaveAccount,
+                          style: textTheme.titleMedium,
+                        )),
+                  ],
+                ),
+                20.h,
+              ],
+            )),
+      ),
     );
   }
 }

@@ -12,14 +12,20 @@ class CustomButton extends StatelessWidget {
 
   final Color? backgroundColor;
 
+  final TextStyle? textStyle;
+
+  final double? height;
+
   const CustomButton({
     super.key,
     this.onTap,
     this.title,
     this.child,
     this.backgroundColor,
+    this.height,
     this.padding,
     this.borderRadius,
+    this.textStyle,
   }) : assert(title != null || child != null);
 
   @override
@@ -36,12 +42,12 @@ class CustomButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 8),
             ),
-            minimumSize: const Size.fromHeight(48)),
+            minimumSize: Size.fromHeight(height ?? 48)),
         onPressed: onTap,
         child: child ??
             AutoSizeText(
               title!,
-              style: textTheme.titleMedium,
+              style: textStyle ?? textTheme.titleMedium,
             ));
 
     return padding != null ? Padding(padding: padding!, child: button) : button;

@@ -46,7 +46,6 @@ abstract class _AppThemeStore with Store {
   ThemeMode mode;
 
   /// The seed color to generate the [ColorScheme] from.
-  @observable
   Color seed;
 
   /// The dark [ThemeData] for this [AppThemeStore].

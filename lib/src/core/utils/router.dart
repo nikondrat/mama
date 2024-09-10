@@ -40,11 +40,6 @@ final GoRouter router = GoRouter(
         builder: (context, state) => const StartScreen(),
         routes: [
           GoRoute(
-            path: _Paths.auth,
-            name: AppViews.auth,
-            builder: (context, state) => const AuthView(),
-          ),
-          GoRoute(
             path: _Paths.authVerify,
             name: AppViews.authVerify,
             builder: (context, state) => AuthVerifyScreen(
@@ -54,15 +49,26 @@ final GoRouter router = GoRouter(
           GoRoute(
             path: _Paths.registerVerify,
             name: AppViews.registerVerify,
-            builder: (context, state) => RegisterVerifyScreen(
-              phone: state.extra! as String,
-            ),
+            builder: (context, state) {
+              final Map? data = state.extra as Map?;
+              final String? phone = data!['phone'] as String?;
+
+              return RegisterVerifyScreen(
+                phone: phone ?? '',
+              );
+            },
           ),
           GoRoute(
-            path: _Paths.register,
-            name: AppViews.register,
-            builder: (context, state) => const AuthView(),
-          ),
+              path: _Paths.register,
+              name: AppViews.register,
+              builder: (context, state) => const AuthView(),
+              routes: [
+                GoRoute(
+                  path: _Paths.auth,
+                  name: AppViews.auth,
+                  builder: (context, state) => const AuthView(isLogin: true),
+                ),
+              ]),
           GoRoute(
             path: _Paths.congratsScreen,
             name: AppViews.congratsScreen,
