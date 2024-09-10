@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/services/sleep_music/widgets/widgets.dart';
+import 'package:mama/src/feature/services/services_sleep_music/widgets/widgets.dart';
 
 class ServicesSleepMusicView extends StatefulWidget {
   const ServicesSleepMusicView({super.key});
