@@ -32,7 +32,7 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  // initialLocation: _Paths.servicesUserPath,
+  initialLocation: '/',
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -42,7 +42,7 @@ final GoRouter router = GoRouter(
           GoRoute(
             path: _Paths.auth,
             name: AppViews.auth,
-            builder: (context, state) => const AuthScreen(),
+            builder: (context, state) => const AuthView(),
           ),
           GoRoute(
             path: _Paths.authVerify,
@@ -61,7 +61,7 @@ final GoRouter router = GoRouter(
           GoRoute(
             path: _Paths.register,
             name: AppViews.register,
-            builder: (context, state) => const RegisterScreen(),
+            builder: (context, state) => const AuthView(),
           ),
           GoRoute(
             path: _Paths.congratsScreen,
