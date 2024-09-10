@@ -1,14 +1,10 @@
-
-
-import 'dart:developer';
-
-import 'package:mama/src/core/core.dart';
 import 'package:mobx/mobx.dart';
 
 part 'auth_state.g.dart';
 
 class AuthState = AuthStateBase with _$AuthState;
-abstract class AuthStateBase with Store{
+
+abstract class AuthStateBase with Store {
   @observable
   var state = AuthStateAction.login;
 
@@ -16,18 +12,18 @@ abstract class AuthStateBase with Store{
   Future<void> confirmPhone(String phone) async {
     state = AuthStateAction.progress;
     await Future.delayed(Duration(seconds: 2));
-    if(phone == "+7 996 997-06-24"){
+    if (phone == '+7 996 997-06-24') {
       state = AuthStateAction.sendCode;
-    }else{
+    } else {
       state = AuthStateAction.errorPhone;
     }
   }
 
   @action
-  void onChangeTextField(String value){
-    if(value.length == 13){
+  void onChangeTextField(String value) {
+    if (value.length == 13) {
       state = AuthStateAction.enableConfirmButton;
-    }else{
+    } else {
       state = AuthStateAction.disableConfirmButton;
     }
   }
@@ -36,25 +32,24 @@ abstract class AuthStateBase with Store{
   Future<void> checkCode(String code) async {
     state = AuthStateAction.progress;
     await Future.delayed(Duration(seconds: 2));
-    if(code == "1234"){
+    if (code == '1234') {
       state = AuthStateAction.correctCode;
-    }else{
+    } else {
       state = AuthStateAction.errorCode;
     }
   }
 
   @action
-  void onCodeTextFieldChange(String value){
-    if(value.length == 4){
+  void onCodeTextFieldChange(String value) {
+    if (value.length == 4) {
       state = AuthStateAction.enableConfirmButton;
-    }else{
+    } else {
       state = AuthStateAction.disableConfirmButton;
     }
   }
-
 }
 
-enum AuthStateAction{
+enum AuthStateAction {
   progress,
   login,
   sendCode,
