@@ -8,7 +8,22 @@ class AuthViewStore extends _AuthViewStore with _$AuthViewStore {
 }
 
 abstract class _AuthViewStore with Store {
-  FormGroup formGroup = FormGroup({});
+  FormGroup formGroup = FormGroup({
+    'phone': FormControl<String>(
+        validators: [Validators.required, Validators.minLength(13)])
+  });
 
-  
+  AbstractControl get phone => formGroup.control('phone');
+
+  void dispose() {
+    formGroup.dispose();
+  }
+
+  @observable
+  bool isAgree = false;
+
+  @action
+  void setAgree(bool value) {
+    isAgree = value;
+  }
 }
