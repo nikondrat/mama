@@ -43,13 +43,15 @@ class StartScreen extends StatelessWidget {
                 SvgPicture.asset(
                   Assets.images.img,
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+                30.h,
+                // const SizedBox(
+                //   height: 30,
+                // ),
                 SvgPicture.asset(Assets.images.mamaCoStart),
-                const SizedBox(
-                  height: 25,
-                ),
+                // const SizedBox(
+                //   height: 25,
+                // ),
+                25.h,
                 AutoSizeText(
                   t.auth.slogan,
                   textAlign: TextAlign.center,
@@ -61,22 +63,26 @@ class StartScreen extends StatelessWidget {
                 CustomButton(
                   title: t.start.join,
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  onTap: () => context.pushNamed(AppViews.register),
+                  onTap: () => context.pushReplacementNamed(AppViews.register),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                20.h,
                 TextButton(
-                    onPressed: () => context.pushNamed(AppViews.auth),
+                    onPressed: () =>
+                        context.pushReplacementNamed(AppViews.auth),
                     child: AutoSizeText(
                       t.start.alreadyHaveAcc,
                       style: textTheme.bodyMedium!.copyWith(
                         color: colorScheme.onPrimary,
                       ),
                     )),
-                const SizedBox(
-                  height: 50,
-                ),
+                // const SizedBox(
+                //   height: 50,
+                // ),
+
+                50.h,
               ],
             )
           ],
