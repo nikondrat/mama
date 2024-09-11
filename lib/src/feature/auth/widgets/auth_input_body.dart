@@ -34,7 +34,6 @@ class AuthInputBodyWidget extends StatelessWidget {
               ),
               20.h,
               InputWidget(),
-              if (!isLogin) 10.h,
               if (!isLogin)
                 Observer(
                     builder: (context) => Row(
@@ -43,7 +42,7 @@ class AuthInputBodyWidget extends StatelessWidget {
                               value: store.isAgree,
                               onChanged: (v) => store.setAgree(v!),
                             ),
-                            Text.rich(
+                            AutoSizeText.rich(
                               t.register.termOfUse(
                                   tapHere: (v) => TextSpan(
                                         text: v,

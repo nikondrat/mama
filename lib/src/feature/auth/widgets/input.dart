@@ -48,83 +48,98 @@ class _InputWidgetState extends State<InputWidget> {
           builder: (context, status, child) {
             final bool isValid = !status.hasErrors;
 
-            return DecoratedBox(
-              decoration: BoxDecoration(
-                  borderRadius: 8.r,
-                  border: Border.all(
-                    color: !isValid
-                        ? AppColors.redColor
-                        : isFocused
-                            ? AppColors.primaryColor
-                            : AppColors.greyColor,
-                    width: isFocused ? 2 : 1,
-                  )),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: AutoSizeText(
-                      '+7',
-                      style: textTheme.bodyMedium!.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: VerticalDivider(
-                      width: 10,
-                      color: AppColors.greyColor,
-                    ),
-                  ),
-                  Expanded(
-                    child: ReactiveTextField(
-                      formControlName: 'phone',
-                      focusNode: focusNode,
-                      showErrors: (control) => false,
-                      keyboardType: TextInputType.number,
-                      style: textTheme.bodyMedium!.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                      onTapOutside: (event) {
-                        isFocused = false;
-                        focusNode.unfocus();
-                        setState(() {});
-                      },
-                      inputFormatters: [maskFormatter],
-                      decoration: InputDecoration(
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 8, vertical: 14),
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          hintStyle: textTheme.bodySmall,
-                          hintText: t.auth.phoneNumber,
-                          suffixIcon: ReactiveValueListenableBuilder(
-                            formControlName: 'phone',
-                            builder: (context, control, child) {
-                              if (control.value != null &&
-                                  control.value != '') {
-                                return Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: InkWell(
-                                    onTap: () {
-                                      store.phone.updateValue('');
-                                    },
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: AppColors.greyBrighterColor,
-                                    ),
-                                  ),
-                                );
-                              }
-                              return SizedBox.shrink();
-                            },
+            return SizedBox(
+                height: 80,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                          borderRadius: 8.r,
+                          border: Border.all(
+                            color: !isValid
+                                ? AppColors.redColor
+                                : isFocused
+                                    ? AppColors.primaryColor
+                                    : AppColors.greyColor,
+                            width: isFocused ? 2 : 1,
                           )),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: AutoSizeText(
+                              '+7',
+                              style: textTheme.bodyMedium!.copyWith(
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                            child: VerticalDivider(
+                              width: 10,
+                              color: AppColors.greyColor,
+                            ),
+                          ),
+                          Expanded(
+                            child: ReactiveTextField(
+                              formControlName: 'phone',
+                              focusNode: focusNode,
+                              showErrors: (control) => false,
+                              keyboardType: TextInputType.number,
+                              style: textTheme.bodyMedium!.copyWith(
+                                fontWeight: FontWeight.w400,
+                              ),
+                              onTapOutside: (event) {
+                                isFocused = false;
+                                focusNode.unfocus();
+                                setState(() {});
+                              },
+                              inputFormatters: [maskFormatter],
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 14),
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  hintStyle: textTheme.bodySmall,
+                                  hintText: t.auth.phoneNumber,
+                                  suffixIcon: ReactiveValueListenableBuilder(
+                                    formControlName: 'phone',
+                                    builder: (context, control, child) {
+                                      if (control.value != null &&
+                                          control.value != '') {
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 10),
+                                          child: InkWell(
+                                            onTap: () {
+                                              store.phone.updateValue('');
+                                            },
+                                            child: const Icon(
+                                              Icons.close,
+                                              color:
+                                                  AppColors.greyBrighterColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      return SizedBox.shrink();
+                                    },
+                                  )),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            );
+                    Positioned(
+                        bottom: 0,
+                        child: InputErrorWidget(
+                          // error: 'Номер не зарегистрирован',
+                          error: null,
+                        )),
+                  ],
+                ));
           },
         ));
   }
