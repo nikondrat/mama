@@ -46,4 +46,6 @@ abstract class AppColors {
 
   static const Color skyBlue = Color(0xFF0D4CEA);
   static const Color deepBlue = Color(0xFF0834A6);
+
+  static Color e8ddf9 = Color(0xFFE8DDF9).withOpacity(0.5);
 }
