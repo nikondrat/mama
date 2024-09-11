@@ -168,7 +168,9 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
               SizedBox(height: phonePadding.top + 10),
 
               /// #custom app bar
-              const CustomAppBar(),
+              CustomAppBar(
+                title: t.services.sleepMusic.title,
+              ),
               const SizedBox(height: 10),
 
               /// #tabs(selection options)
