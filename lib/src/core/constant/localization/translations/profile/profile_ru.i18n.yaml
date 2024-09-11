@@ -1,48 +1,93 @@
 accountTitle: Аккаунт
+
 addPhotoTitle: Нажмите, чтобы добавить фото
+
 backLeadingButton: Назад
+
 hintChangeName: Нажмите, чтобы изменить имя
+
 hintChangePhone: Нажмите, чтобы изменить номер телефона
+
 hintChangeEmail: Нажмите, чтобы ввести адрес электронной почты
+
 labelChangeEmail: Нам нужна ваша почта для активации приложения
+
 hintChangeNote: Нажмите, чтобы поделиться с другими пользователями информацией о себе
+
 labelChangeNote: Обо мне
+
 addGiftCodeButtonTitle: Ввести код на подарок
+
 settingsAccountButtonTitle: Настройки аккаунта
+
 childTitle: Дети
+
 addChildButtonTitle: Добавить малыша
+
 aboutCompanyTitle: О компании
+
 termOfUseTitle: Условия использования
+
 feedbackButtonTitle: Обратная связь
+
 leaveAccountButtonTitle: Выйти из аккаунта
+
 hintAddChildName: Имя ребенка
+
 helperAddChildName: Нажмите, чтобы вести имя
+
 helperChangeChildName: Нажмите, чтобы изменить имя
+
 deleteChildButtonTitle: Удалить из приложения
+
 hintDateBirth: Дата рождения
+
 helperDateBirth: Нажмите чтобы изменить дату рождения
+
 genderTitle: Пол
+
 twinsTitle: Близнецы
+
 twinsHelper: Нужно для подбора статей и рекомендаций. Добавьте второго малыша для отслеживания его развития.
+
 weightTitle: Вес при рождении
+
 heightTitle: Рост при рождении
+
 headCircumferenceTitle: Окружность головы при рождении
+
 birthTitle: Роды
+
 birthComplicationsTitle: Роды с осложнениями
+
 childNotesHint: Нажмите, чтобы оставить заметку о родах или особенностях малыша
+
 inputHint: Ввести
+
 unitMeasureWeight: кг
+
 unitMeasureHeight: см
+
 cancel: Отмена
+
 apply: Применить
+
 promoScreenTitle: Подарочные коды
+
 promoItemButtonTitle: Нажмите, чтобы применить
+
 promoScreenHelper: Нажмите, чтобы ввести новый подарочный код
+
 promoScreenHintAddCode: Новый подарочный код
+
 promoScreenErrorCode: Подарочный код не действителен. Нажмите, чтобы изменить
+
 promoDialogBackButton: Вернуться
+
 promoErrorDialogBackButton: Выйти
+
 promoErrorDialogContinueButton: Продолжить
+
 sex(context=GenderContext):
   male: Мальчик
   female: Девочка
