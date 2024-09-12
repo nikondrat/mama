@@ -44,6 +44,7 @@ class ContainerAccountProfile extends StatelessWidget {
           children: [
             TextField(
               maxLines: maxlines,
+              style: labelStyle,
               onChanged: (value) => onChange,
               controller: controller,
               decoration: InputDecoration(

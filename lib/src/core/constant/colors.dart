@@ -17,7 +17,9 @@ class AppColors {
   static const Color iconColor = Color(0xFF000000);
 
   static const Color whiteDarkerButtonColor = Color(0xFFF0F2F7);
-  static const Color purpleLighterBackgroundColorScaffold = Color(0xFFE1EAFF);
+  static const Color gradientPurpleBackgroundScaffold = Color(0xFFE7EEFF);
+  static const Color gradientPurpleLighterBackgroundScaffold =
+      Color(0xFFFDFEFF);
   static const Color blackColor = Colors.black;
   static const Color greyButton = Color(0xFFF8FAFF);
   static const Color blueBrightTextColor = Color(0xFF447CF3);

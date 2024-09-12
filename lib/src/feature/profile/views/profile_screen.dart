@@ -35,94 +35,106 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: AppColors.greyBrighterColor,
         );
 
-    return Scaffold(
-      backgroundColor: AppColors.purpleLighterBackgroundColorScaffold,
-      body: Stack(
-        children: [
-          ListView(
-            children: <Widget>[
-              MomsProfile(
-                titlesStyle: titlesStyle,
-                helpersStyle: helpersStyle,
-                titlesColoredStyle: titlesColoredStyle,
-                mom: MomInfo(
-                  'Кристина Константинова',
-                  '+7 996 997-06-24',
-                  null,
-                  null,
-                  Assets.images.imgProfile.path,
-                  [
-                    ChildInfo(
-                      'Алла Виктория',
-                      DateTime(2023, 4, 2),
-                      Gender.female,
-                      false,
-                      3.56,
-                      49,
-                      35,
-                      Birth.natural,
-                      false,
-                      null,
-                      Assets.images.imgProfile.path,
-                    )
-                  ],
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            AppColors.gradientPurpleBackgroundScaffold,
+            AppColors.gradientPurpleLighterBackgroundScaffold,
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            ListView(
+              children: <Widget>[
+                MomsProfile(
+                  titlesStyle: titlesStyle,
+                  helpersStyle: helpersStyle,
+                  titlesColoredStyle: titlesColoredStyle,
+                  mom: MomInfo(
+                    'Кристина Константинова',
+                    '+7 996 997-06-24',
+                    null,
+                    null,
+                    Assets.images.imgProfile.path,
+                    [
+                      ChildInfo(
+                        'Алла Виктория',
+                        DateTime(2023, 4, 2),
+                        Gender.female,
+                        false,
+                        3.56,
+                        49,
+                        35,
+                        Birth.natural,
+                        false,
+                        null,
+                        Assets.images.imgProfile.path,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: InkWell(
+                      onTap: () {
+                        //! добавить tap о компании
+                      },
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        t.profile.aboutCompanyTitle,
+                        style: titlesColoredStyle,
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
                   child: InkWell(
                     onTap: () {
-                      //! добавить tap о компании
+                      //! добавить tap условия использования
                     },
                     child: Text(
                       textAlign: TextAlign.center,
-                      t.profile.aboutCompanyTitle,
+                      t.profile.termOfUseTitle,
                       style: titlesColoredStyle,
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    //! добавить tap условия использования
-                  },
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    t.profile.termOfUseTitle,
-                    style: titlesColoredStyle,
-                  ),
+                const Gap(16),
+                CustomButton(
+                  onPressed: () {},
+                  icon: Icons.language,
+                  text: t.profile.feedbackButtonTitle,
                 ),
-              ),
-              const Gap(16),
-              CustomButton(
-                onPressed: () {},
-                icon: Icons.language,
-                text: t.profile.feedbackButtonTitle,
-              ),
-              const Gap(8),
-              CustomButton(
-                onPressed: () {},
-                color: AppColors.redColor,
-                text: t.profile.leaveAccountButtonTitle,
-              ),
-            ],
-          ),
-          //   ),
-          // ],
-          // ),
-          Positioned(
-            top: 50.0,
-            left: 0.0,
-            child: ButtonLeading(
-              labelStyle: titlesStyle,
-              onTapButton: () {
-                //! добавить tap back button
-              },
+                const Gap(8),
+                CustomButton(
+                  onPressed: () {},
+                  color: AppColors.redColor,
+                  text: t.profile.leaveAccountButtonTitle,
+                ),
+              ],
             ),
-          ),
-        ],
+            //   ),
+            // ],
+            // ),
+            Positioned(
+              top: 50.0,
+              left: 0.0,
+              child: ButtonLeading(
+                labelStyle: titlesStyle,
+                onTapButton: () {
+                  //! добавить tap back button
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

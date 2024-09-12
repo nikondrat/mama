@@ -250,6 +250,7 @@ class ChildProfile extends StatelessWidget {
                 CupertinoSwitch(
                   value: child.twins,
                   activeColor: AppColors.primaryColor,
+                  trackColor: AppColors.greyColor,
                   onChanged: (value) {
                     onSwitchTweens;
                   },
@@ -340,6 +341,7 @@ class ChildProfile extends StatelessWidget {
                 CupertinoSwitch(
                   value: child.birthComplications,
                   activeColor: AppColors.primaryColor,
+                  trackColor: AppColors.greyColor,
                   onChanged: (value) {
                     onSwitchBirthComplications;
                   },
