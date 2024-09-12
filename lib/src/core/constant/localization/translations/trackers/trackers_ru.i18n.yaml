@@ -33,3 +33,18 @@ pdf:
 
 add:
   title: Добавить
+
+addTemperature:
+  title: Добавить температуру
+
+now:
+  title: Сейчас
+
+sixTeenThirtyTwo:
+  title: "16:32"
+
+fourteensOfSeptember:
+  title: 14 сентября
+
+note:
+  title: Заметка

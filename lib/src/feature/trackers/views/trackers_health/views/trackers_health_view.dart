@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 
 class TrackersHealthView extends StatefulWidget {
@@ -14,18 +15,9 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
   // controllers
   late final TabController _tabController;
 
-  // funtions
-  void _initAllController() {
-    _tabController = TabController(
-      length: 4,
-      vsync: this,
-      initialIndex: 0,
-    );
-  }
-
-  void _disposeAllController() {
-    _tabController.dispose();
-  }
+  final List<List> tableData = [
+    ['06 сентября', '09:30', '36,9'],
+  ];
 
   @override
   void initState() {
@@ -39,16 +31,34 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
     _disposeAllController();
   }
 
+  // funtions
+  void _initAllController() {
+    _tabController = TabController(
+      length: 4,
+      vsync: this,
+      initialIndex: 0,
+    );
+  }
+
+  void _disposeAllController() {
+    _tabController.dispose();
+  }
+
+  void _onAddTemperatureButtonPressed() =>
+      context.goNamed(AppViews.trackersHealthAddTemperatureView);
+
   @override
   Widget build(BuildContext context) {
     final phonePadding = MediaQuery.of(context).padding;
 
+    // tabs
     final tabs = [
       Tab(text: t.trackers.temperature.title),
       Tab(text: t.trackers.medicines.title),
       Tab(text: t.trackers.doctorsAppointment.title),
       Tab(text: t.trackers.vaccinations.title),
     ];
+
     return Scaffold(
       backgroundColor: AppColors.e8ddf9,
       body: Stack(
@@ -244,81 +254,21 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
                         ),
                         SizedBox(height: 5),
 
-                        /// #
-                        ListView(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.only(top: 0),
-                          children: [
-                            SizedBox(height: 5),
-
-                            /// #
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      flex: 10,
-                                      child: Text(
-                                        '06 сентября',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 17,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 7,
-                                      child: Text(
-                                        '09:30',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 17,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 9,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Row(
-                                                  children: [
-                                                    Spacer(flex: 3),
-                                                    Text(
-                                                      '36,9',
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontSize: 17,
-                                                        color: AppColors
-                                                            .blackColor,
-                                                      ),
-                                                    ),
-                                                    Spacer(flex: 4),
-                                                    SvgPicture.asset(
-                                                      Assets
-                                                          .icons.icPencilFilled,
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                        Table(
+                          children: tableData
+                              .map(
+                                (row) => TableRow(
+                                  children: row
+                                      .map(
+                                        (cell) => Text(cell),
+                                      )
+                                      .toList(),
                                 ),
-                              ],
-                            ),
-                          ],
+                              )
+                              .toList(),
                         ),
+
+                        SizedBox(height: phonePadding.bottom + 16),
                       ],
                     ),
                   ),
@@ -449,7 +399,7 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
                         Radius.circular(8),
                       ),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: _onAddTemperatureButtonPressed,
                         borderRadius: BorderRadius.all(
                           Radius.circular(8),
                         ),
