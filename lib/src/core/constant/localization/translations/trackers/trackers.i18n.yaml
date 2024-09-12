@@ -45,3 +45,18 @@ pdf:
 
 add:
   title: Add
+
+addTemperature:
+  title: Add Temperature
+
+now:
+  title: Now
+
+sixTeenThirtyTwo:
+  title: "16:32"
+
+fourteensOfSeptember:
+  title: 14 september
+
+note:
+  title: Note

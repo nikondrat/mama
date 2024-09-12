@@ -8,24 +8,25 @@ class CitySearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-        create: (context) => SearchCityStore(
-              restClient: context.read<Dependencies>().restClient,
-            ),
-        builder: (context, child) {
-          final SearchCityStore store = Provider.of<SearchCityStore>(context);
+      create: (context) => SearchCityStore(
+        restClient: context.read<Dependencies>().restClient,
+      ),
+      builder: (context, child) {
+        final SearchCityStore store = Provider.of<SearchCityStore>(context);
 
-          return Scaffold(
-              body: BodyDecoration(
-                  backgroundImage: DecorationImage(
-                    image: AssetImage(
-                      Assets.images.authDecor.path,
-                    ),
-                    alignment: Alignment.topLeft,
-                  ),
-                  child: CitySearchBody(
-                    store: store,
-                  )));
-        });
+        return Scaffold(
+          body: BodyDecoration(
+            backgroundImage: DecorationImage(
+              image: AssetImage(
+                Assets.images.authDecor.path,
+              ),
+              alignment: Alignment.topLeft,
+            ),
+            child: CitySearchView(),
+          ),
+        );
+      },
+    );
     // Observer(builder: (context) {
     //   var resultOfSearch = searchState.newList;
 
