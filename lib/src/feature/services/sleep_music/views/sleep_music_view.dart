@@ -158,7 +158,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFF),
+      backgroundColor: AppColors.lightBlue,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [

@@ -48,7 +48,7 @@ abstract class AppColors {
   static const Color midnightPurple = Color(0xFF1E0F30);
   static const Color deepViolet = Color(0xFF371C5A);
 
-  static Color e8ddf9 = Color(0xFFE8DDF9).withOpacity(0.5);
+  static Color e8ddf9 = Color(0xFFE8DDF9);
 
   static const Color softPeach = Color(0xFFE1EAFF);
 
