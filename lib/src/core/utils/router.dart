@@ -5,6 +5,7 @@ import 'package:mama/src/feature/auth/view/congrats_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_screen.dart';
 import 'package:mama/src/feature/auth/view/welcome_screen.dart';
+import 'package:mama/src/feature/trackers/views/trackers_health/views/trackers_health_view.dart';
 import '../../feature/auth/view/register_city_screen.dart';
 import 'package:mama/src/data.dart';
 
@@ -24,6 +25,8 @@ abstract class AppViews {
   static const String registerCity = 'registerCity';
   static const String welcomeScreen = 'welcomeScreen';
 
+  static const trackersHealthView = 'trackersHealthView';
+
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
 }
@@ -32,7 +35,7 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
+  initialLocation: _Paths.trackersHealthPath,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -107,6 +110,11 @@ final GoRouter router = GoRouter(
           ),
         ]),
     GoRoute(
+      name: AppViews.trackersHealthView,
+      path: _Paths.trackersHealthPath,
+      builder: (context, state) => TrackersHealthView(),
+    ),
+    GoRoute(
       name: AppViews.servicesUserView,
       path: _Paths.servicesUserPath,
       builder: (context, state) => const ServicesUserView(),
@@ -136,6 +144,8 @@ abstract class _Paths {
       AppViews.registerInfoAboutChildbirth;
   static const String registerCity = AppViews.registerCity;
   static const String welcomeScreen = AppViews.welcomeScreen;
+
+  static const trackersHealthPath = '/${AppViews.trackersHealthView}';
 
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
