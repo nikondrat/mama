@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constant/constant.dart';
 
-class CustomButton extends StatelessWidget {
+class CButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
   final IconData? icon;
   final Color? color;
-  const CustomButton({
+  const CButton({
     super.key,
     required this.onPressed,
     required this.text,

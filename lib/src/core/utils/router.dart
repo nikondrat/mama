@@ -26,13 +26,16 @@ abstract class AppViews {
 
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
+
+  static const profile = 'profile';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
+  // initialLocation: '/',
+  initialLocation: _Paths.profile,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -118,6 +121,11 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: _Paths.profile,
+      name: AppViews.profile,
+      builder: (context, state) => const ProfileScreen(),
+    )
   ],
 );
 
@@ -139,4 +147,6 @@ abstract class _Paths {
 
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
+
+  static const profile = '/${AppViews.profile}';
 }

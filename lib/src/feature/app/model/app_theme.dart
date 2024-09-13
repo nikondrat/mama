@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -16,6 +17,8 @@ abstract class _AppThemeStore with Store {
             fontFamily: 'SFProText',
             useMaterial3: true,
             textTheme: TextTheme(
+                headlineSmall: GoogleFonts.nunito(
+                    fontSize: 32, fontWeight: FontWeight.w700),
                 titleMedium: TextStyle(
                   color: AppColors.primaryColor,
                   fontSize: 17,
@@ -24,6 +27,11 @@ abstract class _AppThemeStore with Store {
                 titleLarge: TextStyle(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.w700,
+                ),
+                labelLarge: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
                 ),
                 bodyMedium: TextStyle(
                   fontSize: 17,
