@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
-import 'body_item.dart';
+import 'items/body_item.dart';
+import 'decoration.dart';
 
 class BodyGroup extends StatelessWidget {
   final String title;
   final TextStyle? titleStyle;
   final List<BodyItemWidget> items;
+  final FormGroup? formGroup;
+  final EdgeInsets? padding;
+  final bool isDecorated;
   const BodyGroup({
     super.key,
     required this.title,
     this.titleStyle,
     required this.items,
+    this.formGroup,
+    this.padding,
+    this.isDecorated = false,
   });
 
   @override
@@ -20,7 +28,14 @@ class BodyGroup extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
     final TextStyle titleStyle = textTheme.labelLarge!;
 
-    return Column(
+    final List<Widget> items = [
+      ...this.items.map((e) {
+        return Padding(
+            padding: padding ?? EdgeInsets.symmetric(vertical: 8), child: e);
+      })
+    ];
+
+    final Widget child = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -31,8 +46,18 @@ class BodyGroup extends StatelessWidget {
           ),
         ),
         8.h,
-        ...items
+        if (isDecorated)
+          BodyItemDecoration(child: Column(children: items))
+        else
+          ...items
       ],
     );
+
+    return formGroup == null
+        ? child
+        : ReactiveForm(
+            formGroup: formGroup!,
+            child: child,
+          );
   }
 }

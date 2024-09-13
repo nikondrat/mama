@@ -3,8 +3,8 @@ import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import 'body_group.dart';
-import 'body_item.dart';
+import 'body/body_group.dart';
+import 'body/items/body_item.dart';
 
 class MomsProfile extends StatefulWidget {
   final MomInfo mom;
@@ -66,125 +66,123 @@ class _MomsProfileState extends State<MomsProfile> {
     final MaskTextInputFormatter formatter = MaskTextInputFormatter(
         mask: '+7 ### ###-##-##', filter: {'#': RegExp(r'[0-9]')});
 
-    return ReactiveForm(
-      formGroup: formGroup,
-      child: Column(
-        children: [
-          widget.mom.image == null
-              ? DashedPhotoProfile()
-              : ProfilePhoto(img: widget.mom.image!),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                20.h,
-                BodyGroup(
-                  title: t.profile.accountTitle,
-                  items: [
-                    BodyItemWidget(
-                      item: InputItem(
-                        controlName: 'name',
-                        hintText: t.profile.hintChangeName,
-                        titleStyle: textTheme.headlineSmall,
-                        maxLines: 1,
-                      ),
-                    ),
-                    BodyItemWidget(
-                      item: InputItem(
-                          controlName: 'phone',
-                          hintText: t.profile.hintChangePhone,
-                          titleStyle: titlesStyle,
-                          inputHintStyle: textTheme.bodySmall!
-                              .copyWith(fontWeight: FontWeight.w700),
-                          inputHint: '+7 996 997-06-24',
-                          maxLines: 1,
-                          maskFormatter: formatter),
-                    ),
-                    BodyItemWidget(
-                      item: InputItem(
-                        controlName: 'email',
-                        hintText: t.profile.hintChangeEmail,
-                        keyboardType: TextInputType.emailAddress,
-                        titleStyle: titlesStyle,
-                        inputHintStyle: titlesStyle!.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
-                        inputHint: t.profile.labelChangeEmail,
-                      ),
-                    ),
-                    BodyItemWidget(
-                      item: InputItem(
-                        controlName: 'about',
-                        hintText: t.profile.hintChangeNote,
-                        titleStyle: titlesStyle,
-                        inputHint: t.profile.labelChangeNote,
-                        inputHintStyle: textTheme.bodySmall!
-                            .copyWith(fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ],
-                ),
-                32.h,
-                CustomButton(
-                  onTap: () {},
-                  title: t.profile.addGiftCodeButtonTitle,
-                ),
-                8.h,
-                CustomButton(
-                  onTap: () {},
-                  icon: Icons.language,
-                  title: t.profile.settingsAccountButtonTitle,
-                ),
-                32.h,
-                // Text(
-                //   t.profile.childTitle,
-                //   style: widget.titlesColoredStyle,
-                // ),
-                8.h,
-                // BodyGroup(title: t.profile.childTitle, items: [
-                //   BodyItemWidget(controlName: '', hintText: ''),
-                // ]),
-                DisplayChilds(
-                  childs: widget.mom.childs,
-                  onChangeBirth: (String value) {}, //TODO логика изменения
-                  onChangeGender: (String value) {},
-                  onSwitchBirthComplications: (String value) {},
-                  onChangeNotes: (String value) {},
-                  onChangeDateBirth: (String value) {},
-                  titleStyle: widget.titlesStyle,
-                  helperStyle: widget.helpersStyle,
-                  titlesColoredStyle: widget.titlesColoredStyle,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(28.0),
-                  child: InkWell(
-                    onTap: () {
-                      //! добавить ребенка
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          height: 17,
-                          image: AssetImage(
-                            Assets.icons.icAddChild.path,
-                          ),
-                        ),
-                        16.h,
-                        Text(
-                          t.profile.addChildButtonTitle,
-                          style: widget.titlesColoredStyle,
-                        ),
-                      ],
+    return Column(
+      children: [
+        widget.mom.image == null
+            ? DashedPhotoProfile()
+            : ProfilePhoto(img: widget.mom.image!),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              20.h,
+              BodyGroup(
+                formGroup: formGroup,
+                title: t.profile.accountTitle,
+                items: [
+                  BodyItemWidget(
+                    item: InputItem(
+                      controlName: 'name',
+                      hintText: t.profile.hintChangeName,
+                      titleStyle: textTheme.headlineSmall,
+                      maxLines: 1,
                     ),
                   ),
+                  BodyItemWidget(
+                    item: InputItem(
+                        controlName: 'phone',
+                        hintText: t.profile.hintChangePhone,
+                        titleStyle: titlesStyle,
+                        inputHintStyle: textTheme.bodySmall!
+                            .copyWith(fontWeight: FontWeight.w700),
+                        inputHint: '+7 996 997-06-24',
+                        maxLines: 1,
+                        maskFormatter: formatter),
+                  ),
+                  BodyItemWidget(
+                    item: InputItem(
+                      controlName: 'email',
+                      hintText: t.profile.hintChangeEmail,
+                      keyboardType: TextInputType.emailAddress,
+                      titleStyle: titlesStyle,
+                      inputHintStyle: titlesStyle!.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                      inputHint: t.profile.labelChangeEmail,
+                    ),
+                  ),
+                  BodyItemWidget(
+                    item: InputItem(
+                      controlName: 'about',
+                      hintText: t.profile.hintChangeNote,
+                      titleStyle: titlesStyle,
+                      inputHint: t.profile.labelChangeNote,
+                      inputHintStyle: textTheme.bodySmall!
+                          .copyWith(fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ],
+              ),
+              32.h,
+              CustomButton(
+                onTap: () {},
+                title: t.profile.addGiftCodeButtonTitle,
+              ),
+              8.h,
+              CustomButton(
+                onTap: () {},
+                icon: Icons.language,
+                title: t.profile.settingsAccountButtonTitle,
+              ),
+              32.h,
+              // Text(
+              //   t.profile.childTitle,
+              //   style: widget.titlesColoredStyle,
+              // ),
+              8.h,
+              ChildItems(childs: [
+                ChildModel(id: '', firstName: 'Виктория', secondName: ''),
+              ]),
+              DisplayChilds(
+                childs: widget.mom.childs,
+                onChangeBirth: (String value) {}, //TODO логика изменения
+                onChangeGender: (String value) {},
+                onSwitchBirthComplications: (String value) {},
+                onChangeNotes: (String value) {},
+                onChangeDateBirth: (String value) {},
+                titleStyle: widget.titlesStyle,
+                helperStyle: widget.helpersStyle,
+                titlesColoredStyle: widget.titlesColoredStyle,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(28.0),
+                child: InkWell(
+                  onTap: () {
+                    //! добавить ребенка
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        height: 17,
+                        image: AssetImage(
+                          Assets.icons.icAddChild.path,
+                        ),
+                      ),
+                      16.h,
+                      Text(
+                        t.profile.addChildButtonTitle,
+                        style: widget.titlesColoredStyle,
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

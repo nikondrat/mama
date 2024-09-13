@@ -5,3 +5,4 @@ export 'custom_button.dart';
 export 'display_child.dart';
 export 'child_profile.dart';
 export 'mom_profile.dart';
+export 'body/body.dart';

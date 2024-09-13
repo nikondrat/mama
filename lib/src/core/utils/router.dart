@@ -34,8 +34,8 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  // initialLocation: '/',
-  initialLocation: _Paths.profile,
+  initialLocation: '/',
+  // initialLocation: _Paths.profile,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
