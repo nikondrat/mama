@@ -73,6 +73,7 @@ dependencies:
   flutter_toggle_button: ^0.0.3
   smooth_page_indicator: ^1.2.0+3
   card_swiper: ^3.0.1
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   # -- testing -- #
@@ -98,6 +99,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
   fonts:
     - family: SFProText

@@ -19,12 +19,31 @@ abstract class _AppThemeStore with Store {
               seedColor: seed,
               primary: AppColors.primaryColor,
             ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
+      bodySmall: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w700,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
       bodyMedium: TextStyle(
           fontSize: 17,
           fontWeight: FontWeight.w600,
-      )
-
+      ),
+      bodyLarge: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 20,
+      ),
+      labelMedium: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w700
+      ) ,
+      labelLarge: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.w700
+      ),
     )
   ),
         darkTheme = FlexThemeData.dark(
