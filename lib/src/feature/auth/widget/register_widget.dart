@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/constant/colors.dart';
 import 'package:mama/src/feature/auth/data/entity/city.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_state.dart';
-
 import '../../../core/core.dart';
-import '../data/entity/content.dart';
 
 class FillTextField extends StatelessWidget {
   final TextEditingController controller;

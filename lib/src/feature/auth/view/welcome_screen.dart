@@ -1,15 +1,9 @@
-import 'dart:developer';
-
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/auth/data/entity/content.dart';
 import 'package:mama/src/feature/auth/data/repository/on_board_data.dart';
-import 'package:mama/src/core/widgets/custom_button.dart';
 import 'package:mama/src/feature/auth/widget/decoration.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../widget/register_widget.dart';
 import '../widget/widgets.dart';
 
 class WelcomeScreen extends StatefulWidget {

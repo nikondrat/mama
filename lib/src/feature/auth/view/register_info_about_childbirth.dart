@@ -1,18 +1,7 @@
 part of 'register_fill_name_screen.dart';
 
-class RegisterInfoAboutChildbirth extends StatefulWidget {
+class RegisterInfoAboutChildbirth extends StatelessWidget {
   const RegisterInfoAboutChildbirth({super.key});
-
-  @override
-  State<RegisterInfoAboutChildbirth> createState() =>
-      _RegisterInfoAboutChildbirthState();
-}
-
-class _RegisterInfoAboutChildbirthState
-    extends State<RegisterInfoAboutChildbirth> {
-  var typeOfChildBirth = 0;
-  var switchValue = false;
-  final registerState = RegisterState();
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +34,6 @@ class _RegisterInfoAboutChildbirthState
                 borderRadius: 6,
                 outerContainerColor: const Color(0xFFE1E6FF),
                 onTap: (index) {
-                  setState(
-                    () {
-                      typeOfChildBirth = index;
-                    },
-                  );
                 },
                 items: [t.register.natural, t.register.caesarean],
               ),
@@ -59,11 +43,8 @@ class _RegisterInfoAboutChildbirthState
                   Text(t.register.wasComplications),
                   const Spacer(),
                   CupertinoSwitch(
-                      value: switchValue,
+                      value: true,
                       onChanged: (value) {
-                        setState(() {
-                          switchValue = value;
-                        });
                       }),
                 ],
               ),

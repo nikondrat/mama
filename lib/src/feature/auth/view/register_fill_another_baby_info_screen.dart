@@ -9,7 +9,6 @@ class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
 
 class _RegisterFillAnotherBabyInfoScreenState extends State<RegisterFillAnotherBabyInfoScreen> {
 
-  final registerState = RegisterState();
   final weightController = TextEditingController();
   final heightController = TextEditingController();
   final headCircumference = TextEditingController();

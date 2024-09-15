@@ -1,11 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_state.dart';
-import 'package:mama/src/feature/auth/widget/auth_screen_widget.dart';
 import 'package:mama/src/feature/auth/widget/decoration.dart';
 import '../../../core/core.dart';
 import '../widget/widgets.dart';
@@ -24,7 +21,6 @@ class RegisterFillName extends StatefulWidget {
 class _RegisterFillNameState extends State<RegisterFillName> {
   final nameController = TextEditingController();
   final surnameController = TextEditingController();
-  final registerState = RegisterState();
 
   var nameTextFieldIsNotEmpty = false;
   var surnameTextFieldIsNotEmpty = false;
@@ -116,9 +112,6 @@ class _RegisterFillNameState extends State<RegisterFillName> {
               ),
               onTap: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
                   ? () {
-                  registerState.fillNameAndSurname(
-                      nameController.text,
-                      surnameController.text);
                   context.pushNamed(AppViews.registerFillBabyName);
               }
                   : null,

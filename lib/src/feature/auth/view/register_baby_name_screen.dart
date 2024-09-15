@@ -9,7 +9,6 @@ class RegisterBabyNameScreen extends StatefulWidget {
 
 class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
   final nameController = TextEditingController();
-  final registerState = RegisterState();
   var nameTextFieldIsNotEmpty = false;
   var selected = [true, false];
   var gender = 0;
@@ -103,7 +102,6 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               ),
               onTap: nameTextFieldIsNotEmpty
                   ? () {
-                      registerState.fillBabyName(name: nameController.text, gender: gender,);
                       context.pushNamed(AppViews.registerFillAnotherBabyInfo);
                     }
                   : null,

@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_state.dart';
 import 'package:mama/src/feature/auth/state/search_state/search_state.dart';
 import 'package:mama/src/feature/auth/widget/decoration.dart';
-
-import '../widget/auth_screen_widget.dart';
 import '../widget/widgets.dart';
 
 class RegisterCityScreen extends StatefulWidget {
@@ -21,7 +18,6 @@ class RegisterCityScreen extends StatefulWidget {
 class _RegisterCityScreenState extends State<RegisterCityScreen> {
 
   final controller = TextEditingController();
-  final registerState = RegisterState();
   var textFieldTap = false;
   var isFull = false;
   final searchState = SearchState();
@@ -144,7 +140,6 @@ class _RegisterCityScreenState extends State<RegisterCityScreen> {
                                   borderRadius: BorderRadius.circular(8),
                                 )),
                             onPressed: isFull ? () {
-                              registerState.fillCity(city: controller.text);
                               context.goNamed(AppViews.welcomeScreen);
                             } : null,
                             child: isFull ? Row(
