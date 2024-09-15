@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
   final double? borderRadius;
 
   final Color? backgroundColor;
+  final Color? borderColor;
 
   final TextStyle? textStyle;
 
@@ -26,6 +27,7 @@ class CustomButton extends StatelessWidget {
     this.padding,
     this.borderRadius,
     this.textStyle,
+    this.borderColor,
   }) : assert(title != null || child != null);
 
   @override
@@ -40,6 +42,10 @@ class CustomButton extends StatelessWidget {
             backgroundColor:
             backgroundColor ?? AppColors.purpleLighterBackgroundColor,
             shape: RoundedRectangleBorder(
+              side: BorderSide(
+                width: 2,
+                color: borderColor == null ? AppColors.purpleLighterBackgroundColor : borderColor!
+              ),
               borderRadius: BorderRadius.circular(borderRadius ?? 8),
             ),
             minimumSize: Size.fromHeight(height ?? 48)),
