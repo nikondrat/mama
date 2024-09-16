@@ -33,8 +33,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                 buttonTextFontSize: 17,
                 borderRadius: 6,
                 outerContainerColor: const Color(0xFFE1E6FF),
-                onTap: (index) {
-                },
+                onTap: (index) {},
                 items: [t.register.natural, t.register.caesarean],
               ),
               20.h,
@@ -42,10 +41,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                 children: [
                   Text(t.register.wasComplications),
                   const Spacer(),
-                  CupertinoSwitch(
-                      value: true,
-                      onChanged: (value) {
-                      }),
+                  CupertinoSwitch(value: true, onChanged: (value) {}),
                 ],
               ),
               const Spacer(),
@@ -89,10 +85,10 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                           context.pushNamed(AppViews.registerCity);
                         },
                         child: Text(
-                                t.register.next,
-                                style: textTheme.bodyMedium
-                                    ?.copyWith(color: AppColors.primaryColor),
-                              ),
+                          t.register.next,
+                          style: textTheme.bodyMedium
+                              ?.copyWith(color: AppColors.primaryColor),
+                        ),
                       ),
                     ),
                   ],

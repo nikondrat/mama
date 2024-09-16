@@ -38,7 +38,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   },
                   itemCount: onBoardData.length,
                   pagination:
-                  const SwiperPagination(builder: SwiperPagination.rect),
+                      const SwiperPagination(builder: SwiperPagination.rect),
                   //control: const SwiperControl(),
                   onIndexChanged: (index) {
                     setState(() {

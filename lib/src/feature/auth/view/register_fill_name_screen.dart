@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
@@ -64,15 +63,13 @@ class _RegisterFillNameState extends State<RegisterFillName> {
                   });
                 },
                 controller: nameController,
-                style: textTheme.labelLarge?.copyWith(
-                  color: AppColors.primaryColor
-                ),
+                style: textTheme.labelLarge
+                    ?.copyWith(color: AppColors.primaryColor),
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: t.register.name,
-                    hintStyle: textTheme.labelLarge?.copyWith(
-                        color: AppColors.greyBrighterColor
-                    )),
+                    hintStyle: textTheme.labelLarge
+                        ?.copyWith(color: AppColors.greyBrighterColor)),
               ),
             ),
             10.h,
@@ -90,15 +87,13 @@ class _RegisterFillNameState extends State<RegisterFillName> {
                   });
                 },
                 controller: surnameController,
-                style: textTheme.labelLarge?.copyWith(
-                    color: AppColors.primaryColor
-                ),
+                style: textTheme.labelLarge
+                    ?.copyWith(color: AppColors.primaryColor),
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: t.register.surname,
-                    hintStyle: textTheme.labelLarge?.copyWith(
-                        color: AppColors.greyBrighterColor
-                    )),
+                    hintStyle: textTheme.labelLarge
+                        ?.copyWith(color: AppColors.greyBrighterColor)),
               ),
             ),
             const Spacer(),
@@ -108,12 +103,11 @@ class _RegisterFillNameState extends State<RegisterFillName> {
               textStyle: textTheme.bodyMedium?.copyWith(
                   color: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
                       ? AppColors.primaryColor
-                      : AppColors.greyBrighterColor
-              ),
+                      : AppColors.greyBrighterColor),
               onTap: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
                   ? () {
-                  context.pushNamed(AppViews.registerFillBabyName);
-              }
+                      context.pushNamed(AppViews.registerFillBabyName);
+                    }
                   : null,
             ),
             50.h
@@ -123,4 +117,3 @@ class _RegisterFillNameState extends State<RegisterFillName> {
     );
   }
 }
-

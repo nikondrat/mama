@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -13,39 +14,37 @@ class AppThemeStore extends _AppThemeStore with _$AppThemeStore {
 abstract class _AppThemeStore with Store {
   _AppThemeStore({required this.mode, required this.seed})
       : lightTheme = FlexThemeData.light(
-            fontFamily: "SFProText",
+            fontFamily: 'SFProText',
             useMaterial3: true,
+            textTheme: TextTheme(
+                headlineSmall: GoogleFonts.nunito(
+                    fontSize: 32, fontWeight: FontWeight.w700),
+                titleMedium: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                ),
+                titleLarge: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w700,
+                ),
+                labelLarge: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                ),
+                bodyMedium: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                ),
+                bodySmall: TextStyle(
+                  fontSize: 17,
+                  color: AppColors.greyBrighterColor,
+                )),
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
               primary: AppColors.primaryColor,
-            ),
-    textTheme: const TextTheme(
-      bodySmall: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.w700,
-      ),
-      displaySmall: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
-      bodyMedium: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
-      ),
-      bodyLarge: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
-      ),
-      labelMedium: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w700
-      ) ,
-      labelLarge: TextStyle(
-          fontSize: 32,
-          fontWeight: FontWeight.w700
-      ),
-    )
-  ),
+            )),
         darkTheme = FlexThemeData.dark(
             useMaterial3: true,
             colorScheme: ColorScheme.fromSeed(seedColor: seed));
@@ -55,7 +54,6 @@ abstract class _AppThemeStore with Store {
   ThemeMode mode;
 
   /// The seed color to generate the [ColorScheme] from.
-  @observable
   Color seed;
 
   /// The dark [ThemeData] for this [AppThemeStore].

@@ -36,8 +36,8 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               child: Text(
                 textAlign: TextAlign.center,
                 t.register.isThereMoreChild,
-                style: textTheme.displaySmall?.copyWith(color: AppColors.primaryColor
-                ),
+                style: textTheme.displaySmall
+                    ?.copyWith(color: AppColors.primaryColor),
               ),
             ),
             20.h,
@@ -72,23 +72,19 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               padding: const EdgeInsets.all(8.0),
               child: FlutterToggleButton(
                 outerContainerMargin: 3,
-                buttonWidth: (MediaQuery.of(context).size.width /2) * 0.85,
+                buttonWidth: (MediaQuery.of(context).size.width / 2) * 0.85,
                 buttonHeight: 38,
                 buttonColor: Colors.white,
                 enableTextColor: AppColors.primaryColor,
                 buttonTextFontSize: 17,
                 borderRadius: 6,
                 outerContainerColor: const Color(0xFFE1E6FF),
-                onTap: (index){
+                onTap: (index) {
                   setState(() {
                     gender = index;
                   });
                 },
-                items: [
-                  t.register.girl,
-                  t.register.boy
-                ],
-
+                items: [t.register.girl, t.register.boy],
               ),
             ),
             const Spacer(),
@@ -98,8 +94,7 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               textStyle: textTheme.bodyMedium?.copyWith(
                   color: nameTextFieldIsNotEmpty
                       ? AppColors.primaryColor
-                      : AppColors.greyBrighterColor
-              ),
+                      : AppColors.greyBrighterColor),
               onTap: nameTextFieldIsNotEmpty
                   ? () {
                       context.pushNamed(AppViews.registerFillAnotherBabyInfo);

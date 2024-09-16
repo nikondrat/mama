@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/feature/auth/view/auth_screen.dart';
 import 'package:mama/src/feature/auth/view/congrats_screen.dart';
-import 'package:mama/src/feature/auth/view/phone_verify.dart';
 import 'package:mama/src/feature/auth/view/register_fill_name_screen.dart';
+import 'package:mama/src/feature/auth/view/register_screen.dart';
 import 'package:mama/src/feature/auth/view/welcome_screen.dart';
-import '../../feature/auth/auth.dart';
 import '../../feature/auth/view/register_city_screen.dart';
-import '../../feature/start_screen/start.dart';
+import 'package:mama/src/data.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
@@ -26,6 +26,11 @@ abstract class AppViews {
 
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
+
+  static const profile = 'profile';
+
+  static const servicesUserView = 'servicesUserView';
+  static const servicesSleepMusicView = 'servicesSleepMusicView';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -40,17 +45,16 @@ final GoRouter router = GoRouter(
         builder: (context, state) => const StartScreen(),
         routes: [
           GoRoute(
-            path: _Paths.authVerify,
-            name: AppViews.authVerify,
-            builder: (context, state) {
-              final Map? data = state.extra as Map?;
-              final String? phone = data!['phone'] as String?;
-               return PhoneVerify(
-                isLogin: true,
-                phone: phone ?? "",
-              );
-            }
-          ),
+              path: _Paths.authVerify,
+              name: AppViews.authVerify,
+              builder: (context, state) {
+                final Map? data = state.extra as Map?;
+                final String? phone = data!['phone'] as String?;
+                return PhoneVerify(
+                  isLogin: true,
+                  phone: phone ?? "",
+                );
+              }),
           GoRoute(
             path: _Paths.registerVerify,
             name: AppViews.registerVerify,
@@ -81,7 +85,15 @@ final GoRouter router = GoRouter(
           GoRoute(
             path: _Paths.registerFillName,
             name: AppViews.registerFillName,
+          ),
+          GoRoute(
+            path: _Paths.registerFillName,
+            name: AppViews.registerFillName,
             builder: (context, state) => const RegisterFillName(),
+          ),
+          GoRoute(
+            path: _Paths.registerFillBabyName,
+            name: AppViews.registerFillBabyName,
           ),
           GoRoute(
             path: _Paths.registerFillBabyName,
@@ -92,7 +104,7 @@ final GoRouter router = GoRouter(
             path: _Paths.registerFillAnotherBabyInfo,
             name: AppViews.registerFillAnotherBabyInfo,
             builder: (context, state) =>
-            const RegisterFillAnotherBabyInfoScreen(),
+                const RegisterFillAnotherBabyInfoScreen(),
           ),
           GoRoute(
             path: _Paths.registerInfoAboutChildbirth,
@@ -102,7 +114,15 @@ final GoRouter router = GoRouter(
           GoRoute(
             path: _Paths.registerCity,
             name: AppViews.registerCity,
+          ),
+          GoRoute(
+            path: _Paths.registerCity,
+            name: AppViews.registerCity,
             builder: (context, state) => const RegisterCityScreen(),
+          ),
+          GoRoute(
+            path: _Paths.welcomeScreen,
+            name: AppViews.welcomeScreen,
           ),
           GoRoute(
             path: _Paths.welcomeScreen,
@@ -110,6 +130,23 @@ final GoRouter router = GoRouter(
             builder: (context, state) => const WelcomeScreen(),
           ),
         ]),
+    GoRoute(
+      name: AppViews.servicesUserView,
+      path: _Paths.servicesUserPath,
+      builder: (context, state) => const ServicesUserView(),
+      routes: [
+        GoRoute(
+          name: AppViews.servicesSleepMusicView,
+          path: _Paths.servicesSleepMusicPath,
+          builder: (context, state) => const ServicesSleepMusicView(),
+        ),
+      ],
+    ),
+    GoRoute(
+      path: _Paths.profile,
+      name: AppViews.profile,
+      builder: (context, state) => const ProfileScreen(),
+    )
   ],
 );
 
@@ -131,4 +168,6 @@ abstract class _Paths {
 
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
+
+  static const profile = '/${AppViews.profile}';
 }

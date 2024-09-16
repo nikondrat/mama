@@ -14,12 +14,12 @@ class CongratsScreen extends StatelessWidget {
 
     return Scaffold(
       body: BodyDecoration(
-          backgroundImage: DecorationImage(
-            image: AssetImage(
-              Assets.images.authDecor.path,
-            ),
-            alignment: Alignment.topLeft,
+        backgroundImage: DecorationImage(
+          image: AssetImage(
+            Assets.images.authDecor.path,
           ),
+          alignment: Alignment.topLeft,
+        ),
         child: Column(
           children: [
             160.h,
@@ -42,5 +42,3 @@ class CongratsScreen extends StatelessWidget {
     );
   }
 }
-
-
