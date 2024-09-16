@@ -61,8 +61,8 @@ class _MomsProfileState extends State<MomsProfile> {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
 
-    final TextStyle? titlesStyle =
-        textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w400);
+    final TextStyle titlesStyle =
+        textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
 
     final MaskTextInputFormatter formatter = MaskTextInputFormatter(
         mask: '+7 ### ###-##-##', filter: {'#': RegExp(r'[0-9]')});
@@ -107,9 +107,7 @@ class _MomsProfileState extends State<MomsProfile> {
                       hintText: t.profile.hintChangeEmail,
                       keyboardType: TextInputType.emailAddress,
                       titleStyle: titlesStyle,
-                      inputHintStyle: titlesStyle!.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                      inputHintStyle: titlesStyle,
                       inputHint: t.profile.labelChangeEmail,
                     ),
                   ),
