@@ -1,56 +1,39 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:mama/src/core/core.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/profile/model/model.dart';
-import 'package:mama/src/feature/profile/widgets/widgets.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
   Widget build(BuildContext context) {
-    TextStyle? titlesStyle =
-        Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontSize: 17,
-              fontFamily: 'SFProText',
-            );
-    TextStyle? titlesColoredStyle =
-        Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w700,
-              fontSize: 14,
-              fontFamily: 'SFProText',
-              color: AppColors.primaryColor,
-            );
-    TextStyle? helpersStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
-          fontSize: 10,
-          fontFamily: 'SFProText',
-          fontWeight: FontWeight.w700,
-          color: AppColors.greyBrighterColor,
-        );
+    final ThemeData theme = Theme.of(context);
+    final TextTheme textTheme = theme.textTheme;
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            AppColors.gradientPurpleBackgroundScaffold,
-            AppColors.gradientPurpleLighterBackgroundScaffold,
-          ],
+    final TextStyle? titlesStyle = textTheme.bodyMedium;
+    final TextStyle titlesColoredStyle = textTheme.labelLarge!;
+
+    final TextStyle helpersStyle = textTheme.bodySmall!.copyWith(
+      fontSize: 10,
+      fontWeight: FontWeight.w700,
+    );
+
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              AppColors.gradientPurpleBackgroundScaffold,
+              AppColors.gradientPurpleLighterBackgroundScaffold,
+            ],
+          ),
         ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
+        child: Stack(
           children: [
             ListView(
+              padding: EdgeInsets.zero,
               children: <Widget>[
                 MomsProfile(
                   titlesStyle: titlesStyle,
@@ -64,60 +47,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Assets.images.imgProfile.path,
                     [
                       ChildInfo(
-                        'Алла Виктория',
-                        DateTime(2023, 4, 2),
-                        Gender.female,
-                        false,
-                        3.56,
-                        49,
-                        35,
-                        Birth.natural,
-                        false,
-                        null,
-                        Assets.images.imgProfile.path,
+                        name: 'Алла Виктория',
+                        dateBirth: DateTime(2023, 4, 2),
+                        gender: Gender.female,
+                        twins: false,
+                        weight: 3.56,
+                        height: 49,
+                        headCircumference: 35,
+                        birth: Birth.natural,
+                        birthComplications: false,
+                        notes: null,
+                        image: Assets.images.imgProfile.path,
                       )
                     ],
                   ),
                 ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: InkWell(
-                      onTap: () {
-                        //! добавить tap о компании
-                      },
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        t.profile.aboutCompanyTitle,
-                        style: titlesColoredStyle,
-                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          //TODO добавить tap о компании
+                        },
+                        child: Text(
+                          t.profile.aboutCompanyTitle,
+                          style: titlesColoredStyle,
+                        )),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          //TODO добавить tap условия использования
+                        },
+                        child: Text(
+                          t.profile.termOfUseTitle,
+                          style: titlesColoredStyle,
+                        )),
+                  ],
+                ),
+                16.h,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: CustomButton(
+                    title: t.profile.feedbackButtonTitle,
+                    onTap: () {},
+                    icon: Icons.language,
+                  ),
+                ),
+                8.h,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: CustomButton(
+                    onTap: () {},
+                    backgroundColor: AppColors.redLighterBackgroundColor,
+                    title: t.profile.leaveAccountButtonTitle,
+                    textStyle: textTheme.titleMedium!.copyWith(
+                      color: AppColors.redColor,
                     ),
                   ),
                 ),
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      //! добавить tap условия использования
-                    },
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      t.profile.termOfUseTitle,
-                      style: titlesColoredStyle,
-                    ),
-                  ),
-                ),
-                const Gap(16),
-                CustomButton(
-                  onPressed: () {},
-                  icon: Icons.language,
-                  text: t.profile.feedbackButtonTitle,
-                ),
-                const Gap(8),
-                CustomButton(
-                  onPressed: () {},
-                  color: AppColors.redColor,
-                  text: t.profile.leaveAccountButtonTitle,
-                ),
+                32.h,
               ],
             ),
             //   ),

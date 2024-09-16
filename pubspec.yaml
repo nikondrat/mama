@@ -53,6 +53,7 @@ dependencies:
   path_provider: ^2.1.0
   mocktail: ^1.0.1
   reactive_forms: ^17.0.1
+  json_serializable: ^6.8.0
 
   icons_launcher: ^2.1.7
 
@@ -67,12 +68,18 @@ dependencies:
 
   # -- ui -- #
   flex_color_scheme: ^7.3.1
-  flutter_svg: ^2.0.10+1
+  tab_container: ^3.5.3
   dotted_border: ^2.1.0
-  gap: ^3.0.1
+
+  # -- image -- #
+  flutter_svg: ^2.0.10+1
+  auto_size_text: ^3.0.0
   mask_text_input_formatter: ^2.9.0
-  google_fonts: ^6.2.1
+  pin_code_fields: ^8.0.1
   flutter_toggle_button: ^0.0.3
+  smooth_page_indicator: ^1.2.0+3
+  card_swiper: ^3.0.1
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   # -- testing -- #
@@ -85,11 +92,8 @@ dev_dependencies:
   flutter_native_splash: ^2.3.5
 
   # -- codegen -- #
-  freezed: ^2.4.5
-  drift_dev: ^2.13.1
   build_runner: ^2.4.12
   mobx_codegen: ^2.6.0+1
-  json_serializable: ^6.7.1
   slang_build_runner: ^3.31.0
 
 flutter:
@@ -104,7 +108,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-
+    - assets/fonts/
 
 
 flutter_gen:

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/profile/widgets/body/child_bar.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -25,7 +24,6 @@ class _ChildItemState extends State<ChildItem> {
 
   @override
   void initState() {
-    // double? initialweight = weightFormatter.(widget.model.weight);
     formGroup = FormGroup({
       'name': FormControl<String>(value: widget.model.firstName),
       'weight': FormControl<double>(value: widget.model.weight),

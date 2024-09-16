@@ -2,7 +2,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
-import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/core/core.dart';
@@ -121,7 +120,7 @@ class ChildProfile extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Gap(25),
+                        25.h,
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -139,7 +138,7 @@ class ChildProfile extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Gap(16),
+                            16.h,
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -224,7 +223,7 @@ class ChildProfile extends StatelessWidget {
                 ),
               ],
             ),
-            Gap(16),
+            16.h,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -257,7 +256,7 @@ class ChildProfile extends StatelessWidget {
                 ),
               ],
             ),
-            Gap(16),
+            16.h,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -273,7 +272,7 @@ class ChildProfile extends StatelessWidget {
                 )
               ],
             ),
-            Gap(16),
+            16.h,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -289,7 +288,7 @@ class ChildProfile extends StatelessWidget {
                 )
               ],
             ),
-            Gap(16),
+            16.h,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -305,7 +304,7 @@ class ChildProfile extends StatelessWidget {
                 )
               ],
             ),
-            Gap(16),
+            16.h,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -330,7 +329,7 @@ class ChildProfile extends StatelessWidget {
                 ),
               ],
             ),
-            Gap(16),
+            16.h,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -348,7 +347,7 @@ class ChildProfile extends StatelessWidget {
                 ),
               ],
             ),
-            Gap(16),
+            16.h,
             DottedBorder(
               strokeWidth: 1.5,
               color: AppColors.greyLighterColor,

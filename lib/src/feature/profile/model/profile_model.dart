@@ -13,19 +13,19 @@ class ChildInfo {
   final bool birthComplications;
   final String? notes;
 
-  ChildInfo(
-    this.name,
-    this.dateBirth,
-    this.gender,
-    this.twins,
+  ChildInfo({
+    required this.name,
+    required this.dateBirth,
+    required this.gender,
+    required this.twins,
     this.weight,
     this.height,
     this.headCircumference,
-    this.birth,
-    this.birthComplications,
+    required this.birth,
+    required this.birthComplications,
     this.notes,
     this.image,
-  );
+  });
 }
 
 class MomInfo {

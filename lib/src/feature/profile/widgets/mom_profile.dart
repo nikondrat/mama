@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/profile/model/model.dart';
-import 'package:mama/src/feature/profile/widgets/widgets.dart';
+import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
-class MomsProfile extends StatelessWidget {
+import 'body/body_group.dart';
+import 'body/items/body_item.dart';
+
+class MomsProfile extends StatefulWidget {
   final MomInfo mom;
   final TextStyle? titlesStyle;
   final TextStyle? helpersStyle;
@@ -21,6 +21,42 @@ class MomsProfile extends StatelessWidget {
   });
 
   @override
+  State<MomsProfile> createState() => _MomsProfileState();
+}
+
+class _MomsProfileState extends State<MomsProfile> {
+  late FormGroup formGroup;
+
+  @override
+  void initState() {
+    formGroup = FormGroup({
+      'name': FormControl<String>(
+        value: widget.mom.name,
+        validators: [Validators.required],
+      ),
+      'phone': FormControl<String>(
+        value: widget.mom.phone,
+        validators: [Validators.required],
+      ),
+      'email': FormControl<String>(
+        value: widget.mom.mail,
+        validators: [Validators.required],
+      ),
+      'about': FormControl<String>(
+        value: widget.mom.notes,
+        validators: [Validators.required],
+      ),
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    formGroup.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
@@ -33,9 +69,9 @@ class MomsProfile extends StatelessWidget {
 
     return Column(
       children: [
-        mom.image == null
+        widget.mom.image == null
             ? DashedPhotoProfile()
-            : ProfilePhoto(img: mom.image!),
+            : ProfilePhoto(img: widget.mom.image!),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -88,67 +124,62 @@ class MomsProfile extends StatelessWidget {
                   ),
                 ],
               ),
-              const Gap(8),
-              ContainerAccountProfile(
-                maxlines: null,
-                texthint: t.profile.hintChangeName,
-                helper: 'Кристина Константинова',
-                helperStyle: helpersStyle,
-                labelStyle: GoogleFonts.nunito(
-                  textStyle: titlesStyle?.copyWith(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                controller: momNameController,
-                onChange: () {}, //TODO onChangeCallback
-              ),
-              ContainerAccountProfile(
-                keyboardType: TextInputType.phone,
-                maxlines: 1,
-                texthint: t.profile.hintChangePhone,
-                helper: '+7 996 997-06-24',
-                maskFormatter: MaskTextInputFormatter(
-                    mask: '### ###-##-##', filter: {"#": RegExp(r'[0-9]')}),
-                helperStyle: helpersStyle,
-                labelStyle: titlesStyle,
-
-                controller: momPhoneController,
-                onChange: () {}, //TODO onChangeCallback
-              ),
-              ContainerAccountProfile(
-                keyboardType: TextInputType.emailAddress,
-                texthint: t.profile.hintChangeEmail,
-                helper: t.profile.labelChangeEmail,
-                helperStyle: helpersStyle,
-                labelStyle: titlesStyle?.copyWith(
-                  color: AppColors.primaryColor,
-                ),
-                controller: momEmailController,
-                onChange: () {}, //TODO onChangeCallback
-              ),
-              ContainerAccountProfile(
-                maxlines: null,
-                keyboardType: TextInputType.emailAddress,
-                texthint: t.profile.hintChangeNote,
-                helper: t.profile.labelChangeNote,
-                helperStyle: helpersStyle,
-                labelStyle: titlesStyle?.copyWith(
-                  color: AppColors.greyBrighterColor,
-                ),
-                controller: momAboutController,
-                onChange: () {}, //TODO onChangeCallback
-              ),
-              Gap(32),
+              8.h,
+              // ContainerAccountProfile(
+              //   maxlines: null,
+              //   texthint: t.profile.hintChangeName,
+              //   helper: 'Кристина Константинова',
+              //   helperStyle: helpersStyle,
+              //   labelStyle: GoogleFonts.nunito(
+              //     textStyle: titlesStyle?.copyWith(
+              //       fontSize: 32,
+              //       fontWeight: FontWeight.w700,
+              //     ),
+              //     BodyItemWidget(
+              //       item: InputItem(
+              //           controlName: 'phone',
+              //           hintText: t.profile.hintChangePhone,
+              //           titleStyle: titlesStyle,
+              //           inputHintStyle: textTheme.bodySmall!
+              //               .copyWith(fontWeight: FontWeight.w700),
+              //           inputHint: '+7 996 997-06-24',
+              //           maxLines: 1,
+              //           maskFormatter: formatter),
+              //     ),
+              //     BodyItemWidget(
+              //       item: InputItem(
+              //         controlName: 'email',
+              //         hintText: t.profile.hintChangeEmail,
+              //         keyboardType: TextInputType.emailAddress,
+              //         titleStyle: titlesStyle,
+              //         inputHintStyle: titlesStyle!.copyWith(
+              //           color: AppColors.primaryColor,
+              //         ),
+              //         inputHint: t.profile.labelChangeEmail,
+              //       ),
+              //     ),
+              //     BodyItemWidget(
+              //       item: InputItem(
+              //         controlName: 'about',
+              //         hintText: t.profile.hintChangeNote,
+              //         titleStyle: titlesStyle,
+              //         inputHint: t.profile.labelChangeNote,
+              //         inputHintStyle: textTheme.bodySmall!
+              //             .copyWith(fontWeight: FontWeight.w700),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              32.h,
               CustomButton(
-                onPressed: () {},
-                text: t.profile.addGiftCodeButtonTitle,
+                onTap: () {},
+                title: t.profile.addGiftCodeButtonTitle,
               ),
-              Gap(8),
+              8.h,
               CustomButton(
-                onPressed: () {},
+                onTap: () {},
                 icon: Icons.language,
-                text: t.profile.settingsAccountButtonTitle,
+                title: t.profile.settingsAccountButtonTitle,
               ),
               32.h,
               // Text(
@@ -164,15 +195,15 @@ class MomsProfile extends StatelessWidget {
                     weight: 3.56),
               ]),
               DisplayChilds(
-                childs: mom.childs,
+                childs: widget.mom.childs,
                 onChangeBirth: (String value) {}, //TODO логика изменения
                 onChangeGender: (String value) {},
                 onSwitchBirthComplications: (String value) {},
                 onChangeNotes: (String value) {},
                 onChangeDateBirth: (String value) {},
-                titleStyle: titlesStyle,
-                helperStyle: helpersStyle,
-                titlesColoredStyle: titlesColoredStyle,
+                titleStyle: widget.titlesStyle,
+                helperStyle: widget.helpersStyle,
+                titlesColoredStyle: widget.titlesColoredStyle,
               ),
               Padding(
                 padding: const EdgeInsets.all(28.0),
@@ -189,10 +220,10 @@ class MomsProfile extends StatelessWidget {
                           Assets.icons.icAddChild.path,
                         ),
                       ),
-                      Gap(16),
+                      16.h,
                       Text(
                         t.profile.addChildButtonTitle,
-                        style: titlesColoredStyle,
+                        style: widget.titlesColoredStyle,
                       ),
                     ],
                   ),
