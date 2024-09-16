@@ -11,8 +11,6 @@ import 'package:mama/src/feature/auth/widgets/auth_screen_widgets.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-part 'auth_verify_screen.dart';
-
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 

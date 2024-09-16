@@ -65,9 +65,9 @@ abstract class _ChildModel with Store {
     this.childbirth = Childbirth.natural,
     this.childbirthWithComplications = false,
     this.birthDate,
-    this.height = 0,
-    this.weight = 0,
-    this.headCircumference = 0,
+    this.height,
+    this.weight,
+    this.headCircumference,
   });
 
   @observable

@@ -25,8 +25,18 @@ class InputItemWidget extends StatelessWidget {
       textInputAction: item.textInputAction,
       formControlName: item.controlName,
       onTapOutside: (event) {},
+      validationMessages: {
+        ValidationMessage.required: (_) => '',
+      },
       decoration: InputDecoration(
+        errorText: null,
         border: item.border ?? InputBorder.none,
+        errorBorder: OutlineInputBorder(
+            borderRadius: 6.r,
+            borderSide: BorderSide(
+              color: AppColors.redColor,
+              width: 2,
+            )),
         enabledBorder: item.border,
         isCollapsed: item.isCollapsed,
         contentPadding: item.contentPadding,

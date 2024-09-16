@@ -26,10 +26,30 @@ class _ChildItemState extends State<ChildItem> {
   void initState() {
     formGroup = FormGroup({
       'name': FormControl<String>(value: widget.model.firstName),
-      'weight': FormControl<double>(value: widget.model.weight),
-      'height': FormControl<double>(value: widget.model.height),
-      'headCircumference':
-          FormControl<double>(value: widget.model.headCircumference),
+      'weight': FormControl(
+        value: widget.model.weight != null
+            ? '${widget.model.weight} ${t.profile.unitMeasureWeight}'
+            : null,
+        validators: [
+          Validators.required,
+        ],
+      ),
+      'height': FormControl(
+        value: widget.model.height != null
+            ? '${widget.model.height} ${t.profile.unitMeasureHeight}'
+            : null,
+        validators: [
+          Validators.required,
+        ],
+      ),
+      'headCircumference': FormControl(
+        value: widget.model.headCircumference != null
+            ? '${widget.model.headCircumference} ${t.profile.unitMeasureHeight}'
+            : null,
+        validators: [
+          Validators.required,
+        ],
+      ),
       'dateBirth': FormControl<DateTime>(value: widget.model.birthDate),
     });
     super.initState();
@@ -50,7 +70,7 @@ class _ChildItemState extends State<ChildItem> {
 
     final InputBorder inputBorder = OutlineInputBorder(
       borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(6),
+      borderRadius: 6.r,
     );
     final EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);

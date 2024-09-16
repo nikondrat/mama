@@ -92,7 +92,7 @@ dev_dependencies:
   flutter_native_splash: ^2.3.5
 
   # -- codegen -- #
-  build_runner: ^2.4.12
+  build_runner: ^2.4.11
   mobx_codegen: ^2.6.0+1
   slang_build_runner: ^3.31.0
 
