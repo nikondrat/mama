@@ -22,14 +22,14 @@ class MomsProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController momNameController =
-        TextEditingController(text: mom.name);
-    final TextEditingController momPhoneController =
-        TextEditingController(text: mom.phone);
-    final TextEditingController momEmailController =
-        TextEditingController(text: mom.mail);
-    final TextEditingController momAboutController =
-        TextEditingController(text: mom.notes);
+    final ThemeData theme = Theme.of(context);
+    final TextTheme textTheme = theme.textTheme;
+
+    final TextStyle? titlesStyle =
+        textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w400);
+
+    final MaskTextInputFormatter formatter = MaskTextInputFormatter(
+        mask: '+7 ### ###-##-##', filter: {'#': RegExp(r'[0-9]')});
 
     return Column(
       children: [
@@ -41,13 +41,52 @@ class MomsProfile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Gap(20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  t.profile.accountTitle,
-                  style: titlesColoredStyle,
-                ),
+              20.h,
+              BodyGroup(
+                formGroup: formGroup,
+                title: t.profile.accountTitle,
+                items: [
+                  BodyItemWidget(
+                    item: InputItem(
+                      controlName: 'name',
+                      hintText: t.profile.hintChangeName,
+                      titleStyle: textTheme.headlineSmall,
+                      maxLines: 1,
+                    ),
+                  ),
+                  BodyItemWidget(
+                    item: InputItem(
+                        controlName: 'phone',
+                        hintText: t.profile.hintChangePhone,
+                        titleStyle: titlesStyle,
+                        inputHintStyle: textTheme.bodySmall!
+                            .copyWith(fontWeight: FontWeight.w700),
+                        inputHint: '+7 996 997-06-24',
+                        maxLines: 1,
+                        maskFormatter: formatter),
+                  ),
+                  BodyItemWidget(
+                    item: InputItem(
+                      controlName: 'email',
+                      hintText: t.profile.hintChangeEmail,
+                      keyboardType: TextInputType.emailAddress,
+                      titleStyle: titlesStyle,
+                      inputHintStyle: titlesStyle!.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                      inputHint: t.profile.labelChangeEmail,
+                    ),
+                  ),
+                  BodyItemWidget(
+                    item: InputItem(
+                      controlName: 'about',
+                      hintText: t.profile.hintChangeNote,
+                      titleStyle: titlesStyle,
+                      inputHint: t.profile.labelChangeNote,
+                      inputHintStyle: textTheme.bodySmall!,
+                    ),
+                  ),
+                ],
               ),
               const Gap(8),
               ContainerAccountProfile(
@@ -111,12 +150,19 @@ class MomsProfile extends StatelessWidget {
                 icon: Icons.language,
                 text: t.profile.settingsAccountButtonTitle,
               ),
-              const Gap(20),
-              Text(
-                t.profile.childTitle,
-                style: titlesColoredStyle,
-              ),
-              const Gap(8),
+              32.h,
+              // Text(
+              //   t.profile.childTitle,
+              //   style: widget.titlesColoredStyle,
+              // ),
+              8.h,
+              ChildItems(childs: [
+                ChildModel(
+                    id: '',
+                    firstName: 'Виктория',
+                    secondName: '',
+                    weight: 3.56),
+              ]),
               DisplayChilds(
                 childs: mom.childs,
                 onChangeBirth: (String value) {}, //TODO логика изменения
