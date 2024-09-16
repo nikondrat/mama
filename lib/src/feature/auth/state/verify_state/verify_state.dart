@@ -1,9 +1,5 @@
-
-import 'dart:async';
-import 'dart:developer';
-
+import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 part 'verify_state.g.dart';
 
@@ -12,18 +8,19 @@ class VerifyState extends _VerifyState with _$VerifyState {
 }
 
 abstract class _VerifyState with Store {
+  @computed
+  bool get isValid => error == null;
+
   @observable
-  bool isValid = false;
+  String? error;
 
   @action
-  update(String value){
-    if(value.length == 4){
-      log('len == 4');
-      isValid = true;
-      log('code: $value');
-    }else{
-      isValid = false;
+  update(String value) {
+    if (value.length == 4) {
+      logger.info('len $value');
+      error = t.auth.invalidPassword;
+    } else {
+      error = null;
     }
   }
-
 }

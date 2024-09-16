@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/auth/widget/decoration.dart';
 import '../widget/widgets.dart';
+import 'package:mama/src/data.dart';
 
 class CongratsScreen extends StatelessWidget {
   const CongratsScreen({super.key});

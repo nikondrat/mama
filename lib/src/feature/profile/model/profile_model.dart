@@ -56,16 +56,16 @@ enum Birth {
   cesarean,
 }
 
-extension GenderExtension on Gender {
-  String get name {
-    switch (this) {
-      case Gender.male:
-        return t.profile.boy;
-      case Gender.female:
-        return t.profile.girl;
-    }
-  }
-}
+// extension GenderExtension on Gender {
+//   String get name {
+//     switch (this) {
+//       case Gender.male:
+//         return t.profile.boy;
+//       case Gender.female:
+//         return t.profile.girl;
+//     }
+//   }
+// }
 
 extension BirthExtension on Birth {
   String get name {

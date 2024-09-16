@@ -10,15 +10,50 @@ class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
 
 class _RegisterFillAnotherBabyInfoScreenState
     extends State<RegisterFillAnotherBabyInfoScreen> {
-  final weightController = TextEditingController();
-  final heightController = TextEditingController();
-  final headCircumference = TextEditingController();
   var isFull = false;
+
+  late FormGroup formGroup;
+
+  @override
+  void initState() {
+    formGroup = FormGroup({
+      'weight': FormControl<double>(),
+      'height': FormControl<double>(),
+      'headCircumference': FormControl<double>(),
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    formGroup.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
+    final InputBorder inputBorder = OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(6),
+    );
+    final EdgeInsets inputPadding =
+        EdgeInsets.symmetric(horizontal: 12, vertical: 4);
+
+    final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
+        mask: '#,## ${t.profile.unitMeasureWeight}',
+        filter: {'#': RegExp('[0-9]')},
+        type: MaskAutoCompletionType.eager);
+
+    final MaskTextInputFormatter sizeFormatter = MaskTextInputFormatter(
+        mask: '## ${t.profile.unitMeasureHeight}',
+        filter: {'#': RegExp('[0-9]')},
+        type: MaskAutoCompletionType.eager);
+
+    const TextAlign inputTextAlign = TextAlign.center;
+
     return Scaffold(
       body: BodyDecoration(
         backgroundImage: DecorationImage(
@@ -37,26 +72,65 @@ class _RegisterFillAnotherBabyInfoScreenState
               8.h,
               TitleWidget(text: t.register.rememberWhenShe),
               10.h,
-              _RowContainer(
-                controller: weightController,
-                title: t.register.birthWeight,
-                onChange: (String value) {},
-              ),
-              _RowContainer(
-                controller: heightController,
-                title: t.register.heightAtBirth,
-                onChange: (String value) {},
-              ),
-              _RowContainer(
-                controller: headCircumference,
-                title: t.register.headCircumference,
-                onChange: (String value) {
-                  setState(() {
-                    if (value.isNotEmpty) {
-                      isFull = true;
-                    }
-                  });
-                },
+              ReactiveForm(
+                formGroup: FormGroup({
+                  'weight': FormControl(),
+                  'height': FormControl(),
+                  'headCircumference': FormControl(),
+                }),
+                child: BodyGroup(title: '', items: [
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          controlName: 'weight',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: weightFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.weightTitle,
+                        )),
+                  ),
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          controlName: 'height',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: sizeFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.heightTitle,
+                        )),
+                  ),
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          controlName: 'headCircumference',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: sizeFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.headCircumferenceTitle,
+                        )),
+                  ),
+                ]),
               ),
               20.h,
               Text(
@@ -78,76 +152,6 @@ class _RegisterFillAnotherBabyInfoScreenState
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _RowContainer extends StatefulWidget {
-  final TextEditingController controller;
-  final String title;
-  final Function(String value) onChange;
-  const _RowContainer(
-      {super.key,
-      required this.controller,
-      required this.title,
-      required this.onChange});
-
-  @override
-  State<_RowContainer> createState() => _RowContainerState();
-}
-
-class _RowContainerState extends State<_RowContainer> {
-  var inProgress = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final TextTheme textTheme = themeData.textTheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 3,
-            child: Text(widget.title,
-                style: textTheme.displaySmall?.copyWith(fontSize: 17)),
-          ),
-          const Spacer(),
-          Container(
-            width: 80,
-            height: 36,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: inProgress
-                    ? AppColors.primaryColor
-                    : AppColors.purpleLighterBackgroundColor),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                onChanged: widget.onChange,
-                onTap: () {
-                  setState(() {
-                    inProgress = true;
-                  });
-                },
-                controller: widget.controller,
-                style: textTheme.displaySmall?.copyWith(
-                    fontSize: 17,
-                    color: inProgress ? Colors.white : Colors.black),
-                decoration: InputDecoration(
-                  hintStyle: textTheme.displaySmall?.copyWith(
-                      fontSize: 17,
-                      color: inProgress
-                          ? const Color(0xFFF0F2F7)
-                          : AppColors.greyColor),
-                  hintText: t.register.enter,
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -36,8 +36,9 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               child: Text(
                 textAlign: TextAlign.center,
                 t.register.isThereMoreChild,
-                style: textTheme.displaySmall
-                    ?.copyWith(color: AppColors.primaryColor),
+                style: textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ),
             20.h,
@@ -55,14 +56,12 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
                   });
                 },
                 controller: nameController,
-                style: const TextStyle(
-                    color: AppColors.primaryColor,
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700),
+                style: textTheme.headlineSmall
+                    ?.copyWith(color: AppColors.primaryColor),
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: t.register.childName,
-                    hintStyle: textTheme.labelLarge?.copyWith(
+                    hintStyle: textTheme.headlineSmall?.copyWith(
                       color: AppColors.greyBrighterColor,
                     )),
               ),
@@ -84,7 +83,10 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
                     gender = index;
                   });
                 },
-                items: [t.register.girl, t.register.boy],
+                items: [
+                  t.profile.sex(context: GenderContext.female),
+                  t.profile.sex(context: GenderContext.male)
+                ],
               ),
             ),
             const Spacer(),

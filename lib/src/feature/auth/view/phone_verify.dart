@@ -2,9 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/auth/state/verify_state/verify_state.dart';
-import 'package:mama/src/feature/auth/widget/decoration.dart';
+import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/auth/widget/verify_input_body.dart';
 import 'package:provider/provider.dart';
 
@@ -12,10 +10,7 @@ class PhoneVerify extends StatelessWidget {
   final bool isLogin;
   final String phone;
 
-  const PhoneVerify({
-    super.key,
-    this.isLogin = false,
-    required this.phone});
+  const PhoneVerify({super.key, this.isLogin = false, required this.phone});
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +61,8 @@ class PhoneVerify extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
-                        onPressed: () =>
-                            context.pushNamed(
-                                isLogin ? AppViews.register : AppViews.auth),
+                        onPressed: () => context.pushNamed(
+                            isLogin ? AppViews.register : AppViews.auth),
                         child: AutoSizeText(
                           isLogin
                               ? t.auth.noAccount
@@ -79,8 +73,7 @@ class PhoneVerify extends StatelessWidget {
                 ),
                 20.h,
               ],
-            )
-        ),
+            )),
       ),
     );
   }

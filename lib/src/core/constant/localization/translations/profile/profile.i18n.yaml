@@ -33,7 +33,9 @@ childNotesHint: Tapp to add notes about birth and child
 inputHint: Enter
 unitMeasureWeight: kg
 unitMeasureHeight: sm
-boy: Boy
-girl: Girl
 nature: Nature
 cesarean: Cesarean
+
+sex(context=GenderContext):
+  male: Boy
+  female: Girl

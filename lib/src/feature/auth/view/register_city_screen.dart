@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/auth/state/search_state/search_state.dart';
-import 'package:mama/src/feature/auth/widget/decoration.dart';
+import 'package:mama/src/data.dart';
 import '../widget/widgets.dart';
 
 class RegisterCityScreen extends StatefulWidget {

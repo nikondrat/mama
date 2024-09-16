@@ -1,13 +1,9 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/auth/state/auth_view/auth_view.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
-import 'error.dart';
 
 class InputWidget extends StatefulWidget {
   const InputWidget({super.key});
@@ -64,8 +60,8 @@ class _InputWidgetState extends State<InputWidget> {
                             color: !isValid
                                 ? AppColors.redColor
                                 : isFocused
-                                ? AppColors.primaryColor
-                                : AppColors.greyColor,
+                                    ? AppColors.primaryColor
+                                    : AppColors.greyColor,
                             width: isFocused ? 2 : 1,
                           )),
                       child: Row(
@@ -107,9 +103,8 @@ class _InputWidgetState extends State<InputWidget> {
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   hintStyle: textTheme.bodyMedium!.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.greyBrighterColor
-                                  ),
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.greyBrighterColor),
                                   hintText: t.auth.phoneNumber,
                                   suffixIcon: ReactiveValueListenableBuilder(
                                     formControlName: 'phone',
@@ -118,7 +113,7 @@ class _InputWidgetState extends State<InputWidget> {
                                           control.value != '') {
                                         return Padding(
                                           padding:
-                                          const EdgeInsets.only(right: 10),
+                                              const EdgeInsets.only(right: 10),
                                           child: InkWell(
                                             onTap: () {
                                               store.phone.updateValue('');
@@ -126,7 +121,7 @@ class _InputWidgetState extends State<InputWidget> {
                                             child: const Icon(
                                               Icons.close,
                                               color:
-                                              AppColors.greyBrighterColor,
+                                                  AppColors.greyBrighterColor,
                                             ),
                                           ),
                                         );

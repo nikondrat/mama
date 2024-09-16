@@ -47,8 +47,7 @@ class FillTextField extends StatelessWidget {
                   isName
                       ? t.register.clickToEnterName
                       : t.register.clickToEnterSurname,
-                  style: textTheme.bodySmall
-                      ?.copyWith(color: AppColors.greyBrighterColor),
+                  style: textTheme.bodySmall?.copyWith(fontSize: 12),
                 ),
               )
             ],

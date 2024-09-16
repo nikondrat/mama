@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/auth/widget/decoration.dart';
-import '../../../core/core.dart';
+import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/profile/widgets/body/body_group.dart';
+import 'package:mama/src/feature/profile/widgets/body/items/body_item.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 import '../widget/widgets.dart';
 
 part 'register_baby_name_screen.dart';
@@ -63,12 +66,12 @@ class _RegisterFillNameState extends State<RegisterFillName> {
                   });
                 },
                 controller: nameController,
-                style: textTheme.labelLarge
+                style: textTheme.headlineSmall
                     ?.copyWith(color: AppColors.primaryColor),
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: t.register.name,
-                    hintStyle: textTheme.labelLarge
+                    hintStyle: textTheme.headlineSmall
                         ?.copyWith(color: AppColors.greyBrighterColor)),
               ),
             ),
@@ -87,12 +90,12 @@ class _RegisterFillNameState extends State<RegisterFillName> {
                   });
                 },
                 controller: surnameController,
-                style: textTheme.labelLarge
+                style: textTheme.headlineSmall
                     ?.copyWith(color: AppColors.primaryColor),
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: t.register.surname,
-                    hintStyle: textTheme.labelLarge
+                    hintStyle: textTheme.headlineSmall
                         ?.copyWith(color: AppColors.greyBrighterColor)),
               ),
             ),
