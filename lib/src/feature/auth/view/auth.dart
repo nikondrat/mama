@@ -18,7 +18,9 @@ class AuthView extends StatelessWidget {
     final TextTheme textTheme = themeData.textTheme;
 
     return Provider(
-      create: (context) => AuthViewStore(),
+      create: (context) => AuthViewStore(
+        restClient: context.watch<Dependencies>().restClient,
+      ),
       dispose: (context, value) => value.dispose(),
       child: Scaffold(
         body: BodyDecoration(

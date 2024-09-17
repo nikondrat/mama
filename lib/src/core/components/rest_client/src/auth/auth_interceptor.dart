@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:async/async.dart';
 import 'package:dio/dio.dart';
+import 'package:mama/src/data.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:mama/src/core/components/rest_client/rest_client.dart';
-import 'package:mama/src/core/components/rest_client/src/auth/refresh_client.dart';
-import 'package:mama/src/core/utils/logger.dart';
 
 // coverage:ignore-start
 /// Throw this exception when refresh token fails
@@ -133,7 +131,7 @@ class AuthInterceptor<T> extends QueuedInterceptor
 
       // Build the headers based on the token pair
       final headers = tokenPair != null
-          ? buildHeaders(tokenPair)
+          ? await buildHeaders(tokenPair)
           : const <String, String>{};
 
       // Add the headers to the request
@@ -199,7 +197,7 @@ class AuthInterceptor<T> extends QueuedInterceptor
   /// This is used to build the headers for the request.
   @visibleForTesting
   @pragma('vm:prefer-inline')
-  final Map<String, String> Function(T token) buildHeaders;
+  final Future<Map<String, String>> Function(T token) buildHeaders;
 
   /// Check if the token pair should be refreshed
   @visibleForTesting
@@ -239,7 +237,7 @@ class AuthInterceptor<T> extends QueuedInterceptor
     // Save the new token pair
     await saveTokenPair(newTokenPair);
 
-    final headers = buildHeaders(newTokenPair);
+    final headers = await buildHeaders(newTokenPair);
 
     // Retry the request
     final newResponse = await retryRequest<R>(response, headers);
