@@ -37,5 +37,15 @@ boy: Мальчик
 girl: Девочка
 nature: Естественные
 cesarean: Кесарево
+cancel: Отмена
+apply: Применить
+promoScreenTitle: Подарочные коды
+promoItemButtonTitle: Нажмите, чтобы применить
+promoScreenHelper: Нажмите, чтобы ввести новый подарочный код
+promoScreenHintAddCode: Новый подарочный код
+promoScreenErrorCode: Подарочный код не действителен. Нажмите, чтобы изменить
+promoDialogBackButton: Вернуться
+promoErrorDialogBackButton: Выйти
+promoErrorDialogContinueButton: Продолжить
 
 

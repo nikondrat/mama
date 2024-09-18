@@ -62,7 +62,7 @@ abstract class _ChildModel with Store {
     this.avatarUrl,
     this.gender = ChildGender.male,
     this.isTwins = false,
-    this.childbirth = Childbirth.natural,
+    this.childbirth,
     this.childbirthWithComplications = false,
     this.birthDate,
     this.height,
@@ -92,7 +92,7 @@ abstract class _ChildModel with Store {
 
   @observable
   @JsonKey(name: 'childbirth')
-  Childbirth childbirth = Childbirth.natural;
+  Childbirth? childbirth;
 
   @action
   setChildbirth(Childbirth value) => childbirth = value;

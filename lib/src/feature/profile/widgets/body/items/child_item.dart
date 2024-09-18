@@ -184,8 +184,11 @@ class _ChildItemState extends State<ChildItem> {
             BodyItemWidget(
                 item: CustomBodyItem(
               title: t.profile.birthTitle,
+              subTitle: widget.model.childbirth == null ? 'не указано' : null,
               titleStyle: titlesStyle,
-              body: FlutterToggleButton(
+              hintStyle: textTheme.bodySmall!.copyWith(
+                  fontSize: 10, letterSpacing: 0, color: AppColors.redColor),
+              body: MyFlutterToggleButton(
                 outerContainerMargin: 3,
                 buttonWidth: 128,
                 buttonHeight: 38,

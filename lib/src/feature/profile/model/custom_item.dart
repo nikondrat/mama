@@ -12,6 +12,7 @@ class CustomBodyItem extends BodyItem {
     this.subTitle,
     super.hintText,
     super.titleStyle,
+    super.hintStyle,
     super.maxLines,
   });
 }

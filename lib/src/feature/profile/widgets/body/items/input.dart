@@ -31,12 +31,13 @@ class InputItemWidget extends StatelessWidget {
       decoration: InputDecoration(
         errorText: null,
         border: item.border ?? InputBorder.none,
-        errorBorder: OutlineInputBorder(
-            borderRadius: 6.r,
-            borderSide: BorderSide(
-              color: AppColors.redColor,
-              width: 2,
-            )),
+        errorBorder: item.errorBorder ??
+            OutlineInputBorder(
+                borderRadius: 6.r,
+                borderSide: BorderSide(
+                  color: AppColors.redColor,
+                  width: 2,
+                )),
         enabledBorder: item.border,
         isCollapsed: item.isCollapsed,
         contentPadding: item.contentPadding,

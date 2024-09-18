@@ -47,5 +47,6 @@ abstract class AppColors {
   static const Color softPeach = Color(0xFFE1EAFF);
 
   static const Color skyBlue = Color(0xFF0D4CEA);
+  static const Color blue = Color(0xFF0767FD);
   static const Color deepBlue = Color(0xFF0834A6);
 }
