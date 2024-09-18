@@ -8,7 +8,8 @@ import 'decoration.dart';
 class BodyGroup extends StatelessWidget {
   final String title;
   final TextStyle? titleStyle;
-  final List<BodyItemWidget> items;
+  final List<Widget> items;
+  // final List<BodyItemWidget> items;
   final FormGroup? formGroup;
   final EdgeInsets? padding;
   final bool isDecorated;

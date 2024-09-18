@@ -94,9 +94,11 @@ class _MomsProfileState extends State<MomsProfile> {
                     item: InputItem(
                         controlName: 'phone',
                         hintText: t.profile.hintChangePhone,
-                        titleStyle: titlesStyle,
-                        inputHintStyle: textTheme.bodySmall!
-                            .copyWith(fontWeight: FontWeight.w700),
+                        titleStyle:
+                            titlesStyle.copyWith(color: AppColors.blackColor),
+                        inputHintStyle: textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
                         inputHint: '+7 996 997-06-24',
                         maxLines: 1,
                         maskFormatter: formatter),
@@ -117,60 +119,21 @@ class _MomsProfileState extends State<MomsProfile> {
                       hintText: t.profile.hintChangeNote,
                       titleStyle: titlesStyle,
                       inputHint: t.profile.labelChangeNote,
-                      inputHintStyle: textTheme.bodySmall!,
+                      inputHintStyle: textTheme.bodySmall!
+                          .copyWith(fontWeight: FontWeight.w700),
                     ),
                   ),
                 ],
               ),
-              8.h,
-              // ContainerAccountProfile(
-              //   maxlines: null,
-              //   texthint: t.profile.hintChangeName,
-              //   helper: 'Кристина Константинова',
-              //   helperStyle: helpersStyle,
-              //   labelStyle: GoogleFonts.nunito(
-              //     textStyle: titlesStyle?.copyWith(
-              //       fontSize: 32,
-              //       fontWeight: FontWeight.w700,
-              //     ),
-              //     BodyItemWidget(
-              //       item: InputItem(
-              //           controlName: 'phone',
-              //           hintText: t.profile.hintChangePhone,
-              //           titleStyle: titlesStyle,
-              //           inputHintStyle: textTheme.bodySmall!
-              //               .copyWith(fontWeight: FontWeight.w700),
-              //           inputHint: '+7 996 997-06-24',
-              //           maxLines: 1,
-              //           maskFormatter: formatter),
-              //     ),
-              //     BodyItemWidget(
-              //       item: InputItem(
-              //         controlName: 'email',
-              //         hintText: t.profile.hintChangeEmail,
-              //         keyboardType: TextInputType.emailAddress,
-              //         titleStyle: titlesStyle,
-              //         inputHintStyle: titlesStyle!.copyWith(
-              //           color: AppColors.primaryColor,
-              //         ),
-              //         inputHint: t.profile.labelChangeEmail,
-              //       ),
-              //     ),
-              //     BodyItemWidget(
-              //       item: InputItem(
-              //         controlName: 'about',
-              //         hintText: t.profile.hintChangeNote,
-              //         titleStyle: titlesStyle,
-              //         inputHint: t.profile.labelChangeNote,
-              //         inputHintStyle: textTheme.bodySmall!
-              //             .copyWith(fontWeight: FontWeight.w700),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               32.h,
               CustomButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PromoScreen()),
+                  );
+                },
                 title: t.profile.addGiftCodeButtonTitle,
               ),
               8.h,
@@ -186,11 +149,7 @@ class _MomsProfileState extends State<MomsProfile> {
               // ),
               8.h,
               ChildItems(childs: [
-                ChildModel(
-                    id: '',
-                    firstName: 'Виктория',
-                    secondName: '',
-                    weight: 3.56),
+                ChildModel(id: '', firstName: 'Виктория', secondName: ''),
               ]),
               DisplayChilds(
                 childs: widget.mom.childs,
@@ -218,7 +177,7 @@ class _MomsProfileState extends State<MomsProfile> {
                           Assets.icons.icAddChild.path,
                         ),
                       ),
-                      16.h,
+                      16.w,
                       Text(
                         t.profile.addChildButtonTitle,
                         style: widget.titlesColoredStyle,

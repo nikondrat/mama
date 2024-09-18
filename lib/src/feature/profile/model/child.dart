@@ -49,6 +49,7 @@ class ChildModel extends _ChildModel with _$ChildModel {
     super.height,
     super.weight,
     super.headCircumference,
+    super.about,
   });
 
   factory ChildModel.fromJson(Map<String, dynamic> json) =>
@@ -68,6 +69,7 @@ abstract class _ChildModel with Store {
     this.height,
     this.weight,
     this.headCircumference,
+    this.about,
   });
 
   @observable
@@ -132,6 +134,13 @@ abstract class _ChildModel with Store {
 
   @action
   setHeadCircumference(double? value) => headCircumference = value;
+
+  @observable
+  @JsonKey(name: 'about')
+  String? about;
+
+  @action
+  setAbout(String? value) => about = value;
 }
 
 //       "info": "string",
