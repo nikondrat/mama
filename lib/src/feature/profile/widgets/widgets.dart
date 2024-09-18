@@ -7,4 +7,4 @@ export 'child_profile.dart';
 export 'mom_profile.dart';
 export 'body/body.dart';
 export 'promo/promo.dart';
-export 'CFlutterToogle.dart';
+export 'custom_flutter_toogle.dart';
