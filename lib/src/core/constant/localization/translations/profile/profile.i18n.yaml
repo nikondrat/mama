@@ -37,3 +37,13 @@ boy: Boy
 girl: Girl
 nature: Nature
 cesarean: Cesarean
+cancel: Cancel
+apply: Apply
+promoScreenTitle: Gift codes
+promoItemButtonTitle: Tap to apply
+promoScreenHelper: Tap to fill in new gift code
+promoScreenHintAddCode: New gift code
+promoScreenErrorCode: Gift code is invalid. Tap to change promocode
+promoDialogBackButton: Return
+promoErrorDialogBackButton: Cancel
+promoErrorDialogContinueButton: Continue

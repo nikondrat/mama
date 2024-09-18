@@ -40,7 +40,8 @@ class BodyItemWidget extends StatelessWidget {
             children: [
               isFieldItem ? InputItemWidget(item: item as InputItem) : 8.h,
               if (item.hintText != null)
-                AutoSizeText(item.hintText!, style: hintStyle),
+                AutoSizeText(item.hintText!,
+                    style: item.hintStyle ?? hintStyle),
             ],
           )),
         );

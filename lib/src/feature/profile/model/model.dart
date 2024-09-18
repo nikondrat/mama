@@ -5,3 +5,5 @@ export 'custom_item.dart';
 export 'child.dart';
 export 'item_with_input.dart';
 export 'item_with_switch.dart';
+export 'promo_code.dart';
+export 'dialog_items.dart';

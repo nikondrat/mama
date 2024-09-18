@@ -33,7 +33,7 @@ class CustomBodyItemWidget extends StatelessWidget {
                   Expanded(
                     child: AutoSizeText(
                       item.subTitle!,
-                      style: helpersStyle,
+                      style: item.hintStyle ?? helpersStyle,
                     ),
                   ),
                   20.w
