@@ -12,6 +12,16 @@
       "problemMatcher": []
     },
     {
+      "label": "Generate localization",
+      "type": "shell",
+      "command": ["dart run slang"],
+      "group": {
+        "kind": "none",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Run codegen",
       "type": "shell",
       "command": [
