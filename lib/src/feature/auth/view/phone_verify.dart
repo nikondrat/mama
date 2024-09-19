@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/auth/widget/verify_input_body.dart';
+import 'package:mama/src/feature/auth/widgets/verify_input_body.dart';
 import 'package:provider/provider.dart';
 
 class PhoneVerify extends StatelessWidget {

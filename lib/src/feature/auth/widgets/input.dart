@@ -5,6 +5,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import 'widgets.dart';
+
 class InputWidget extends StatefulWidget {
   const InputWidget({super.key});
 
@@ -67,7 +69,7 @@ class _InputWidgetState extends State<InputWidget> {
                       child: Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: AutoSizeText(
                               '+7',
                               style: textTheme.bodyMedium!.copyWith(
@@ -75,7 +77,7 @@ class _InputWidgetState extends State<InputWidget> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 50,
                             child: VerticalDivider(
                               width: 10,
@@ -98,11 +100,13 @@ class _InputWidgetState extends State<InputWidget> {
                               },
                               inputFormatters: [maskFormatter],
                               decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 14),
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  hintStyle: textTheme.bodySmall,
+                                  hintStyle: textTheme.bodyMedium!.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.greyBrighterColor),
                                   hintText: t.auth.phoneNumber,
                                   suffixIcon: ReactiveValueListenableBuilder(
                                     formControlName: 'phone',
@@ -124,7 +128,7 @@ class _InputWidgetState extends State<InputWidget> {
                                           ),
                                         );
                                       }
-                                      return SizedBox.shrink();
+                                      return const SizedBox.shrink();
                                     },
                                   )),
                             ),
@@ -132,7 +136,7 @@ class _InputWidgetState extends State<InputWidget> {
                         ],
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                         bottom: 0,
                         child: InputErrorWidget(
                           // error: 'Номер не зарегистрирован',

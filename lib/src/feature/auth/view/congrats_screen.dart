@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../widget/widgets.dart';
 import 'package:mama/src/data.dart';
 
 class CongratsScreen extends StatelessWidget {

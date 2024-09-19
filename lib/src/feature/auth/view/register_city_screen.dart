@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import '../widget/widgets.dart';
+import '../widgets/widgets.dart';
 
 class RegisterCityScreen extends StatefulWidget {
   const RegisterCityScreen({super.key});

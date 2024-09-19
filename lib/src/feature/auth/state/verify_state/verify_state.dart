@@ -18,7 +18,9 @@ abstract class _VerifyState with Store {
   update(String value) {
     if (value.length == 4) {
       logger.info('len $value');
-      error = t.auth.invalidPassword;
+      if(value != '1234'){
+        error = t.auth.invalidPassword;
+      }
     } else {
       error = null;
     }

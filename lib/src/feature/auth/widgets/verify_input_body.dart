@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/feature/auth/state/verify_state/verify_state.dart';
-import 'package:mama/src/feature/auth/widget/verify_code_input.dart';
+import 'package:mama/src/feature/auth/widgets/verify_code_input.dart';
 import 'package:provider/provider.dart';
 import '../../../core/core.dart';
 import 'input_decoration.dart';

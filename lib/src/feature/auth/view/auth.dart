@@ -35,19 +35,22 @@ class AuthView extends StatelessWidget {
                   Assets.images.mamaCo,
                 ),
                 20.h,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: AutoSizeText(
-                        t.auth.slogan,
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.w600,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: AutoSizeText(
+                          t.auth.slogan,
+                          textAlign: TextAlign.center,
+                          style: textTheme.bodySmall!.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 20.h,
                 AuthInputBodyWidget(

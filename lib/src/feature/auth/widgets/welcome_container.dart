@@ -21,8 +21,10 @@ class WelcomeContainer extends StatelessWidget {
         ),
         Image.asset(content.assetImage),
         Text(content.title,
-            style: textTheme.labelMedium
-                ?.copyWith(color: AppColors.primaryColor)),
+            style: textTheme.labelLarge
+                ?.copyWith(
+                fontSize: 24,
+                color: AppColors.primaryColor)),
         15.h,
         Text(
           content.text,

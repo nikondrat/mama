@@ -4,6 +4,7 @@ import 'package:mama/src/data.dart';
 
 class CustomBodyItemWidget extends StatelessWidget {
   final CustomBodyItem item;
+
   const CustomBodyItemWidget({
     super.key,
     required this.item,
@@ -25,7 +26,11 @@ class CustomBodyItemWidget extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AutoSizeText(item.title),
+            AutoSizeText(
+              item.title,
+              style:
+                  textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w400),
+            ),
             if (item.subTitle != null)
               Row(
                 children: [

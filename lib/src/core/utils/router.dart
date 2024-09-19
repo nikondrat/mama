@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
+import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
+import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
