@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mama/src/data.dart';
 
 class ItemWithSwitchWidget extends StatelessWidget {
@@ -19,50 +18,48 @@ class ItemWithSwitchWidget extends StatelessWidget {
       fontSize: 10,
       letterSpacing: 0,
     );
-    return Observer(builder: (context) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Expanded(
-            child: Column(
-              children: [
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: AutoSizeText(
+                      item.title,
+                      style: item.titleStyle,
+                    ),
+                  ),
+                ],
+              ),
+              if (item.subtitle != null)
                 Row(
                   children: [
                     Expanded(
                       child: AutoSizeText(
-                        item.title,
-                        style: item.titleStyle,
+                        item.subtitle!,
+                        style: helpersStyle,
                       ),
                     ),
+                    20.w
                   ],
-                ),
-                if (item.subtitle != null)
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AutoSizeText(
-                          item.subtitle!,
-                          style: helpersStyle,
-                        ),
-                      ),
-                      20.w
-                    ],
-                  )
-              ],
-            ),
+                )
+            ],
           ),
-          CupertinoSwitch(
-            value: item.value,
-            activeColor: AppColors.primaryColor,
-            trackColor: AppColors.greyColor,
-            onChanged: (value) {
-              if (item.onChanged != null) {
-                item.onChanged!(value);
-              }
-            },
-          ),
-        ],
-      );
-    });
+        ),
+        CupertinoSwitch(
+          value: item.value,
+          activeColor: AppColors.primaryColor,
+          trackColor: AppColors.greyColor,
+          onChanged: (value) {
+            if (item.onChanged != null) {
+              item.onChanged!(value);
+            }
+          },
+        ),
+      ],
+    );
   }
 }
