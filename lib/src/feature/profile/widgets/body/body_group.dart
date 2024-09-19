@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import 'items/body_item.dart';
 import 'decoration.dart';
 
 class BodyGroup extends StatelessWidget {

@@ -7,7 +7,6 @@ class InputItem extends BodyItem {
   final String? inputHint;
   final String controlName;
   final TextStyle? inputHintStyle;
-  final TextStyle? hintStyle;
   final bool isCollapsed;
 
   final EdgeInsets? contentPadding;
@@ -30,7 +29,7 @@ class InputItem extends BodyItem {
     this.inputHint,
     this.onChanged,
     this.textAlign,
-    this.hintStyle,
+    super.hintStyle,
     this.textInputAction,
     this.inputHintStyle,
     this.maskFormatter,

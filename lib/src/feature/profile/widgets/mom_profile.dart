@@ -151,41 +151,41 @@ class _MomsProfileState extends State<MomsProfile> {
               ChildItems(childs: [
                 ChildModel(id: '', firstName: 'Виктория', secondName: ''),
               ]),
-              DisplayChilds(
-                childs: widget.mom.childs,
-                onChangeBirth: (String value) {}, //TODO логика изменения
-                onChangeGender: (String value) {},
-                onSwitchBirthComplications: (String value) {},
-                onChangeNotes: (String value) {},
-                onChangeDateBirth: (String value) {},
-                titleStyle: widget.titlesStyle,
-                helperStyle: widget.helpersStyle,
-                titlesColoredStyle: widget.titlesColoredStyle,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: InkWell(
-                  onTap: () {
-                    //! добавить ребенка
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        height: 17,
-                        image: AssetImage(
-                          Assets.icons.icAddChild.path,
-                        ),
-                      ),
-                      16.w,
-                      Text(
-                        t.profile.addChildButtonTitle,
-                        style: widget.titlesColoredStyle,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // DisplayChilds(
+              //   childs: widget.mom.childs,
+              //   onChangeBirth: (String value) {}, //TODO логика изменения
+              //   onChangeGender: (String value) {},
+              //   onSwitchBirthComplications: (String value) {},
+              //   onChangeNotes: (String value) {},
+              //   onChangeDateBirth: (String value) {},
+              //   titleStyle: widget.titlesStyle,
+              //   helperStyle: widget.helpersStyle,
+              //   titlesColoredStyle: widget.titlesColoredStyle,
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.all(28.0),
+              //   child: InkWell(
+              //     onTap: () {
+              //       //! добавить ребенка
+              //     },
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         Image(
+              //           height: 17,
+              //           image: AssetImage(
+              //             Assets.icons.icAddChild.path,
+              //           ),
+              //         ),
+              //         16.w,
+              //         Text(
+              //           t.profile.addChildButtonTitle,
+              //           style: widget.titlesColoredStyle,
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
