@@ -133,17 +133,27 @@ class ChildBarWidget extends StatelessWidget {
                     ),
                   ),
             Positioned(
-              bottom: -40,
+              bottom: -30,
               right: 16,
               left: 16,
-              child: IconButton(
-                icon: Image.asset(
+              child: RawMaterialButton(
+                onPressed: () {},
+                fillColor: AppColors.primaryColor,
+                shape: CircleBorder(),
+                child: Image.asset(
                   Assets.icons.icPhotoAdd.path,
                   alignment: Alignment.center,
                   height: 64,
                 ),
-                onPressed: () {},
               ),
+              // child: IconButton(
+              //   icon: Image.asset(
+              //     Assets.icons.icPhotoAdd.path,
+              //     alignment: Alignment.center,
+              //     height: 64,
+              //   ),
+              //   onPressed: () {},
+              // ),
             ),
           ],
         ),

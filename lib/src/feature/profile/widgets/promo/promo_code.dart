@@ -13,39 +13,42 @@ class PromoCodeWidget extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
-    return Container(
+
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: AppColors.greenLighterBackgroundColor,
         borderRadius: 16.r,
       ),
-      padding: EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            item.title,
-            style: titlesStyle.copyWith(
-                fontWeight: FontWeight.w600, color: AppColors.greenTextColor),
-          ),
-          4.h,
-          Text(
-            item.subtitle,
-            style: titlesStyle.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: AppColors.greenTextColor),
-          ),
-          TextButton(
-            style: ButtonStyle(
-              padding: WidgetStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              item.title,
+              style: titlesStyle.copyWith(
+                  fontWeight: FontWeight.w600, color: AppColors.greenTextColor),
             ),
-            onPressed: onTap,
-            child: Text(
-              t.profile.promoItemButtonTitle,
-              style: textTheme.labelLarge,
+            4.h,
+            Text(
+              item.subtitle,
+              style: titlesStyle.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.greenTextColor),
             ),
-          )
-        ],
+            TextButton(
+              style: ButtonStyle(
+                padding: WidgetStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+              ),
+              onPressed: onTap,
+              child: Text(
+                t.profile.promoItemButtonTitle,
+                style: textTheme.labelLarge,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

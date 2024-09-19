@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/profile/model/model.dart';
 import 'package:mama/src/feature/profile/widgets/body/items/body_item.dart';
@@ -14,7 +15,6 @@ class PromoScreen extends StatefulWidget {
 
 class _PromoScreenState extends State<PromoScreen> {
   late FormGroup form;
-  bool promoCorrect = true;
 
   @override
   void initState() {
@@ -23,7 +23,6 @@ class _PromoScreenState extends State<PromoScreen> {
         value: 'Новый подарочный код',
         validators: [
           Validators.required,
-          Validators.minLength(1),
         ],
       ),
     });
@@ -53,7 +52,7 @@ class _PromoScreenState extends State<PromoScreen> {
           child: DialogWidget(
             item: giftDialog,
             onTap: () {
-              Navigator.pop(context);
+              context.pop();
             },
           ),
         ),
@@ -69,6 +68,7 @@ class _PromoScreenState extends State<PromoScreen> {
       fontWeight: FontWeight.w700,
       letterSpacing: 0,
     );
+
     return Scaffold(
       backgroundColor: AppColors.lightBlue,
       appBar: AppBar(
@@ -81,20 +81,7 @@ class _PromoScreenState extends State<PromoScreen> {
         ),
         centerTitle: true,
         leadingWidth: 120,
-        leading: TextButton.icon(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20.0,
-            color: Colors.black,
-          ),
-          label: Text(
-            t.profile.backLeadingButton,
-            style: titlesStyle.copyWith(
-              color: AppColors.greyBrighterColor,
-            ),
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        leading: CustomBackButton(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -119,47 +106,46 @@ class _PromoScreenState extends State<PromoScreen> {
                 alignment: Alignment.bottomCenter,
                 child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
-                        borderRadius: 16.r,
-                        border: Border.all(
-                          color: promoCorrect
-                              ? AppColors.blue
-                              : AppColors.redColor,
-                          width: 1,
-                        ),
-                      ),
-                      child: BodyItemWidget(
-                        item: InputItem(
-                          controlName: 'code',
-                          onChanged: (value) {
-                            setState(() {});
-                          },
-                          inputHint: t.profile.promoScreenHintAddCode,
-                          inputHintStyle: titlesStyle.copyWith(
-                            color: promoCorrect
-                                ? AppColors.greyBrighterColor
-                                : AppColors.redColor,
-                          ),
-                          hintText: promoCorrect
-                              ? t.profile.promoScreenHelper
-                              : t.profile.promoScreenErrorCode,
-                          hintStyle: promoCorrect
-                              ? hintStyle
-                              : hintStyle.copyWith(
-                                  color: AppColors.redColor,
-                                ),
-                          titleStyle: titlesStyle.copyWith(
+                    ReactiveValueListenableBuilder(
+                        formControlName: 'code',
+                        builder: (context, control, child) {
+                          final bool promoCorrect = control.valid;
+
+                          return BodyItemWidget(
+                            backgroundBorder: Border.all(
                               color: promoCorrect
-                                  ? AppColors.blackColor
-                                  : AppColors.redColor),
-                          errorBorder: InputBorder.none,
-                          maxLines: 1,
-                          contentPadding: EdgeInsets.zero,
-                        ),
-                      ),
-                    ),
+                                  ? AppColors.blue
+                                  : AppColors.redColor,
+                              width: 1,
+                            ),
+                            item: InputItem(
+                              controlName: 'code',
+                              onChanged: (value) {},
+                              inputHint: t.profile.promoScreenHintAddCode,
+                              inputHintStyle: titlesStyle.copyWith(
+                                color: promoCorrect
+                                    ? AppColors.greyBrighterColor
+                                    : AppColors.redColor,
+                              ),
+                              hintText: promoCorrect
+                                  ? t.profile.promoScreenHelper
+                                  : t.profile.promoScreenErrorCode,
+                              hintStyle: promoCorrect
+                                  ? hintStyle
+                                  : hintStyle.copyWith(
+                                      color: AppColors.redColor,
+                                    ),
+                              titleStyle: titlesStyle.copyWith(
+                                  color: promoCorrect
+                                      ? AppColors.blackColor
+                                      : AppColors.redColor),
+                              errorBorder: InputBorder.none,
+                              maxLines: 1,
+                              contentPadding: EdgeInsets.zero,
+                            ),
+                            // ),
+                          );
+                        }),
                     30.h,
                     ButtonsRow(
                       tapCancelButton: () {},
@@ -189,6 +175,7 @@ class ButtonsRow extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 34.0),
       child: Row(

@@ -10,10 +10,12 @@ import 'item_with_switch.dart';
 
 class BodyItemWidget extends StatelessWidget {
   final BodyItem item;
+  final Border? backgroundBorder;
 
   const BodyItemWidget({
     super.key,
     required this.item,
+    this.backgroundBorder,
   });
 
   @override
@@ -35,15 +37,16 @@ class BodyItemWidget extends StatelessWidget {
             bottom: 8,
           ),
           child: BodyItemDecoration(
+              backgroundBorder: backgroundBorder,
               child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              isFieldItem ? InputItemWidget(item: item as InputItem) : 8.h,
-              if (item.hintText != null)
-                AutoSizeText(item.hintText!,
-                    style: item.hintStyle ?? hintStyle),
-            ],
-          )),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  isFieldItem ? InputItemWidget(item: item as InputItem) : 8.h,
+                  if (item.hintText != null)
+                    AutoSizeText(item.hintText!,
+                        style: item.hintStyle ?? hintStyle),
+                ],
+              )),
         );
       case ItemWithInput _:
         return ItemWithInputWidget(item: item as ItemWithInput);

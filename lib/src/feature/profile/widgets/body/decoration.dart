@@ -3,9 +3,11 @@ import 'package:mama/src/data.dart';
 
 class BodyItemDecoration extends StatelessWidget {
   final Widget child;
+  final Border? backgroundBorder;
   const BodyItemDecoration({
     super.key,
     required this.child,
+    this.backgroundBorder,
   });
 
   @override
@@ -14,6 +16,7 @@ class BodyItemDecoration extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: 16.r,
+        border: backgroundBorder,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
