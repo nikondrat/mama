@@ -116,8 +116,8 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setGender(ChildGender.values[index]),
                     items: [
-                      Gender.female.name,
-                      Gender.male.name,
+                      t.profile.sex(context: GenderContext.female),
+                      t.profile.sex(context: GenderContext.male),
                     ],
                   ),
                 )),
@@ -210,8 +210,8 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setChildbirth(Childbirth.values[index]),
                     items: [
-                      Childbirth.natural.name,
-                      Childbirth.cesarian.name,
+                      t.profile.birth(context: BirthContext.nature),
+                      t.profile.birth(context: BirthContext.cesarean)
                     ],
                   ),
                 )),
