@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/auth/state/register_state/register_name/register_name_state.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import '../widgets/widgets.dart';
 
 class RegisterFillName extends StatefulWidget {
   const RegisterFillName({super.key});

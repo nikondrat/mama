@@ -1,4 +1,4 @@
-
+import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -28,3 +28,4 @@ abstract class _AuthViewStore with Store {
     isAgree = value;
   }
 }
+

@@ -43,20 +43,22 @@ class AuthInputBodyWidget extends StatelessWidget {
                               value: store.isAgree,
                               onChanged: (v) => store.setAgree(v!),
                             ),
-                            AutoSizeText.rich(
-                              t.register.termOfUse(
-                                  tapHere: (v) => TextSpan(
-                                    text: v,
-                                    style: textTheme.titleMedium!.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        // TODO navigate to term of use screen
-                                        print('tap');
-                                      },
-                                  )),
-                              style: textTheme.bodySmall,
+                            Expanded(
+                              child: AutoSizeText.rich(
+                                t.register.termOfUse(
+                                    tapHere: (v) => TextSpan(
+                                      text: v,
+                                      style: textTheme.titleMedium!.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // TODO navigate to term of use screen
+                                          print('tap');
+                                        },
+                                    )),
+                                style: textTheme.bodySmall,
+                              ),
                             )
                           ],
                         )),

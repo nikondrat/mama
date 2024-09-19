@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import 'items/body_item.dart';
 import 'decoration.dart';
 
 class BodyGroup extends StatelessWidget {
   final String title;
   final TextStyle? titleStyle;
-  final List<BodyItemWidget> items;
+  final List<Widget> items;
+  // final List<BodyItemWidget> items;
   final FormGroup? formGroup;
   final EdgeInsets? padding;
   final bool isDecorated;
