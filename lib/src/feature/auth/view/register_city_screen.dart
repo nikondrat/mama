@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import '../widgets/widgets.dart';
 
 class RegisterCityScreen extends StatefulWidget {
   const RegisterCityScreen({super.key});
@@ -21,6 +20,7 @@ class _RegisterCityScreenState extends State<RegisterCityScreen> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
     return Scaffold(
       body: BodyDecoration(
         backgroundImage: DecorationImage(

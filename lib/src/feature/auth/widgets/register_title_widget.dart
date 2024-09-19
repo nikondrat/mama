@@ -12,7 +12,7 @@ class TitleWidget extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: textTheme.titleMedium,
+      style: textTheme.titleLarge,
     );
   }
 }

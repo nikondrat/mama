@@ -72,6 +72,10 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.greyBrighterColor),
                             pinTheme: PinTheme(
+                              fieldOuterPadding: const EdgeInsets.only(
+                                left: 30,
+                                right: 30,
+                              ),
                               inactiveBorderWidth: 1,
                               selectedBorderWidth: 1,
                               errorBorderColor: Colors.red,
@@ -79,7 +83,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                               borderWidth: 0,
                               shape: PinCodeFieldShape.underline,
                               fieldHeight: 50,
-                              fieldWidth: 50,
+                              fieldWidth: 20,
                               activeFillColor: Colors.white,
                               activeColor: AppColors.greyColor,
                             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/constant/constant.dart';
+import 'package:mama/src/data.dart';
 
 class CongratsBodyWidget extends StatelessWidget {
   const CongratsBodyWidget({super.key});
@@ -29,7 +29,7 @@ class CongratsBodyWidget extends StatelessWidget {
                 style: textTheme.bodyLarge
                     ?.copyWith(color: AppColors.primaryColor),
               ),
-              const SizedBox(height: 8),
+              8.h,
               Text(
                 t.register.letsFillAcc,
                 textAlign: TextAlign.center,
