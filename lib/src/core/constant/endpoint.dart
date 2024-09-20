@@ -6,4 +6,10 @@ class Endpoint {
   String get register => '$auth/sign-up';
 
   String get sendCode => '$auth/send-phone-code';
+
+  static const String geo = 'geo';
+
+  String get cities => '$geo/city';
+
+  String get countries => '$geo/country';
 }

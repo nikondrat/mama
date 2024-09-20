@@ -3,9 +3,6 @@ import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import 'body/body_group.dart';
-import 'body/items/body_item.dart';
-
 class MomsProfile extends StatefulWidget {
   final MomInfo mom;
   final TextStyle? titlesStyle;

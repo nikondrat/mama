@@ -4,10 +4,10 @@ import 'package:mobx/mobx.dart';
 part 'child.g.dart';
 
 enum ChildGender {
-  @JsonValue('male')
-  male,
   @JsonValue('female')
   female,
+  @JsonValue('male')
+  male,
 }
 
 enum Childbirth {
@@ -22,12 +22,6 @@ class ChildModel extends _ChildModel with _$ChildModel {
   @JsonKey(name: 'id')
   final String id;
 
-  @JsonKey(name: 'first_name')
-  final String firstName;
-
-  @JsonKey(name: 'second_name')
-  final String secondName;
-
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
 
@@ -36,15 +30,15 @@ class ChildModel extends _ChildModel with _$ChildModel {
 
   ChildModel({
     required this.id,
-    required this.firstName,
-    required this.secondName,
+    required super.firstName,
+    required super.secondName,
     this.updatedAt,
     this.createdAt,
     super.avatarUrl,
     super.gender,
     super.isTwins,
     super.childbirth,
-    super.childbirthWithComplications,
+    super.childBirthWithComplications,
     super.birthDate,
     super.height,
     super.weight,
@@ -64,13 +58,29 @@ abstract class _ChildModel with Store {
     this.gender = ChildGender.male,
     this.isTwins = false,
     this.childbirth,
-    this.childbirthWithComplications = false,
     this.birthDate,
     this.height,
     this.weight,
     this.headCircumference,
     this.about,
+    required this.firstName,
+    required this.secondName,
+    this.childBirthWithComplications = false,
   });
+
+  @observable
+  @JsonKey(name: 'first_name')
+  String firstName;
+
+  @action
+  setFirstName(String value) => firstName = value;
+
+  @observable
+  @JsonKey(name: 'second_name')
+  String secondName;
+
+  @action
+  setSecondName(String value) => secondName = value;
 
   @observable
   @JsonKey(name: 'avatar')
@@ -83,7 +93,9 @@ abstract class _ChildModel with Store {
   ChildGender gender = ChildGender.male;
 
   @action
-  setGender(ChildGender value) => gender = value;
+  setGender(ChildGender value) {
+    gender = value;
+  }
 
   @observable
   @JsonKey(name: 'is_twins')
@@ -101,11 +113,11 @@ abstract class _ChildModel with Store {
 
   @observable
   @JsonKey(name: 'childbirth_with_complications')
-  bool childbirthWithComplications = false;
+  bool childBirthWithComplications = false;
 
   @action
   setChildbirthWithComplications(bool value) =>
-      childbirthWithComplications = value;
+      childBirthWithComplications = value;
 
   @observable
   @JsonKey(name: 'birth_date')
@@ -142,10 +154,3 @@ abstract class _ChildModel with Store {
   @action
   setAbout(String? value) => about = value;
 }
-
-//       "info": "string",
-//       "status": {
-//         "body": "string",
-//         "description": "string",
-//         "title": "string"
-//       },

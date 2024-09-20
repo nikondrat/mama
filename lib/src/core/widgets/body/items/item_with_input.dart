@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mama/src/data.dart';
 
-import 'body_item.dart';
-import 'input.dart';
-
 class ItemWithInputWidget extends StatelessWidget {
   final ItemWithInput item;
   const ItemWithInputWidget({

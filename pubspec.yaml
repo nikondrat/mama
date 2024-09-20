@@ -101,16 +101,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
   fonts:
     - family: SFProText
       fonts:
         - asset: assets/fonts/SFProText-Regular.ttf
         - asset: assets/fonts/SFProText-Medium.ttf
         - asset: assets/fonts/SFProText-Bold.ttf
-  assets:
-    - assets/images/
-    - assets/icons/
-    - assets/fonts/
 
 
 flutter_gen:

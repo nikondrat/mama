@@ -43,7 +43,6 @@ promoScreenErrorCode: Подарочный код не действителен.
 promoDialogBackButton: Вернуться
 promoErrorDialogBackButton: Выйти
 promoErrorDialogContinueButton: Продолжить
-
 sex(context=GenderContext):
   male: Мальчик
   female: Девочка
