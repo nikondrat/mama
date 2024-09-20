@@ -15,10 +15,10 @@ abstract class _VerifyState with Store {
   String? error;
 
   @action
-  update(String value) {
+  void update(String value) {
     if (value.length == 4) {
       logger.info('len $value');
-      if(value != '1234'){
+      if (value != '1234') {
         error = t.auth.invalidPassword;
       }
     } else {

@@ -2,11 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
-import 'custom_item.dart';
 import '../decoration.dart';
-import 'input.dart';
-import 'item_with_input.dart';
-import 'item_with_switch.dart';
 
 class BodyItemWidget extends StatelessWidget {
   final BodyItem item;

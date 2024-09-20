@@ -27,10 +27,17 @@ class CustomBodyItemWidget extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AutoSizeText(
-              item.title,
-              style:
-                  textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w400),
+            Row(
+              children: [
+                Expanded(
+                  child: AutoSizeText(
+                    item.title,
+                    style: textTheme.bodyMedium
+                        ?.copyWith(fontWeight: FontWeight.w400),
+                  ),
+                ),
+                5.w,
+              ],
             ),
             if (item.subTitle != null)
               Row(

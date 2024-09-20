@@ -1,15 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_another_baby_info/register_another_baby_info.dart';
-import 'package:mama/src/feature/profile/widgets/body/body_group.dart';
-import 'package:mama/src/feature/profile/widgets/body/items/body_item.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
-import '../widgets/widgets.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
   const RegisterFillAnotherBabyInfoScreen({super.key});
@@ -23,18 +17,12 @@ class _RegisterFillAnotherBabyInfoScreenState
     extends State<RegisterFillAnotherBabyInfoScreen> {
   var isFull = false;
 
-  final registerAnotherInfo = RegisterAnotherBabyInfo();
-
-  @override
-  void dispose() {
-    super.dispose();
-    registerAnotherInfo.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
+    final AuthViewStore store = context.watch();
 
     final InputBorder inputBorder = OutlineInputBorder(
       borderSide: BorderSide.none,
@@ -56,9 +44,7 @@ class _RegisterFillAnotherBabyInfoScreenState
     const TextAlign inputTextAlign = TextAlign.center;
 
     final inputHintStyle = textTheme.bodyMedium?.copyWith(
-        color: AppColors.greyBrighterColor,
-        fontWeight: FontWeight.w400
-    );
+        color: AppColors.greyBrighterColor, fontWeight: FontWeight.w400);
 
     return Scaffold(
       body: BodyDecoration(
@@ -74,17 +60,20 @@ class _RegisterFillAnotherBabyInfoScreenState
             children: [
               const Spacer(),
               TitleWidget(
-                  text: 'Алла-Виктория, ${t.register.beautifulName} 🙂'),
+                  text:
+                      '${store.child.firstName}, ${t.register.beautifulName} 🙂'),
               8.h,
-              TitleWidget(text: t.register.rememberWhenShe),
+              TitleWidget(
+                  text: t.register.rememberWhenWasBorn(
+                      context: GenderContext.values[store.child.gender.index])),
               10.h,
               ReactiveForm(
-                formGroup: registerAnotherInfo.formGroup,
+                formGroup: store.formGroup.control('child') as FormGroup,
                 child: BodyGroup(title: '', items: [
                   BodyItemWidget(
                     item: ItemWithInput(
                         inputItem: InputItem(
-                          inputHint: t.register.enter,
+                          inputHint: t.profile.inputHint,
                           inputHintStyle: inputHintStyle,
                           controlName: 'weight',
                           isCollapsed: true,
@@ -138,25 +127,33 @@ class _RegisterFillAnotherBabyInfoScreenState
                           title: t.profile.headCircumferenceTitle,
                         )),
                   ),
+                  20.h,
+                  ReactiveFormConsumer(builder: (context, form, child) {
+                    final isValid = form.valid;
+
+                    return Center(
+                      child: Text(
+                          isValid
+                              ? t.register.thankYou
+                              : t.register.ifInconvenientToSearch,
+                          textAlign: TextAlign.center,
+                          style: textTheme.labelLarge?.copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w400)),
+                    );
+                  }),
                 ]),
               ),
-              20.h,
-              Text(
-                  isFull
-                      ? t.register.thankYou
-                      : t.register.ifInconvenientToSearch,
-                  textAlign: TextAlign.center,
-                  style: textTheme.labelLarge
-                      ?.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w400
-                  )),
               const Spacer(),
               CustomButton(
                   title: t.register.next,
                   textStyle: textTheme.bodyMedium
                       ?.copyWith(color: AppColors.primaryColor),
                   onTap: () {
+                    store.child.setWeight(double.tryParse(store.weight.value));
+                    store.child.setHeight(double.tryParse(store.height.value));
+                    store.child.setHeadCircumference(
+                        double.tryParse(store.headCircumference.value));
                     context.pushNamed(AppViews.registerInfoAboutChildbirth);
                   }),
               40.h

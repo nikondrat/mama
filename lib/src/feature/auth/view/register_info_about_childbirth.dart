@@ -1,29 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_childbirth_info/register_childbirth_info.dart';
-import '../../../data.dart';
-import '../widgets/widgets.dart';
+import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
-class RegisterInfoAboutChildbirth extends StatefulWidget {
+class RegisterInfoAboutChildbirth extends StatelessWidget {
   const RegisterInfoAboutChildbirth({super.key});
-
-  @override
-  State<RegisterInfoAboutChildbirth> createState() =>
-      _RegisterInfoAboutChildbirthState();
-}
-
-class _RegisterInfoAboutChildbirthState
-    extends State<RegisterInfoAboutChildbirth> {
-  final registerChildBirth = RegisterChildbirthInfo();
-
-  var switchValue = false;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
+    final AuthViewStore store = context.watch();
 
     return Scaffold(
       body: BodyDecoration(
@@ -52,7 +43,7 @@ class _RegisterInfoAboutChildbirthState
                 borderRadius: 6,
                 outerContainerColor: const Color(0xFFE1E6FF),
                 onTap: (index) {
-                  registerChildBirth.setBirthType(index == 0 ? true : false);
+                  store.child.setChildbirth(Childbirth.values[index]);
                 },
                 items: [t.register.natural, t.register.caesarean],
               ),
@@ -61,15 +52,14 @@ class _RegisterInfoAboutChildbirthState
                 children: [
                   Text(t.register.wasComplications),
                   const Spacer(),
-                  CupertinoSwitch(
-                      activeColor: AppColors.primaryColor,
-                      value: switchValue,
-                      onChanged: (value) {
-                        registerChildBirth.setBirthType(value);
-                        setState(() {
-                          switchValue = value;
+                  Observer(builder: (context) {
+                    return CupertinoSwitch(
+                        activeColor: AppColors.primaryColor,
+                        value: store.child.childBirthWithComplications,
+                        onChanged: (value) {
+                          store.child.setChildbirthWithComplications(value);
                         });
-                      }),
+                  }),
                 ],
               ),
               const Spacer(),
@@ -91,7 +81,7 @@ class _RegisterInfoAboutChildbirthState
                             borderRadius: BorderRadius.circular(8)),
                       ),
                       onPressed: () {
-                        context.pushNamed(AppViews.registerCity);
+                        context.pushNamed(AppViews.citySearch);
                       },
                       child: Text(
                         t.register.skip,
@@ -110,7 +100,7 @@ class _RegisterInfoAboutChildbirthState
                               borderRadius: BorderRadius.circular(8),
                             )),
                         onPressed: () {
-                          context.pushNamed(AppViews.registerCity);
+                          context.pushNamed(AppViews.citySearch);
                         },
                         child: Text(
                           t.register.next,

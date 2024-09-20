@@ -1,30 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_baby_name/register_baby_name.dart';
+import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import '../../../data.dart';
 
-class RegisterBabyNameScreen extends StatefulWidget {
+class RegisterBabyNameScreen extends StatelessWidget {
   const RegisterBabyNameScreen({super.key});
-
-  @override
-  State<RegisterBabyNameScreen> createState() => _RegisterBabyNameScreenState();
-}
-
-class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
-  final registerBabyName = RegisterBabyName();
-
-  @override
-  void dispose() {
-    super.dispose();
-    registerBabyName.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
+    final AuthViewStore store = context.watch();
 
     return Scaffold(
       body: BodyDecoration(
@@ -35,7 +24,7 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
           alignment: Alignment.topLeft,
         ),
         child: ReactiveForm(
-          formGroup: registerBabyName.formGroup,
+          formGroup: store.formGroup,
           child: Column(
             children: [
               const Spacer(),
@@ -54,7 +43,7 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
               20.h,
               RegisterInputInfo(
                 isName: true,
-                controlName: 'name',
+                controlName: 'childName',
                 hintText: t.register.childName,
               ),
               20.h,
@@ -70,34 +59,36 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
                   borderRadius: 6,
                   outerContainerColor: const Color(0xFFE1E6FF),
                   onTap: (index) {
-                    registerBabyName.setGender(index);
+                    store.child.setGender(ChildGender.values[index]);
+                    // registerBabyName.setGender(index);
                   },
                   items: [
                     t.profile.sex(context: GenderContext.female),
-                    t.profile.sex(context: GenderContext.male)
+                    t.profile.sex(context: GenderContext.male),
                   ],
                 ),
               ),
               const Spacer(),
               ReactiveValueListenableBuilder(
-                  formControlName: 'name',
+                  formControlName: 'childName',
                   builder: (context, control, child) {
                     final bool isNameValid = control.valid;
-                  return CustomButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    title: t.register.next,
-                    textStyle: textTheme.bodyMedium?.copyWith(
-                        color: isNameValid
-                            ? AppColors.primaryColor
-                            : AppColors.greyBrighterColor),
-                    onTap: isNameValid
-                        ? () {
-                            context.pushNamed(AppViews.registerFillAnotherBabyInfo);
-                          }
-                        : null,
-                  );
-                }
-              ),
+                    return CustomButton(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      title: t.register.next,
+                      textStyle: textTheme.bodyMedium?.copyWith(
+                          color: isNameValid
+                              ? AppColors.primaryColor
+                              : AppColors.greyBrighterColor),
+                      onTap: isNameValid
+                          ? () {
+                              store.child.setFirstName(control.value as String);
+                              context.pushNamed(
+                                  AppViews.registerFillAnotherBabyInfo);
+                            }
+                          : null,
+                    );
+                  }),
               50.h
             ],
           ),

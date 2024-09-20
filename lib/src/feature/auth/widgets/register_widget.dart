@@ -129,12 +129,12 @@ class CityContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  city.city,
+                  city.name,
                   style: textTheme.bodyMedium
                       ?.copyWith(fontWeight: FontWeight.w400),
                 ),
                 Text(
-                  city.republic,
+                  '${city.country}',
                   style: textTheme.bodySmall
                       ?.copyWith(fontWeight: FontWeight.w400),
                 )

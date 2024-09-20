@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
-import 'items/child_item.dart';
-
 class ChildItems extends StatelessWidget {
   final List<ChildModel> childs;
   const ChildItems({

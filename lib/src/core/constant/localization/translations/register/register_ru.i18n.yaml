@@ -35,3 +35,7 @@ heightAtBirth: Рост при рождении
 birthWeight: Вес при рождении
 rememberWhenShe: А вы помните, какой она была, когда только родилась?
 beautifulName: красивое имя
+
+rememberWhenWasBorn(context=GenderContext):
+  male: А вы помните, какой он был, когда только родился?
+  female: А вы помните, какой она была, когда только родилась?

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/auth/widgets/widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
@@ -66,6 +65,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                             onChanged: (value) {
                               store.update(value);
                             },
+                            autoFocus: true,
                             hintCharacter: '0',
                             hintStyle: const TextStyle(
                                 fontSize: 17,
@@ -73,8 +73,8 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                                 color: AppColors.greyBrighterColor),
                             pinTheme: PinTheme(
                               fieldOuterPadding: const EdgeInsets.only(
-                                left: 30,
-                                right: 30,
+                                left: 20,
+                                right: 20,
                               ),
                               inactiveBorderWidth: 1,
                               selectedBorderWidth: 1,
@@ -83,7 +83,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                               borderWidth: 0,
                               shape: PinCodeFieldShape.underline,
                               fieldHeight: 50,
-                              fieldWidth: 20,
+                              fieldWidth: 10,
                               activeFillColor: Colors.white,
                               activeColor: AppColors.greyColor,
                             ),

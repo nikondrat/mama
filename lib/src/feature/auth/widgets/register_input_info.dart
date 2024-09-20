@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:mama/src/data.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
-import '../../../data.dart';
 
 class RegisterInputInfo extends StatelessWidget {
   final String controlName;
@@ -11,7 +9,9 @@ class RegisterInputInfo extends StatelessWidget {
 
   const RegisterInputInfo(
       {super.key,
-        required this.isName, required this.controlName, required this.hintText});
+      required this.isName,
+      required this.controlName,
+      required this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +49,7 @@ class RegisterInputInfo extends StatelessWidget {
                     keyboardType: TextInputType.number,
                     style: textTheme.headlineSmall
                         ?.copyWith(color: AppColors.primaryColor),
-                    onTapOutside: (event) {
-                    },
+                    onTapOutside: (event) {},
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -60,19 +59,17 @@ class RegisterInputInfo extends StatelessWidget {
                         suffixIcon: ReactiveValueListenableBuilder(
                           formControlName: controlName,
                           builder: (context, control, child) {
-                            if (control.value != null &&
-                                control.value != '') {
+                            if (control.value != null && control.value != '') {
                               return Padding(
-                                padding:
-                                const EdgeInsets.only(right: 10),
+                                padding: const EdgeInsets.only(right: 10),
                                 child: InkWell(
                                   onTap: () {
+                                    control.value = '';
                                     // store.phone.updateValue('');
                                   },
                                   child: const Icon(
                                     Icons.close,
-                                    color:
-                                    AppColors.greyBrighterColor,
+                                    color: AppColors.greyBrighterColor,
                                   ),
                                 ),
                               );

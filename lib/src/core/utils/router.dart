@@ -18,7 +18,7 @@ abstract class AppViews {
       'registerFillAnotherBabyInfo';
   static const String registerInfoAboutChildbirth =
       'registerInfoAboutChildbirth';
-  static const String registerCity = 'registerCity';
+  static const String citySearch = 'citySearch';
   static const String welcomeScreen = 'welcomeScreen';
 
   static const servicesUserView = 'servicesUserView';
@@ -32,7 +32,7 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
-  // initialLocation: _Paths.profile,
+  // initialLocation: _Paths.citySearch,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -104,10 +104,10 @@ final GoRouter router = GoRouter(
                                                 const RegisterInfoAboutChildbirth(),
                                             routes: [
                                               GoRoute(
-                                                path: _Paths.registerCity,
-                                                name: AppViews.registerCity,
+                                                path: _Paths.citySearch,
+                                                name: AppViews.citySearch,
                                                 builder: (context, state) =>
-                                                    const RegisterCityScreen(),
+                                                    const CitySearchView(),
                                               ),
                                             ]),
                                       ]),
@@ -155,7 +155,7 @@ abstract class _Paths {
       AppViews.registerFillAnotherBabyInfo;
   static const String registerInfoAboutChildbirth =
       AppViews.registerInfoAboutChildbirth;
-  static const String registerCity = AppViews.registerCity;
+  static const String citySearch = AppViews.citySearch;
   static const String welcomeScreen = AppViews.welcomeScreen;
 
   static const servicesUserPath = '/${AppViews.servicesUserView}';
