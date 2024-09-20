@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mobx/src/api/async.dart';
+import 'package:mobx/mobx.dart';
 
 import 'search_input.dart';
 
@@ -55,11 +55,9 @@ class _CitySearchBodyState extends State<CitySearchBody> {
           return SafeArea(
             child: Column(
               children: [
-                if (!isFocused) Spacer(),
+                if (!isFocused && widget.store.cities.isEmpty) Spacer(),
                 SearchInput(focusNode: focusNode),
                 20.h,
-                // textFieldTap
-                //     ?
                 Expanded(
                   child: ListView.separated(
                       shrinkWrap: true,
