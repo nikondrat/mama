@@ -15,10 +15,10 @@ dependencies:
   # Flutter SDK
   flutter:
     sdk: flutter
-  collection: any
-  async: any
-  meta: any
-  intl: any
+  collection: ^1.18.0
+  async: ^2.11.0
+  meta: ^1.15.0
+  intl: ^0.19.0
 
   # Stream
   rxdart: ^0.28.0
@@ -37,10 +37,10 @@ dependencies:
   dio: ^5.3.3
 
   # Persisting
-  # drift: ^2.13.1
-  # sqlite3: ^2.3.0
+  drift: ^2.13.1
+  sqlite3: ^2.3.0
   shared_preferences: ^2.2.2
-  # sqlite3_flutter_libs: ^0.5.18
+  sqlite3_flutter_libs: ^0.5.18
 
   # Logging
   # stack_trace: ^1.11.0
