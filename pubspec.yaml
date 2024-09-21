@@ -43,12 +43,12 @@ dependencies:
   sqlite3_flutter_libs: ^0.5.18
 
   # Logging
-  # stack_trace: ^1.11.0
+  stack_trace: ^1.11.0
   sentry_flutter: ^8.9.0
   logging: ^1.2.0
 
   # Utils
-  # platform_info: ^4.0.2
+  platform_info: ^4.0.2
   path: ^1.8.3
   path_provider: ^2.1.0
   mocktail: ^1.0.1
