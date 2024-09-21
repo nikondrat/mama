@@ -1,5 +1,3 @@
-import 'package:mama/src/core/core.dart';
-
 class ChildInfo {
   final String name;
   final String? image;
@@ -56,24 +54,24 @@ enum Birth {
   cesarean,
 }
 
-extension GenderExtension on Gender {
-  String get name {
-    switch (this) {
-      case Gender.male:
-        return t.profile.boy;
-      case Gender.female:
-        return t.profile.girl;
-    }
-  }
-}
+// extension GenderExtension on Gender {
+//   String get name {
+//     switch (this) {
+//       case Gender.male:
+//         return t.profile.boy;
+//       case Gender.female:
+//         return t.profile.girl;
+//     }
+//   }
+// }
 
-extension BirthExtension on Birth {
-  String get name {
-    switch (this) {
-      case Birth.natural:
-        return t.profile.nature;
-      case Birth.cesarean:
-        return t.profile.cesarean;
-    }
-  }
-}
+// extension BirthExtension on Birth {
+//   String get name {
+//     switch (this) {
+//       case Birth.natural:
+//         return t.profile.nature;
+//       case Birth.cesarean:
+//         return t.profile.cesarean;
+//     }
+//   }
+// }

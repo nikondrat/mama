@@ -1,6 +1,11 @@
-export 'auth_screen_widgets.dart';
+export 'error.dart';
+export 'register_widget.dart';
 export 'start_screen_body.dart';
-export 'decoration.dart';
 export 'auth_input_body.dart';
 export 'input_decoration.dart';
-export 'error.dart';
+export 'congrats_body_widget.dart';
+export 'register_title_widget.dart';
+export 'welcome_container.dart';
+export 'register_input_info.dart';
+export 'decoration.dart';
+export 'city_search_body.dart';
