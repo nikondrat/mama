@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mama_and_co/features/service/presentation/widgets/categories_widget/categories_widgets.dart';
+import 'package:mama/src/feature/services/features/service/presentation/widgets/categories_widget/categories_widgets.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});

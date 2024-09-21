@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mama_and_co/features/service/presentation/screens/service_info_screen.dart';
+import 'package:mama/src/feature/services/features/service/presentation/screens/service_info_screen.dart';
 
 class ArticleCard extends StatelessWidget {
   final String author;

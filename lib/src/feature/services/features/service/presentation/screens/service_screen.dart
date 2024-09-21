@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 
 class ServiceKnowledgeScreen extends StatelessWidget {
   const ServiceKnowledgeScreen({super.key});
@@ -11,7 +12,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
         title: Text(
           'Центр знаний',
           style: TextStyle(
-            color: Color(0xff4D4DE8),
+            color: AppColors.blueBrightTextColor,
           ),
         ),
         leading: Row(
