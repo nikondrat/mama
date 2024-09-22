@@ -1,3 +1,6 @@
+export 'rest_client_dio.dart';
+export 'rest_client_base.dart';
+
 /// A REST client for making HTTP requests.
 abstract class RestClient {
   /// Sends a GET request to the given [path].

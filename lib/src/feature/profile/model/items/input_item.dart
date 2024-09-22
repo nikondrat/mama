@@ -11,6 +11,7 @@ class InputItem extends BodyItem {
 
   final EdgeInsets? contentPadding;
   final InputBorder? border;
+  final InputBorder? errorBorder;
   final TextAlign? textAlign;
 
   final TextInputType? keyboardType;
@@ -24,9 +25,11 @@ class InputItem extends BodyItem {
   InputItem({
     required this.controlName,
     super.hintText,
+    this.errorBorder,
     this.inputHint,
     this.onChanged,
     this.textAlign,
+    super.hintStyle,
     this.textInputAction,
     this.inputHintStyle,
     this.maskFormatter,

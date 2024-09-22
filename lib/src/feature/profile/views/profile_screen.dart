@@ -10,7 +10,10 @@ class ProfileScreen extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
 
     final TextStyle? titlesStyle = textTheme.bodyMedium;
-    final TextStyle titlesColoredStyle = textTheme.labelLarge!;
+    final TextStyle titlesColoredStyle = textTheme.labelLarge!.copyWith(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+    );
 
     final TextStyle helpersStyle = textTheme.bodySmall!.copyWith(
       fontSize: 10,
@@ -119,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
               top: 50.0,
               left: 0.0,
               child: ButtonLeading(
-                labelStyle: titlesStyle,
+                labelStyle: titlesStyle!.copyWith(fontWeight: FontWeight.w400),
                 onTapButton: () {
                   //! добавить tap back button
                 },

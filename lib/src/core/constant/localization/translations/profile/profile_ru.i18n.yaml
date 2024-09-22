@@ -33,9 +33,21 @@ childNotesHint: Нажмите, чтобы оставить заметку о р
 inputHint: Ввести
 unitMeasureWeight: кг
 unitMeasureHeight: см
-boy: Мальчик
-girl: Девочка
-nature: Естественные
-cesarean: Кесарево
+cancel: Отмена
+apply: Применить
+promoScreenTitle: Подарочные коды
+promoItemButtonTitle: Нажмите, чтобы применить
+promoScreenHelper: Нажмите, чтобы ввести новый подарочный код
+promoScreenHintAddCode: Новый подарочный код
+promoScreenErrorCode: Подарочный код не действителен. Нажмите, чтобы изменить
+promoDialogBackButton: Вернуться
+promoErrorDialogBackButton: Выйти
+promoErrorDialogContinueButton: Продолжить
 
+sex(context=GenderContext):
+  male: Мальчик
+  female: Девочка
 
+birth(context=BirthContext):
+  nature: Естественные
+  cesarean: Кесарево

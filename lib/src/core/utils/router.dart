@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/feature/auth/view/auth_screen.dart';
+import 'package:mama/src/feature/auth/view/auth_verify_screen.dart';
 import 'package:mama/src/feature/auth/view/congrats_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_screen.dart';

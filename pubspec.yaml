@@ -40,7 +40,7 @@ dependencies:
   drift: ^2.13.1
   sqlite3: ^2.3.0
   shared_preferences: ^2.2.2
-  sqlite3_flutter_libs: ^0.5.18
+  # sqlite3_flutter_libs: ^0.5.18
 
   # Logging
   stack_trace: ^1.11.0
@@ -80,6 +80,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   card_swiper: ^3.0.1
   google_fonts: ^6.2.1
+  reactive_date_time_picker: ^4.0.0
 
 dev_dependencies:
   # -- testing -- #
@@ -92,7 +93,7 @@ dev_dependencies:
   flutter_native_splash: ^2.3.5
 
   # -- codegen -- #
-  build_runner: ^2.4.12
+  build_runner: ^2.4.11
   mobx_codegen: ^2.6.0+1
   slang_build_runner: ^3.31.0
 

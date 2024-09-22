@@ -16,6 +16,7 @@ class CustomBodyItemWidget extends StatelessWidget {
 
     final TextStyle helpersStyle = textTheme.bodySmall!.copyWith(
       fontSize: 10,
+      letterSpacing: 0,
     );
 
     return Row(
@@ -25,14 +26,14 @@ class CustomBodyItemWidget extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AutoSizeText(item.title),
+            AutoSizeText(item.title, style: item.titleStyle),
             if (item.subTitle != null)
               Row(
                 children: [
                   Expanded(
                     child: AutoSizeText(
                       item.subTitle!,
-                      style: helpersStyle,
+                      style: item.hintStyle ?? helpersStyle,
                     ),
                   ),
                   20.w

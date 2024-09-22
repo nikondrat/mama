@@ -39,7 +39,8 @@ class CustomButton extends StatelessWidget {
     final Widget child = this.child ??
         AutoSizeText(
           title!,
-          style: textStyle ?? textTheme.titleMedium,
+          style: textStyle ??
+              textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600),
         );
 
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(

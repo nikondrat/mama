@@ -33,7 +33,21 @@ childNotesHint: Tapp to add notes about birth and child
 inputHint: Enter
 unitMeasureWeight: kg
 unitMeasureHeight: sm
-boy: Boy
-girl: Girl
-nature: Nature
-cesarean: Cesarean
+cancel: Cancel
+apply: Apply
+promoScreenTitle: Gift codes
+promoItemButtonTitle: Tap to apply
+promoScreenHelper: Tap to fill in new gift code
+promoScreenHintAddCode: New gift code
+promoScreenErrorCode: Gift code is invalid. Tap to change promocode
+promoDialogBackButton: Return
+promoErrorDialogBackButton: Cancel
+promoErrorDialogContinueButton: Continue
+
+sex(context=GenderContext):
+  male: Boy
+  female: Girl
+
+birth(context=BirthContext):
+  nature: Nature
+  cesarean: Cesarean
