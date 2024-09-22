@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -16,7 +17,7 @@ class CategoryScreen extends StatelessWidget {
         title: Text(
           'Категории',
           style: TextStyle(
-            color: Color(0xff4D4DE8),
+            color: AppColors.blueBrightTextColor,
           ),
         ),
         centerTitle: true,
