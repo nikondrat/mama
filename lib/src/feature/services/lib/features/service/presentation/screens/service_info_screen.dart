@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mama/src/feature/services/features/internals/text_helper.dart';
-import 'package:mama/src/feature/services/features/service/presentation/widgets/common_service_info_screen_widgets.dart';
-
+import 'package:mama_and_co/features/service/presentation/widgets/common_service_info_screen_widgets.dart';
+import 'package:mama_and_co/internals/text_helper.dart';
 
 class ServiceInfoScreen extends StatelessWidget {
   const ServiceInfoScreen({super.key});

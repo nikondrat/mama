@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/core.dart';
+import 'package:mama_and_co/features/ages/presentation/screens/ages_screen.dart';
+import 'package:mama_and_co/features/authors/presentation/screens/authors_screens.dart';
+import 'package:mama_and_co/features/categories/presentation/screens/category_screen.dart';
+import 'package:mama_and_co/features/saved_files/presentation/screens/saved_files_screen.dart';
+import 'package:mama_and_co/features/service/presentation/widgets/common_article_card.dart';
 
 class ServiceKnowledgeScreen extends StatelessWidget {
   const ServiceKnowledgeScreen({super.key});
@@ -12,21 +16,28 @@ class ServiceKnowledgeScreen extends StatelessWidget {
         title: Text(
           'Центр знаний',
           style: TextStyle(
-            color: AppColors.blueBrightTextColor,
+            color: Color(0xff4D4DE8),
           ),
         ),
         leading: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            IconButton(
+            BackButton(
               onPressed: () {},
-              icon: Icon(Icons.arrow_back_ios_new),
             ),
-            Text('Назад', overflow: TextOverflow.ellipsis),
+            Text('Назад'),
           ],
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SavedFilesScreen(),
+                ),
+              );
+            },
             icon: Image.asset('assets/images/save.png'),
           ),
         ],
@@ -60,7 +71,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CategoryScreen(),
+                          builder: (context) => AgesScreen(),
                         ),
                       );
                     },
@@ -72,7 +83,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CategoryScreen(),
+                            builder: (context) => AuthorsScreen(),
                           ),
                         );
                       })
