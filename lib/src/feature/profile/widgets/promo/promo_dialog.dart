@@ -5,9 +5,14 @@ import 'package:mama/src/feature/profile/model/model.dart';
 class DialogWidget extends StatelessWidget {
   final bool? errorDialog;
   final DialogItem item;
-  final VoidCallback onTap;
+  final VoidCallback onTapExit;
+  final VoidCallback? onTapContinue;
   const DialogWidget(
-      {super.key, required this.item, required this.onTap, this.errorDialog});
+      {super.key,
+      required this.item,
+      required this.onTapExit,
+      this.errorDialog,
+      this.onTapContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -36,27 +41,38 @@ class DialogWidget extends StatelessWidget {
               padding: EdgeInsets.all(40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
+                    textAlign: TextAlign.center,
                     item.title,
                     style: textTheme.headlineSmall!.copyWith(
-                        fontSize: 24, color: AppColors.greenTextColor),
+                        fontSize: 24,
+                        color: errorDialog != null
+                            ? AppColors.redColor
+                            : AppColors.greenTextColor),
                   ),
                   8.h,
                   Text(
                     item.subtitle,
+                    textAlign: TextAlign.center,
                     style: titlesStyle.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.greenTextColor),
+                        color: errorDialog != null
+                            ? AppColors.redColor
+                            : AppColors.greenTextColor),
                   ),
                   if (item.text != null)
                     Text(
                       item.text!,
+                      textAlign: TextAlign.center,
                       style: titlesStyle.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.greenTextColor),
+                          color: errorDialog != null
+                              ? AppColors.redColor
+                              : AppColors.greenTextColor),
                     ),
                 ],
               ),
@@ -70,7 +86,7 @@ class DialogWidget extends StatelessWidget {
                     child: CustomButton(
                       title: t.profile.apply,
                       backgroundColor: AppColors.redLighterBackgroundColor,
-                      onTap: onTap,
+                      onTap: onTapExit,
                       child: Text(
                         t.profile.promoErrorDialogBackButton,
                         style: titlesStyle.copyWith(
@@ -84,7 +100,7 @@ class DialogWidget extends StatelessWidget {
                     flex: 1,
                     child: CustomButton(
                       title: t.profile.apply,
-                      onTap: onTap,
+                      onTap: onTapContinue,
                       child: Text(
                         t.profile.promoErrorDialogContinueButton,
                         style: titlesStyle.copyWith(
@@ -98,7 +114,7 @@ class DialogWidget extends StatelessWidget {
             else
               CustomButton(
                 title: t.profile.apply,
-                onTap: onTap,
+                onTap: onTapExit,
                 child: Text(
                   t.profile.promoDialogBackButton,
                   style: titlesStyle.copyWith(

@@ -43,6 +43,14 @@ promoScreenErrorCode: Подарочный код не действителен.
 promoDialogBackButton: Вернуться
 promoErrorDialogBackButton: Выйти
 promoErrorDialogContinueButton: Продолжить
+needToEnter: Осталось заполнить
+and: и
+name: имя
+dateBirth: дату рождения
+weight: вес
+height: рост
+headCirc: окружность головы
+needToFill: Осталось заполнить
 
 sex(context=GenderContext):
   male: Мальчик

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/profile/widgets/body/items/dotted_input.dart';
+import 'package:mama/src/feature/profile/widgets/body/items/items.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -224,6 +224,8 @@ class _ChildItemState extends State<ChildItem> {
                           widget.model.setChildbirthWithComplications(value);
                         })),
                 DottedInput(),
+                if (formGroup.controls.values.isNotEmpty)
+                  ItemsNeedToFill(formGroup: formGroup),
               ]),
         ],
       );

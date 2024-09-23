@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/profile/model/model.dart';
-import 'package:mama/src/feature/profile/widgets/body/items/body_item.dart';
+import 'package:mama/src/feature/profile/widgets/body/items/items.dart';
 import 'package:mama/src/feature/profile/widgets/widgets.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -51,7 +51,7 @@ class _PromoScreenState extends State<PromoScreen> {
         builder: (context) => Dialog(
           child: DialogWidget(
             item: giftDialog,
-            onTap: () {
+            onTapExit: () {
               context.pop();
             },
           ),

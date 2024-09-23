@@ -43,6 +43,14 @@ promoScreenErrorCode: Gift code is invalid. Tap to change promocode
 promoDialogBackButton: Return
 promoErrorDialogBackButton: Cancel
 promoErrorDialogContinueButton: Continue
+and: and
+name: name
+dateBirth: date birth
+weight: weight
+height: height
+headCirc: head circumference
+needToFill: Need to fill
+
 
 sex(context=GenderContext):
   male: Boy
