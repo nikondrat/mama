@@ -6,3 +6,4 @@ export 'mom_profile.dart';
 export 'body/body.dart';
 export 'promo/promo.dart';
 export 'custom_flutter_toogle.dart';
+export 'subscribe_block.dart';

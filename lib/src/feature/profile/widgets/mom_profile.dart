@@ -26,6 +26,7 @@ class MomsProfile extends StatefulWidget {
 
 class _MomsProfileState extends State<MomsProfile> {
   late FormGroup formGroup;
+  bool subscribed = true;
 
   @override
   void initState() {
@@ -148,9 +149,23 @@ class _MomsProfileState extends State<MomsProfile> {
               //   style: widget.titlesColoredStyle,
               // ),
               8.h,
-              ChildItems(childs: [
-                ChildModel(id: '', firstName: 'Виктория', secondName: ''),
-              ]),
+              IgnorePointer(
+                ignoring: !subscribed,
+                child: Stack(
+                  children: [
+                    Opacity(
+                      opacity: !subscribed ? 0.25 : 1,
+                      child: ChildItems(
+                        childs: [
+                          ChildModel(
+                              id: '', firstName: 'Виктория', secondName: ''),
+                        ],
+                      ),
+                    ),
+                    if (!subscribed) SubscribeBlockItem(),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(28.0),
                 child: InkWell(

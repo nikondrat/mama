@@ -50,6 +50,9 @@ weight: weight
 height: height
 headCirc: head circumference
 needToFill: Need to fill
+subscribeBlockTitle: Пробный период кончился
+subscribeBlockSubitle: Оформите подписку в личном кабинете, чтобы мы могли и дальше предоставлять вам качественный сервис и услуги специалистов
+subscribeBlocButtonTitle: В личный кабинет
 
 
 sex(context=GenderContext):

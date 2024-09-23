@@ -51,6 +51,9 @@ weight: вес
 height: рост
 headCirc: окружность головы
 needToFill: Осталось заполнить
+subscribeBlockTitle: Пробный период кончился
+subscribeBlockSubitle: Оформите подписку в личном кабинете, чтобы мы могли и дальше предоставлять вам качественный сервис и услуги специалистов
+subscribeBlocButtonTitle: В личный кабинет
 
 sex(context=GenderContext):
   male: Мальчик
