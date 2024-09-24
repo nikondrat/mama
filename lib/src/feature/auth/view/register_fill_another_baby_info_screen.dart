@@ -146,9 +146,8 @@ class _RegisterFillAnotherBabyInfoScreenState
               ),
               const Spacer(),
               CustomButton(
+                  isSmall: false,
                   title: t.register.next,
-                  textStyle: textTheme.bodyMedium
-                      ?.copyWith(color: AppColors.primaryColor),
                   onTap: () {
                     store.child.setWeight(double.tryParse(store.weight.value));
                     store.child.setHeight(double.tryParse(store.height.value));

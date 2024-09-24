@@ -43,10 +43,6 @@ class _CitySearchBodyState extends State<CitySearchBody> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-
-    final TextTheme textTheme = themeData.textTheme;
-
     return Observer(builder: (value) {
       switch (widget.store.fetchCitiesFuture.status) {
         case FutureStatus.pending:
@@ -80,70 +76,70 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: SizedBox(
                     height: 100,
-                    width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
-                        ElevatedButton(
-                          style: OutlinedButton.styleFrom(
-                            minimumSize: const Size(120, 48),
-                            backgroundColor: Colors.transparent,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                  width: 2,
-                                  color: AppColors.purpleLighterBackgroundColor,
-                                ),
-                                borderRadius: BorderRadius.circular(8)),
-                          ),
-                          onPressed: () {
-                            context.goNamed(AppViews.welcomeScreen);
-                          },
-                          child: Text(
-                            t.register.skip,
-                            style: textTheme.bodyMedium
-                                ?.copyWith(color: AppColors.primaryColor),
+                        Expanded(
+                          child: CustomButton(
+                            type: CustomButtonType.outline,
+                            title: t.register.skip,
+                            onTap: () =>
+                                context.goNamed(AppViews.welcomeScreen),
                           ),
                         ),
                         20.w,
                         Expanded(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                minimumSize: const Size.fromHeight(48),
-                                backgroundColor:
-                                    AppColors.greenLighterBackgroundColor,
-                                disabledBackgroundColor: AppColors.greyColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                )),
-                            onPressed: selectedCity != null
-                                ? () {
-                                    context.goNamed(AppViews.welcomeScreen);
-                                  }
-                                : null,
-                            child: selectedCity != null
-                                ? Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.check,
-                                        color: AppColors.greenTextColor,
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text(
-                                        t.register.complete,
-                                        style: textTheme.bodyMedium?.copyWith(
-                                            color: AppColors.greenTextColor),
-                                      ),
-                                    ],
-                                  )
-                                : Text(
-                                    t.register.complete,
-                                    style: textTheme.bodyMedium?.copyWith(
-                                        color:
-                                            AppColors.whiteDarkerButtonColor),
-                                  ),
-                          ),
-                        ),
+                            flex: 2,
+                            child: CustomButton(
+                              onTap: selectedCity != null
+                                  ? () {
+                                      context.goNamed(AppViews.welcomeScreen);
+                                    }
+                                  : null,
+                              icon: selectedCity != null ? Icons.check : null,
+                              title: t.register.complete,
+                              backgroundColor: selectedCity != null
+                                  ? AppColors.greenLighterBackgroundColor
+                                  : AppColors.greyColor,
+                            ))
+                        // Expanded(
+                        //   child: ElevatedButton(
+                        //     style: ElevatedButton.styleFrom(
+                        //         minimumSize: const Size.fromHeight(48),
+                        //         backgroundColor:
+                        //             AppColors.greenLighterBackgroundColor,
+                        //         disabledBackgroundColor: AppColors.greyColor,
+                        //         shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(8),
+                        //         )),
+                        //     onPressed: selectedCity != null
+                        //         ? () {
+                        //             context.goNamed(AppViews.welcomeScreen);
+                        //           }
+                        //         : null,
+                        //     child: selectedCity != null
+                        //         ? Row(
+                        //             mainAxisAlignment: MainAxisAlignment.center,
+                        //             children: [
+                        //               const Icon(
+                        //                 Icons.check,
+                        //                 color: AppColors.greenTextColor,
+                        //               ),
+                        //               const SizedBox(width: 5),
+                        //               Text(
+                        //                 t.register.complete,
+                        //                 style: textTheme.bodyMedium?.copyWith(
+                        //                     color: AppColors.greenTextColor),
+                        //               ),
+                        //             ],
+                        //           )
+                        //         : Text(
+                        //             t.register.complete,
+                        //             style: textTheme.bodyMedium?.copyWith(
+                        //                 color:
+                        //                     AppColors.whiteDarkerButtonColor),
+                        //           ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

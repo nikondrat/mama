@@ -11,9 +11,6 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final TextTheme textTheme = themeData.textTheme;
-
     final AuthViewStore store = context.watch();
 
     return Scaffold(
@@ -68,47 +65,20 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: Row(
                   children: [
-                    ElevatedButton(
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: const Size(120, 48),
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                              width: 2,
-                              color: AppColors.purpleLighterBackgroundColor,
-                            ),
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                      onPressed: () {
-                        context.pushNamed(AppViews.citySearch);
-                      },
-                      child: Text(
-                        t.register.skip,
-                        style: textTheme.bodyMedium
-                            ?.copyWith(color: AppColors.primaryColor),
+                    Expanded(
+                      child: CustomButton(
+                        type: CustomButtonType.outline,
+                        title: t.register.skip,
+                        onTap: () => context.pushNamed(AppViews.citySearch),
                       ),
                     ),
                     20.w,
                     Expanded(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(48),
-                            backgroundColor:
-                                AppColors.purpleLighterBackgroundColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            )),
-                        onPressed: () {
-                          context.pushNamed(AppViews.citySearch);
-                        },
-                        child: Text(
-                          t.register.next,
-                          style: textTheme.bodyMedium
-                              ?.copyWith(color: AppColors.primaryColor),
-                        ),
-                      ),
-                    ),
+                        flex: 2,
+                        child: CustomButton(
+                          title: t.register.next,
+                          onTap: () => context.pushNamed(AppViews.citySearch),
+                        ))
                   ],
                 ),
               ),

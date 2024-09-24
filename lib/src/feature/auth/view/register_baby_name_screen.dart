@@ -73,8 +73,12 @@ class RegisterBabyNameScreen extends StatelessWidget {
                   formControlName: 'childName',
                   builder: (context, control, child) {
                     final bool isNameValid = control.valid;
+
                     return CustomButton(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      isSmall: false,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      // contentPadding:
+                      //     const EdgeInsets.symmetric(horizontal: 16),
                       title: t.register.next,
                       textStyle: textTheme.bodyMedium?.copyWith(
                           color: isNameValid

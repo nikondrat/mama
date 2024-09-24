@@ -24,14 +24,12 @@ class CongratsScreen extends StatelessWidget {
             const CongratsBodyWidget(),
             const Spacer(),
             CustomButton(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              isSmall: false,
               title: t.register.letsStart,
               onTap: () {
                 context.pushReplacementNamed(AppViews.registerFillName);
               },
-              textStyle: textTheme.titleMedium!.copyWith(
-                color: AppColors.primaryColor,
-              ),
             ),
             const SizedBox(height: 60)
           ],

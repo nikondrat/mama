@@ -12,15 +12,27 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  final controller = PageController();
-  final swiperController = SwiperController();
+  late final PageController controller;
+  late final SwiperController swiperController;
   var isEnd = false;
   int initialPage = 0;
 
   @override
+  void initState() {
+    controller = PageController();
+    swiperController = SwiperController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    swiperController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final TextTheme textTheme = themeData.textTheme;
     return Scaffold(
       body: BodyDecoration(
         child: Padding(
@@ -66,17 +78,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   20.w,
                   Expanded(
                     child: CustomButton(
+                      title: isEnd ? t.register.goToAcc : t.register.next,
                       backgroundColor: isEnd
                           ? AppColors.greenLighterBackgroundColor
                           : AppColors.purpleLighterBackgroundColor,
-                      child: Text(
-                        isEnd ? t.register.goToAcc : t.register.next,
-                        style: textTheme.bodyMedium?.copyWith(
-                          color: isEnd
-                              ? AppColors.greenTextColor
-                              : AppColors.primaryColor,
-                        ),
-                      ),
                       onTap: () {
                         if (!isEnd) {
                           setState(

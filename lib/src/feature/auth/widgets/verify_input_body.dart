@@ -56,6 +56,7 @@ class VerifyInputBody extends StatelessWidget {
 
                   return CustomButton(
                     title: t.auth.confirm,
+                    isSmall: false,
                     height: 48,
                     onTap: isValid
                         ? () {

@@ -55,8 +55,11 @@ class RegisterFillName extends StatelessWidget {
                           final bool isValid = control.valid && isNameValid;
 
                           return CustomButton(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            // contentPadding:
+                            // const EdgeInsets.symmetric(horizontal: 16),
                             title: t.register.next,
+                            isSmall: false,
+                            padding: EdgeInsets.symmetric(horizontal: 10),
                             textStyle: textTheme.bodyMedium?.copyWith(
                                 color: isValid
                                     ? AppColors.primaryColor

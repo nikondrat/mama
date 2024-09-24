@@ -28,14 +28,15 @@ abstract class AppViews {
   static const addWeightView = 'addWeightView';
 
   static const profile = 'profile';
+  static const promoView = 'promoView';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
-  // initialLocation: _Paths.evolutionView,
+  // initialLocation: '/',
+  initialLocation: _Paths.profile,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -149,10 +150,16 @@ final GoRouter router = GoRouter(
           )
         ]),
     GoRoute(
-      path: _Paths.profile,
-      name: AppViews.profile,
-      builder: (context, state) => const ProfileScreen(),
-    )
+        path: _Paths.profile,
+        name: AppViews.profile,
+        builder: (context, state) => const ProfileScreen(),
+        routes: [
+          GoRoute(
+            path: _Paths.promoView,
+            name: AppViews.promoView,
+            builder: (context, state) => PromoScreen(),
+          )
+        ])
   ],
 );
 
@@ -179,4 +186,5 @@ abstract class _Paths {
   static const addWeightView = AppViews.addWeightView;
 
   static const profile = '/${AppViews.profile}';
+  static const promoView = AppViews.promoView;
 }

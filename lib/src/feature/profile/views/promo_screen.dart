@@ -60,8 +60,8 @@ class _PromoScreenState extends State<PromoScreen> {
 
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
-    final TextStyle titlesStyle =
-        textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
+    final TextStyle titlesStyle = textTheme.titleMedium!
+        .copyWith(fontWeight: FontWeight.w400, height: 1.2);
     final TextStyle hintStyle = textTheme.bodySmall!.copyWith(
       fontSize: 10,
       fontWeight: FontWeight.w700,
@@ -146,10 +146,37 @@ class _PromoScreenState extends State<PromoScreen> {
                           );
                         }),
                     30.h,
-                    ButtonsRow(
-                      tapCancelButton: () {},
-                      tapApplyButton: () {},
-                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomButton(
+                            backgroundColor:
+                                AppColors.redLighterBackgroundColor,
+                            onTap: () {},
+                            title: t.profile.cancel,
+                          ),
+                        ),
+                        10.w,
+                        Expanded(
+                          flex: 2,
+                          child: CustomButton(
+                            onTap: form.valid //!
+                                ? () {}
+                                : null,
+                            title: t.profile.apply,
+                            textStyle: titlesStyle.copyWith(
+                                color: form.valid
+                                    ? AppColors.primaryColor
+                                    : AppColors.whiteColor,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        )
+                      ],
+                    )
+                    // ButtonsRow(
+                    //   tapCancelButton: () {},
+                    //   tapApplyButton: () {},
+                    // ),
                   ],
                 ),
               ),
@@ -161,55 +188,55 @@ class _PromoScreenState extends State<PromoScreen> {
   }
 }
 
-class ButtonsRow extends StatelessWidget {
-  final VoidCallback tapCancelButton;
-  final VoidCallback tapApplyButton;
-  const ButtonsRow(
-      {super.key, required this.tapCancelButton, required this.tapApplyButton});
+// class ButtonsRow extends StatelessWidget {
+//   final VoidCallback tapCancelButton;
+//   final VoidCallback tapApplyButton;
+//   const ButtonsRow(
+//       {super.key, required this.tapCancelButton, required this.tapApplyButton});
 
-  @override
-  Widget build(BuildContext context) {
-    final form = ReactiveForm.of(context);
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
-    final TextStyle titlesStyle =
-        textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
+//   @override
+//   Widget build(BuildContext context) {
+//     final form = ReactiveForm.of(context);
+//     final ThemeData theme = Theme.of(context);
+//     final TextTheme textTheme = theme.textTheme;
+//     final TextStyle titlesStyle =
+//         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 34.0),
-      child: Row(
-        children: [
-          Flexible(
-            flex: 1,
-            child: CustomButton(
-              onTap: tapCancelButton,
-              backgroundColor: AppColors.redLighterBackgroundColor,
-              title: t.profile.cancel,
-              textStyle: textTheme.titleMedium!.copyWith(
-                color: AppColors.redColor,
-              ),
-            ),
-          ),
-          8.w,
-          Flexible(
-            flex: 2,
-            child: CustomButton(
-              title: t.profile.apply,
-              onTap: form!.valid //!
-                  ? tapApplyButton
-                  : null,
-              child: Text(
-                t.profile.apply,
-                style: titlesStyle.copyWith(
-                    color: form.valid
-                        ? AppColors.primaryColor
-                        : AppColors.whiteColor,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 34.0),
+//       child: Row(
+//         children: [
+//           Flexible(
+//             flex: 1,
+//             child: CustomButton(
+//               onTap: tapCancelButton,
+//               backgroundColor: AppColors.redLighterBackgroundColor,
+//               title: t.profile.cancel,
+//               textStyle: textTheme.titleMedium!.copyWith(
+//                 color: AppColors.redColor,
+//               ),
+//             ),
+//           ),
+//           8.w,
+//           Flexible(
+//             flex: 2,
+//             child: CustomButton(
+//               title: t.profile.apply,
+//               onTap: form!.valid //!
+//                   ? tapApplyButton
+//                   : null,
+//               child: Text(
+//                 t.profile.apply,
+//                 style: titlesStyle.copyWith(
+//                     color: form.valid
+//                         ? AppColors.primaryColor
+//                         : AppColors.whiteColor,
+//                     fontWeight: FontWeight.w600),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

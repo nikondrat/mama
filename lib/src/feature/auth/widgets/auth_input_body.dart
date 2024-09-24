@@ -71,6 +71,7 @@ class AuthInputBodyWidget extends StatelessWidget {
                   return CustomButton(
                     title: t.auth.confirm,
                     height: 48,
+                    isSmall: false,
                     onTap: isValid
                         ? () {
                             context.pushNamed(
