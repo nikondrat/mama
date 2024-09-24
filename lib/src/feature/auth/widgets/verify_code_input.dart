@@ -34,7 +34,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final VerifyState store = context.watch();
+    final VerifyStore store = context.watch();
 
     return Observer(builder: (context) {
       final isValid = store.isValid;

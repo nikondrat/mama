@@ -7,9 +7,6 @@ class CongratsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final TextTheme textTheme = themeData.textTheme;
-
     return Scaffold(
       body: BodyDecoration(
         backgroundImage: DecorationImage(

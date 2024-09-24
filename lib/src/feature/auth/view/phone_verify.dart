@@ -17,64 +17,73 @@ class PhoneVerify extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 
-    return Provider(
-      create: (context) => VerifyState(),
-      child: Scaffold(
-        body: BodyDecoration(
-            backgroundImage: DecorationImage(
-              image: AssetImage(
-                Assets.images.authDecor.path,
-              ),
-              alignment: Alignment.topLeft,
-            ),
-            child: Column(
-              children: [
-                const Spacer(),
-                SvgPicture.asset(
-                  Assets.images.mamaCo,
+    return MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => VerifyStore(
+            restClient: context.read<Dependencies>().restClient,
+          ),
+        ),
+        Provider(
+          create: (context) => StopwatchStore(),
+        ),
+      ],
+      builder: (context, child) => Scaffold(
+          body: BodyDecoration(
+              backgroundImage: DecorationImage(
+                image: AssetImage(
+                  Assets.images.authDecor.path,
                 ),
-                20.h,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: AutoSizeText(
-                          t.auth.slogan,
-                          textAlign: TextAlign.center,
-                          style: textTheme.bodySmall!.copyWith(
-                            fontWeight: FontWeight.w600,
+                alignment: Alignment.topLeft,
+              ),
+              child: Column(
+                children: [
+                  const Spacer(),
+                  SvgPicture.asset(
+                    Assets.images.mamaCo,
+                  ),
+                  20.h,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: AutoSizeText(
+                            t.auth.slogan,
+                            textAlign: TextAlign.center,
+                            style: textTheme.bodySmall!.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                20.h,
-                VerifyInputBody(
-                  isLogin: isLogin,
-                  phone: phone,
-                ),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                        onPressed: () => context.pushNamed(
-                            isLogin ? AppViews.register : AppViews.auth),
-                        child: AutoSizeText(
-                          isLogin
-                              ? t.auth.noAccount
-                              : t.auth.alreadyHaveAccount,
-                          style: textTheme.titleMedium,
-                        )),
-                  ],
-                ),
-                20.h,
-              ],
-            )),
-      ),
+                    ],
+                  ),
+                  20.h,
+                  VerifyInputBody(
+                    isLogin: isLogin,
+                    phone: phone,
+                    store: context.watch(),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                          onPressed: () => context.pushNamed(
+                              isLogin ? AppViews.register : AppViews.auth),
+                          child: AutoSizeText(
+                            isLogin
+                                ? t.auth.noAccount
+                                : t.auth.alreadyHaveAccount,
+                            style: textTheme.titleMedium,
+                          )),
+                    ],
+                  ),
+                  20.h,
+                ],
+              ))),
     );
   }
 }

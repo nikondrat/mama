@@ -35,8 +35,8 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  // initialLocation: '/',
-  initialLocation: _Paths.profile,
+  initialLocation: '/',
+  // initialLocation: _Paths.profile,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -65,7 +65,7 @@ final GoRouter router = GoRouter(
                           final String? phone = data!['phone'] as String?;
                           return PhoneVerify(
                             isLogin: true,
-                            phone: phone ?? "",
+                            phone: phone ?? '',
                           );
                         }),
                   ],
@@ -73,7 +73,7 @@ final GoRouter router = GoRouter(
                     final Map? data = state.extra as Map?;
                     final String? phone = data!['phone'] as String?;
                     return PhoneVerify(
-                      phone: phone ?? "",
+                      phone: phone ?? '',
                     );
                   },
                 ),
