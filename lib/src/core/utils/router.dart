@@ -32,8 +32,8 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
-  // initialLocation: _Paths.citySearch,
+  // initialLocation: '/',
+  initialLocation: _Paths.evolutionView,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -136,8 +136,9 @@ final GoRouter router = GoRouter(
       ],
     ),
     GoRoute(
-      path: _Paths.evaloutionView,
-      builder: (context, state) => AppViews.trackersEvolutionView,
+      path: _Paths.evolutionView,
+      name: AppViews.evolutionView,
+      builder: (context, state) => const TrackersEvolutionView(),
     ),
     GoRoute(
       path: _Paths.profile,
@@ -165,7 +166,7 @@ abstract class _Paths {
 
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
-  static const evaloutionView = AppViews.evolutionView;
+  static const evolutionView = '/${AppViews.evolutionView}';
 
   static const profile = '/${AppViews.profile}';
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/constant/constant.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({
+class CustomAppBa extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBa({
     super.key,
     this.bottom,
     this.isSizeTrue = true,

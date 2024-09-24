@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 
 class AddWeight extends StatelessWidget {
   const AddWeight({super.key});
@@ -8,7 +7,8 @@ class AddWeight extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blueLighter1,
-      appBar: CustomAppBar(isSizeTrue: false),
+      appBar: CustomAppBar(title: t.trackers.weight.add),
+      // appBar: CustomAppBar(isSizeTrue: false),
       body: ListView(
         children: [
           FixedCenterIndicator(kgOrG: 'КГ', painter: CustomPointKG()),
