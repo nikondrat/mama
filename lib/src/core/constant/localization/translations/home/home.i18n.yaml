@@ -76,8 +76,8 @@ supportChats:
 onlineConsultation:
   title: "Online-Consultation"
 
-developmentDiary:
-  title: "Development Diary"
+progressDiary:
+  title: "Progress Diary"
 
 musicForSleep:
   title: "Music For Sleep"

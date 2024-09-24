@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/feature/auth/view/congrats_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_name_screen.dart';
 import 'package:mama/src/feature/auth/view/welcome_screen.dart';
+import 'package:mama/src/feature/home/view/home_view.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health/views/trackers_health_add_temperature.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health/views/trackers_health_view.dart';
 import 'package:mama/src/data.dart';
@@ -26,6 +27,8 @@ abstract class AppViews {
   static const String citySearch = 'citySearch';
   static const String welcomeScreen = 'welcomeScreen';
 
+  static const String homeScreen = 'homeScreen';
+
   static const trackersHealthView = 'trackersHealthView';
   static const trackersHealthAddTemperatureView =
       'trackersHealthAddTemperatureView';
@@ -44,98 +47,99 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
-  // initialLocation: _Paths.profile,
+  initialLocation: _Paths.homeScreen,
   routes: [
-    // GoRoute(
-    //     path: _Paths.startScreen,
-    //     name: AppViews.startScreen,
-    //     builder: (context, state) => const StartScreen(),
-    //     routes: [
-    //       GoRoute(
-    //         path: _Paths.authVerify,
-    //         name: AppViews.authVerify,
-    //         builder: (context, state) => AuthVerifyScreen(
-    //           phone: state.extra! as String,
-    //         ),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.registerVerify,
-    //         name: AppViews.registerVerify,
-    //         builder: (context, state) {
-    //           final Map? data = state.extra as Map?;
-    //           final String? phone = data!['phone'] as String?;
-
-    //           return RegisterVerifyScreen(
-    //             phone: phone ?? '',
-    //           );
-    //         },
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.register,
-    //         name: AppViews.register,
-    //         builder: (context, state) => const AuthView(),
-    //         routes: [
-    //           GoRoute(
-    //             path: _Paths.auth,
-    //             name: AppViews.auth,
-    //             builder: (context, state) => const AuthView(isLogin: true),
-    //           ),
-    //         ],
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.congratsScreen,
-    //         name: AppViews.congratsScreen,
-    //         builder: (context, state) => const CongratsScreen(),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.registerFillName,
-    //         name: AppViews.registerFillName,
-    //         builder: (context, state) => const RegisterFillName(),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.registerFillBabyName,
-    //         name: AppViews.registerFillBabyName,
-    //         builder: (context, state) => const RegisterBabyNameScreen(),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.registerFillAnotherBabyInfo,
-    //         name: AppViews.registerFillAnotherBabyInfo,
-    //         builder: (context, state) =>
-    //             const RegisterFillAnotherBabyInfoScreen(),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.registerInfoAboutChildbirth,
-    //         name: AppViews.registerInfoAboutChildbirth,
-    //         builder: (context, state) => const RegisterInfoAboutChildbirth(),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.registerCity,
-    //         name: AppViews.registerCity,
-    //         builder: (context, state) => const RegisterCityScreen(),
-    //       ),
-    //       GoRoute(
-    //         path: _Paths.welcomeScreen,
-    //         name: AppViews.welcomeScreen,
-    //         builder: (context, state) => const WelcomeScreen(),
-    //       ),
-    //     ]),
-
-    /// #trackers
     GoRoute(
-      name: AppViews.trackersHealthView,
-      path: _Paths.trackersHealthPath,
-      builder: (context, state) => TrackersHealthView(),
-      routes: [
-        GoRoute(
-          name: AppViews.trackersHealthAddTemperatureView,
-          path: _Paths.trackersHealthAddTemperaturePath,
-          builder: (context, state) => TrackersHealthAddTemperature(),
-        )
-      ],
+      path: _Paths.homeScreen,
+      name: AppViews.homeScreen,
+      builder: (context, state) => HomeView(),
     ),
 
-    /// #services
+    // GoRoute(
+    //   path: _Paths.startScreen,
+    //   name: AppViews.startScreen,
+    //   builder: (context, state) => const StartScreen(),
+    //   routes: [
+    //     GoRoute(
+    //       path: _Paths.authVerify,
+    //       name: AppViews.authVerify,
+    //       builder: (context, state) => AuthVerifyScreen(
+    //         phone: state.extra! as String,
+    //       ),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.registerVerify,
+    //       name: AppViews.registerVerify,
+    //       builder: (context, state) {
+    //         final Map? data = state.extra as Map?;
+    //         final String? phone = data!['phone'] as String?;
+    //         return RegisterVerifyScreen(
+    //           phone: phone ?? '',
+    //         );
+    //       },
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.register,
+    //       name: AppViews.register,
+    //       builder: (context, state) => const AuthView(),
+    //       routes: [
+    //         GoRoute(
+    //           path: _Paths.auth,
+    //           name: AppViews.auth,
+    //           builder: (context, state) => const AuthView(isLogin: true),
+    //         ),
+    //       ],
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.congratsScreen,
+    //       name: AppViews.congratsScreen,
+    //       builder: (context, state) => const CongratsScreen(),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.registerFillName,
+    //       name: AppViews.registerFillName,
+    //       builder: (context, state) => const RegisterFillName(),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.registerFillBabyName,
+    //       name: AppViews.registerFillBabyName,
+    //       builder: (context, state) => const RegisterBabyNameScreen(),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.registerFillAnotherBabyInfo,
+    //       name: AppViews.registerFillAnotherBabyInfo,
+    //       builder: (context, state) =>
+    //           const RegisterFillAnotherBabyInfoScreen(),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.registerInfoAboutChildbirth,
+    //       name: AppViews.registerInfoAboutChildbirth,
+    //       builder: (context, state) => const RegisterInfoAboutChildbirth(),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.registerCity,
+    //       name: AppViews.registerCity,
+    //       builder: (context, state) => const RegisterCityScreen(),
+    //     ),
+    //     GoRoute(
+    //       path: _Paths.welcomeScreen,
+    //       name: AppViews.welcomeScreen,
+    //       builder: (context, state) => const WelcomeScreen(),
+    //     ),
+    //   ],
+    // ),
+    // GoRoute(
+    //   name: AppViews.trackersHealthView,
+    //   path: _Paths.trackersHealthPath,
+    //   builder: (context, state) => TrackersHealthView(),
+    //   routes: [
+    //     GoRoute(
+    //       name: AppViews.trackersHealthAddTemperatureView,
+    //       path: _Paths.trackersHealthAddTemperaturePath,
+    //       builder: (context, state) => TrackersHealthAddTemperature(),
+    //     )
+    //   ],
+    // ),
     // GoRoute(
     //   name: AppViews.servicesUserView,
     //   path: _Paths.servicesUserPath,
@@ -166,6 +170,8 @@ abstract class _Paths {
       AppViews.registerInfoAboutChildbirth;
   static const String citySearch = AppViews.citySearch;
   static const String welcomeScreen = AppViews.welcomeScreen;
+
+  static const String homeScreen = '/';
 
   static const trackersHealthPath = '/';
   static const trackersHealthAddTemperaturePath =
