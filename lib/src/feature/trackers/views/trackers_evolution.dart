@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/trackers/views/views.dart';
 
-class TrackersEvolutionView extends StatefulWidget {
-  const TrackersEvolutionView({super.key});
+class EvolutionView extends StatefulWidget {
+  const EvolutionView({super.key});
 
   @override
-  State<TrackersEvolutionView> createState() => _TrackersEvolutionViewState();
+  State<EvolutionView> createState() => _EvolutionViewState();
 }
 
-class _TrackersEvolutionViewState extends State<TrackersEvolutionView>
+class _EvolutionViewState extends State<EvolutionView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 

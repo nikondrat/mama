@@ -25,6 +25,8 @@ abstract class AppViews {
   static const servicesSleepMusicView = 'servicesSleepMusicView';
   static const evolutionView = 'evolutionView';
 
+  static const addWeightView = 'addWeightView';
+
   static const profile = 'profile';
 }
 
@@ -32,8 +34,8 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  // initialLocation: '/',
-  initialLocation: _Paths.evolutionView,
+  initialLocation: '/',
+  // initialLocation: _Paths.evolutionView,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -136,10 +138,16 @@ final GoRouter router = GoRouter(
       ],
     ),
     GoRoute(
-      path: _Paths.evolutionView,
-      name: AppViews.evolutionView,
-      builder: (context, state) => const TrackersEvolutionView(),
-    ),
+        path: _Paths.evolutionView,
+        name: AppViews.evolutionView,
+        builder: (context, state) => const EvolutionView(),
+        routes: [
+          GoRoute(
+            name: AppViews.addWeightView,
+            path: _Paths.addWeightView,
+            builder: (context, state) => AddWeight(),
+          )
+        ]),
     GoRoute(
       path: _Paths.profile,
       name: AppViews.profile,
@@ -167,6 +175,8 @@ abstract class _Paths {
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
   static const evolutionView = '/${AppViews.evolutionView}';
+
+  static const addWeightView = AppViews.addWeightView;
 
   static const profile = '/${AppViews.profile}';
 }
