@@ -1,0 +1,53 @@
+accountTitle: Account
+addPhotoTitle: Tap to add image
+backLeadingButton: Back
+hintChangeName: Tap to change name
+hintChangePhone: Tap to change phone
+hintChangeEmail: Tap to fill email
+labelChangeEmail: We need your email to activate application
+hintChangeNote: Tap to share with other users
+labelChangeNote: About me
+addGiftCodeButtonTitle: Fill in your promo code
+settingsAccountButtonTitle: Acount Settings
+childTitle: Children
+addChildButtonTitle: Add child
+aboutCompanyTitle: About company
+termOfUseTitle: Term of use
+feedbackButtonTitle: Feedback
+leaveAccountButtonTitle: Leave account
+hintAddChildName: Child name
+helperAddChildName: Tap to add name
+helperChangeChildName: Tap to change name
+deleteChildButtonTitle: Delete from application
+hintDateBirth: Date of birth
+helperDateBirth: Tap to change date of birth
+genderTitle: Gender
+twinsTitle: Twins
+twinsHelper: Нужно для подбора статей и рекомендаций. Добавьте второго малыша для отслеживания его развития.
+weightTitle: Birth weight
+heightTitle: Birth height
+headCircumferenceTitle: Birth head circumference
+birthTitle: Birth
+birthComplicationsTitle: Birth with complications
+childNotesHint: Tapp to add notes about birth and child
+inputHint: Enter
+unitMeasureWeight: kg
+unitMeasureHeight: sm
+cancel: Cancel
+apply: Apply
+promoScreenTitle: Gift codes
+promoItemButtonTitle: Tap to apply
+promoScreenHelper: Tap to fill in new gift code
+promoScreenHintAddCode: New gift code
+promoScreenErrorCode: Gift code is invalid. Tap to change promocode
+promoDialogBackButton: Return
+promoErrorDialogBackButton: Cancel
+promoErrorDialogContinueButton: Continue
+
+sex(context=GenderContext):
+  male: Boy
+  female: Girl
+
+birth(context=BirthContext):
+  nature: Nature
+  cesarean: Cesarean

@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:mama/src/data.dart';
 
 class MainBox extends StatelessWidget {
   final String mainText;
@@ -10,7 +12,7 @@ class MainBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Color(0xFFE1E6FF),
+        color: AppColors.purpleLighterBackgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: SizedBox(
@@ -24,7 +26,7 @@ class MainBox extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomLeft,
-                  child: Text(
+                  child: AutoSizeText(
                     mainText,
                     style: TextStyle(
                       fontSize: 17,

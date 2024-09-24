@@ -1,40 +1,36 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:mama/src/feature/services/services_user/widgets/custom_button.dart';
+import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/services/services_user/model/button_model.dart';
+
+import 'custom_button.dart' as c;
 
 class MainBoxWithButtons extends StatelessWidget {
   final String image;
   final String mainText;
-  final String firstButtonText;
-  final String secondButtonText;
-  final String thirdButtonText;
-  final VoidCallback onTapFirstButton;
-  final VoidCallback onTapSecondButton;
-  final VoidCallback onTapThirdButton;
+  final List<ButtonModel> buttons;
 
   const MainBoxWithButtons({
     super.key,
     required this.image,
     required this.mainText,
-    required this.firstButtonText,
-    required this.secondButtonText,
-    required this.thirdButtonText,
-    required this.onTapFirstButton,
-    required this.onTapSecondButton,
-    required this.onTapThirdButton,
+    required this.buttons,
   });
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
     return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Color(0xFFE1E6FF),
+          color: AppColors.purpleLighterBackgroundColor,
           width: 2,
         ),
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       child: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
         height: 205,
         child: Row(
           children: [
@@ -58,13 +54,9 @@ class MainBoxWithButtons extends StatelessWidget {
                     ),
 
                     /// #main text
-                    Text(
+                    AutoSizeText(
                       mainText,
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF4D4DE8),
-                      ),
+                      style: textTheme.titleMedium,
                     ),
                   ],
                 ),
@@ -77,22 +69,19 @@ class MainBoxWithButtons extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Column(
-                  children: [
-                    CustomButton(
-                      onTap: onTapFirstButton,
-                      text: firstButtonText,
-                    ),
-                    SizedBox(height: 8),
-                    CustomButton(
-                      onTap: onTapSecondButton,
-                      text: secondButtonText,
-                    ),
-                    SizedBox(height: 8),
-                    CustomButton(
-                      onTap: onTapThirdButton,
-                      text: thirdButtonText,
-                    ),
-                  ],
+                  children: buttons.map(
+                    (button) {
+                      return Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: c.CustomButton(
+                            text: button.title,
+                            onTap: button.onTap,
+                          ),
+                        ),
+                      );
+                    },
+                  ).toList(),
                 ),
               ),
             )

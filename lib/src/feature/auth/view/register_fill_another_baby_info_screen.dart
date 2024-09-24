@@ -1,0 +1,166 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/data.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+
+class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
+  const RegisterFillAnotherBabyInfoScreen({super.key});
+
+  @override
+  State<RegisterFillAnotherBabyInfoScreen> createState() =>
+      _RegisterFillAnotherBabyInfoScreenState();
+}
+
+class _RegisterFillAnotherBabyInfoScreenState
+    extends State<RegisterFillAnotherBabyInfoScreen> {
+  var isFull = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
+    final AuthViewStore store = context.watch();
+
+    final InputBorder inputBorder = OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(6),
+    );
+    final EdgeInsets inputPadding =
+        EdgeInsets.symmetric(horizontal: 12, vertical: 4);
+
+    final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
+        mask: '#,## ${t.profile.unitMeasureWeight}',
+        filter: {'#': RegExp('[0-9]')},
+        type: MaskAutoCompletionType.eager);
+
+    final MaskTextInputFormatter sizeFormatter = MaskTextInputFormatter(
+        mask: '## ${t.profile.unitMeasureHeight}',
+        filter: {'#': RegExp('[0-9]')},
+        type: MaskAutoCompletionType.eager);
+
+    const TextAlign inputTextAlign = TextAlign.center;
+
+    final inputHintStyle = textTheme.bodyMedium?.copyWith(
+        color: AppColors.greyBrighterColor, fontWeight: FontWeight.w400);
+
+    return Scaffold(
+      body: BodyDecoration(
+        backgroundImage: DecorationImage(
+          image: AssetImage(
+            Assets.images.authDecor.path,
+          ),
+          alignment: Alignment.topLeft,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              const Spacer(),
+              TitleWidget(
+                  text:
+                      '${store.child.firstName}, ${t.register.beautifulName} 🙂'),
+              8.h,
+              TitleWidget(
+                  text: t.register.rememberWhenWasBorn(
+                      context: GenderContext.values[store.child.gender.index])),
+              10.h,
+              ReactiveForm(
+                formGroup: store.formGroup.control('child') as FormGroup,
+                child: BodyGroup(title: '', items: [
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          inputHint: t.profile.inputHint,
+                          inputHintStyle: inputHintStyle,
+                          controlName: 'weight',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: weightFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.weightTitle,
+                        )),
+                  ),
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          inputHint: t.register.enter,
+                          inputHintStyle: inputHintStyle,
+                          controlName: 'height',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: sizeFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.heightTitle,
+                        )),
+                  ),
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          inputHintStyle: inputHintStyle,
+                          inputHint: t.register.enter,
+                          controlName: 'headCircumference',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: sizeFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.headCircumferenceTitle,
+                        )),
+                  ),
+                  20.h,
+                  ReactiveFormConsumer(builder: (context, form, child) {
+                    final isValid = form.valid;
+
+                    return Center(
+                      child: Text(
+                          isValid
+                              ? t.register.thankYou
+                              : t.register.ifInconvenientToSearch,
+                          textAlign: TextAlign.center,
+                          style: textTheme.labelLarge?.copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w400)),
+                    );
+                  }),
+                ]),
+              ),
+              const Spacer(),
+              CustomButton(
+                  title: t.register.next,
+                  textStyle: textTheme.bodyMedium
+                      ?.copyWith(color: AppColors.primaryColor),
+                  onTap: () {
+                    store.child.setWeight(double.tryParse(store.weight.value));
+                    store.child.setHeight(double.tryParse(store.height.value));
+                    store.child.setHeadCircumference(
+                        double.tryParse(store.headCircumference.value));
+                    context.pushNamed(AppViews.registerInfoAboutChildbirth);
+                  }),
+              40.h
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,41 @@
+registration: Registration
+phoneNumber: Phone number
+termOfUse(rich): Agreement to ${tapHere(terms of use)}
+agreement: Agreement to
+withTermOfUse: terms of use
+hurrah: Hurrah!
+youWithUs: You are now with us
+letsFillAcc: Let's fill out your account to find you the most useful materials
+letsStart: Let's start
+next: Next
+whatIsYourName: What is your name?
+name: Name
+surname: Surname
+clickToEnterName: Click to enter name
+clickToEnterSurname: Click to enter surname
+whatIsBabyName: What is your child's name?
+isThereMoreChild: If there is more than one child, you can add the rest a little later
+childName: Child's name
+girl: Girl
+boy: Boy
+howWasBirth: How was the birth?
+natural: Natural
+caesarean: Caesarean
+wasComplications: There were complications
+skip: Skip
+goToAcc: Go to account
+whatCityYouLive: What city do you live in?
+searchPlace: Search for a place
+complete: Complete
+enter: Enter
+thankYou: Thank you for entering all the data at once\nLet's continue
+ifInconvenientToSearch: If it is inconvenient to search for some data now, you can add it later
+headCircumference: Head circumference at birth
+heightAtBirth: Height at birth
+birthWeight: Birth weight
+rememberWhenShe: Do you remember what she was like when she was first born?
+beautifulName: beautiful name
+
+rememberWhenWasBorn(context=GenderContext):
+  male: Do you remember what he was like when he was first born?
+  female: Do you remember what she was like when she was first born?
