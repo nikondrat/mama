@@ -156,7 +156,7 @@ class _MomsProfileState extends State<MomsProfile> {
                     Opacity(
                       opacity: !subscribed ? 0.25 : 1,
                       child: ChildItems(
-                        childs: mom.childs,
+                        childs: widget.mom.childs,
                       ),
                     ),
                     if (!subscribed) SubscribeBlockItem(),
