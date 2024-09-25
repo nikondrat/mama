@@ -54,6 +54,10 @@ needToFill: Осталось заполнить
 subscribeBlockTitle: Пробный период кончился
 subscribeBlockSubitle: Оформите подписку в личном кабинете, чтобы мы могли и дальше предоставлять вам качественный сервис и услуги специалистов
 subscribeBlocButtonTitle: В личный кабинет
+bottomBarHome: Главная
+bottomBarDiaries: Дневники
+bottomBarChats: Чаты
+bottomBarServices: Сервисы
 
 sex(context=GenderContext):
   male: Мальчик
