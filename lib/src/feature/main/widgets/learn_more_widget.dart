@@ -33,11 +33,13 @@ class LearnMoreWidget extends StatelessWidget {
             ),
             AutoSizeText('Здесь вы можете отслеживать, как проходит кормление грудью.'
                 '\n\nУзнайте больше про процесс грудного вскармливания в нашем Центре Знаний:',
-              style: textTheme.displaySmall?.copyWith(
+              style: textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w400,
                   color: AppColors.greyBrighterColor
               ),),
             20.h,
             CustomButton(
+              borderColor: AppColors.purpleLighterBackgroundColor,
               backgroundColor: AppColors.lightBlue,
               onTap: (){},
               child: Row(

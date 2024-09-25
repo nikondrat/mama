@@ -16,7 +16,9 @@ class PlayerButton extends StatelessWidget {
       children: [
         Text(
           side,
-          style: textTheme.bodyLarge,
+          style: textTheme.headlineSmall?.copyWith(
+            fontSize: 20
+          ),
         ),
         15.h,
         CircleAvatar(
@@ -27,8 +29,9 @@ class PlayerButton extends StatelessWidget {
           ),
         ),
         15.h,
-        Text('00:00', style: textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w400
+        Text('00:00', style: textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w400,
+            color: Colors.black
         ),)
       ],
     );

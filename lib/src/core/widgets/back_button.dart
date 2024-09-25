@@ -18,9 +18,9 @@ class CustomBackButton extends StatelessWidget {
     return InkWell(
       onTap: onTap != null
           ? () {
-        onTap!();
-        context.pop();
-      }
+              onTap!();
+              context.pop();
+            }
           : context.pop,
       borderRadius: const BorderRadius.all(Radius.circular(4)),
       child: Padding(

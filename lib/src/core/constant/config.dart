@@ -23,4 +23,7 @@ class Config {
 
   /// Whether Sentry is enabled.
   bool get enableSentry => sentryDsn.isNotEmpty;
+
+  /// The API URL.
+  String get apiUrl => const String.fromEnvironment('API_URL');
 }

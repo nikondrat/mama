@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/core/core.dart';
@@ -23,42 +22,55 @@ class AddFeedingWidget extends StatelessWidget {
               children: [
                 Expanded(
                     child: PlayerButton(
-                      side: 'Левая',
-                    )),
+                  side: 'Левая',
+                )),
                 Expanded(
                     child: PlayerButton(
-                      side: 'Правая',
-                    )),
+                  side: 'Правая',
+                )),
               ],
             ),
           ),
           30.h,
           Text(
             'Добавить кормление',
-            style: textTheme.bodyLarge
-                ?.copyWith(color: AppColors.greyBrighterColor),
+            style: textTheme.titleMedium
+                ?.copyWith(
+                fontSize: 20,
+                color: AppColors.greyBrighterColor),
           ),
           Text('Нажмите на  или добавьте вручную',
-              style: textTheme.displaySmall
-                  ?.copyWith(color: AppColors.greyBrighterColor)),
+              style: textTheme.labelLarge
+                  ?.copyWith(
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.greyBrighterColor)),
           30.h,
           Row(
             children: [
               Expanded(
+                flex: 1,
                 child: CustomButton(
+                  borderColor: AppColors.purpleLighterBackgroundColor,
                   backgroundColor: Colors.white,
                   onTap: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(Assets.icons.icLearnMore),
-                      5.w,
-                      Text(
-                        'Узнать\nбольше',
-                        style: textTheme.bodySmall
-                            ?.copyWith(color: AppColors.primaryColor),
-                      )
-                    ],
+                  child: Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(Assets.icons.icLearnMore, height: 25,),
+                        2.w,
+                        Expanded(
+                          child: Text(
+                            maxLines: 2,
+                            'Узнать больше',
+                            style: textTheme.bodySmall
+                                ?.copyWith(
+                              fontSize: 10,
+                                color: AppColors.primaryColor),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -73,11 +85,14 @@ class AddFeedingWidget extends StatelessWidget {
                     children: [
                       SvgPicture.asset(Assets.icons.icCalendar),
                       5.w,
-                      Text(
-                        'Добавить вручную',
-                        style: textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.primaryColor),
+                      Expanded(
+                        child: Text(
+                          'Добавить вручную',
+                          style: textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: AppColors.primaryColor),
+                        ),
                       )
                     ],
                   ),

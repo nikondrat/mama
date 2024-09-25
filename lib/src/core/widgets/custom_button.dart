@@ -6,16 +6,18 @@ class CustomButton extends StatelessWidget {
   final Function()? onTap;
   final Widget? child;
   final String? title;
+  final Color? borderColor;
 
   final EdgeInsets? padding;
   final double? borderRadius;
 
   final Color? backgroundColor;
-  final Color? borderColor;
 
   final TextStyle? textStyle;
 
   final double? height;
+
+  final IconData? icon;
 
   const CustomButton({
     super.key,
@@ -27,35 +29,41 @@ class CustomButton extends StatelessWidget {
     this.padding,
     this.borderRadius,
     this.textStyle,
-    this.borderColor,
+    this.icon, this.borderColor,
   }) : assert(title != null || child != null);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+    final Widget child = this.child ??
+        AutoSizeText(
+          title!,
+          style: textStyle ??
+              textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600),
+        );
 
-    final button = ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            elevation: 0,
-            disabledBackgroundColor: AppColors.greyColor,
-            backgroundColor:
+    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+        elevation: 0,
+        disabledBackgroundColor: AppColors.greyColor,
+        backgroundColor:
             backgroundColor ?? AppColors.purpleLighterBackgroundColor,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                width: 2,
-                color: borderColor == null ? AppColors.purpleLighterBackgroundColor : borderColor!
-              ),
-              borderRadius: BorderRadius.circular(borderRadius ?? 8),
-            ),
-            minimumSize: Size.fromHeight(height ?? 48)),
-        onPressed: onTap,
-        child: child ??
-            AutoSizeText(
-              title!,
-              style: textStyle ?? textTheme.titleMedium,
-            ));
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: borderColor == null ?  backgroundColor ?? AppColors.purpleLighterBackgroundColor : borderColor!
+          ),
+          borderRadius: BorderRadius.circular(borderRadius ?? 8),
+        ),
+        minimumSize: Size.fromHeight(height ?? 48));
 
+    final button = icon != null
+        ? ElevatedButton.icon(
+            onPressed: onTap,
+            label: child,
+            style: buttonStyle,
+            icon: Icon(icon!),
+          )
+        : ElevatedButton(style: buttonStyle, onPressed: onTap, child: child);
     return padding != null ? Padding(padding: padding!, child: button) : button;
   }
 }
