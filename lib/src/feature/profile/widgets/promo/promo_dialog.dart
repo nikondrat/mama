@@ -84,43 +84,33 @@ class DialogWidget extends StatelessWidget {
                   Flexible(
                     flex: 1,
                     child: CustomButton(
-                      title: t.profile.apply,
+                      title: t.profile.promoErrorDialogBackButton,
                       backgroundColor: AppColors.redLighterBackgroundColor,
                       onTap: onTapExit,
-                      child: Text(
-                        t.profile.promoErrorDialogBackButton,
-                        style: titlesStyle.copyWith(
-                            color: AppColors.redColor,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      textStyle: titlesStyle.copyWith(
+                          color: AppColors.redColor,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   8.w,
                   Flexible(
                     flex: 1,
                     child: CustomButton(
-                      title: t.profile.apply,
+                      title: t.profile.promoErrorDialogContinueButton,
                       onTap: onTapContinue,
-                      child: Text(
-                        t.profile.promoErrorDialogContinueButton,
-                        style: titlesStyle.copyWith(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      textStyle: titlesStyle.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
               )
             else
               CustomButton(
-                title: t.profile.apply,
+                title: t.profile.promoDialogBackButton,
                 onTap: onTapExit,
-                child: Text(
-                  t.profile.promoDialogBackButton,
-                  style: titlesStyle.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w600),
-                ),
+                textStyle: titlesStyle.copyWith(
+                    color: AppColors.primaryColor, fontWeight: FontWeight.w600),
               ),
           ],
         ),

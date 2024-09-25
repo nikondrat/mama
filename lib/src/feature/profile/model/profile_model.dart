@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import 'package:mama/src/data.dart';
+import 'package:mama/src/core/core.dart';
 
-=======
->>>>>>> dev
 class ChildInfo {
   final String name;
   final String? image;

@@ -50,7 +50,7 @@ class _PromoScreenState extends State<PromoScreen> {
         builder: (context) => Dialog(
           child: DialogWidget(
             item: giftDialog,
-            onTap: () {
+            onTapExit: () {
               context.pop();
             },
           ),

@@ -5,9 +5,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 part 'auth_view.g.dart';
 
 class AuthViewStore extends _AuthViewStore with _$AuthViewStore {
-  AuthViewStore({
-    required super.restClient,
-  });
+  AuthViewStore();
 }
 
 abstract class _AuthViewStore with Store {
@@ -59,16 +57,5 @@ abstract class _AuthViewStore with Store {
   @action
   void setAgree(bool value) {
     isAgree = value;
-  }
-
-  @action
-  void sendCode() {
-    if (formGroup.valid) {
-      restClient.post(Endpoint().sendCode, body: {
-        'phone': phone.value,
-      });
-    } else {
-      formGroup.markAllAsTouched();
-    }
   }
 }
