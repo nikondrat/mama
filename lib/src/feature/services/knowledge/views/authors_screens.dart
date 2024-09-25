@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mama_and_co/features/authors/presentation/widgets/authors_widgets.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/authors_widgets.dart';
 
 class AuthorsScreen extends StatelessWidget {
   const AuthorsScreen({super.key});

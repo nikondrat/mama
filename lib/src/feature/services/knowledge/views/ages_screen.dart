@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mama_and_co/features/ages/presentation/widgets/ages_widgets.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/ages_widgets.dart';
 
 class AgesScreen extends StatelessWidget {
   const AgesScreen({super.key});
