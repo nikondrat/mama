@@ -17,30 +17,36 @@ abstract class _AppThemeStore with Store {
             fontFamily: 'SFProText',
             useMaterial3: true,
             textTheme: TextTheme(
-                headlineSmall: GoogleFonts.nunito(
-                    fontSize: 32, fontWeight: FontWeight.w700),
-                titleMedium: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                ),
-                titleLarge: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                ),
-                labelLarge: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                ),
-                bodyMedium: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                ),
-                bodySmall: TextStyle(
-                  fontSize: 17,
-                  color: AppColors.greyBrighterColor,
-                )),
+              headlineSmall:
+                  GoogleFonts.nunito(fontSize: 32, fontWeight: FontWeight.w700),
+              titleMedium: TextStyle(
+                color: AppColors.primaryColor,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
+              titleLarge: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.w700,
+              ),
+              labelLarge: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
+              ),
+              bodyMedium: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+              ),
+              bodySmall: TextStyle(
+                fontSize: 17,
+                color: AppColors.greyBrighterColor,
+              ),
+              labelSmall: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                color: AppColors.greyBrighterColor,
+              ),
+            ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
               primary: AppColors.primaryColor,

@@ -26,7 +26,7 @@ abstract class AppViews {
 
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
-
+  static const chats = 'chats';
   static const profile = 'profile';
 }
 
@@ -35,7 +35,7 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   // initialLocation: '/',
-  initialLocation: _Paths.profile,
+  initialLocation: _Paths.chats,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -125,6 +125,11 @@ final GoRouter router = GoRouter(
       path: _Paths.profile,
       name: AppViews.profile,
       builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: _Paths.chats,
+      name: AppViews.chats,
+      builder: (context, state) => const ChatsScreen(),
     )
   ],
 );
@@ -149,4 +154,5 @@ abstract class _Paths {
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
 
   static const profile = '/${AppViews.profile}';
+  static const chats = '/${AppViews.chats}';
 }
