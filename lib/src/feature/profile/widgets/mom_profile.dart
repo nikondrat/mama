@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
-import 'body/body_group.dart';
-import 'body/items/body_item.dart';
 
 class MomsProfile extends StatefulWidget {
   final MomInfo mom;
@@ -128,18 +126,16 @@ class _MomsProfileState extends State<MomsProfile> {
               ),
               32.h,
               CustomButton(
+                isSmall: false,
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PromoScreen()),
-                  );
+                  context.pushNamed(AppViews.promoView);
                 },
                 title: t.profile.addGiftCodeButtonTitle,
               ),
               8.h,
               CustomButton(
                 onTap: () {},
+                isSmall: false,
                 icon: Icons.language,
                 title: t.profile.settingsAccountButtonTitle,
               ),

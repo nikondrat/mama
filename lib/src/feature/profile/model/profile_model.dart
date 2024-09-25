@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import 'package:mama/src/data.dart';
 
+=======
+>>>>>>> dev
 class ChildInfo {
   final String name;
   final String? image;

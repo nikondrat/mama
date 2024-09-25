@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:mama/src/data.dart';
 import 'package:meta/meta.dart';
-import 'package:mama/src/core/components/rest_client/rest_client.dart';
 
 /// Rest client that uses [Dio] as HTTP library.
 final class RestClientDio extends RestClientBase {
-  /// {@macro rest_client_dio}
   RestClientDio({required super.baseUrl, required Dio dio}) : _dio = dio;
 
   final Dio _dio;
@@ -15,16 +14,17 @@ final class RestClientDio extends RestClientBase {
   Future<Map<String, Object?>?> sendRequest<T extends Object>({
     required String path,
     required String method,
-    Map<String, Object?>? body,
+    Object? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
+    String? contentType,
   }) async {
     try {
       final uri = buildUri(path: path, queryParams: queryParams);
       final options = Options(
         headers: headers,
         method: method,
-        contentType: 'application/json',
+        contentType: contentType ?? 'application/json',
         responseType: ResponseType.json,
       );
 
@@ -123,9 +123,10 @@ final class RestClientDio extends RestClientBase {
   @override
   Future<Map<String, Object?>?> post(
     String path, {
-    required Map<String, Object?> body,
+    required Object? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
+    String? contentType,
   }) =>
       sendRequest(
         path: path,
@@ -133,6 +134,7 @@ final class RestClientDio extends RestClientBase {
         body: body,
         headers: headers,
         queryParams: queryParams,
+        contentType: contentType,
       );
 
   @override

@@ -158,7 +158,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFF),
+      backgroundColor: AppColors.lightBlue,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -168,7 +168,9 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
               SizedBox(height: phonePadding.top + 10),
 
               /// #custom app bar
-              const CustomAppBar(),
+              CustomAppBar(
+                title: t.services.sleepMusic.title,
+              ),
               const SizedBox(height: 10),
 
               /// #tabs(selection options)

@@ -4,4 +4,4 @@ export 'settings/settings.dart';
 export 'services/services.dart';
 export 'auth/auth.dart';
 export 'profile/profile.dart';
-export 'chat/chat.dart';
+export 'trackers/trackers.dart';

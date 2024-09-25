@@ -1,187 +1,165 @@
-part of 'register_fill_name_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/data.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
   const RegisterFillAnotherBabyInfoScreen({super.key});
 
   @override
-  State<RegisterFillAnotherBabyInfoScreen> createState() => _RegisterFillAnotherBabyInfoScreenState();
+  State<RegisterFillAnotherBabyInfoScreen> createState() =>
+      _RegisterFillAnotherBabyInfoScreenState();
 }
 
-class _RegisterFillAnotherBabyInfoScreenState extends State<RegisterFillAnotherBabyInfoScreen> {
-
-  final registerState = RegisterState();
-  final weightController = TextEditingController();
-  final heightController = TextEditingController();
-  final headCircumference = TextEditingController();
+class _RegisterFillAnotherBabyInfoScreenState
+    extends State<RegisterFillAnotherBabyInfoScreen> {
   var isFull = false;
 
-
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
 
-    return Observer(
-      builder: (context) {
-        if(registerState.state == RegisterStateAction.savedSuccess){
-          Future.microtask(()=> context.pushNamed(AppViews.registerInfoAboutChildbirth));
-        }
-        return StartScreenBody(
-          child: SingleChildScrollView(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  const AuthSplashIcon(),
-                  const SizedBox(height: 50,),
-                  _TitleWidget(text: 'Алла-Виктория, ${t.register.beautifulName} 🙂'),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: _TitleWidget(text: t.register.rememberWhenShe),
-                  ),
-                  const SizedBox(height: 10),
-                  _RowContainer(
-                    controller: weightController,
-                    title: t.register.birthWeight,
-                    onChange: (String value) {
+    final AuthViewStore store = context.watch();
 
-                    },),
-                  _RowContainer(
-                    controller: heightController,
-                    title: t.register.heightAtBirth,
-                    onChange: (String value) {
-
-                    },),
-                  _RowContainer(
-                    controller: headCircumference,
-                    title: t.register.headCircumference,
-                    onChange: (String value) {
-                      setState(() {
-                        if(value.isNotEmpty){
-                          isFull = true;
-                        }
-                      });
-                    },),
-                  const SizedBox(height: 20),
-                  _TextWidget(
-                    text: isFull
-                        ? t.register.thankYou
-                        : t.register.ifInconvenientToSearch,),
-                  const Spacer(),
-                  CustomButton(
-                    onTap: (){
-                      registerState.fillBabyDetailInfo(
-                        height: heightController.text,
-                        headCircumference: headCircumference.text,
-                        weight: weightController.text,
-                      );
-
-                    },
-                      child: registerState.state == RegisterStateAction.progress
-                          ? const CircularProgressIndicator(color: AppColors.primaryColor,)
-                          : Text(t.register.next,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17,
-                          color: AppColors.primaryColor
-                        ),)),
-                  const SizedBox(height: 40)
-                ],
-              ),
-            ),
-          ),
-        );
-      }
+    final InputBorder inputBorder = OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(6),
     );
-  }
-}
+    final EdgeInsets inputPadding =
+        EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
-class _RowContainer extends StatefulWidget {
-  final TextEditingController controller;
-  final String title;
-  final Function(String value) onChange;
-  const _RowContainer({super.key, required this.controller, required this.title, required this.onChange});
+    final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
+        mask: '#,## ${t.profile.unitMeasureWeight}',
+        filter: {'#': RegExp('[0-9]')},
+        type: MaskAutoCompletionType.eager);
 
-  @override
-  State<_RowContainer> createState() => _RowContainerState();
-}
+    final MaskTextInputFormatter sizeFormatter = MaskTextInputFormatter(
+        mask: '## ${t.profile.unitMeasureHeight}',
+        filter: {'#': RegExp('[0-9]')},
+        type: MaskAutoCompletionType.eager);
 
-class _RowContainerState extends State<_RowContainer> {
+    const TextAlign inputTextAlign = TextAlign.center;
 
-  var inProgress = false;
+    final inputHintStyle = textTheme.bodyMedium?.copyWith(
+        color: AppColors.greyBrighterColor, fontWeight: FontWeight.w400);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 3,
-            child: Text(widget.title ,
-              style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w400
-              ),),
+    return Scaffold(
+      body: BodyDecoration(
+        backgroundImage: DecorationImage(
+          image: AssetImage(
+            Assets.images.authDecor.path,
           ),
-          const Spacer(),
-          Container(
-            width: 80,
-            height: 36,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: inProgress ? AppColors.primaryColor : AppColors.purpleLighterBackgroundColor
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                onChanged: widget.onChange,
-                onTap: (){
-                  setState(() {
-                    inProgress = true;
-                  });
-                },
-                controller: widget.controller,
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                    color: inProgress ? Colors.white : Colors.black
-                ),
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 17,
-                      color: inProgress ? Color(0xFFF0F2F7) : AppColors.greyColor
+          alignment: Alignment.topLeft,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              const Spacer(),
+              TitleWidget(
+                  text:
+                      '${store.child.firstName}, ${t.register.beautifulName} 🙂'),
+              8.h,
+              TitleWidget(
+                  text: t.register.rememberWhenWasBorn(
+                      context: GenderContext.values[store.child.gender.index])),
+              10.h,
+              ReactiveForm(
+                formGroup: store.formGroup.control('child') as FormGroup,
+                child: BodyGroup(title: '', items: [
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          inputHint: t.profile.inputHint,
+                          inputHintStyle: inputHintStyle,
+                          controlName: 'weight',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: weightFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.weightTitle,
+                        )),
                   ),
-                  hintText: t.register.enter,
-                  border: InputBorder.none,
-                ),
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          inputHint: t.register.enter,
+                          inputHintStyle: inputHintStyle,
+                          controlName: 'height',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: sizeFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.heightTitle,
+                        )),
+                  ),
+                  BodyItemWidget(
+                    item: ItemWithInput(
+                        inputItem: InputItem(
+                          inputHintStyle: inputHintStyle,
+                          inputHint: t.register.enter,
+                          controlName: 'headCircumference',
+                          isCollapsed: true,
+                          textAlign: inputTextAlign,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: sizeFormatter,
+                          border: inputBorder,
+                          contentPadding: inputPadding,
+                          backgroundColor:
+                              AppColors.purpleLighterBackgroundColor,
+                        ),
+                        bodyItem: CustomBodyItem(
+                          title: t.profile.headCircumferenceTitle,
+                        )),
+                  ),
+                  20.h,
+                  ReactiveFormConsumer(builder: (context, form, child) {
+                    final isValid = form.valid;
+
+                    return Center(
+                      child: Text(
+                          isValid
+                              ? t.register.thankYou
+                              : t.register.ifInconvenientToSearch,
+                          textAlign: TextAlign.center,
+                          style: textTheme.labelLarge?.copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w400)),
+                    );
+                  }),
+                ]),
               ),
-            ),
+              const Spacer(),
+              CustomButton(
+                  isSmall: false,
+                  title: t.register.next,
+                  onTap: () {
+                    store.child.setWeight(double.tryParse(store.weight.value));
+                    store.child.setHeight(double.tryParse(store.height.value));
+                    store.child.setHeadCircumference(
+                        double.tryParse(store.headCircumference.value));
+                    context.pushNamed(AppViews.registerInfoAboutChildbirth);
+                  }),
+              40.h
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
-
-class _TextWidget extends StatelessWidget {
-  final String text;
-  const _TextWidget({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Text(text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: AppColors.primaryColor
-          )),
-    );
-  }
-}
-
-

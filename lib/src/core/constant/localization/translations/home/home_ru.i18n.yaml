@@ -1,2 +1,128 @@
 name: мама
 title: Проект мама
+
+bornMale:
+  title: "Родился!"
+
+bornFemale:
+  title: "Родилась!"
+
+firstWeek:
+  title: "Первая неделя"
+
+twoWeeks:
+  title: "Две недели"
+
+threeWeeks:
+  title: "Три недели"
+
+alreadyMonth:
+  title: "Уже месяц"
+
+twoMonths:
+  title: "Два месяца"
+
+threeMonths:
+  title: "Три месяца"
+
+fourMonths:
+  title: "Четыре месяца"
+
+fiveMonths:
+  title: "Пять месяцев"
+
+soonSixMonths:
+  title: "Скоро полгода"
+
+alreadySixMonths:
+  title: "Уже полгода"
+
+soonBirthday:
+  title: "Скоро День Рождения"
+
+happyBirthday:
+  title: "С Днем Рождения!"
+
+soonOneAndHalfYear:
+  title: "Скоро полтора года"
+
+oneAndHalfHear:
+  title: "Полтора года"
+
+medicine:
+  title: "Лекарство!"
+
+gettingVaccinatedSoon:
+  title: "Скоро делать прививку"
+
+everythingFine:
+  title: "Всё хорошо"
+
+goodAfternoon:
+  title: "Добрый день!"
+
+todayIsFridaySeptemberTwentySecond:
+  title: "Сегодня пятница 22 сентября"
+
+FiveMonthsEighteenDays:
+  title: "5 месяцев 18 дней"
+
+orTwentyFourWeeks:
+  title: "или 24 недели"
+
+supportChats:
+  title: "Чаты поддержки"
+
+onlineConsultation:
+  title: "Онлайн-консультации"
+
+progressDiary:
+  title: "Дневники развития"
+
+musicForSleep:
+  title: "Музыка для сна"
+
+knowledgeCenter:
+  title: "Центр знаний"
+
+current:
+  title: "Актуальное"
+
+sixMonths:
+  title: "6 месяцев"
+
+childDevelopmentAtSixMonths:
+  title: "Развитие ребенка в 6 месяцев"
+
+babyFromSixToSevenMonthsWhatToDoWithHim:
+  title: "Ребенок от 6 до 7 месяцев, чем с ним заниматься"
+
+whatCanBabyDoAtSixMonths:
+  title: "Что умеет младенец в полгода"
+
+forYou:
+  title: "Для вас"
+
+cesarean:
+  title: "кесарево"
+
+twoChildren:
+  title: "2 ребенка"
+
+chest:
+  title: "грудное"
+
+recoveryAfterCesareanSection:
+  title: "Восстановление после кесарева сечения"
+
+howToMakeChildrenInOneFamilyFriends:
+  title: "Как подружить детей в одной семье"
+
+debunkingFourteenBreastfeedingMyths:
+  title: "Развенчание 14 мифов о грудном вскармливании"
+
+articleTitleOne:
+  title: Развитие ребенка в 6 месяцев
+
+articleTitleTwo:
+  title: Восстановление после кесарева сечения

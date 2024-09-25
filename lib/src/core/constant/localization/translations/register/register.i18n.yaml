@@ -35,3 +35,7 @@ heightAtBirth: Height at birth
 birthWeight: Birth weight
 rememberWhenShe: Do you remember what she was like when she was first born?
 beautifulName: beautiful name
+
+rememberWhenWasBorn(context=GenderContext):
+  male: Do you remember what he was like when he was first born?
+  female: Do you remember what she was like when she was first born?

@@ -52,8 +52,9 @@ abstract class _AppThemeStore with Store {
               primary: AppColors.primaryColor,
             )),
         darkTheme = FlexThemeData.dark(
-            useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(seedColor: seed));
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: seed),
+        );
 
   /// The type of theme to use.
   @observable
