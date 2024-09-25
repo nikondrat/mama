@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatefulWidget {
-  const ProfileWidget({super.key});
+  final Alignment alignment;
+  const ProfileWidget({
+    super.key,
+    this.alignment = Alignment.centerRight,
+  });
 
   @override
   State<ProfileWidget> createState() => _ProfileWidgetState();
@@ -24,6 +28,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    const double startPos = 25;
+    const double endPos = 0;
+
+    final firstCircle = _isFirstCircleOnTop ? startPos : endPos;
+    final secondCircle = _isFirstCircleOnTop ? endPos : startPos;
+
+    final bool isOnRight = widget.alignment == Alignment.centerRight;
+
     return SizedBox(
       height: 50,
       child: Stack(
@@ -32,7 +44,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           // Нижний кружок
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
-            right: _isFirstCircleOnTop ? 25 : 0, // Позиция по горизонтали
+            left: !isOnRight ? firstCircle : null,
+            right: isOnRight ? firstCircle : null,
             child: GestureDetector(
               onTap: _toggleCircles,
               child: AnimatedSwitcher(
@@ -50,7 +63,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           // Верхний кружок
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
-            right: _isFirstCircleOnTop ? 0 : 25, // Позиция по горизонтали
+            left: !isOnRight ? secondCircle : null,
+            right: isOnRight ? secondCircle : null, // Позиция по горизонтали
             child: GestureDetector(
               onTap: _toggleCircles,
               child: AnimatedSwitcher(

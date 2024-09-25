@@ -135,7 +135,9 @@ class _MomsProfileState extends State<MomsProfile> {
               CustomButton(
                 onTap: () {},
                 isSmall: false,
-                icon: Icons.language,
+                icon: IconModel(
+                  icon: Icons.language,
+                ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
               ChildItems(childs: [

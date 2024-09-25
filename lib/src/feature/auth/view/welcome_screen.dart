@@ -89,6 +89,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               swiperController.move(++initialPage);
                             },
                           );
+                        } else {
+                          router.pushReplacementNamed(AppViews.homeScreen);
                         }
                       },
                     ),

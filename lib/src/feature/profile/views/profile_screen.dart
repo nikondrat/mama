@@ -97,7 +97,9 @@ class ProfileScreen extends StatelessWidget {
                   child: CustomButton(
                     title: t.profile.feedbackButtonTitle,
                     onTap: () {},
-                    icon: Icons.language,
+                    icon: IconModel(
+                      icon: Icons.language,
+                    ),
                   ),
                 ),
                 8.h,

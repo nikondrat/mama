@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final Widget? leading;
   final double? height;
-  final String title;
+  final String? title;
   final Widget? action;
 
   final TabController? tabController;
@@ -11,7 +12,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const CustomAppBar(
       {super.key,
-      required this.title,
+      this.leading,
+      this.title,
       this.height,
       this.tabs,
       this.tabController,
@@ -32,19 +34,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: [
-                        CustomBackButton(),
-                      ],
-                    ),
+                    child: leading ??
+                        Row(
+                          children: [
+                            CustomBackButton(),
+                          ],
+                        ),
                   ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      title,
-                      style: textTheme.titleLarge,
+                  if (title != null)
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        title!,
+                        style: textTheme.titleLarge,
+                      ),
                     ),
-                  ),
                   Align(
                     alignment: Alignment.centerRight,
                     child: action ??

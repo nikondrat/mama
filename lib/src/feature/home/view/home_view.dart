@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/home/widgets/widgets.dart';
+import 'package:mama/src/feature/home/home.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final ColorScheme colorScheme = themeData.colorScheme;
+
     return Scaffold(
+      appBar: CustomAppBar(
+        leading: ProfileWidget(
+          alignment: Alignment.centerLeft,
+        ),
+        action: ProfileWidget(),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
@@ -43,34 +52,37 @@ class HomeView extends StatelessWidget {
                         Stack(
                           clipBehavior: Clip.none,
                           children: [
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                color:
-                                    AppColors.yellowChildStatusBackgroundColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(16)),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.whiteColor.withOpacity(0.5),
-                                    AppColors.blackColor.withOpacity(0.5),
-                                  ],
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0).copyWith(top: 24),
-                                child: Text(
-                                  t.home.soonSixMonths.title,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
+                            ShaderMask(
+                                shaderCallback: (bounds) {
+                                  return LinearGradient(
+                                    begin: Alignment.center,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      AppColors.whiteColor,
+                                      AppColors.yellowColor,
+                                    ],
+                                  ).createShader(bounds);
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: AppColors.yellowColor,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(16)),
                                   ),
-                                ),
-                              ),
-                            ),
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.all(8.0).copyWith(top: 24),
+                                    child: Text(
+                                      t.home.soonSixMonths.title,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                )),
 
-                            /// #icon
+                            //                 /// #icon
                             Positioned(
                               top: -40,
                               child: Text(
@@ -102,9 +114,12 @@ class HomeView extends StatelessWidget {
                       ],
                     ),
                   ),
+                  8.w,
 
-                  /// #baby image, edit button
+                  //       /// #baby image, edit button
                   Stack(
+                    clipBehavior: Clip.none,
+                    alignment: Alignment.center,
                     children: [
                       /// #
                       Expanded(
@@ -113,14 +128,27 @@ class HomeView extends StatelessWidget {
                           image: AssetImage(Assets.images.imgKid.path),
                         ),
                       ),
+                      Positioned(
+                          bottom: -30,
+                          child: FloatingActionButton(
+                            onPressed: () {},
+                            backgroundColor: colorScheme.primary,
+                            shape: CircleBorder(),
+                            child: IconWidget(
+                                model: IconModel(
+                              icon: Icons.edit,
+                              color: colorScheme.onPrimary,
+                            )),
+                          ))
                     ],
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 26),
+            // SizedBox(height: 26),
+            26.h,
 
-            /// #services
+            // /// #services
             CustomBackground(
               height: 515,
               padding: 16,
@@ -134,7 +162,7 @@ class HomeView extends StatelessWidget {
                         imagePath: Assets.images.imgChat4x.path,
                         text: t.home.supportChats.title,
                       ),
-                      SizedBox(width: 8),
+                      8.w,
 
                       /// #
                       CustomServiceBox(
@@ -143,7 +171,7 @@ class HomeView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  8.h,
 
                   /// #custom service box
                   Row(
@@ -172,9 +200,10 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            16.h,
+            // SizedBox(height: 16),
 
-            /// #current
+            // /// #current
             CustomBackground(
               height: null,
               padding: 0,
@@ -218,56 +247,56 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            // SizedBox(height: 16),
+            16.h,
 
-            /// #for you
+            // /// #for you
             CustomBackground(
-              height: null,
-              padding: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 16),
+                height: null,
+                padding: 0,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 16),
 
-                  /// #article category text
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(
-                      t.home.forYou.title,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
+                      /// #article category text
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          t.home.forYou.title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
+                      SizedBox(height: 16),
 
-                  /// #articles
-                  SizedBox(
-                    height: 220,
-                    child: ListView.separated(
-                      itemCount: 10,
-                      scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      itemBuilder: (context, index) {
-                        return ArticleBox(
-                          imagePath: Assets.images.imgKidOne4x.path,
-                          articleCategory: t.home.cesarean.title,
-                          articleTitle: t.home.articleTitleTwo.title,
-                        );
-                      },
-                      separatorBuilder: (context, index) => SizedBox(width: 8),
-                    ),
-                  ),
-
-                  SizedBox(height: 24),
-                ],
-              ),
-            ),
-            SizedBox(height: 16),
+                      /// #articles
+                      SizedBox(
+                        height: 220,
+                        child: ListView.separated(
+                          itemCount: 10,
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          itemBuilder: (context, index) {
+                            return ArticleBox(
+                              imagePath: Assets.images.imgKidOne4x.path,
+                              articleCategory: t.home.cesarean.title,
+                              articleTitle: t.home.articleTitleTwo.title,
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                              SizedBox(width: 8),
+                        ),
+                      ),
+                    ])),
+            16.h
+            //       SizedBox(height: 24),
           ],
         ),
       ),
+      // SizedBox(height: 16),
     );
   }
 }

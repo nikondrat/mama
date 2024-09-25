@@ -43,6 +43,8 @@ abstract class AppColors {
   static const Color greenBrighterBackgroundColor = Color(0xFF93DD91);
   static const Color learnMoreColor = Color(0xFFF8FAFF);
 
+  static const Color yellowColor = Color(0xFFFFDF6B);
+
   static const Color f8faff = Color(0xFFF8FAFF);
 
   static const Color midnightPurple = Color(0xFF1E0F30);
