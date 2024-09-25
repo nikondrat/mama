@@ -120,7 +120,7 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: 26),
 
-            /// #
+            /// #services
             CustomBackground(
               height: 515,
               padding: 16,
@@ -174,77 +174,97 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            /// #
+            /// #current
             CustomBackground(
               height: null,
-              padding: 16,
+              padding: 0,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// #
-                  Text(
-                    t.home.current.title,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-
-                  /// #
                   SizedBox(height: 16),
 
-                  /// #
+                  /// #article category text
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      t.home.current.title,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+
+                  /// #articles
                   SizedBox(
                     height: 220,
                     child: ListView.separated(
                       itemCount: 10,
                       scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.symmetric(horizontal: 16),
                       itemBuilder: (context, index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            /// #
-                            Image(
-                              width: 165,
-                              height: 165,
-                              image: AssetImage(Assets.images.imgMomOne4x.path),
-                            ),
-
-                            /// #
-                            SizedBox(
-                              width: 165,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: AppColors.blackColor.withOpacity(0.1),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(16),
-                                    bottomRight: Radius.circular(16),
-                                  ),
-                                ),
-                                child: Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8)
-                                        .copyWith(top: 4),
-                                    child: Text(
-                                      'Развитие ребенка в 6 месяцев',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                        return ArticleBox(
+                          imagePath: Assets.images.imgMomOne4x.path,
+                          articleCategory: t.home.sixMonths.title,
+                          articleTitle: t.home.articleTitleOne.title,
                         );
                       },
                       separatorBuilder: (context, index) => SizedBox(width: 8),
                     ),
                   ),
+
+                  SizedBox(height: 24),
                 ],
               ),
             ),
+            SizedBox(height: 16),
+
+            /// #for you
+            CustomBackground(
+              height: null,
+              padding: 0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 16),
+
+                  /// #article category text
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      t.home.forYou.title,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+
+                  /// #articles
+                  SizedBox(
+                    height: 220,
+                    child: ListView.separated(
+                      itemCount: 10,
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      itemBuilder: (context, index) {
+                        return ArticleBox(
+                          imagePath: Assets.images.imgKidOne4x.path,
+                          articleCategory: t.home.cesarean.title,
+                          articleTitle: t.home.articleTitleTwo.title,
+                        );
+                      },
+                      separatorBuilder: (context, index) => SizedBox(width: 8),
+                    ),
+                  ),
+
+                  SizedBox(height: 24),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
           ],
         ),
       ),
