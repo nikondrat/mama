@@ -1,3 +1,5 @@
+import 'package:mama/src/data.dart';
+
 class ChildInfo {
   final String name;
   final String? image;
@@ -32,7 +34,7 @@ class MomInfo {
   final String phone;
   final String? mail;
   final String? notes;
-  final List<ChildInfo> childs;
+  final List<ChildModel> childs;
 
   MomInfo(
     this.name,

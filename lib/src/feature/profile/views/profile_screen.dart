@@ -69,19 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     null,
                     Assets.images.imgProfile.path,
                     [
-                      ChildInfo(
-                        name: 'Алла Виктория',
-                        dateBirth: DateTime(2023, 4, 2),
-                        gender: Gender.female,
-                        twins: false,
-                        weight: 3.56,
-                        height: 49,
-                        headCircumference: 35,
-                        birth: Birth.natural,
-                        birthComplications: false,
-                        notes: null,
-                        image: Assets.images.imgProfile.path,
-                      )
+                      ChildModel(id: '', firstName: 'Виктория', secondName: ''),
                     ],
                   ),
                 ),

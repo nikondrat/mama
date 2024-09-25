@@ -156,10 +156,7 @@ class _MomsProfileState extends State<MomsProfile> {
                     Opacity(
                       opacity: !subscribed ? 0.25 : 1,
                       child: ChildItems(
-                        childs: [
-                          ChildModel(
-                              id: '', firstName: 'Виктория', secondName: ''),
-                        ],
+                        childs: mom.childs,
                       ),
                     ),
                     if (!subscribed) SubscribeBlockItem(),
