@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/core/widgets/bottom_app_bar.dart';
-import 'package:mama/src/feature/chat/widgets/widgets.dart';
 
 class ChatsScreen extends StatefulWidget {
   // final MomInfo mom;
@@ -20,53 +17,23 @@ class _ChatsScreenState extends State<ChatsScreen> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
-    return Scaffold(
-      backgroundColor: AppColors.purpleLighterBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: CircleAvatar(
-          radius: 54,
-          backgroundImage: AssetImage(
-            mom.image!,
-          ),
-        ),
-      ),
-      body: ListView(
-        children: [
-          CardWithoutMargin(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Группы',
-                  textAlign: TextAlign.center,
-                  style: textTheme.labelLarge!
-                      .copyWith(color: AppColors.greyBrighterColor),
-                ),
-                8.h,
-                Flexible(
-                  child: ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: 4,
-                    separatorBuilder: (BuildContext context, int index) =>
-                        Divider(
-                      indent: MediaQuery.of(context).size.width * 0.15,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return GroupChatItem();
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          CardWithoutMargin(
-            child: Column(
-              children: [
-                ListView.separated(
+
+    return ListView(
+      children: [
+        CardWithoutMargin(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Группы',
+                textAlign: TextAlign.center,
+                style: textTheme.labelLarge!
+                    .copyWith(color: AppColors.greyBrighterColor),
+              ),
+              8.h,
+              Flexible(
+                child: ListView.separated(
                   physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
@@ -76,15 +43,32 @@ class _ChatsScreenState extends State<ChatsScreen> {
                     indent: MediaQuery.of(context).size.width * 0.15,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    return ChatItem();
+                    return GroupChatItem();
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-      bottomNavigationBar: BottomBar(),
+        ),
+        CardWithoutMargin(
+          child: Column(
+            children: [
+              ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: 4,
+                separatorBuilder: (BuildContext context, int index) => Divider(
+                  indent: MediaQuery.of(context).size.width * 0.15,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return ChatItem();
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
