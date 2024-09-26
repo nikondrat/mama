@@ -1,74 +1,52 @@
-part of 'register_fill_name_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_toggle_button/flutter_toggle_button.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+import '../../../data.dart';
 
-class RegisterBabyNameScreen extends StatefulWidget {
+class RegisterBabyNameScreen extends StatelessWidget {
   const RegisterBabyNameScreen({super.key});
 
   @override
-  State<RegisterBabyNameScreen> createState() => _RegisterBabyNameScreenState();
-}
-
-class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
-  final nameController = TextEditingController();
-  final registerState = RegisterState();
-  var nameTextFieldIsNotEmpty = false;
-  var selected = [true, false];
-  var gender = 0;
-
-  @override
   Widget build(BuildContext context) {
-    return StartScreenBody(
-      child: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
+    final AuthViewStore store = context.watch();
+
+    return Scaffold(
+      body: BodyDecoration(
+        backgroundImage: DecorationImage(
+          image: AssetImage(
+            Assets.images.authDecor.path,
+          ),
+          alignment: Alignment.topLeft,
+        ),
+        child: ReactiveForm(
+          formGroup: store.formGroup,
           child: Column(
             children: [
-              const AuthSplashIcon(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.17,
-              ),
-              _TitleWidget(text: t.register.whatIsBabyName),
-              const SizedBox(height: 8),
+              const Spacer(),
+              TitleWidget(text: t.register.whatIsBabyName),
+              8.h,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Text(
                   textAlign: TextAlign.center,
                   t.register.isThereMoreChild,
-                  style: const TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400),
+                  style: textTheme.labelLarge?.copyWith(
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
-              FillTextField(
-                controller: nameController,
+              20.h,
+              RegisterInputInfo(
                 isName: true,
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      if (value.isNotEmpty) {
-                        nameTextFieldIsNotEmpty = true;
-                      } else {
-                        nameTextFieldIsNotEmpty = false;
-                      }
-                    });
-                  },
-                  controller: nameController,
-                  style: const TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w700),
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: t.register.childName,
-                      hintStyle: const TextStyle(
-                          color: AppColors.greyBrighterColor,
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700)),
-                ),
+                controlName: 'childName',
+                hintText: t.register.childName,
               ),
-              const SizedBox(height: 20),
+              20.h,
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FlutterToggleButton(
@@ -81,38 +59,41 @@ class _RegisterBabyNameScreenState extends State<RegisterBabyNameScreen> {
                   borderRadius: 6,
                   outerContainerColor: const Color(0xFFE1E6FF),
                   onTap: (index) {
-                    setState(() {
-                      gender = index;
-                    });
+                    store.child.setGender(ChildGender.values[index]);
+                    // registerBabyName.setGender(index);
                   },
-                  items: [t.register.girl, t.register.boy],
+                  items: [
+                    t.profile.sex(context: GenderContext.female),
+                    t.profile.sex(context: GenderContext.male),
+                  ],
                 ),
               ),
               const Spacer(),
-              CustomButton(
-                onTap: nameTextFieldIsNotEmpty
-                    ? () {
-                        registerState.fillBabyName(
-                          name: nameController.text,
-                          gender: gender,
-                        );
-                        context.pushNamed(AppViews.registerFillAnotherBabyInfo);
-                      }
-                    : null,
-                child: registerState.state == RegisterStateAction.progress
-                    ? const CircularProgressIndicator(
-                        color: AppColors.primaryColor)
-                    : Text(
-                        t.register.next,
-                        style: TextStyle(
-                            color: nameTextFieldIsNotEmpty
-                                ? AppColors.primaryColor
-                                : AppColors.greyBrighterColor,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600),
-                      ),
-              ),
-              const SizedBox(height: 50)
+              ReactiveValueListenableBuilder(
+                  formControlName: 'childName',
+                  builder: (context, control, child) {
+                    final bool isNameValid = control.valid;
+
+                    return CustomButton(
+                      isSmall: false,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      // contentPadding:
+                      //     const EdgeInsets.symmetric(horizontal: 16),
+                      title: t.register.next,
+                      textStyle: textTheme.bodyMedium?.copyWith(
+                          color: isNameValid
+                              ? AppColors.primaryColor
+                              : AppColors.greyBrighterColor),
+                      onTap: isNameValid
+                          ? () {
+                              store.child.setFirstName(control.value as String);
+                              context.pushNamed(
+                                  AppViews.registerFillAnotherBabyInfo);
+                            }
+                          : null,
+                    );
+                  }),
+              50.h
             ],
           ),
         ),

@@ -8,6 +8,7 @@ base class Dependencies {
     required this.sharedPreferences,
     required this.settingsStore,
     required this.errorTrackingManager,
+    required this.restClient,
   });
 
   /// [SharedPreferences] instance, used to store Key-Value pairs.
@@ -18,6 +19,9 @@ base class Dependencies {
 
   /// [ErrorTrackingManager] instance, used to report errors.
   final ErrorTrackingManager errorTrackingManager;
+
+  /// [RestClient] instance, used to make requests.
+  final RestClient restClient;
 }
 
 /// Result of initialization

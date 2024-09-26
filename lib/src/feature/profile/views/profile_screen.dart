@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -10,7 +11,10 @@ class ProfileScreen extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
 
     final TextStyle? titlesStyle = textTheme.bodyMedium;
-    final TextStyle titlesColoredStyle = textTheme.labelLarge!;
+    final TextStyle titlesColoredStyle = textTheme.labelLarge!.copyWith(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+    );
 
     final TextStyle helpersStyle = textTheme.bodySmall!.copyWith(
       fontSize: 10,
@@ -94,7 +98,9 @@ class ProfileScreen extends StatelessWidget {
                   child: CustomButton(
                     title: t.profile.feedbackButtonTitle,
                     onTap: () {},
-                    icon: Icons.language,
+                    icon: IconModel(
+                      icon: Icons.language,
+                    ),
                   ),
                 ),
                 8.h,
@@ -119,9 +125,9 @@ class ProfileScreen extends StatelessWidget {
               top: 50.0,
               left: 0.0,
               child: ButtonLeading(
-                labelStyle: titlesStyle,
+                labelStyle: titlesStyle!.copyWith(fontWeight: FontWeight.w400),
                 onTapButton: () {
-                  //! добавить tap back button
+                  context.pop();
                 },
               ),
             ),

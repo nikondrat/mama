@@ -1,143 +1,83 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/auth/state/register_state/register_state.dart';
-import 'package:mama/src/feature/auth/widgets/register_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
-part 'register_baby_name_screen.dart';
-part 'register_fill_another_baby_info_screen.dart';
-part 'register_info_about_childbirth.dart';
-
-class RegisterFillName extends StatefulWidget {
+class RegisterFillName extends StatelessWidget {
   const RegisterFillName({super.key});
 
   @override
-  State<RegisterFillName> createState() => _RegisterFillNameState();
-}
-
-class _RegisterFillNameState extends State<RegisterFillName> {
-  final nameController = TextEditingController();
-  final surnameController = TextEditingController();
-  final registerState = RegisterState();
-
-  var nameTextFieldIsNotEmpty = false;
-  var surnameTextFieldIsNotEmpty = false;
-
-  @override
   Widget build(BuildContext context) {
-    return StartScreenBody(
-      child: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
+    final AuthViewStore store = context.watch();
+
+    return Scaffold(
+      body: BodyDecoration(
+        backgroundImage: DecorationImage(
+          image: AssetImage(
+            Assets.images.authDecor.path,
+          ),
+          alignment: Alignment.topLeft,
+        ),
+        child: ReactiveForm(
+          formGroup: store.formGroup,
           child: Column(
             children: [
-              const AuthSplashIcon(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.17,
-              ),
-              _TitleWidget(text: t.register.whatIsYourName),
-              const SizedBox(height: 20),
-              FillTextField(
-                controller: nameController,
-                isName: true,
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      if (value.isNotEmpty) {
-                        nameTextFieldIsNotEmpty = true;
-                      } else {
-                        nameTextFieldIsNotEmpty = false;
-                      }
-                    });
-                  },
-                  controller: nameController,
-                  style: const TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w700),
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: t.register.name,
-                      hintStyle: const TextStyle(
-                          color: AppColors.greyBrighterColor,
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700)),
-                ),
-              ),
-              const SizedBox(height: 10),
-              FillTextField(
-                controller: surnameController,
-                isName: false,
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      if (value.isNotEmpty) {
-                        surnameTextFieldIsNotEmpty = true;
-                      } else {
-                        surnameTextFieldIsNotEmpty = false;
-                      }
-                    });
-                  },
-                  controller: surnameController,
-                  style: const TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w700),
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: t.register.surname,
-                      hintStyle: const TextStyle(
-                          color: AppColors.greyBrighterColor,
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700)),
-                ),
+              const Spacer(),
+              TitleWidget(text: t.register.whatIsYourName),
+              20.h,
+              Column(
+                children: [
+                  RegisterInputInfo(
+                    isName: true,
+                    controlName: 'name',
+                    hintText: t.register.name,
+                  ),
+                  10.h,
+                  RegisterInputInfo(
+                    isName: false,
+                    controlName: 'surname',
+                    hintText: t.register.surname,
+                  ),
+                ],
               ),
               const Spacer(),
-              CustomButton(
-                onTap: nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
-                    ? () {
-                        registerState.fillNameAndSurname(
-                            nameController.text, surnameController.text);
-                        context.pushNamed(AppViews.registerFillBabyName);
-                      }
-                    : null,
-                child: Text(
-                  t.register.next,
-                  style: TextStyle(
-                      color:
-                          nameTextFieldIsNotEmpty && surnameTextFieldIsNotEmpty
-                              ? AppColors.primaryColor
-                              : AppColors.greyBrighterColor,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600),
-                ),
-              ),
-              const SizedBox(height: 50)
+              ReactiveValueListenableBuilder(
+                  formControlName: 'name',
+                  builder: (context, control, child) {
+                    final bool isNameValid = control.valid;
+                    return ReactiveValueListenableBuilder(
+                        formControlName: 'surname',
+                        builder: (context, control, child) {
+                          final bool isValid = control.valid && isNameValid;
+
+                          return CustomButton(
+                            // contentPadding:
+                            // const EdgeInsets.symmetric(horizontal: 16),
+                            title: t.register.next,
+                            isSmall: false,
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            textStyle: textTheme.bodyMedium?.copyWith(
+                                color: isValid
+                                    ? AppColors.primaryColor
+                                    : AppColors.greyBrighterColor),
+                            onTap: isValid
+                                ? () {
+                                    context.pushNamed(
+                                        AppViews.registerFillBabyName);
+                                  }
+                                : null,
+                          );
+                        });
+                  }),
+              50.h
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class _TitleWidget extends StatelessWidget {
-  final String text;
-  const _TitleWidget({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: const TextStyle(
-          color: AppColors.primaryColor,
-          fontSize: 20,
-          fontWeight: FontWeight.w700),
     );
   }
 }

@@ -1,0 +1,62 @@
+evolution: Evolution
+
+weight:
+  title: Weight
+  add: Add weight
+
+growth: Growth
+
+head: Head
+
+table: Table
+
+health:
+  title: Health
+
+temperature:
+  title: Temperature
+
+medicines:
+  title: Medicines
+
+doctorsAppointment:
+  title: Doctor's appointment
+
+vaccinations:
+  title: Vaccinations
+
+findOutMore:
+  title: Find out more
+
+findOutMoreTextOne:
+  title: Here you can record your baby's temperature and track its changes.
+
+findOutMoreTextTwo:
+  title: "Find out what can cause a child's temperature to rise in the Knowledge Center:"
+
+date:
+  title: Date
+
+time:
+  title: Time
+
+pdf:
+  title: PDF
+
+add:
+  title: Add
+
+addTemperature:
+  title: Add Temperature
+
+now:
+  title: Now
+
+sixTeenThirtyTwo:
+  title: "16:32"
+
+fourteensOfSeptember:
+  title: 14 september
+
+note:
+  title: Note

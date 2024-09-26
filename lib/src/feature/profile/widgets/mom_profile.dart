@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
-import 'body/body_group.dart';
-import 'body/items/body_item.dart';
 
 class MomsProfile extends StatefulWidget {
   final MomInfo mom;
@@ -61,7 +59,8 @@ class _MomsProfileState extends State<MomsProfile> {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
 
-    final TextStyle? titlesStyle = textTheme.bodyMedium;
+    final TextStyle titlesStyle =
+        textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
 
     final MaskTextInputFormatter formatter = MaskTextInputFormatter(
         mask: '+7 ### ###-##-##', filter: {'#': RegExp(r'[0-9]')});
@@ -93,9 +92,11 @@ class _MomsProfileState extends State<MomsProfile> {
                     item: InputItem(
                         controlName: 'phone',
                         hintText: t.profile.hintChangePhone,
-                        titleStyle: titlesStyle,
-                        inputHintStyle: textTheme.bodySmall!
-                            .copyWith(fontWeight: FontWeight.w700),
+                        titleStyle:
+                            titlesStyle.copyWith(color: AppColors.blackColor),
+                        inputHintStyle: textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
                         inputHint: '+7 996 997-06-24',
                         maxLines: 1,
                         maskFormatter: formatter),
@@ -106,9 +107,7 @@ class _MomsProfileState extends State<MomsProfile> {
                       hintText: t.profile.hintChangeEmail,
                       keyboardType: TextInputType.emailAddress,
                       titleStyle: titlesStyle,
-                      inputHintStyle: titlesStyle!.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                      inputHintStyle: titlesStyle,
                       inputHint: t.profile.labelChangeEmail,
                     ),
                   ),
@@ -126,59 +125,24 @@ class _MomsProfileState extends State<MomsProfile> {
               ),
               32.h,
               CustomButton(
-                onTap: () {},
+                isSmall: false,
+                onTap: () {
+                  context.pushNamed(AppViews.promoView);
+                },
                 title: t.profile.addGiftCodeButtonTitle,
               ),
               8.h,
               CustomButton(
                 onTap: () {},
-                icon: Icons.language,
+                isSmall: false,
+                icon: IconModel(
+                  icon: Icons.language,
+                ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
-              32.h,
-              // Text(
-              //   t.profile.childTitle,
-              //   style: widget.titlesColoredStyle,
-              // ),
-              8.h,
               ChildItems(childs: [
                 ChildModel(id: '', firstName: 'Виктория', secondName: ''),
               ]),
-              DisplayChilds(
-                childs: widget.mom.childs,
-                onChangeBirth: (String value) {}, //TODO логика изменения
-                onChangeGender: (String value) {},
-                onSwitchBirthComplications: (String value) {},
-                onChangeNotes: (String value) {},
-                onChangeDateBirth: (String value) {},
-                titleStyle: widget.titlesStyle,
-                helperStyle: widget.helpersStyle,
-                titlesColoredStyle: widget.titlesColoredStyle,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: InkWell(
-                  onTap: () {
-                    //! добавить ребенка
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        height: 17,
-                        image: AssetImage(
-                          Assets.icons.icAddChild.path,
-                        ),
-                      ),
-                      16.h,
-                      Text(
-                        t.profile.addChildButtonTitle,
-                        style: widget.titlesColoredStyle,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ],
           ),
         ),

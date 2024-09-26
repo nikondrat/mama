@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:mama/src/data.dart';
 
 /// [App] is an entry point to the application.
@@ -15,11 +14,16 @@ class App extends StatelessWidget {
   final InitializationResult result;
 
   @override
-  Widget build(BuildContext context) => DefaultAssetBundle(
-        bundle: SentryAssetBundle(),
-        child: Provider(
-          create: (context) => result.dependencies,
-          child: TranslationProvider(child: const MaterialContext()),
-        ),
+  Widget build(BuildContext context) => MultiProvider(
+        providers: [
+          Provider(
+            create: (context) => result.dependencies,
+          ),
+          Provider(
+            create: (context) => AuthViewStore(),
+            dispose: (context, value) => value.dispose(),
+          ),
+        ],
+        child: TranslationProvider(child: const MaterialContext()),
       );
 }
