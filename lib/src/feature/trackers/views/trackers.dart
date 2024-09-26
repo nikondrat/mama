@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
 class TrackersView extends StatelessWidget {
@@ -16,6 +17,9 @@ class TrackersView extends StatelessWidget {
               children: [
                 Expanded(
                   child: CategoryCard(
+                    onTap: () {
+                      context.pushNamed(AppViews.evolutionView);
+                    },
                     title: "Развитие",
                     icon: IconModel(
                       iconPath: Assets.images.grow.path,
@@ -26,6 +30,7 @@ class TrackersView extends StatelessWidget {
                 16.w,
                 Expanded(
                   child: CategoryCard(
+                    onTap: () {},
                     title: "Сон и плач",
                     icon: IconModel(
                       iconPath: Assets.images.sleep.path,
@@ -40,6 +45,7 @@ class TrackersView extends StatelessWidget {
             child: Row(children: [
               Expanded(
                 child: CategoryCard(
+                  onTap: () {},
                   title: "Кормление",
                   icon: IconModel(
                     iconPath: Assets.images.feeding.path,
@@ -54,6 +60,9 @@ class TrackersView extends StatelessWidget {
               children: [
                 Expanded(
                   child: CategoryCard(
+                    onTap: () {
+                      context.pushNamed(AppViews.trackersHealthView);
+                    },
                     title: "Здоровье",
                     icon: IconModel(
                       iconPath: Assets.images.health.path,
@@ -64,6 +73,7 @@ class TrackersView extends StatelessWidget {
                 16.w,
                 Expanded(
                   child: CategoryCard(
+                    onTap: () {},
                     title: "Подгузники",
                     icon: IconModel(
                       iconPath: Assets.images.diaper.path,
