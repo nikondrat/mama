@@ -121,16 +121,10 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
 
     final phonePadding = MediaQuery.of(context).padding;
 
-    final List<Tab> tabs = [
-      Tab(
-        text: t.services.music.title,
-      ),
-      Tab(
-        text: t.services.whiteNoise.title,
-      ),
-      Tab(
-        text: t.services.fairyTales.title,
-      )
+    final List<String> tabs = [
+      t.services.music.title,
+      t.services.whiteNoise.title,
+      t.services.fairyTales.title,
     ];
 
     final List<TrackModel> tracks = [
@@ -159,27 +153,18 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
 
     return Scaffold(
       backgroundColor: AppColors.lightBlue,
+      appBar: CustomAppBar(
+        height: 100,
+        title: t.services.sleepMusic.title,
+        tabs: tabs,
+        tabController: _tabController,
+      ),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           /// #main content
           Column(
             children: [
-              SizedBox(height: phonePadding.top + 10),
-
-              /// #custom app bar
-              CustomAppBar(
-                title: t.services.sleepMusic.title,
-              ),
-              const SizedBox(height: 10),
-
-              /// #tabs(selection options)
-              TabBar(
-                controller: _tabController,
-                unselectedLabelStyle: const TextStyle(color: AppColors.f8faff),
-                tabs: tabs,
-              ),
-
               /// #tracks
               Expanded(
                 child: TabBarView(

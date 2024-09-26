@@ -199,6 +199,9 @@ class HomeView extends StatelessWidget {
                       CustomServiceBox(
                         imagePath: Assets.images.imgMoonMusic4x.path,
                         text: t.home.musicForSleep.title,
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView);
+                        },
                       ),
                     ],
                   ),
