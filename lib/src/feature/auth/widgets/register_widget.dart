@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/feature/auth/data/entity/city.dart';
-
 import '../../../core/core.dart';
-import '../data/entity/content.dart';
 
-class FillTextField extends StatefulWidget {
+class FillTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool isName;
   final Widget child;
@@ -16,12 +14,10 @@ class FillTextField extends StatefulWidget {
       required this.child});
 
   @override
-  State<FillTextField> createState() => _FillTextFieldState();
-}
-
-class _FillTextFieldState extends State<FillTextField> {
-  @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
@@ -44,17 +40,14 @@ class _FillTextFieldState extends State<FillTextField> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             children: [
-              widget.child,
+              child,
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  widget.isName
+                  isName
                       ? t.register.clickToEnterName
                       : t.register.clickToEnterSurname,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 10,
-                      color: AppColors.greyBrighterColor),
+                  style: textTheme.bodySmall?.copyWith(fontSize: 12),
                 ),
               )
             ],
@@ -110,6 +103,9 @@ class CityContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: InkWell(
@@ -137,55 +133,19 @@ class CityContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  city.city,
-                  style: const TextStyle(
-                      fontSize: 17, fontWeight: FontWeight.w400),
+                  city.name,
+                  style: textTheme.bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w400),
                 ),
                 Text(
-                  city.republic,
-                  style: const TextStyle(
-                      fontSize: 10, fontWeight: FontWeight.w400),
+                  '${city.country}',
+                  style: textTheme.bodySmall
+                      ?.copyWith(fontWeight: FontWeight.w400),
                 )
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class WelcomeContainer extends StatelessWidget {
-  final Content content;
-  const WelcomeContainer({super.key, required this.content});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.06,
-          ),
-          Image.asset(content.assetImage),
-          Text(
-            content.title,
-            style: const TextStyle(
-                color: AppColors.primaryColor,
-                fontSize: 24,
-                fontWeight: FontWeight.w700),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            content.text,
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
-          )
-        ],
       ),
     );
   }

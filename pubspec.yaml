@@ -82,6 +82,8 @@ dependencies:
   card_swiper: ^3.0.1
   google_fonts: ^6.2.1
   reactive_date_time_picker: ^4.0.0
+  syncfusion_flutter_charts: ^26.2.14
+
 
 dev_dependencies:
   # -- testing -- #
@@ -101,16 +103,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
   fonts:
     - family: SFProText
       fonts:
         - asset: assets/fonts/SFProText-Regular.ttf
         - asset: assets/fonts/SFProText-Medium.ttf
         - asset: assets/fonts/SFProText-Bold.ttf
-  assets:
-    - assets/images/
-    - assets/icons/
-    - assets/fonts/
 
 
 flutter_gen:

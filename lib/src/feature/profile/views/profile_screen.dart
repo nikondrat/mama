@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -97,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
                   child: CustomButton(
                     title: t.profile.feedbackButtonTitle,
                     onTap: () {},
-                    icon: Icons.language,
+                    icon: IconModel(icon: Icons.language),
                   ),
                 ),
                 8.h,

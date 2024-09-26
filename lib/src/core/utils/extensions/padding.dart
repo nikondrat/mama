@@ -8,4 +8,3 @@ extension Space on num {
         width: toDouble(),
       );
 }
-

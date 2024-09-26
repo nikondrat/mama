@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   static const Color primaryColor = Color(0xFF4D4DE8);
+
   static const Color whiteColor = Colors.white;
 
   static const Color greyColor = Color(0xFFCED1D9);
@@ -14,6 +15,8 @@ abstract class AppColors {
   static const Color greyLighterColor = Color(0xFFAAADB3);
 
   static const Color blueLighter = Color(0xFF4D88FF);
+
+  static const Color blueLighter1 = Color(0xFFCDF0F7);
 
   static const Color iconColor = Color(0xFF000000);
 
@@ -38,6 +41,7 @@ abstract class AppColors {
   static const Color blueChildStatusBackgroundColor = Color(0xFFAAE0FF);
   static const Color purpleChildStatusBackgroundColor = Color(0xFFCEDCFF);
   static const Color greenBrighterBackgroundColor = Color(0xFF93DD91);
+  static const Color learnMoreColor = Color(0xFFF8FAFF);
 
   static const Color f8faff = Color(0xFFF8FAFF);
 
@@ -49,5 +53,4 @@ abstract class AppColors {
   static const Color skyBlue = Color(0xFF0D4CEA);
   static const Color blue = Color(0xFF0767FD);
   static const Color deepBlue = Color(0xFF0834A6);
-
 }
