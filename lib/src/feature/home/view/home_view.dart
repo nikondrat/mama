@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/home/home.dart';
 
@@ -13,9 +14,20 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         leading: ProfileWidget(
+          onTap: () {
+            context.pushNamed(AppViews.profile);
+          },
           alignment: Alignment.centerLeft,
+          avatarUrl:
+              'https://i.pinimg.com/564x/49/3c/e7/493ce760bc067f2530d73365ace0d66c.jpg',
         ),
-        action: ProfileWidget(),
+        action: ProfileWidget(
+          isShowText: true,
+          childrenAvatars: [
+            'https://i.pinimg.com/564x/63/c3/99/63c399373f8afa96dfb36eb6a1874a2c.jpg',
+            'https://i.pinimg.com/564x/33/08/35/33083558f59dadc6ab278d974703ad87.jpg'
+          ],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -196,6 +208,7 @@ class HomeView extends StatelessWidget {
                   CustomServiceBoxTwo(
                     imagePath: Assets.images.imgHat4x.path,
                     text: t.home.knowledgeCenter.title,
+                    onTap: () {},
                   ),
                 ],
               ),

@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/data.dart';
 
-class ProfileWidget extends StatefulWidget {
+import 'animated_text.dart';
+import 'avatar.dart';
+
+class ProfileSwitch extends StatefulWidget {
+  final List<String> avatarsUrl;
   final Alignment alignment;
-  const ProfileWidget({
+  final bool isShowText;
+  const ProfileSwitch({
     super.key,
+    required this.avatarsUrl,
     this.alignment = Alignment.centerRight,
-  });
+    this.isShowText = false,
+  }) : assert(avatarsUrl.length >= 2);
 
   @override
-  State<ProfileWidget> createState() => _ProfileWidgetState();
+  State<ProfileSwitch> createState() => _ProfileSwitchState();
 }
 
-class _ProfileWidgetState extends State<ProfileWidget> {
+class _ProfileSwitchState extends State<ProfileSwitch> {
   bool _isFirstCircleOnTop = true;
 
   void _toggleCircles() {
@@ -20,14 +28,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     });
   }
 
-  String first =
-      'https://i.pinimg.com/564x/b4/3a/89/b43a892e3f68c50a5b7ce996aa41a1af.jpg';
-
-  String second =
-      'https://i.pinimg.com/564x/e7/27/b3/e727b38bc4a2340d4b772edd0864e5c1.jpg';
-
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
+
     const double startPos = 25;
     const double endPos = 0;
 
@@ -37,10 +42,30 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     final bool isOnRight = widget.alignment == Alignment.centerRight;
 
     return SizedBox(
-      height: 50,
+      height: 56,
       child: Stack(
         alignment: Alignment.center,
         children: [
+          if (widget.isShowText)
+            Positioned(
+              right: 100,
+              child: Column(
+                children: [
+                  AnimatedText(
+                    isSwitched: _isFirstCircleOnTop,
+                    // TODO add names
+                    title: _isFirstCircleOnTop ? 'Roma' : 'Maksim',
+                  ),
+                  Text(
+                    t.home.switch_hint,
+                    style: textTheme.bodySmall!.copyWith(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  )
+                ],
+              ),
+            ),
           // Нижний кружок
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
@@ -50,12 +75,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               onTap: _toggleCircles,
               child: AnimatedSwitcher(
                 duration: Duration(milliseconds: 300),
-                child: CircleAvatar(
-                  key: ValueKey<bool>(
-                      !_isFirstCircleOnTop), // Уникальный ключ для анимации
+                child: CustomAvatar(
                   radius: _isFirstCircleOnTop ? 25 : 20,
-                  backgroundColor: Colors.blue,
-                  backgroundImage: NetworkImage(first),
+                  key: ValueKey<bool>(!_isFirstCircleOnTop),
+                  avatarUrl: widget.avatarsUrl[0],
                 ),
               ),
             ),
@@ -69,12 +92,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               onTap: _toggleCircles,
               child: AnimatedSwitcher(
                 duration: Duration(milliseconds: 300),
-                child: CircleAvatar(
-                  key: ValueKey<bool>(
-                      _isFirstCircleOnTop), // Уникальный ключ для анимации
+                child: CustomAvatar(
+                  key: ValueKey<bool>(_isFirstCircleOnTop),
+                  avatarUrl: widget.avatarsUrl[1],
                   radius: _isFirstCircleOnTop ? 20 : 25,
-                  backgroundColor: Colors.red,
-                  backgroundImage: NetworkImage(second),
                 ),
               ),
             ),

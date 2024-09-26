@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -126,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
               child: ButtonLeading(
                 labelStyle: titlesStyle!.copyWith(fontWeight: FontWeight.w400),
                 onTapButton: () {
-                  //! добавить tap back button
+                  context.pop();
                 },
               ),
             ),
