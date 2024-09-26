@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
+
 class CongratsScreen extends StatelessWidget {
   const CongratsScreen({super.key});
 
@@ -31,6 +32,7 @@ class CongratsScreen extends StatelessWidget {
             const SizedBox(height: 60)
           ],
         ),
+
       ),
     );
   }

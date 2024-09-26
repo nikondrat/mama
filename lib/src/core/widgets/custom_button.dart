@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:mama/src/core/models/icon.dart';
+import 'package:mama/src/core/widgets/icon_widget.dart';
 import 'package:mama/src/data.dart'; // Ваш файл с цветами (AppColors).
 
 enum CustomButtonType {
@@ -65,7 +67,7 @@ class CustomButton extends StatelessWidget {
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       elevation: 0,
       minimumSize: Size(width ?? 64.0, height ?? 40.0),
-      backgroundColor: !isFilled ? Colors.white : bgColor,
+      backgroundColor: !isFilled ? Colors.transparent : bgColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         side: !isFilled
@@ -76,7 +78,7 @@ class CustomButton extends StatelessWidget {
             : BorderSide.none,
       ),
       padding:
-          contentPadding ?? EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          contentPadding ?? EdgeInsets.symmetric(vertical: 16, horizontal: 8),
     );
 
     return _PaddingWidget(

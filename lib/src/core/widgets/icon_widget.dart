@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 
 class IconWidget extends StatelessWidget {
@@ -32,3 +33,4 @@ class IconWidget extends StatelessWidget {
     return Icon(model.icon!, color: model.color, size: model.size?.height);
   }
 }
+

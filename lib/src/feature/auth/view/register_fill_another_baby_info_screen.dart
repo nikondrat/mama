@@ -19,6 +19,7 @@ class _RegisterFillAnotherBabyInfoScreenState
 
   @override
   Widget build(BuildContext context) {
+
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 

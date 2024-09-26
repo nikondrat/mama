@@ -11,6 +11,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final AuthViewStore store = context.watch();
 
     return Scaffold(

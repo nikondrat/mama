@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
+
 class AuthView extends StatelessWidget {
   final bool isLogin;
   const AuthView({
@@ -15,7 +16,6 @@ class AuthView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
-
     return Scaffold(
       body: BodyDecoration(
         backgroundImage: DecorationImage(
