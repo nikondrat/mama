@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../core/core.dart';
 import '../widgets/widget.dart';
 
 class BreastScreen extends StatelessWidget {

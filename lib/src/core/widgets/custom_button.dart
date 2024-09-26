@@ -48,7 +48,7 @@ class CustomButton extends StatelessWidget {
   Color _getDarkerColor(Color color) {
     final HSLColor hsl = HSLColor.fromColor(color);
     final HSLColor darkerHsl =
-    hsl.withLightness((hsl.lightness - 0.3).clamp(0.0, 1.0));
+        hsl.withLightness((hsl.lightness - 0.3).clamp(0.0, 1.0));
     return darkerHsl.toColor();
   }
 
@@ -72,13 +72,13 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         side: !isFilled
             ? BorderSide(
-          color: AppColors.purpleLighterBackgroundColor,
-          width: 2,
-        )
+                color: AppColors.purpleLighterBackgroundColor,
+                width: 2,
+              )
             : BorderSide.none,
       ),
       padding:
-      contentPadding ?? EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          contentPadding ?? EdgeInsets.symmetric(vertical: 16, horizontal: 8),
     );
 
     return _PaddingWidget(

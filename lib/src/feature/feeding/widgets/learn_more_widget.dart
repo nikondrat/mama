@@ -1,10 +1,6 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mama/src/core/models/icon.dart';
-
-import '../../../core/core.dart';
+import 'package:mama/src/data.dart';
 
 class LearnMoreWidget extends StatelessWidget {
   const LearnMoreWidget({super.key});
@@ -24,30 +20,29 @@ class LearnMoreWidget extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: IconButton(
-                onPressed: () {
-
-                },
-                icon: const Icon(Icons.close,
-                  color: AppColors.greyColor,),
-
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.close,
+                  color: AppColors.greyColor,
+                ),
               ),
             ),
-            AutoSizeText('${t.feeding.learnMoreText}:',
+            AutoSizeText(
+              '${t.feeding.learnMoreText}:',
               style: textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.w400,
-                  color: AppColors.greyBrighterColor
-              ),),
+                  color: AppColors.greyBrighterColor),
+            ),
             20.h,
             CustomButton(
               isSmall: false,
               type: CustomButtonType.outline,
-              onTap: (){},
+              onTap: () {},
               icon: IconModel(iconPath: Assets.icons.icLearnMore),
               title: t.feeding.learnMoreBtn,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              textStyle: textTheme.titleLarge?.copyWith(
-                fontSize: 10
-              ),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              textStyle: textTheme.titleLarge?.copyWith(fontSize: 10),
             ),
             16.h
           ],
