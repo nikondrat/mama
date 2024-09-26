@@ -27,24 +27,27 @@ class _BottomBarState extends State<BottomBar> {
           height: 84,
           color: AppColors.lightPirple,
         ),
-        SizedBox(
-          height: 120,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              barItem(t.profile.bottomBarHome, Assets.icons.icBnHome.path,
-                  Assets.icons.icBnHomeTap.path, 0),
-              barItem(t.profile.bottomBarDiaries, Assets.icons.icBnDiary.path,
-                  Assets.icons.icBnDiary.path, 1),
-              barItem(t.profile.bottomBarChats, Assets.icons.icBnChats.path,
-                  Assets.icons.icBnChatsTap.path, 2),
-              barItem(
-                  t.profile.bottomBarServices,
-                  Assets.icons.icBnServices.path,
-                  Assets.icons.icBnServicesTap.path,
-                  3),
-            ],
+        Positioned(
+          bottom: 15,
+          child: SizedBox(
+            height: 90,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                barItem(t.profile.bottomBarHome, Assets.icons.icBnHome.path,
+                    Assets.icons.icBnHomeTap.path, 0),
+                barItem(t.profile.bottomBarDiaries, Assets.icons.icBnDiary.path,
+                    Assets.icons.icBnDiary.path, 1),
+                barItem(t.profile.bottomBarChats, Assets.icons.icBnChats.path,
+                    Assets.icons.icBnChatsTap.path, 2),
+                barItem(
+                    t.profile.bottomBarServices,
+                    Assets.icons.icBnServices.path,
+                    Assets.icons.icBnServicesTap.path,
+                    3),
+              ],
+            ),
           ),
         )
       ],
