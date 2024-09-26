@@ -20,31 +20,38 @@ class CategoryCard extends StatelessWidget {
 
     final TextTheme textTheme = themeData.textTheme;
 
-    return GestureDetector(
-      onTap: onTap,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: 16.r,
-        ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.topCenter,
-          children: [
-            Positioned(
-                top: 16,
-                left: 16,
-                child: Text(
-                  title,
-                  style: textTheme.titleLarge!
-                      .copyWith(color: AppColors.blackColor),
-                )),
-            Expanded(
+    return SizedBox(
+      height: 200,
+      child: GestureDetector(
+        onTap: onTap,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: 16.r,
+          ),
+          child: Column(
+            // clipBehavior: Clip.none,
+            // alignment: Alignment.topCenter,
+            children: [
+              // Positioned(
+              //     top: 16,
+              //     left: 16,
+              //     child:
+              Align(
+                alignment: Alignment.topLeft,
                 child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: IconWidget(model: icon),
-            )),
-          ],
+                  padding: const EdgeInsets.only(top: 12, left: 16),
+                  child: Text(
+                    title,
+                    style: textTheme.titleLarge!
+                        .copyWith(color: AppColors.blackColor),
+                    // )
+                  ),
+                ),
+              ),
+              Expanded(child: IconWidget(model: icon)),
+            ],
+          ),
         ),
       ),
     );

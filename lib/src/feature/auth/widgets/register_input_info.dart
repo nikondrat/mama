@@ -46,7 +46,7 @@ class RegisterInputInfo extends StatelessWidget {
                   child: ReactiveTextField(
                     formControlName: controlName,
                     showErrors: (control) => false,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
                     style: textTheme.headlineSmall
                         ?.copyWith(color: AppColors.primaryColor),
                     onTapOutside: (event) {},
