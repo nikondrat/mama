@@ -93,8 +93,8 @@ class CustomButton extends StatelessWidget {
             if (icon != null) ...[
               IconWidget(
                   model: icon!.copyWith(
-                    color: textColor,
-                  )),
+                color: textColor,
+              )),
               8.w,
             ],
             Flexible(

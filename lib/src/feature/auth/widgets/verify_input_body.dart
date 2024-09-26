@@ -25,9 +25,7 @@ class VerifyInputBody extends StatefulWidget {
 class _VerifyInputBodyState extends State<VerifyInputBody> {
   @override
   void initState() {
-    widget.store.sendCode(
-      widget.phone,
-    );
+    widget.store.sendCode();
     super.initState();
   }
 

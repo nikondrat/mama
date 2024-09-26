@@ -25,6 +25,7 @@ class MomsProfile extends StatefulWidget {
 
 class _MomsProfileState extends State<MomsProfile> {
   late FormGroup formGroup;
+  bool subscribed = true;
 
   @override
   void initState() {
@@ -136,12 +137,55 @@ class _MomsProfileState extends State<MomsProfile> {
               CustomButton(
                 onTap: () {},
                 isSmall: false,
-                icon: IconModel(icon: Icons.language),
+                icon: IconModel(
+                  icon: Icons.language,
+                ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
-              ChildItems(childs: [
-                ChildModel(id: '', firstName: 'Виктория', secondName: ''),
-              ]),
+              32.h,
+              // Text(
+              //   t.profile.childTitle,
+              //   style: widget.titlesColoredStyle,
+              // ),
+              8.h,
+              IgnorePointer(
+                ignoring: !subscribed,
+                child: Stack(
+                  children: [
+                    Opacity(
+                      opacity: !subscribed ? 0.25 : 1,
+                      child: ChildItems(
+                        childs: widget.mom.childs,
+                      ),
+                    ),
+                    if (!subscribed) SubscribeBlockItem(),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(28.0),
+                child: InkWell(
+                  onTap: () {
+                    //! добавить ребенка
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        height: 17,
+                        image: AssetImage(
+                          Assets.icons.icAddChild.path,
+                        ),
+                      ),
+                      16.w,
+                      Text(
+                        t.profile.addChildButtonTitle,
+                        style: widget.titlesColoredStyle,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

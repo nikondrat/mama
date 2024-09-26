@@ -1,9 +1,62 @@
-
 evolution: Развитие
+
 weight:
   title: Вес
   add: Добавить вес
 
 growth: Рост
+
 head: Голова
+
 table: Таблица
+
+health:
+  title: Здоровье
+
+temperature:
+  title: Температура
+
+medicines:
+  title: Лекарства
+
+doctorsAppointment:
+  title: Прием врача
+
+vaccinations:
+  title: Прививки
+
+findOutMore:
+  title: Узнать больше
+
+findOutMoreTextOne:
+  title: Здесь вы можете фиксировать температуру малыша и отслеживать ее изменение.
+
+findOutMoreTextTwo:
+  title: "Узнайте, от чего может подниматься температура ребенка, в Центре Знаний:"
+
+date:
+  title: Дата
+
+time:
+  title: Время
+
+pdf:
+  title: ПДФ
+
+add:
+  title: Добавить
+
+addTemperature:
+  title: Добавить температуру
+
+now:
+  title: Сейчас
+
+sixTeenThirtyTwo:
+  title: "16:32"
+
+fourteensOfSeptember:
+  title: 14 сентября
+
+note:
+  title: Заметка

@@ -22,6 +22,7 @@ class PhoneVerify extends StatelessWidget {
         Provider(
           create: (context) => VerifyStore(
             restClient: context.read<Dependencies>().restClient,
+            formattedPhoneNumber: phone,
           ),
         ),
         Provider(

@@ -152,185 +152,189 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFF),
+      backgroundColor: AppColors.lightBlue,
       appBar: CustomAppBar(
         height: 100,
         title: t.services.sleepMusic.title,
         tabs: tabs,
         tabController: _tabController,
-        action: CircleAvatar(
-          radius: 20,
-        ),
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           /// #main content
-          TabBarView(
-              controller: _tabController,
-              children: tabs
-                  .map((e) => CustomList(
-                        data: tracks,
-                        itemBuilder: (item) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: TrackWidget(model: item),
-                        ),
-                      ))
-                  .toList()
+          Column(
+            children: [
+              /// #tracks
+              Expanded(
+                child: TabBarView(
+                    controller: _tabController,
+                    children: tabs
+                        .map((e) => CustomList(
+                              data: tracks,
+                              itemBuilder: (item) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                child: TrackWidget(model: item),
+                              ),
+                            ))
+                        .toList()
 
-              //    [
-              //     /// #music
-              //     ListView.separated(
-              //       itemCount: 15,
-              //       itemBuilder: (context, index) {
-              //         if (index == 14) {
-              //           return Column(
-              //             children: [
-              //               /// #track row
-              //               Padding(
-              //                 padding:
-              //                     const EdgeInsets.symmetric(horizontal: 16),
-              //                 child: TrackRow(
-              //                   name: t.services.placeholderOne.title,
-              //                   author: t.services.placeholderTwo.title,
-              //                   timeRange: t.services.placeholderThree.title,
-              //                   isPlaying: _isPlayingMusicList[index],
-              //                   onPlayButtonPressed: () =>
-              //                       _onPlayButtonPressed(
-              //                     index: index,
-              //                     currentPlayingTab: 0,
-              //                   ),
-              //                 ),
-              //               ),
+                    //    [
+                    //     /// #music
+                    //     ListView.separated(
+                    //       itemCount: 15,
+                    //       itemBuilder: (context, index) {
+                    //         if (index == 14) {
+                    //           return Column(
+                    //             children: [
+                    //               /// #track row
+                    //               Padding(
+                    //                 padding:
+                    //                     const EdgeInsets.symmetric(horizontal: 16),
+                    //                 child: TrackRow(
+                    //                   name: t.services.placeholderOne.title,
+                    //                   author: t.services.placeholderTwo.title,
+                    //                   timeRange: t.services.placeholderThree.title,
+                    //                   isPlaying: _isPlayingMusicList[index],
+                    //                   onPlayButtonPressed: () =>
+                    //                       _onPlayButtonPressed(
+                    //                     index: index,
+                    //                     currentPlayingTab: 0,
+                    //                   ),
+                    //                 ),
+                    //               ),
 
-              //               /// #bottom space
-              //               _isPlayerRowVisible
-              //                   ? SizedBox(height: phonePadding.bottom + 100)
-              //                   : const SizedBox.shrink()
-              //             ],
-              //           );
-              //         }
+                    //               /// #bottom space
+                    //               _isPlayerRowVisible
+                    //                   ? SizedBox(height: phonePadding.bottom + 100)
+                    //                   : const SizedBox.shrink()
+                    //             ],
+                    //           );
+                    //         }
 
-              //         return Padding(
-              //           padding: const EdgeInsets.symmetric(horizontal: 16),
-              //           child: TrackRow(
-              //             name: t.services.placeholderOne.title,
-              //             author: t.services.placeholderTwo.title,
-              //             timeRange: t.services.placeholderThree.title,
-              //             isPlaying: _isPlayingMusicList[index],
-              //             onPlayButtonPressed: () => _onPlayButtonPressed(
-              //               index: index,
-              //               currentPlayingTab: 0,
-              //             ),
-              //           ),
-              //         );
-              //       },
-              //       separatorBuilder: (context, index) =>
-              //           const SizedBox(height: 16),
-              //     ),
+                    //         return Padding(
+                    //           padding: const EdgeInsets.symmetric(horizontal: 16),
+                    //           child: TrackRow(
+                    //             name: t.services.placeholderOne.title,
+                    //             author: t.services.placeholderTwo.title,
+                    //             timeRange: t.services.placeholderThree.title,
+                    //             isPlaying: _isPlayingMusicList[index],
+                    //             onPlayButtonPressed: () => _onPlayButtonPressed(
+                    //               index: index,
+                    //               currentPlayingTab: 0,
+                    //             ),
+                    //           ),
+                    //         );
+                    //       },
+                    //       separatorBuilder: (context, index) =>
+                    //           const SizedBox(height: 16),
+                    //     ),
 
-              //     /// #white noise
-              //     ListView.separated(
-              //       itemCount: 10,
-              //       itemBuilder: (context, index) {
-              //         if (index == 9) {
-              //           return Column(
-              //             children: [
-              //               /// #track row
-              //               Padding(
-              //                 padding:
-              //                     const EdgeInsets.symmetric(horizontal: 16),
-              //                 child: TrackRow(
-              //                   name: t.services.placeholderFour.title,
-              //                   author: t.services.placeHhlderFive.title,
-              //                   timeRange: t.services.placeholderThree.title,
-              //                   isPlaying: _isPlayingWhiteNoiseList[index],
-              //                   onPlayButtonPressed: () =>
-              //                       _onPlayButtonPressed(
-              //                     index: index,
-              //                     currentPlayingTab: 1,
-              //                   ),
-              //                 ),
-              //               ),
+                    //     /// #white noise
+                    //     ListView.separated(
+                    //       itemCount: 10,
+                    //       itemBuilder: (context, index) {
+                    //         if (index == 9) {
+                    //           return Column(
+                    //             children: [
+                    //               /// #track row
+                    //               Padding(
+                    //                 padding:
+                    //                     const EdgeInsets.symmetric(horizontal: 16),
+                    //                 child: TrackRow(
+                    //                   name: t.services.placeholderFour.title,
+                    //                   author: t.services.placeHhlderFive.title,
+                    //                   timeRange: t.services.placeholderThree.title,
+                    //                   isPlaying: _isPlayingWhiteNoiseList[index],
+                    //                   onPlayButtonPressed: () =>
+                    //                       _onPlayButtonPressed(
+                    //                     index: index,
+                    //                     currentPlayingTab: 1,
+                    //                   ),
+                    //                 ),
+                    //               ),
 
-              //               /// #bottom space
-              //               _isPlayerRowVisible
-              //                   ? SizedBox(height: phonePadding.bottom + 100)
-              //                   : const SizedBox.shrink()
-              //             ],
-              //           );
-              //         }
+                    //               /// #bottom space
+                    //               _isPlayerRowVisible
+                    //                   ? SizedBox(height: phonePadding.bottom + 100)
+                    //                   : const SizedBox.shrink()
+                    //             ],
+                    //           );
+                    //         }
 
-              //         return Padding(
-              //           padding: const EdgeInsets.symmetric(horizontal: 16),
-              //           child: TrackRow(
-              //             name: t.services.placeholderFour.title,
-              //             author: t.services.placeHhlderFive.title,
-              //             timeRange: t.services.placeholderThree.title,
-              //             isPlaying: _isPlayingWhiteNoiseList[index],
-              //             onPlayButtonPressed: () => _onPlayButtonPressed(
-              //               index: index,
-              //               currentPlayingTab: 1,
-              //             ),
-              //           ),
-              //         );
-              //       },
-              //       separatorBuilder: (context, index) =>
-              //           const SizedBox(height: 16),
-              //     ),
+                    //         return Padding(
+                    //           padding: const EdgeInsets.symmetric(horizontal: 16),
+                    //           child: TrackRow(
+                    //             name: t.services.placeholderFour.title,
+                    //             author: t.services.placeHhlderFive.title,
+                    //             timeRange: t.services.placeholderThree.title,
+                    //             isPlaying: _isPlayingWhiteNoiseList[index],
+                    //             onPlayButtonPressed: () => _onPlayButtonPressed(
+                    //               index: index,
+                    //               currentPlayingTab: 1,
+                    //             ),
+                    //           ),
+                    //         );
+                    //       },
+                    //       separatorBuilder: (context, index) =>
+                    //           const SizedBox(height: 16),
+                    //     ),
 
-              //     /// #failry tales
-              //     ListView.separated(
-              //       itemCount: 5,
-              //       itemBuilder: (context, index) {
-              //         if (index == 4) {
-              //           return Column(
-              //             children: [
-              //               /// #track row
-              //               Padding(
-              //                 padding:
-              //                     const EdgeInsets.symmetric(horizontal: 16),
-              //                 child: TrackRow(
-              //                   name: t.services.placeholderSix.title,
-              //                   author: t.services.placeholderSeven.title,
-              //                   timeRange: t.services.placeholderThree.title,
-              //                   isPlaying: _isPlayingFairyTalesList[index],
-              //                   onPlayButtonPressed: () =>
-              //                       _onPlayButtonPressed(
-              //                     index: index,
-              //                     currentPlayingTab: 2,
-              //                   ),
-              //                 ),
-              //               ),
+                    //     /// #failry tales
+                    //     ListView.separated(
+                    //       itemCount: 5,
+                    //       itemBuilder: (context, index) {
+                    //         if (index == 4) {
+                    //           return Column(
+                    //             children: [
+                    //               /// #track row
+                    //               Padding(
+                    //                 padding:
+                    //                     const EdgeInsets.symmetric(horizontal: 16),
+                    //                 child: TrackRow(
+                    //                   name: t.services.placeholderSix.title,
+                    //                   author: t.services.placeholderSeven.title,
+                    //                   timeRange: t.services.placeholderThree.title,
+                    //                   isPlaying: _isPlayingFairyTalesList[index],
+                    //                   onPlayButtonPressed: () =>
+                    //                       _onPlayButtonPressed(
+                    //                     index: index,
+                    //                     currentPlayingTab: 2,
+                    //                   ),
+                    //                 ),
+                    //               ),
 
-              //               /// #bottom space
-              //               _isPlayerRowVisible
-              //                   ? SizedBox(height: phonePadding.bottom + 100)
-              //                   : const SizedBox.shrink()
-              //             ],
-              //           );
-              //         }
+                    //               /// #bottom space
+                    //               _isPlayerRowVisible
+                    //                   ? SizedBox(height: phonePadding.bottom + 100)
+                    //                   : const SizedBox.shrink()
+                    //             ],
+                    //           );
+                    //         }
 
-              //         return Padding(
-              //           padding: const EdgeInsets.symmetric(horizontal: 16),
-              //           child: TrackRow(
-              //             name: t.services.placeholderSix.title,
-              //             author: t.services.placeholderSeven.title,
-              //             timeRange: t.services.placeholderThree.title,
-              //             isPlaying: _isPlayingFairyTalesList[index],
-              //             onPlayButtonPressed: () => _onPlayButtonPressed(
-              //               index: index,
-              //               currentPlayingTab: 2,
-              //             ),
-              //           ),
-              //         );
-              //       },
-              //       separatorBuilder: (context, index) =>
-              //           const SizedBox(height: 16),
-              //     ),
-              //   ],
-
+                    //         return Padding(
+                    //           padding: const EdgeInsets.symmetric(horizontal: 16),
+                    //           child: TrackRow(
+                    //             name: t.services.placeholderSix.title,
+                    //             author: t.services.placeholderSeven.title,
+                    //             timeRange: t.services.placeholderThree.title,
+                    //             isPlaying: _isPlayingFairyTalesList[index],
+                    //             onPlayButtonPressed: () => _onPlayButtonPressed(
+                    //               index: index,
+                    //               currentPlayingTab: 2,
+                    //             ),
+                    //           ),
+                    //         );
+                    //       },
+                    //       separatorBuilder: (context, index) =>
+                    //           const SizedBox(height: 16),
+                    //     ),
+                    //   ],
+                    ),
               ),
+            ],
+          ),
 
           /// #player row
           AnimatedPositioned(

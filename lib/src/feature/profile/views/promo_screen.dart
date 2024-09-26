@@ -50,7 +50,7 @@ class _PromoScreenState extends State<PromoScreen> {
         builder: (context) => Dialog(
           child: DialogWidget(
             item: giftDialog,
-            onTap: () {
+            onTapExit: () {
               context.pop();
             },
           ),
@@ -113,7 +113,7 @@ class _PromoScreenState extends State<PromoScreen> {
                           return BodyItemWidget(
                             backgroundBorder: Border.all(
                               color: promoCorrect
-                                  ? AppColors.blue
+                                  ? AppColors.blueLighter
                                   : AppColors.redColor,
                               width: 1,
                             ),

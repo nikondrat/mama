@@ -27,7 +27,7 @@ class ButtonLeading extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          onTapButton;
+          onTapButton();
         },
         icon: const Icon(
           Icons.arrow_back_ios,

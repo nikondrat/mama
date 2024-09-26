@@ -8,4 +8,3 @@ export 'register_title_widget.dart';
 export 'welcome_container.dart';
 export 'register_input_info.dart';
 export 'decoration.dart';
-export 'city_search_body.dart';

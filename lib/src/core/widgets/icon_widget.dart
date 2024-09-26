@@ -23,3 +23,4 @@ class IconWidget extends StatelessWidget {
     return Icon(model.icon!, color: model.color, size: model.size?.height);
   }
 }
+

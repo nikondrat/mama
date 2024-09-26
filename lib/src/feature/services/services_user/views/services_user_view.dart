@@ -25,13 +25,13 @@ class ServicesUserView extends StatelessWidget {
                   /// #knowledge center box
                   MainBox(
                     mainText: t.services.knowledgeCenter.title,
-                    image: Assets.icons.icHat4x.path,
+                    image: Assets.images.imgHat4x.path,
                   ),
                   const SizedBox(height: 8),
 
                   /// #online consultation box
                   MainBoxWithButtons(
-                    image: Assets.icons.icChatVideo4x.path,
+                    image: Assets.images.imgChatVideo4x.path,
                     mainText: t.services.onlineConsultation.title,
                     buttons: [
                       ButtonModel(
@@ -52,7 +52,7 @@ class ServicesUserView extends StatelessWidget {
 
                   /// #music for sleep box
                   MainBoxWithButtons(
-                    image: Assets.icons.icMoonMusic4x.path,
+                    image: Assets.images.imgMoonMusic4x.path,
                     mainText: t.services.sleepMusic.title,
                     buttons: [
                       ButtonModel(

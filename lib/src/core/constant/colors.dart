@@ -21,7 +21,7 @@ abstract class AppColors {
   static const Color iconColor = Color(0xFF000000);
 
   static const Color lightBlue = Color(0xFFF8FAFF);
-
+  static const Color lightPirple = Color(0xFFF5F7FF);
   static const Color whiteDarkerButtonColor = Color(0xFFF0F2F7);
   static const Color gradientPurpleBackgroundScaffold = Color(0xFFE7EEFF);
   static const Color gradientPurpleLighterBackgroundScaffold =
@@ -43,10 +43,14 @@ abstract class AppColors {
   static const Color greenBrighterBackgroundColor = Color(0xFF93DD91);
   static const Color learnMoreColor = Color(0xFFF8FAFF);
 
+  static const Color yellowColor = Color(0xFFFFDF6B);
+
   static const Color f8faff = Color(0xFFF8FAFF);
 
   static const Color midnightPurple = Color(0xFF1E0F30);
   static const Color deepViolet = Color(0xFF371C5A);
+
+  static Color e8ddf9 = Color(0xFFE8DDF9);
 
   static const Color softPeach = Color(0xFFE1EAFF);
 

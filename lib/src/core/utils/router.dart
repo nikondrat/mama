@@ -4,9 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
 import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
-import 'package:mama/src/feature/feeding/feeding.dart';
+import 'package:mama/src/feature/home/home.dart';
+import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
+import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
 
-import '../../data.dart';
+import '../../feature/feature.dart';
+
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
@@ -23,6 +26,12 @@ abstract class AppViews {
       'registerInfoAboutChildbirth';
   static const String citySearch = 'citySearch';
   static const String welcomeScreen = 'welcomeScreen';
+
+  static const String homeScreen = 'homeScreen';
+
+  static const trackersHealthView = 'trackersHealthView';
+  static const trackersHealthAddTemperatureView =
+      'trackersHealthAddTemperatureView';
 
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
@@ -42,8 +51,8 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
-  // initialLocation: _Paths.profile,
+  // initialLocation: '/',
+  initialLocation: _Paths.homeScreen,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -140,6 +149,11 @@ final GoRouter router = GoRouter(
               ]),
         ]),
     GoRoute(
+      path: _Paths.homeScreen,
+      name: AppViews.homeScreen,
+      builder: (context, state) => HomeView(),
+    ),
+    GoRoute(
       name: AppViews.servicesUserView,
       path: _Paths.servicesUserPath,
       builder: (context, state) => const ServicesUserView(),
@@ -162,6 +176,18 @@ final GoRouter router = GoRouter(
             builder: (context, state) => AddWeight(),
           )
         ]),
+    GoRoute(
+      name: AppViews.trackersHealthView,
+      path: _Paths.trackersHealthPath,
+      builder: (context, state) => TrackersHealthView(),
+      routes: [
+        GoRoute(
+          name: AppViews.trackersHealthAddTemperatureView,
+          path: _Paths.trackersHealthAddTemperaturePath,
+          builder: (context, state) => TrackersHealthAddTemperature(),
+        )
+      ],
+    ),
     GoRoute(
         path: _Paths.profile,
         name: AppViews.profile,
@@ -191,6 +217,12 @@ abstract class _Paths {
       AppViews.registerInfoAboutChildbirth;
   static const String citySearch = AppViews.citySearch;
   static const String welcomeScreen = AppViews.welcomeScreen;
+
+  static const String homeScreen = '/${AppViews.homeScreen}';
+
+  static const trackersHealthPath = '/${AppViews.trackersHealthView}';
+  static const trackersHealthAddTemperaturePath =
+      AppViews.trackersHealthAddTemperatureView;
 
   static const servicesUserPath = '/${AppViews.servicesUserView}';
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
