@@ -67,26 +67,31 @@ inputHint: Ввести
 unitMeasureWeight: кг
 
 unitMeasureHeight: см
-
 cancel: Отмена
-
 apply: Применить
-
 promoScreenTitle: Подарочные коды
-
 promoItemButtonTitle: Нажмите, чтобы применить
-
 promoScreenHelper: Нажмите, чтобы ввести новый подарочный код
-
 promoScreenHintAddCode: Новый подарочный код
-
 promoScreenErrorCode: Подарочный код не действителен. Нажмите, чтобы изменить
-
 promoDialogBackButton: Вернуться
-
 promoErrorDialogBackButton: Выйти
-
 promoErrorDialogContinueButton: Продолжить
+needToEnter: Осталось заполнить
+and: и
+name: имя
+dateBirth: дату рождения
+weight: вес
+height: рост
+headCirc: окружность головы
+needToFill: Осталось заполнить
+subscribeBlockTitle: Пробный период кончился
+subscribeBlockSubitle: Оформите подписку в личном кабинете, чтобы мы могли и дальше предоставлять вам качественный сервис и услуги специалистов
+subscribeBlocButtonTitle: В личный кабинет
+bottomBarHome: Главная
+bottomBarDiaries: Дневники
+bottomBarChats: Чаты
+bottomBarServices: Сервисы
 
 sex(context=GenderContext):
   male: Мальчик

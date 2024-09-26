@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -20,6 +25,20 @@ class ProfileScreen extends StatelessWidget {
       fontSize: 10,
       fontWeight: FontWeight.w700,
     );
+
+    List<DialogItem> alertDialog = [
+      DialogItem(
+          title: 'Сбросить настройки?',
+          subtitle:
+              'Если сейчас выйти из аккаунта, не сохраненные данные потеряются',
+          onTap: () {}),
+      DialogItem(
+          title: 'Сбросить настройки?',
+          subtitle:
+              'Если сейчас выйти из аккаунта, не сохраненные данные потеряются',
+          text: 'Заполните обязательные поля, чтобы сохранить данные ребенка',
+          onTap: () {})
+    ];
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -50,19 +69,7 @@ class ProfileScreen extends StatelessWidget {
                     null,
                     Assets.images.imgProfile.path,
                     [
-                      ChildInfo(
-                        name: 'Алла Виктория',
-                        dateBirth: DateTime(2023, 4, 2),
-                        gender: Gender.female,
-                        twins: false,
-                        weight: 3.56,
-                        height: 49,
-                        headCircumference: 35,
-                        birth: Birth.natural,
-                        birthComplications: false,
-                        notes: null,
-                        image: Assets.images.imgProfile.path,
-                      )
+                      ChildModel(id: '', firstName: 'Виктория', secondName: ''),
                     ],
                   ),
                 ),
@@ -107,7 +114,22 @@ class ProfileScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: CustomButton(
-                    onTap: () {},
+                    onTap: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                          insetPadding: EdgeInsets.all(8.0),
+                          child: DialogWidget(
+                            errorDialog: true,
+                            item: alertDialog[0],
+                            onTapExit: () {
+                              context.pop();
+                            },
+                            onTapContinue: () {},
+                          ),
+                        ),
+                      );
+                    },
                     backgroundColor: AppColors.redLighterBackgroundColor,
                     title: t.profile.leaveAccountButtonTitle,
                     textStyle: textTheme.titleMedium!.copyWith(
