@@ -13,7 +13,17 @@ class IconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (model.iconPath != null) {
-      return SvgPicture.asset(
+      final bool isSVG = model.iconPath!.endsWith('.svg');
+
+      if (isSVG) {
+        return SvgPicture.asset(
+          model.iconPath!,
+          width: model.size?.width,
+          height: model.size?.height,
+          color: model.color,
+        );
+      }
+      return Image.asset(
         model.iconPath!,
         width: model.size?.width,
         height: model.size?.height,

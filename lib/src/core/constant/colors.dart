@@ -20,6 +20,11 @@ abstract class AppColors {
 
   static const Color iconColor = Color(0xFF000000);
 
+  static const Color paleBlue = Color(0xFFD0E7FE);
+  static const Color lavenderBlue = Color(0xFFD8DEFE);
+  static const Color lightPurple = Color(0xFFE8DDF9);
+  static const Color mintGreen = Color(0xFFD3F2E8);
+
   static const Color lightBlue = Color(0xFFF8FAFF);
   static const Color lightPirple = Color(0xFFF5F7FF);
   static const Color whiteDarkerButtonColor = Color(0xFFF0F2F7);

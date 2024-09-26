@@ -55,7 +55,7 @@ dependencies:
   mocktail: ^1.0.1
   reactive_forms: ^17.0.1
   json_serializable: ^6.8.0
-
+  mask_text_input_formatter: ^2.9.0
   icons_launcher: ^2.1.7
 
   # -- navigation -- #
@@ -71,11 +71,7 @@ dependencies:
   flex_color_scheme: ^7.3.1
   tab_container: ^3.5.3
   dotted_border: ^2.1.0
-
-  # -- image -- #
-  flutter_svg: ^2.0.10+1
   auto_size_text: ^3.0.0
-  mask_text_input_formatter: ^2.9.0
   pin_code_fields: ^8.0.1
   flutter_toggle_button: ^0.0.3
   smooth_page_indicator: ^1.2.0+3
@@ -84,6 +80,8 @@ dependencies:
   reactive_date_time_picker: ^4.0.0
   syncfusion_flutter_charts: ^26.2.14
 
+  # -- image -- #
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   # -- testing -- #

@@ -40,7 +40,9 @@ class SubscribeBlockItem extends StatelessWidget {
                 CustomButton(
                   title: t.profile.subscribeBlocButtonTitle,
                   onTap: () {},
-                  icon: IconModel(icon: Icons.language),
+                  icon: IconModel(
+                    icon: Icons.language,
+                  ),
                 ),
               ],
             ),

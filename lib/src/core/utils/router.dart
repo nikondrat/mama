@@ -10,7 +10,6 @@ import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
 
 import '../../feature/feature.dart';
 
-
 abstract class AppViews {
   static const String startScreen = 'startScreen';
   static const String auth = 'authScreen';
@@ -42,17 +41,18 @@ abstract class AppViews {
   static const profile = 'profile';
   static const promoView = 'promoView';
 
+  static const chatView = 'chatView';
+
   static const feeding = 'feeding';
   static const addManually = 'addManually';
-
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  // initialLocation: '/',
-  initialLocation: _Paths.homeScreen,
+  initialLocation: '/',
+  // initialLocation: _Paths.homeScreen,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -161,7 +161,14 @@ final GoRouter router = GoRouter(
         GoRoute(
           name: AppViews.servicesSleepMusicView,
           path: _Paths.servicesSleepMusicPath,
-          builder: (context, state) => const ServicesSleepMusicView(),
+          builder: (context, state) {
+            final Map? extra = state.extra as Map?;
+            final int? selectedTab = extra?['selectedTab'] as int?;
+
+            return ServicesSleepMusicView(
+              index: selectedTab,
+            );
+          },
         ),
       ],
     ),
@@ -198,7 +205,11 @@ final GoRouter router = GoRouter(
             name: AppViews.promoView,
             builder: (context, state) => PromoScreen(),
           )
-        ])
+        ]),
+    GoRoute(
+        path: _Paths.chatView,
+        name: AppViews.chatView,
+        builder: (context, state) => const ChatsScreen()),
   ],
 );
 
@@ -230,12 +241,13 @@ abstract class _Paths {
 
   static const addWeightView = AppViews.addWeightView;
 
-
   static const profile = '/${AppViews.profile}';
   static const promoView = AppViews.promoView;
 
-  static const feeding = '/'; ///временый путь для этого экрана
+  static const chatView = '/${AppViews.chatView}';
+
+  static const feeding = '/';
+
+  ///временый путь для этого экрана
   static const addManually = AppViews.addManually;
-
 }
-

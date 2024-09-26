@@ -106,6 +106,7 @@ class CustomButton extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         height: 1.2),
                 maxLines: 2,
+                minFontSize: 8,
                 overflow: TextOverflow.ellipsis,
               ),
             ),

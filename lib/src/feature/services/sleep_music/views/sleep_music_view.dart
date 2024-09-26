@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/services/sleep_music/widgets/widgets.dart';
 
 class ServicesSleepMusicView extends StatefulWidget {
-  const ServicesSleepMusicView({super.key});
+  final int? index;
+  const ServicesSleepMusicView({
+    super.key,
+    this.index,
+  });
 
   @override
   State<ServicesSleepMusicView> createState() => _ServicesSleepMusicViewState();
@@ -44,7 +47,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     _tabController = TabController(
       length: 3,
       vsync: this,
-      initialIndex: 0,
+      initialIndex: widget.index ?? 0,
     );
   }
 
