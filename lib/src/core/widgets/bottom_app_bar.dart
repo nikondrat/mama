@@ -77,8 +77,8 @@ class _BottomBarState extends State<BottomBar> {
                 width: 88,
                 child: Card(
                   color: AppColors.whiteColor,
-                  shadowColor: AppColors.purpleLighterBackgroundColor,
-                  elevation: 3,
+                  shadowColor: AppColors.skyBlue,
+                  elevation: 1,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Column(
