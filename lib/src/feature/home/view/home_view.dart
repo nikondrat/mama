@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/core/core.dart';
 import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/home/home.dart';
 
