@@ -19,13 +19,25 @@
       "name": "mama (profile mode)",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "profile"
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define",
+        "API_URL=https://api.mama-api.ru/api/v1/",
+        "--dart-define",
+        "ENVIRONMENT=DEV"
+      ]
     },
     {
       "name": "mama (release mode)",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "release"
+      "flutterMode": "release",
+      "args": [
+        "--dart-define",
+        "API_URL=https://api.mama-api.ru/api/v1/",
+        "--dart-define",
+        "ENVIRONMENT=DEV"
+      ]
     }
   ]
 }

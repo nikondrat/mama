@@ -2,3 +2,4 @@ namespaces: true
 input_directory: lib/src/core/constant/localization/translations
 input_file_pattern: .i18n.yaml
 output_directory: lib/src/core/constant/generated
+fallback_strategy: base_locale

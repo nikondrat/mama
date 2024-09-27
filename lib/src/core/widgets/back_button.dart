@@ -34,8 +34,6 @@ class CustomBackButton extends StatelessWidget {
               height: 20,
             ),
             const SizedBox(width: 12),
-
-            // #back text
             Text(
               t.services.back.title,
               style: textTheme.bodySmall,

@@ -10,8 +10,8 @@ final class AppRunner {
   /// Start the initialization and in case of success run application
   Future<void> initializeAndRun() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
-
-    LocaleSettings.setLocaleRaw('ru');
+    LocaleSettings.useDeviceLocale();
+    // LocaleSettings.setLocaleRaw('ru');
 
     // Preserve splash screen
     binding.deferFirstFrame();

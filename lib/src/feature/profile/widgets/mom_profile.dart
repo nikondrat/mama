@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
-import 'body/body_group.dart';
-import 'body/items/body_item.dart';
 
 class MomsProfile extends StatefulWidget {
   final MomInfo mom;
@@ -26,6 +25,7 @@ class MomsProfile extends StatefulWidget {
 
 class _MomsProfileState extends State<MomsProfile> {
   late FormGroup formGroup;
+  bool subscribed = true;
 
   @override
   void initState() {
@@ -127,19 +127,19 @@ class _MomsProfileState extends State<MomsProfile> {
               ),
               32.h,
               CustomButton(
+                isSmall: false,
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PromoScreen()),
-                  );
+                  context.pushNamed(AppViews.promoView);
                 },
                 title: t.profile.addGiftCodeButtonTitle,
               ),
               8.h,
               CustomButton(
                 onTap: () {},
-                icon: Icons.language,
+                isSmall: false,
+                icon: IconModel(
+                  icon: Icons.language,
+                ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
               32.h,
@@ -148,44 +148,44 @@ class _MomsProfileState extends State<MomsProfile> {
               //   style: widget.titlesColoredStyle,
               // ),
               8.h,
-              ChildItems(childs: [
-                ChildModel(id: '', firstName: 'Виктория', secondName: ''),
-              ]),
-              // DisplayChilds(
-              //   childs: widget.mom.childs,
-              //   onChangeBirth: (String value) {}, //TODO логика изменения
-              //   onChangeGender: (String value) {},
-              //   onSwitchBirthComplications: (String value) {},
-              //   onChangeNotes: (String value) {},
-              //   onChangeDateBirth: (String value) {},
-              //   titleStyle: widget.titlesStyle,
-              //   helperStyle: widget.helpersStyle,
-              //   titlesColoredStyle: widget.titlesColoredStyle,
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(28.0),
-              //   child: InkWell(
-              //     onTap: () {
-              //       //! добавить ребенка
-              //     },
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Image(
-              //           height: 17,
-              //           image: AssetImage(
-              //             Assets.icons.icAddChild.path,
-              //           ),
-              //         ),
-              //         16.w,
-              //         Text(
-              //           t.profile.addChildButtonTitle,
-              //           style: widget.titlesColoredStyle,
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              IgnorePointer(
+                ignoring: !subscribed,
+                child: Stack(
+                  children: [
+                    Opacity(
+                      opacity: !subscribed ? 0.25 : 1,
+                      child: ChildItems(
+                        childs: widget.mom.childs,
+                      ),
+                    ),
+                    if (!subscribed) SubscribeBlockItem(),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(28.0),
+                child: InkWell(
+                  onTap: () {
+                    //! добавить ребенка
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        height: 17,
+                        image: AssetImage(
+                          Assets.icons.icAddChild.path,
+                        ),
+                      ),
+                      16.w,
+                      Text(
+                        t.profile.addChildButtonTitle,
+                        style: widget.titlesColoredStyle,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

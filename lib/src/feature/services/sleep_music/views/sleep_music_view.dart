@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/services/sleep_music/widgets/widgets.dart';
 
 class ServicesSleepMusicView extends StatefulWidget {
-  const ServicesSleepMusicView({super.key});
+  final int? index;
+  const ServicesSleepMusicView({
+    super.key,
+    this.index,
+  });
 
   @override
   State<ServicesSleepMusicView> createState() => _ServicesSleepMusicViewState();
@@ -44,7 +47,7 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     _tabController = TabController(
       length: 3,
       vsync: this,
-      initialIndex: 0,
+      initialIndex: widget.index ?? 0,
     );
   }
 
@@ -121,16 +124,10 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
 
     final phonePadding = MediaQuery.of(context).padding;
 
-    final List<Tab> tabs = [
-      Tab(
-        text: t.services.music.title,
-      ),
-      Tab(
-        text: t.services.whiteNoise.title,
-      ),
-      Tab(
-        text: t.services.fairyTales.title,
-      )
+    final List<String> tabs = [
+      t.services.music.title,
+      t.services.whiteNoise.title,
+      t.services.fairyTales.title,
     ];
 
     final List<TrackModel> tracks = [
@@ -158,26 +155,19 @@ class _ServicesSleepMusicViewState extends State<ServicesSleepMusicView>
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFF),
+      backgroundColor: AppColors.lightBlue,
+      appBar: CustomAppBar(
+        height: 100,
+        title: t.services.sleepMusic.title,
+        tabs: tabs,
+        tabController: _tabController,
+      ),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           /// #main content
           Column(
             children: [
-              SizedBox(height: phonePadding.top + 10),
-
-              /// #custom app bar
-              const CustomAppBar(),
-              const SizedBox(height: 10),
-
-              /// #tabs(selection options)
-              TabBar(
-                controller: _tabController,
-                unselectedLabelStyle: const TextStyle(color: AppColors.f8faff),
-                tabs: tabs,
-              ),
-
               /// #tracks
               Expanded(
                 child: TabBarView(

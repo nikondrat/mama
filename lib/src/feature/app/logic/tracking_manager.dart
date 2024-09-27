@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+// import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:mama/src/core/utils/logger.dart';
 
 /// A class which is responsible for enabling error tracking.
@@ -80,29 +79,29 @@ final class SentryTrackingManager extends ErrorTrackingManagerBase {
     final stackTrace = log.stackTrace;
 
     if (error == null && stackTrace == null) {
-      await Sentry.captureMessage(log.message.toString());
+      // await Sentry.captureMessage(log.message.toString());
       return;
     }
 
-    await Sentry.captureException(error ?? log.message, stackTrace: stackTrace);
+    // await Sentry.captureException(error ?? log.message, stackTrace: stackTrace);
   }
 
   @override
   Future<void> enableReporting() async {
-    await SentryFlutter.init((options) {
-      options.dsn = sentryDsn;
+    // await SentryFlutter.init((options) {
+    //   options.dsn = sentryDsn;
 
-      // Set the sample rate to 20% of events.
-      options.tracesSampleRate = 0.20;
-      options.debug = kDebugMode;
-      options.environment = environment;
-    });
+    //   // Set the sample rate to 20% of events.
+    //   options.tracesSampleRate = 0.20;
+    //   options.debug = kDebugMode;
+    //   options.environment = environment;
+    // });
     await super.enableReporting();
   }
 
   @override
   Future<void> disableReporting() async {
-    await Sentry.close();
+    // await Sentry.close();
     await super.disableReporting();
   }
 }
