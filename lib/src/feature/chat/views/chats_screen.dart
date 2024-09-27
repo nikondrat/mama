@@ -81,14 +81,16 @@ MomInfo mom = MomInfo(
   Assets.images.imgProfile.path,
   [
     ChildModel(
-        id: '',
-        firstName: 'Виктория',
-        secondName: '',
-        avatarUrl: Assets.images.imgProfile.path),
+      id: '',
+      firstName: 'Виктория',
+      secondName: '',
+      avatarUrl: Assets.images.imgProfile.path,
+    ),
     ChildModel(
-        id: '',
-        firstName: 'Андрей',
-        secondName: '',
-        avatarUrl: Assets.images.imgPerson1.path),
+      id: '',
+      firstName: 'Андрей',
+      secondName: '',
+      avatarUrl: Assets.images.imgPerson1.path,
+    ),
   ],
 );
