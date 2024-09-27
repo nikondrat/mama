@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
 
 class ArticleCard extends StatelessWidget {
@@ -37,14 +38,15 @@ class ArticleCard extends StatelessWidget {
                     height: 58,
                     width: MediaQuery.of(context).size.width * 0.55,
                     decoration: BoxDecoration(
-                      color: Color(0xffF8FAF),
+                      color: AppColors.f8faff,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Row(
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          backgroundImage: AssetImage('assets/images/img.png'),
+                          backgroundImage:
+                              AssetImage(Assets.images.imgPerson1.path),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,20 +56,23 @@ class ArticleCard extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
+                                fontFamily: Assets.fonts.sFProTextMedium,
                               ),
                             ),
-                            Container(
+                            DecoratedBox(
                               decoration: BoxDecoration(
-                                color: Color(0xffE1E6FF),
+                                color:
+                                    AppColors.gradientPurpleBackgroundScaffold,
                                 // light blue background
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
                                 'Акушер',
                                 style: TextStyle(
-                                  color: Colors.blue,
+                                  color: AppColors.blueBrightTextColor,
                                   // blue text color
-                                  fontSize: 14,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
@@ -96,11 +101,19 @@ class ArticleCard extends StatelessWidget {
               Row(
                 children: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.greyButton,
+                      foregroundColor: AppColors.greyBrighterColor,
+                    ),
                     onPressed: () {},
                     child: Text('Развитие детей'),
                   ),
                   SizedBox(width: 8),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.greyButton,
+                      foregroundColor: AppColors.greyBrighterColor,
+                    ),
                     onPressed: () {},
                     child: Text('6 месяцев'),
                   ),
@@ -112,10 +125,10 @@ class ArticleCard extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(24),
-              child: Container(
+              child: SizedBox(
                 height: 128,
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: Image.asset('assets/images/img_2.png'),
+                child: Image.asset(Assets.images.imgKid.path),
               ),
             ),
           ),

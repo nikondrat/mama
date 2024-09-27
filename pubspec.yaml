@@ -79,6 +79,9 @@ dependencies:
   google_fonts: ^6.2.1
   reactive_date_time_picker: ^4.0.0
   flutter_envify: ^3.0.1
+  flutter_svg: ^2.0.10+1
+  mask_text_input_formatter: ^2.9.0
+  syncfusion_flutter_charts: ^27.1.50
 
 dev_dependencies:
   # -- testing -- #

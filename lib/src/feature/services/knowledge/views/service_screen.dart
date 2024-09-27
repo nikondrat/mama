@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/services/knowledge/views/ages_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/authors_screens.dart';
 import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
@@ -16,18 +17,10 @@ class ServiceKnowledgeScreen extends StatelessWidget {
         title: Text(
           'Центр знаний',
           style: TextStyle(
-            color: Color(0xff4D4DE8),
+            color: AppColors.blue,
           ),
         ),
-        leading: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            BackButton(
-              onPressed: () {},
-            ),
-            Text('Назад'),
-          ],
-        ),
+        leading: CustomBackButton(),
         actions: [
           IconButton(
             onPressed: () {
@@ -38,7 +31,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: Image.asset('assets/images/save.png'),
+            icon: Image.asset(Assets.icons.icPhotoAdd.path),
           ),
         ],
       ),
