@@ -7,8 +7,8 @@ class AppBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final windowWidth = MediaQuery.sizeOf(context).width;
     return LayoutBuilder(builder: (context, constraints) {
+      final windowWidth = constraints.maxWidth;
       final windowSize = constraints.materialBreakpoint;
 
       return builder(windowWidth, windowSize);
