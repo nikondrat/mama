@@ -49,11 +49,14 @@ placeholderSix:
 placeholderSeven:
   title: Сказка
 
-categories:
+categoriesBtn:
   title: Категории
 
-age:
+ageBtn:
   title: Возраст
+
+authorBtn:
+  title: Автор
 
 obstetrician:
    title: Акушер  

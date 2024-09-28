@@ -32,7 +32,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: Image.asset(Assets.icons.addPhotoIc.path),
+            icon: Image.asset(Assets.images.save.path),
           ),
         ],
       ),
@@ -48,7 +48,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   CommonElevatedButton(
-                    name: 'Категории',
+                    name: t.services.categoriesBtn.title,
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -60,7 +60,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 20),
                   CommonElevatedButton(
-                    name: 'Возраст',
+                    name: t.services.ageBtn.title,
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -72,7 +72,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 20),
                   CommonElevatedButton(
-                      name: 'Автор',
+                      name: t.services.authorBtn.title,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -96,8 +96,8 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                   children: [
                     ArticleCard(
                       author: 'Жанна Коршунова',
-                      role: 'Акушер',
-                      title: 'Развитие ребенка в 6 месяцев',
+                      role: t.services.obstetrician.title,
+                      title: t.services.childDevelopment.title,
                     ),
                   ],
                 );
@@ -120,15 +120,3 @@ class ServiceKnowledgeScreen extends StatelessWidget {
   }
 }
 
-class CommonElevatedButton extends StatelessWidget {
-  final String name;
-  final VoidCallback onPressed;
-
-  const CommonElevatedButton(
-      {super.key, required this.name, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed, child: Text(name));
-  }
-}
