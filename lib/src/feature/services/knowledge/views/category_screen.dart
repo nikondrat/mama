@@ -14,7 +14,7 @@ class CategoryScreen extends StatelessWidget {
           t.services.categoriesBtn.title,
           style: TextStyle(
             color: AppColors.blueBrightTextColor,
-            fontFamily: Assets.fonts.nunitoBlack,
+            fontFamily: Assets.fonts.nunitoLight,
           ),
         ),
         centerTitle: true,
@@ -97,7 +97,8 @@ class CategoryScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xffCED1D9),
+                          backgroundColor: AppColors.greyColor,
+                          foregroundColor: AppColors.whiteColor,
                           fixedSize: Size(109, 48),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -116,7 +117,8 @@ class CategoryScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xffE1E6FF),
+                            backgroundColor:
+                                AppColors.purpleLighterBackgroundColor,
                             fixedSize: Size(241, 48),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),

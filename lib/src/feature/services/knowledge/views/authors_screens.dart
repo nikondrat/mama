@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/authors_widgets.dart';
 
 class AuthorsScreen extends StatelessWidget {
@@ -21,15 +22,14 @@ class AuthorsScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back_ios_new),
+              icon: CustomBackButton(),
             ),
-            // Text('Назад'),
           ],
         ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image.asset('assets/images/save.png'),
+            icon: Image.asset(Assets.images.save.path),
           ),
         ],
       ),
@@ -193,8 +193,8 @@ class Authors extends StatelessWidget {
     return Theme(
       data: ThemeData().copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
-        collapsedIconColor: Color(0xff4D4DE8),
-        iconColor: Color(0xff4D4DE8),
+        collapsedIconColor: AppColors.blue,
+        iconColor: AppColors.blue,
         controlAffinity: ListTileControlAffinity.leading,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

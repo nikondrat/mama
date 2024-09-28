@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:mama/src/core/utils/router.dart';
 import 'package:mama/src/feature/services/knowledge/views/ages_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/authors_screens.dart';
 import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
@@ -25,12 +27,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SavedFilesScreen(),
-                ),
-              );
+              context.pushNamed(AppViews.savedFiles);
             },
             icon: Image.asset(Assets.images.save.path),
           ),
@@ -50,36 +47,21 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                   CommonElevatedButton(
                     name: t.services.categoriesBtn.title,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CategoryScreen(),
-                        ),
-                      );
+                      context.pushNamed(AppViews.categories);
                     },
                   ),
                   SizedBox(width: 20),
                   CommonElevatedButton(
                     name: t.services.ageBtn.title,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AgesScreen(),
-                        ),
-                      );
+                      context.pushNamed(AppViews.ages);
                     },
                   ),
                   SizedBox(width: 20),
                   CommonElevatedButton(
                       name: t.services.authorBtn.title,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AuthorsScreen(),
-                          ),
-                        );
+                        context.pushNamed(AppViews.author);
                       })
                 ],
               ),
@@ -119,4 +101,3 @@ class ServiceKnowledgeScreen extends StatelessWidget {
     );
   }
 }
-

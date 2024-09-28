@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 
 class AgeSelection extends StatelessWidget {
   final String title;
@@ -19,7 +19,11 @@ class AgeSelection extends StatelessWidget {
           child: Text(
             title,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 17,
+              fontFamily: Assets.fonts.sFProTextRegular,
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ),
         Text(
@@ -47,7 +51,7 @@ class _CommonCheckBoxWidgetState extends State<CommonCheckBoxWidget> {
   Widget build(BuildContext context) {
     return Checkbox(
       value: isChecked,
-      activeColor: Color(0xff4D4DE8),
+      activeColor: AppColors.blueChildStatusBackgroundColor,
       onChanged: (bool? value) {
         setState(() {
           isChecked = value!;

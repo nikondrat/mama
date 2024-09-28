@@ -5,6 +5,11 @@ import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
 import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
 import 'package:mama/src/feature/home/home.dart';
+import 'package:mama/src/feature/services/knowledge/views/ages_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/authors_screens.dart';
+import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_screen.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
@@ -48,6 +53,11 @@ abstract class AppViews {
   static const feeding = 'feeding';
   static const addManually = 'addManually';
   static const serviceKnowlegde = 'serviceKnowlegde';
+  static const serviceKnowledgeInfo = 'serviceKnowledgeInfo';
+  static const categories = 'categories';
+  static const ages = 'ages';
+  static const author = 'author';
+  static const savedFiles = 'savedFiles';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -171,6 +181,33 @@ final GoRouter router = GoRouter(
               name: AppViews.serviceKnowlegde,
               path: _Paths.serviceKnowledge,
               builder: (context, state) => const ServiceKnowledgeScreen(),
+              routes: [
+                GoRoute(
+                  name: AppViews.categories,
+                  path: _Paths.categories,
+                  builder: (context, state) => const CategoryScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.ages,
+                  path: _Paths.ages,
+                  builder: (context, state) => const AgesScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.author,
+                  path: _Paths.author,
+                  builder: (context, state) => const AuthorsScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.savedFiles,
+                  path: _Paths.savedFiles,
+                  builder: (context, state) => const SavedFilesScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.serviceKnowledgeInfo,
+                  path: _Paths.serviceKnowledgeInfo,
+                  builder: (context, state) => const ServiceInfoScreen(),
+                ),
+              ],
             ),
           ],
         ),
@@ -265,5 +302,12 @@ abstract class _Paths {
   static const feeding = AppViews.feeding;
 
   static const addManually = AppViews.addManually;
+
   static const serviceKnowledge = AppViews.serviceKnowlegde;
+
+  static const serviceKnowledgeInfo = AppViews.serviceKnowledgeInfo;
+  static const categories = AppViews.categories;
+  static const ages = AppViews.ages;
+  static const author = AppViews.author;
+  static const savedFiles = AppViews.savedFiles;
 }

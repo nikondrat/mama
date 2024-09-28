@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_service_info_screen_widgets.dart';
 import 'package:mama/src/feature/services/utils/text_helper.dart';
 
@@ -10,27 +11,35 @@ class ServiceInfoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'Центр знаний',
-          style: TextStyle(
-            color: Color(0xff4D4DE8),
-          ),
-        ),
-        leading: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back_ios_new),
-            ),
-            // Text('Назад'),
-          ],
-        ),
+        leading: CustomBackButton(),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset('assets/images/save.png'),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.45,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: AppColors.lightPirple,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    t.services.toSave.title,
+                    style: TextStyle(
+                      fontFamily: Assets.fonts.sFProTextMedium,
+                      fontSize: 14,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(Assets.images.save.path),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -40,24 +49,27 @@ class ServiceInfoScreen extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {},
-              child: MedicCard(),
+              child: medicCard(),
             ),
             SizedBox(height: 10),
             Text(
-              'Развитие ребенка в 6 месяцев',
+              t.services.childDevelopment.title,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
             ),
             SizedBox(height: 10),
-            Container(
+            SizedBox(
               height: 246,
-              width: 358,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/image.png'),
+              width: double.infinity,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: AssetImage(Assets.images.imgMomOne4x.path),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -164,7 +176,7 @@ class ServiceInfoScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 image: DecorationImage(
-                  image: AssetImage('assets/images/baby.png'),
+                  image: AssetImage(Assets.images.baby.path),
                 ),
               ),
             ),
@@ -199,88 +211,6 @@ class ServiceInfoScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CommonHorizontalWidget extends StatelessWidget {
-  final String mainTittle;
-  const CommonHorizontalWidget({
-    super.key,
-    required this.mainTittle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 212,
-      width: 164,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: 6,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 164,
-            width: 164,
-            decoration: BoxDecoration(
-              color: Color(0xffF0F2F7),
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          'assets/images/img_2.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      Positioned(
-                        top: 10,
-                        left: 10,
-                        child: Container(
-                          width: 59,
-                          height: 14,
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.7),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            '6 месяцев',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  child: Text(
-                    mainTittle,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(width: 15);
-        },
       ),
     );
   }

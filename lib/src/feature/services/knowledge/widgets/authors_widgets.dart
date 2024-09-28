@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 
 class AuthorsSub extends StatelessWidget {
   final String title;
@@ -15,38 +16,44 @@ class AuthorsSub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CircleAvatar(
-          backgroundImage: AssetImage('assets/images/img.png'),
+          backgroundImage: AssetImage(Assets.images.imgPerson2.path),
         ),
         SizedBox(width: 10),
-        Flexible(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(fontSize: 17),
+        Row(
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 17,
+                fontFamily: Assets.fonts.sFProTextRegular,
+                fontWeight: FontWeight.w300,
               ),
-              SizedBox(width: 3),
-              Container(
-                alignment: Alignment.center,
-                height: 14,
-                width: 40,
+            ),
+            SizedBox(width: 3),
+            SizedBox(
+              height: 14,
+              width: 43,
+              child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.lightPurple,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
                   titleAuthor,
-                  style: TextStyle(fontSize: 10),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.blue,
+                    fontFamily: Assets.fonts.sFProTextRegular,
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        SizedBox(width: 40),
+        Spacer(),
         Row(
           children: [
             Text(
@@ -77,7 +84,7 @@ class SchoolSub extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CircleAvatar(
-          backgroundImage: AssetImage('assets/images/img.png'),
+          backgroundImage: AssetImage(Assets.images.imgPerson1.path),
         ),
         SizedBox(width: 10),
         Flexible(
@@ -86,7 +93,11 @@ class SchoolSub extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(
+                  fontSize: 17,
+                  fontFamily: Assets.fonts.sFProTextRegular,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
               const SizedBox(width: 3),
             ],

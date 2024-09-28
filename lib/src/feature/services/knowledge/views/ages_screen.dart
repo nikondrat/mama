@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/ages_widgets.dart';
 
 class AgesScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class AgesScreen extends StatelessWidget {
         title: Text(
           'Возраст',
           style: TextStyle(
-            color: Color(0xff4D4DE8),
+            color: AppColors.blue,
           ),
         ),
         centerTitle: true,
