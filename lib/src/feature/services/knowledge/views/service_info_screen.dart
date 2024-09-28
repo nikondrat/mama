@@ -14,13 +14,14 @@ class ServiceInfoScreen extends StatelessWidget {
         leading: CustomBackButton(),
         actions: [
           SizedBox(
+            height: 46,
             width: MediaQuery.of(context).size.width * 0.45,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: AppColors.lightPirple,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
+                  topLeft: Radius.circular(24),
+                  bottomLeft: Radius.circular(24),
                 ),
               ),
               child: Row(
