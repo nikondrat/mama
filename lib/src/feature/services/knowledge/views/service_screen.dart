@@ -15,9 +15,10 @@ class ServiceKnowledgeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Центр знаний',
+          t.services.knowledgeCenter.title,
           style: TextStyle(
-            color: AppColors.blue,
+            color: AppColors.blueBrightTextColor,
+            fontFamily: Assets.fonts.sFProTextMedium,
           ),
         ),
         leading: CustomBackButton(),
@@ -31,7 +32,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: Image.asset(Assets.icons.icPhotoAdd.path),
+            icon: Image.asset(Assets.icons.addPhotoIc.path),
           ),
         ],
       ),
@@ -102,12 +103,13 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return const Column(
-                  children: [
-                    SizedBox(height: 15),
-                    Divider(),
-                    SizedBox(height: 15),
-                  ],
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: const Column(
+                    children: [
+                      Divider(),
+                    ],
+                  ),
                 );
               },
             ),

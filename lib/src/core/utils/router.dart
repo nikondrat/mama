@@ -167,6 +167,11 @@ final GoRouter router = GoRouter(
                 );
               },
             ),
+            GoRoute(
+              name: AppViews.serviceKnowlegde,
+              path: _Paths.serviceKnowledge,
+              builder: (context, state) => const ServiceKnowledgeScreen(),
+            ),
           ],
         ),
         GoRoute(
@@ -219,14 +224,6 @@ final GoRouter router = GoRouter(
           name: AppViews.chatView,
           builder: (context, state) => const ChatsScreen(),
         ),
-      ],
-    ),
-    GoRoute(
-      path: _Paths.servicesUserPath,
-      name: AppViews.servicesUserView,
-      builder:  (context, state) => ServiceKnowledgeScreen(),
-      routes: [
-        // GoRoute(path: path)
       ],
     ),
   ],

@@ -48,3 +48,18 @@ placeholderSix:
 
 placeholderSeven:
   title: Сказка
+
+categories:
+  title: Категории
+
+age:
+  title: Возраст
+
+obstetrician:
+   title: Акушер  
+
+childDevelopment:
+  title: Развитие ребенка в 6 месяцев
+
+sixMonth: 
+   title: 6 месяцев
