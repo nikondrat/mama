@@ -88,8 +88,12 @@ class CommonHorizontalWidget extends StatelessWidget {
   }
 }
 
-Widget medicCard() {
-  return SizedBox(
+class MediCard extends StatelessWidget {
+  const MediCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
     height: 120,
     width: double.infinity,
     child: DecoratedBox(
@@ -170,6 +174,7 @@ Widget medicCard() {
       ),
     ),
   );
+  }
 }
 
 Widget buildButton(String text) {

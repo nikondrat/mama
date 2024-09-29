@@ -49,8 +49,9 @@ class ServiceInfoScreen extends StatelessWidget {
         child: ListView(
           children: [
             InkWell(
+              splashFactory: NoSplash.splashFactory,
               onTap: () {},
-              child: medicCard(),
+              child: MediCard(),
             ),
             SizedBox(height: 10),
             Text(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/core.dart';
+import 'package:mama/src/core/utils/router.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_article_card.dart';
 
 class SavedFilesScreen extends StatelessWidget {
@@ -18,7 +21,7 @@ class SavedFilesScreen extends StatelessWidget {
         ),
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
         actions: [
@@ -59,15 +62,3 @@ class SavedFilesScreen extends StatelessWidget {
   }
 }
 
-class CommonElevatedButton extends StatelessWidget {
-  final String name;
-  final VoidCallback onPressed;
-
-  const CommonElevatedButton(
-      {super.key, required this.name, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed, child: Text(name));
-  }
-}

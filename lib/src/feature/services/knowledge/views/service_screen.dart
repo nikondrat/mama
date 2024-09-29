@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/core/utils/router.dart';
-import 'package:mama/src/feature/services/knowledge/views/ages_screen.dart';
-import 'package:mama/src/feature/services/knowledge/views/authors_screens.dart';
-import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_article_card.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/common_elev_btn.dart';
 
 class ServiceKnowledgeScreen extends StatelessWidget {
   const ServiceKnowledgeScreen({super.key});
@@ -44,25 +42,26 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 children: [
-                  CommonElevatedButton(
+                  CommonChipButton(
                     name: t.services.categoriesBtn.title,
                     onPressed: () {
                       context.pushNamed(AppViews.categories);
                     },
                   ),
                   SizedBox(width: 20),
-                  CommonElevatedButton(
+                  CommonChipButton(
                     name: t.services.ageBtn.title,
                     onPressed: () {
                       context.pushNamed(AppViews.ages);
                     },
                   ),
                   SizedBox(width: 20),
-                  CommonElevatedButton(
-                      name: t.services.authorBtn.title,
-                      onPressed: () {
-                        context.pushNamed(AppViews.author);
-                      })
+                  CommonChipButton(
+                    name: t.services.authorBtn.title,
+                    onPressed: () {
+                      context.pushNamed(AppViews.author);
+                    },
+                  ),
                 ],
               ),
             ),
