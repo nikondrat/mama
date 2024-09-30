@@ -35,57 +35,61 @@ class StartScreen extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            Column(
-              children: [
-                const Spacer(
-                  flex: 2,
-                ),
-                SvgPicture.asset(
-                  Assets.images.img,
-                ),
-                30.h,
-                // const SizedBox(
-                //   height: 30,
-                // ),
-                SvgPicture.asset(Assets.images.mamaCoStart),
-                // const SizedBox(
-                //   height: 25,
-                // ),
-                25.h,
-                AutoSizeText(
-                  t.auth.slogan,
-                  textAlign: TextAlign.center,
-                  style: textTheme.bodyMedium!.copyWith(
-                    color: colorScheme.onPrimary,
-                  ),
-                ),
-                const Spacer(),
-                CustomButton(
-                  title: t.start.join,
-                  isSmall: false,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  onTap: () => context.pushReplacementNamed(AppViews.register),
-                ),
-                // const SizedBox(
-                //   height: 20,
-                // ),
-                20.h,
-                TextButton(
-                    onPressed: () =>
-                        context.pushReplacementNamed(AppViews.auth),
-                    child: AutoSizeText(
-                      t.start.alreadyHaveAcc,
-                      style: textTheme.bodyMedium!.copyWith(
-                        color: colorScheme.onPrimary,
-                      ),
-                    )),
-                // const SizedBox(
-                //   height: 50,
-                // ),
+            AppBody(
+                builder: (windowWidth, windowSize) => Padding(
+                    padding: HorizontalSpacing.centered(windowWidth),
+                    child: Column(
+                      children: [
+                        const Spacer(
+                          flex: 2,
+                        ),
+                        SvgPicture.asset(
+                          Assets.images.img,
+                        ),
+                        30.h,
+                        // const SizedBox(
+                        //   height: 30,
+                        // ),
+                        SvgPicture.asset(Assets.images.mamaCoStart),
+                        // const SizedBox(
+                        //   height: 25,
+                        // ),
+                        25.h,
+                        AutoSizeText(
+                          t.auth.slogan,
+                          textAlign: TextAlign.center,
+                          style: textTheme.bodyMedium!.copyWith(
+                            color: colorScheme.onPrimary,
+                          ),
+                        ),
+                        const Spacer(),
+                        CustomButton(
+                          title: t.start.join,
+                          isSmall: false,
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          onTap: () =>
+                              context.pushReplacementNamed(AppViews.register),
+                        ),
+                        // const SizedBox(
+                        //   height: 20,
+                        // ),
+                        20.h,
+                        TextButton(
+                            onPressed: () =>
+                                context.pushReplacementNamed(AppViews.auth),
+                            child: AutoSizeText(
+                              t.start.alreadyHaveAcc,
+                              style: textTheme.bodyMedium!.copyWith(
+                                color: colorScheme.onPrimary,
+                              ),
+                            )),
+                        // const SizedBox(
+                        //   height: 50,
+                        // ),
 
-                50.h,
-              ],
-            )
+                        50.h,
+                      ],
+                    )))
           ],
         ),
       ),

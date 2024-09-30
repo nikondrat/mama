@@ -56,14 +56,19 @@ class _HomeViewState extends State<HomeView>
           ],
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          HomeBodyWidget(),
-          TrackersView(),
-          ChatsScreen(),
-          ServicesUserView(),
-        ],
+      body: AppBody(
+        builder: (windowWidth, windowSize) => Padding(
+          padding: HorizontalSpacing.centered(windowWidth),
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              HomeBodyWidget(),
+              TrackersView(),
+              ChatsScreen(),
+              ServicesUserView(),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: BottomBar(
         tabController: _tabController,

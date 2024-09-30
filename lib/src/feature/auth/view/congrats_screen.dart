@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
-
 class CongratsScreen extends StatelessWidget {
   const CongratsScreen({super.key});
 
@@ -10,30 +9,33 @@ class CongratsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyDecoration(
-        backgroundImage: DecorationImage(
-          image: AssetImage(
-            Assets.images.authDecor.path,
-          ),
-          alignment: Alignment.topLeft,
-        ),
-        child: Column(
-          children: [
-            160.h,
-            const CongratsBodyWidget(),
-            const Spacer(),
-            CustomButton(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              isSmall: false,
-              title: t.register.letsStart,
-              onTap: () {
-                context.pushReplacementNamed(AppViews.registerFillName);
-              },
+          backgroundImage: DecorationImage(
+            image: AssetImage(
+              Assets.images.authDecor.path,
             ),
-            const SizedBox(height: 60)
-          ],
-        ),
-
-      ),
+            alignment: Alignment.topLeft,
+          ),
+          child: AppBody(
+            builder: (windowWidth, windowSize) => Padding(
+              padding: HorizontalSpacing.centered(windowWidth),
+              child: Column(
+                children: [
+                  160.h,
+                  const CongratsBodyWidget(),
+                  const Spacer(),
+                  CustomButton(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    isSmall: false,
+                    title: t.register.letsStart,
+                    onTap: () {
+                      context.pushReplacementNamed(AppViews.registerFillName);
+                    },
+                  ),
+                  const SizedBox(height: 60)
+                ],
+              ),
+            ),
+          )),
     );
   }
 }
