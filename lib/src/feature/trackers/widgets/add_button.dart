@@ -21,7 +21,7 @@ class AddButton extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Добавить вес',
+              t.trackers.weight.add,
               style: AppTextStyles.f17w600.copyWith(
                 color: AppColors.primaryColor,
               ),

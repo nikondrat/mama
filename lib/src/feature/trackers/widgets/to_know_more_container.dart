@@ -20,7 +20,6 @@ class _ToKnowMoreContainerState extends State<ToKnowMoreContainer> {
         ? Container(
             padding: EdgeInsets.only(right: 0, left: 16, top: 0, bottom: 0),
             alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: AppColors.learnMoreColor,
               borderRadius: BorderRadius.circular(16),
@@ -41,14 +40,14 @@ class _ToKnowMoreContainerState extends State<ToKnowMoreContainer> {
                   child: Column(
                     children: [
                       Text(
-                        'Здесь вы можете следить за весом своего ребенка и контролировать его развитие, сравнивая с нормативами Всемирной Организации Здравоохранения.',
+                        t.trackers.knowMoreOne.title,
                         style: AppTextStyles.f14w0.copyWith(
                           color: AppColors.greyBrighterColor,
                         ),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'Узнайте больше про эти нормативы и научитесь правильно измерять вес в нашем Центре Знаний:',
+                        t.trackers.knowMoreTwo.title,
                         style: AppTextStyles.f14w0.copyWith(
                           color: AppColors.greyBrighterColor,
                         ),
