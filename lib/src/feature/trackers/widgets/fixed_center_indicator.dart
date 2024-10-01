@@ -15,35 +15,34 @@ class FixedCenterIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Линейка горизонталдуу скрол менен
+        // Линейка горизонтальный с скроллом
         Center(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
-              color: Colors.white, // Фонду ак кылып орноттук
+              color: Colors.white,
               child: CustomPaint(
-                size: Size(200 * 10,
-                    100), // Линейканын узундугу: 20 санына чейин (200 интервал)
+                size: Size(200 * 10, 100),
                 painter: painter,
               ),
             ),
           ),
         ),
-        // Ортодогу көк сызык жана КГ тексти экрандын ортосунда туруктуу болуп калат
+        // Средняя синяя линия и текст компьютерной графики останутся постоянными в центре экрана.
         Positioned(
           left: MediaQuery.of(context).size.width / 2 -
-              1.5, // Экрандын ортосуна жайгаштыруу (сызык үчүн)
+              1.5, // Позиция в центре экрана
           top: 0,
           bottom: 30,
           child: Container(
             width: 4.0,
-            color: AppColors.primaryColor, // Сиздин көк сызык
+            color: AppColors.primaryColor, // Синий линия
           ),
         ),
         Positioned(
           left: MediaQuery.of(context).size.width / 2 -
-              6, // Экрандын ортосуна жайгаштыруу (КГ тексти үчүн)
-          top: 70, // "КГ" жазуусунун орду
+              6, // Расположить по центру (for KG text)
+          top: 70,
           child: Text(
             kgOrG,
             style: AppTextStyles.f17w700.copyWith(

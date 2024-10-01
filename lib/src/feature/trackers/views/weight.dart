@@ -30,17 +30,18 @@ class Weight extends StatelessWidget {
                   left: 16, right: 16, bottom: 5, top: 16),
               child: Row(
                 children: [
-                  SwitchContainer(title1: 'КГ', title2: 'Г'),
+                  SwitchContainer(
+                    title1: t.trackers.kg.title,
+                    title2: t.trackers.g.title,
+                  ),
                 ],
               ),
             ),
 
             /// Grafic
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 16, top: 0),
+              padding: const EdgeInsets.only(bottom: 16, top: 0),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width,
                 height: 278,
                 child: FlProgressChart(),
               ),
@@ -56,12 +57,6 @@ class Weight extends StatelessWidget {
                   SizedBox(width: 8),
                   AddButton(
                     onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => AddWeight(),
-                      //     ));
-
                       context.pushNamed(AppViews.addWeightView);
                     },
                   ),
@@ -73,7 +68,7 @@ class Weight extends StatelessWidget {
             /// Stories
             Center(
               child: Text(
-                'История',
+                t.trackers.stories.title,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -89,11 +84,14 @@ class Weight extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SwitchContainer(
-                    title1: 'Новые',
-                    title2: 'Старые',
+                    title1: t.trackers.news.title,
+                    title2: t.trackers.old.title,
                     // isTrue: false,
                   ),
-                  SwitchContainer(title1: 'КГ', title2: 'Г'),
+                  SwitchContainer(
+                    title1: t.trackers.kg.title,
+                    title2: t.trackers.g.title,
+                  ),
                 ],
               ),
             ),
@@ -101,9 +99,9 @@ class Weight extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RowStroriesData(
-                data: 'Дата',
-                week: 'Неделя',
-                weight: 'Вес',
+                data: t.trackers.date.title,
+                week: t.trackers.weeks.title,
+                weight: t.trackers.weight.title,
                 style: AppTextStyles.f10w700.copyWith(
                   color: AppColors.greyBrighterColor,
                 ),

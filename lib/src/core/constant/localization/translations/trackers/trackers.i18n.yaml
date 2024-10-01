@@ -37,6 +37,9 @@ findOutMoreTextTwo:
 date:
   title: Date
 
+weeks:
+  title: Weeks
+
 time:
   title: Time
 
@@ -60,3 +63,33 @@ fourteensOfSeptember:
 
 note:
   title: Note
+
+knowMoreOne:
+  title: Here you can monitor your child's weight and control its development, comparing it with the standards of the World Health Organization.
+
+knowMoreTwo:
+  title: Find out more about these standards and learn how to measure weight correctly in our Knowledge Center;
+
+knowMoreText:
+  title: Know More
+
+current:
+  title: Current
+
+dynamics:
+  title: Dynamics
+
+kg:
+  title: KG
+
+g: 
+  title: G
+
+stories:
+  title: Stories
+
+news:
+  title: News
+
+old:
+  title: Old
