@@ -219,6 +219,8 @@ class _ChildItemState extends State<ChildItem> {
                         onChanged: (value) {
                           widget.model.setChildbirthWithComplications(value);
                         })),
+                if (formGroup.controls.values.isNotEmpty)
+                  ItemsNeedToFill(formGroup: formGroup),
                 DottedInput(),
               ]),
         ],

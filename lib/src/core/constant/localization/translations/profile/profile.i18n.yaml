@@ -67,26 +67,31 @@ inputHint: Enter
 unitMeasureWeight: kg
 
 unitMeasureHeight: sm
-
 cancel: Cancel
-
 apply: Apply
-
 promoScreenTitle: Gift codes
-
 promoItemButtonTitle: Tap to apply
-
 promoScreenHelper: Tap to fill in new gift code
-
 promoScreenHintAddCode: New gift code
-
 promoScreenErrorCode: Gift code is invalid. Tap to change promocode
-
 promoDialogBackButton: Return
-
 promoErrorDialogBackButton: Cancel
-
 promoErrorDialogContinueButton: Continue
+and: and
+name: name
+dateBirth: date birth
+weight: weight
+height: height
+headCirc: head circumference
+needToFill: Need to fill
+subscribeBlockTitle: Пробный период кончился
+subscribeBlockSubitle: Оформите подписку в личном кабинете, чтобы мы могли и дальше предоставлять вам качественный сервис и услуги специалистов
+subscribeBlocButtonTitle: В личный кабинет
+bottomBarHome: Home
+bottomBarDiaries: Diaries
+bottomBarChats: Chats
+bottomBarServices: Services
+
 
 sex(context=GenderContext):
   male: Boy

@@ -5,5 +5,7 @@ export 'custom_app_bar.dart';
 export 'list.dart';
 export 'body/body.dart';
 export 'loading.dart';
-export 'profile.dart';
+export 'profile/profile.dart';
 export 'icon_widget.dart';
+export 'bottom_app_bar.dart';
+export 'table_widget.dart';

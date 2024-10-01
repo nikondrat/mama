@@ -37,54 +37,59 @@ class PhoneVerify extends StatelessWidget {
                 ),
                 alignment: Alignment.topLeft,
               ),
-              child: Column(
-                children: [
-                  const Spacer(),
-                  SvgPicture.asset(
-                    Assets.images.mamaCo,
-                  ),
-                  20.h,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: AutoSizeText(
-                            t.auth.slogan,
-                            textAlign: TextAlign.center,
-                            style: textTheme.bodySmall!.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+              child: AppBody(
+                  builder: (windowWidth, windowSize) => Padding(
+                      padding: HorizontalSpacing.centered(windowWidth),
+                      child: Column(
+                        children: [
+                          const Spacer(),
+                          SvgPicture.asset(
+                            Assets.images.mamaCo,
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  20.h,
-                  VerifyInputBody(
-                    isLogin: isLogin,
-                    phone: phone,
-                    store: context.watch(),
-                  ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                          onPressed: () => context.pushNamed(
-                              isLogin ? AppViews.register : AppViews.auth),
-                          child: AutoSizeText(
-                            isLogin
-                                ? t.auth.noAccount
-                                : t.auth.alreadyHaveAccount,
-                            style: textTheme.titleMedium,
-                          )),
-                    ],
-                  ),
-                  20.h,
-                ],
-              ))),
+                          20.h,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: AutoSizeText(
+                                    t.auth.slogan,
+                                    textAlign: TextAlign.center,
+                                    style: textTheme.bodySmall!.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          20.h,
+                          VerifyInputBody(
+                            isLogin: isLogin,
+                            phone: phone,
+                            store: context.watch(),
+                          ),
+                          const Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                  onPressed: () => context.pushNamed(isLogin
+                                      ? AppViews.register
+                                      : AppViews.auth),
+                                  child: AutoSizeText(
+                                    isLogin
+                                        ? t.auth.noAccount
+                                        : t.auth.alreadyHaveAccount,
+                                    style: textTheme.titleMedium,
+                                  )),
+                            ],
+                          ),
+                          20.h,
+                        ],
+                      ))))),
     );
   }
 }

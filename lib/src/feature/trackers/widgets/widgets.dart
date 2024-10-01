@@ -11,3 +11,4 @@ export 'custom_point_g.dart';
 export 'fixed_center_indicator.dart';
 export 'custom_blog.dart';
 export 'date_switch_container.dart';
+export 'category_card.dart';

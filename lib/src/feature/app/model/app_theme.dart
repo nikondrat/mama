@@ -17,30 +17,41 @@ abstract class _AppThemeStore with Store {
             fontFamily: 'SFProText',
             useMaterial3: true,
             textTheme: TextTheme(
-                headlineSmall: GoogleFonts.nunito(
-                    fontSize: 32, fontWeight: FontWeight.w700),
-                titleMedium: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                ),
-                titleLarge: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                ),
-                labelLarge: TextStyle(
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                ),
-                bodyMedium: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                ),
-                bodySmall: TextStyle(
-                  fontSize: 17,
-                  color: AppColors.greyBrighterColor,
-                )),
+              headlineSmall:
+                  GoogleFonts.nunito(fontSize: 32, fontWeight: FontWeight.w700),
+              titleMedium: TextStyle(
+                color: AppColors.primaryColor,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
+              titleLarge: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.w700,
+              ),
+              labelLarge: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
+              ),
+              bodyMedium: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+              ),
+              bodySmall: TextStyle(
+                fontSize: 17,
+                color: AppColors.greyBrighterColor,
+              ),
+              labelMedium: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: AppColors.blackColor,
+              ),
+              labelSmall: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                color: AppColors.greyBrighterColor,
+              ),
+            ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
               primary: AppColors.primaryColor,
@@ -85,7 +96,7 @@ abstract class _AppThemeStore with Store {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AppThemeStore && seed == other.seed && mode == other.mode;
+          other is AppThemeStore && seed == other.seed && mode == other.mode;
 
   @override
   int get hashCode => Object.hash(seed, mode);

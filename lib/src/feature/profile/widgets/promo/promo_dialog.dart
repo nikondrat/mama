@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 
 class DialogWidget extends StatelessWidget {
-  // final bool? errorDialog;
+  final bool? errorDialog;
   final DialogItem item;
-  final VoidCallback onTap;
-  const DialogWidget({
-    super.key,
-    required this.item,
-    required this.onTap,
-    //  this.errorDialog
-  });
+  final VoidCallback onTapExit;
+  final VoidCallback? onTapContinue;
+  const DialogWidget(
+      {super.key,
+      required this.item,
+      required this.onTapExit,
+      this.errorDialog,
+      this.onTapContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,6 @@ class DialogWidget extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
-
     return DecoratedBox(
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
@@ -32,88 +32,85 @@ class DialogWidget extends StatelessWidget {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color:
-                    // errorDialog != null
-                    //     ? AppColors.redLighterBackgroundColor
-                    // :
-                    AppColors.greenLighterBackgroundColor,
+                color: errorDialog != null
+                    ? AppColors.redLighterBackgroundColor
+                    : AppColors.greenLighterBackgroundColor,
                 borderRadius: 16.r,
               ),
               padding: EdgeInsets.all(40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
+                    textAlign: TextAlign.center,
                     item.title,
                     style: textTheme.headlineSmall!.copyWith(
-                        fontSize: 24, color: AppColors.greenTextColor),
+                        fontSize: 24,
+                        color: errorDialog != null
+                            ? AppColors.redColor
+                            : AppColors.greenTextColor),
                   ),
                   8.h,
                   Text(
                     item.subtitle,
+                    textAlign: TextAlign.center,
                     style: titlesStyle.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.greenTextColor),
+                        color: errorDialog != null
+                            ? AppColors.redColor
+                            : AppColors.greenTextColor),
                   ),
                   if (item.text != null)
                     Text(
                       item.text!,
+                      textAlign: TextAlign.center,
                       style: titlesStyle.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.greenTextColor),
+                          color: errorDialog != null
+                              ? AppColors.redColor
+                              : AppColors.greenTextColor),
                     ),
                 ],
               ),
             ),
             8.h,
-            // if (errorDialog != null)
-            //   Row(
-            //     children: [
-            //       Flexible(
-            //         flex: 1,
-            //         child: CustomButton(
-            //           title: t.profile.apply,
-            //           backgroundColor: AppColors.redLighterBackgroundColor,
-            //           onTap: onTap,
-            //           isSmall: false,
-            //           // child: Text(
-            //           //   t.profile.promoErrorDialogBackButton,
-            //           //   style: titlesStyle.copyWith(
-            //           //       color: AppColors.redColor,
-            //           //       fontWeight: FontWeight.w600),
-            //           // ),
-            //         ),
-            //       ),
-            //       8.w,
-            //       Flexible(
-            //         flex: 1,
-            //         child: CustomButton(
-            //           title: t.profile.apply,
-            //           onTap: onTap,
-            //           // child: Text(
-            //           //   t.profile.promoErrorDialogContinueButton,
-            //           //   style: titlesStyle.copyWith(
-            //           //       color: AppColors.primaryColor,
-            //           //       fontWeight: FontWeight.w600),
-            //           // ),
-            //         ),
-            //       ),
-            //     ],
-            //   )
-            // else
-            CustomButton(
-              title: t.profile.apply,
-              onTap: onTap,
-              isSmall: false,
-              // child: Text(
-              //   t.profile.promoDialogBackButton,
-              //   style: titlesStyle.copyWith(
-              //       color: AppColors.primaryColor,
-              //       fontWeight: FontWeight.w600),
-              // ),
-            ),
+            if (errorDialog != null)
+              Row(
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: CustomButton(
+                      title: t.profile.promoErrorDialogBackButton,
+                      backgroundColor: AppColors.redLighterBackgroundColor,
+                      onTap: onTapExit,
+                      textStyle: titlesStyle.copyWith(
+                          color: AppColors.redColor,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  8.w,
+                  Flexible(
+                    flex: 1,
+                    child: CustomButton(
+                      title: t.profile.promoErrorDialogContinueButton,
+                      onTap: onTapContinue,
+                      textStyle: titlesStyle.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
+              )
+            else
+              CustomButton(
+                title: t.profile.promoDialogBackButton,
+                onTap: onTapExit,
+                textStyle: titlesStyle.copyWith(
+                    color: AppColors.primaryColor, fontWeight: FontWeight.w600),
+              ),
           ],
         ),
       ),

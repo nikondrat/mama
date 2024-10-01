@@ -50,7 +50,7 @@ class _PromoScreenState extends State<PromoScreen> {
         builder: (context) => Dialog(
           child: DialogWidget(
             item: giftDialog,
-            onTap: () {
+            onTapExit: () {
               context.pop();
             },
           ),
@@ -69,122 +69,124 @@ class _PromoScreenState extends State<PromoScreen> {
     );
 
     return Scaffold(
-      backgroundColor: AppColors.lightBlue,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(
-          t.profile.promoScreenTitle,
-          style: textTheme.headlineSmall!.copyWith(
-            fontSize: 17,
+        backgroundColor: AppColors.lightBlue,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Text(
+            t.profile.promoScreenTitle,
+            style: textTheme.headlineSmall!.copyWith(
+              fontSize: 17,
+            ),
           ),
+          centerTitle: true,
+          leadingWidth: 120,
+          leading: CustomBackButton(),
         ),
-        centerTitle: true,
-        leadingWidth: 120,
-        leading: CustomBackButton(),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ReactiveForm(
-          formGroup: form,
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: items.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return PromoCodeWidget(
-                      item: items[index],
-                      onTap: () {
-                        onTapButton();
+        body: AppBody(
+          builder: (windowWidth, windowSize) => Padding(
+            padding: HorizontalSpacing.centered(windowWidth) +
+                const EdgeInsets.only(bottom: 16),
+            child: ReactiveForm(
+              formGroup: form,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: items.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return PromoCodeWidget(
+                          item: items[index],
+                          onTap: () {
+                            onTapButton();
+                          },
+                        );
                       },
-                    );
-                  },
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: [
-                    ReactiveValueListenableBuilder(
-                        formControlName: 'code',
-                        builder: (context, control, child) {
-                          final bool promoCorrect = control.valid;
-
-                          return BodyItemWidget(
-                            backgroundBorder: Border.all(
-                              color: promoCorrect
-                                  ? AppColors.blueLighter
-                                  : AppColors.redColor,
-                              width: 1,
-                            ),
-                            item: InputItem(
-                              controlName: 'code',
-                              onChanged: (value) {},
-                              inputHint: t.profile.promoScreenHintAddCode,
-                              inputHintStyle: titlesStyle.copyWith(
-                                color: promoCorrect
-                                    ? AppColors.greyBrighterColor
-                                    : AppColors.redColor,
-                              ),
-                              hintText: promoCorrect
-                                  ? t.profile.promoScreenHelper
-                                  : t.profile.promoScreenErrorCode,
-                              hintStyle: promoCorrect
-                                  ? hintStyle
-                                  : hintStyle.copyWith(
-                                      color: AppColors.redColor,
-                                    ),
-                              titleStyle: titlesStyle.copyWith(
-                                  color: promoCorrect
-                                      ? AppColors.blackColor
-                                      : AppColors.redColor),
-                              errorBorder: InputBorder.none,
-                              maxLines: 1,
-                              contentPadding: EdgeInsets.zero,
-                            ),
-                            // ),
-                          );
-                        }),
-                    30.h,
-                    Row(
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
                       children: [
-                        Expanded(
-                          child: CustomButton(
-                            backgroundColor:
-                                AppColors.redLighterBackgroundColor,
-                            onTap: () {},
-                            title: t.profile.cancel,
-                          ),
-                        ),
-                        10.w,
-                        Expanded(
-                          flex: 2,
-                          child: CustomButton(
-                            onTap: form.valid //!
-                                ? () {}
-                                : null,
-                            title: t.profile.apply,
-                            textStyle: titlesStyle.copyWith(
-                                color: form.valid
-                                    ? AppColors.primaryColor
-                                    : AppColors.whiteColor,
-                                fontWeight: FontWeight.w600),
-                          ),
+                        ReactiveValueListenableBuilder(
+                            formControlName: 'code',
+                            builder: (context, control, child) {
+                              final bool promoCorrect = control.valid;
+
+                              return BodyItemWidget(
+                                backgroundBorder: Border.all(
+                                  color: promoCorrect
+                                      ? AppColors.blueLighter
+                                      : AppColors.redColor,
+                                  width: 1,
+                                ),
+                                item: InputItem(
+                                  controlName: 'code',
+                                  onChanged: (value) {},
+                                  inputHint: t.profile.promoScreenHintAddCode,
+                                  inputHintStyle: titlesStyle.copyWith(
+                                    color: promoCorrect
+                                        ? AppColors.greyBrighterColor
+                                        : AppColors.redColor,
+                                  ),
+                                  hintText: promoCorrect
+                                      ? t.profile.promoScreenHelper
+                                      : t.profile.promoScreenErrorCode,
+                                  hintStyle: promoCorrect
+                                      ? hintStyle
+                                      : hintStyle.copyWith(
+                                          color: AppColors.redColor,
+                                        ),
+                                  titleStyle: titlesStyle.copyWith(
+                                      color: promoCorrect
+                                          ? AppColors.blackColor
+                                          : AppColors.redColor),
+                                  errorBorder: InputBorder.none,
+                                  maxLines: 1,
+                                  contentPadding: EdgeInsets.zero,
+                                ),
+                                // ),
+                              );
+                            }),
+                        30.h,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomButton(
+                                backgroundColor:
+                                    AppColors.redLighterBackgroundColor,
+                                onTap: () {},
+                                title: t.profile.cancel,
+                              ),
+                            ),
+                            10.w,
+                            Expanded(
+                              flex: 2,
+                              child: CustomButton(
+                                onTap: form.valid //!
+                                    ? () {}
+                                    : null,
+                                title: t.profile.apply,
+                                textStyle: titlesStyle.copyWith(
+                                    color: form.valid
+                                        ? AppColors.primaryColor
+                                        : AppColors.whiteColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            )
+                          ],
                         )
+                        // ButtonsRow(
+                        //   tapCancelButton: () {},
+                        //   tapApplyButton: () {},
+                        // ),
                       ],
-                    )
-                    // ButtonsRow(
-                    //   tapCancelButton: () {},
-                    //   tapApplyButton: () {},
-                    // ),
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 

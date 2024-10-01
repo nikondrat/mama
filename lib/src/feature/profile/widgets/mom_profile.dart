@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -24,6 +25,7 @@ class MomsProfile extends StatefulWidget {
 
 class _MomsProfileState extends State<MomsProfile> {
   late FormGroup formGroup;
+  bool subscribed = true;
 
   @override
   void initState() {
@@ -140,9 +142,50 @@ class _MomsProfileState extends State<MomsProfile> {
                 ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
-              ChildItems(childs: [
-                ChildModel(id: '', firstName: 'Виктория', secondName: ''),
-              ]),
+              32.h,
+              // Text(
+              //   t.profile.childTitle,
+              //   style: widget.titlesColoredStyle,
+              // ),
+              8.h,
+              IgnorePointer(
+                ignoring: !subscribed,
+                child: Stack(
+                  children: [
+                    Opacity(
+                      opacity: !subscribed ? 0.25 : 1,
+                      child: ChildItems(
+                        childs: widget.mom.childs,
+                      ),
+                    ),
+                    if (!subscribed) SubscribeBlockItem(),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(28.0),
+                child: InkWell(
+                  onTap: () {
+                    //! добавить ребенка
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        height: 17,
+                        image: AssetImage(
+                          Assets.icons.icAddChild.path,
+                        ),
+                      ),
+                      16.w,
+                      Text(
+                        t.profile.addChildButtonTitle,
+                        style: widget.titlesColoredStyle,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

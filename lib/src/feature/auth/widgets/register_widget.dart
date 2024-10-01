@@ -20,7 +20,7 @@ class FillTextField extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: DecoratedBox(
+      child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: Colors.white,
@@ -58,11 +58,15 @@ class FillTextField extends StatelessWidget {
   }
 }
 
-class CityTextField extends StatelessWidget {
+class CityTextField extends StatefulWidget {
   final Widget child;
-
   const CityTextField({super.key, required this.child});
 
+  @override
+  State<CityTextField> createState() => _CityTextFieldState();
+}
+
+class _CityTextFieldState extends State<CityTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -85,7 +89,7 @@ class CityTextField extends StatelessWidget {
             ]),
         child: Padding(
           padding: const EdgeInsets.only(top: 5, left: 5, right: 5),
-          child: child,
+          child: widget.child,
         ),
       ),
     );
@@ -95,13 +99,13 @@ class CityTextField extends StatelessWidget {
 class CityContainer extends StatelessWidget {
   final City city;
   final Function() onTap;
-
   const CityContainer({super.key, required this.city, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: InkWell(

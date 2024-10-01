@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 
 class IconWidget extends StatelessWidget {
@@ -12,7 +13,17 @@ class IconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (model.iconPath != null) {
-      return SvgPicture.asset(
+      final bool isSVG = model.iconPath!.endsWith('.svg');
+
+      if (isSVG) {
+        return SvgPicture.asset(
+          model.iconPath!,
+          width: model.size?.width,
+          height: model.size?.height,
+          color: model.color,
+        );
+      }
+      return Image.asset(
         model.iconPath!,
         width: model.size?.width,
         height: model.size?.height,
@@ -22,3 +33,4 @@ class IconWidget extends StatelessWidget {
     return Icon(model.icon!, color: model.color, size: model.size?.height);
   }
 }
+
