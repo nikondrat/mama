@@ -73,14 +73,10 @@ class ServiceKnowledgeScreen extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               itemCount: 10,
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ArticleCard(
-                      author: 'Жанна Коршунова',
-                      role: t.services.obstetrician.title,
-                      title: t.services.childDevelopment.title,
-                    ),
-                  ],
+                return ArticleCard(
+                  author: 'Жанна Коршунова',
+                  role: t.services.obstetrician.title,
+                  title: t.services.childDevelopment.title,
                 );
               },
               separatorBuilder: (context, index) {
