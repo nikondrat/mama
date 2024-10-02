@@ -55,88 +55,93 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         child: Stack(
           children: [
-            ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                MomsProfile(
-                  titlesStyle: titlesStyle,
-                  helpersStyle: helpersStyle,
-                  titlesColoredStyle: titlesColoredStyle,
-                  mom: MomInfo(
-                    'Кристина Константинова',
-                    '+7 996 997-06-24',
-                    null,
-                    null,
-                    Assets.images.imgProfile.path,
-                    [
-                      ChildModel(id: '', firstName: 'Виктория', secondName: ''),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          //TODO добавить tap о компании
-                        },
-                        child: Text(
-                          t.profile.aboutCompanyTitle,
-                          style: titlesColoredStyle,
-                        )),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          //TODO добавить tap условия использования
-                        },
-                        child: Text(
-                          t.profile.termOfUseTitle,
-                          style: titlesColoredStyle,
-                        )),
-                  ],
-                ),
-                16.h,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: CustomButton(
-                    title: t.profile.feedbackButtonTitle,
-                    onTap: () {},
-                    icon: Icons.language,
-                  ),
-                ),
-                8.h,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: CustomButton(
-                    onTap: () async {
-                      await showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                          insetPadding: EdgeInsets.all(8.0),
-                          child: DialogWidget(
-                            errorDialog: true,
-                            item: alertDialog[0],
-                            onTapExit: () {
-                              context.pop();
-                            },
-                            onTapContinue: () {},
-                          ),
-                        ),
-                      );
-                    },
-                    backgroundColor: AppColors.redLighterBackgroundColor,
-                    title: t.profile.leaveAccountButtonTitle,
-                    textStyle: textTheme.titleMedium!.copyWith(
-                      color: AppColors.redColor,
+            AppBody(
+              builder: (windowWidth, windowSize) => ListView(
+                padding: HorizontalSpacing.centered(windowWidth),
+                children: <Widget>[
+                  MomsProfile(
+                    titlesStyle: titlesStyle,
+                    helpersStyle: helpersStyle,
+                    titlesColoredStyle: titlesColoredStyle,
+                    mom: MomInfo(
+                      'Кристина Константинова',
+                      '+7 996 997-06-24',
+                      null,
+                      null,
+                      Assets.images.imgProfile.path,
+                      [
+                        ChildModel(
+                            id: '', firstName: 'Виктория', secondName: ''),
+                      ],
                     ),
                   ),
-                ),
-                32.h,
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            //TODO добавить tap о компании
+                          },
+                          child: Text(
+                            t.profile.aboutCompanyTitle,
+                            style: titlesColoredStyle,
+                          )),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            //TODO добавить tap условия использования
+                          },
+                          child: Text(
+                            t.profile.termOfUseTitle,
+                            style: titlesColoredStyle,
+                          )),
+                    ],
+                  ),
+                  16.h,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: CustomButton(
+                      title: t.profile.feedbackButtonTitle,
+                      onTap: () {},
+                      icon: IconModel(
+                        icon: Icons.language,
+                      ),
+                    ),
+                  ),
+                  8.h,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: CustomButton(
+                      onTap: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                            insetPadding: EdgeInsets.all(8.0),
+                            child: DialogWidget(
+                              errorDialog: true,
+                              item: alertDialog[0],
+                              onTapExit: () {
+                                context.pop();
+                              },
+                              onTapContinue: () {},
+                            ),
+                          ),
+                        );
+                      },
+                      backgroundColor: AppColors.redLighterBackgroundColor,
+                      title: t.profile.leaveAccountButtonTitle,
+                      textStyle: textTheme.titleMedium!.copyWith(
+                        color: AppColors.redColor,
+                      ),
+                    ),
+                  ),
+                  32.h,
+                ],
+              ),
             ),
             //   ),
             // ],
@@ -147,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ButtonLeading(
                 labelStyle: titlesStyle!.copyWith(fontWeight: FontWeight.w400),
                 onTapButton: () {
-                  //! добавить tap back button
+                  context.pop();
                 },
               ),
             ),

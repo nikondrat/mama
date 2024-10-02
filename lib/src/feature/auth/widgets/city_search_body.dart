@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -95,7 +96,11 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                                       context.goNamed(AppViews.welcomeScreen);
                                     }
                                   : null,
-                              icon: selectedCity != null ? Icons.check : null,
+                              icon: selectedCity != null
+                                  ? IconModel(
+                                      icon: Icons.check,
+                                    )
+                                  : null,
                               title: t.register.complete,
                               backgroundColor: selectedCity != null
                                   ? AppColors.greenLighterBackgroundColor

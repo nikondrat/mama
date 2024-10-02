@@ -32,7 +32,7 @@ class KnowMoreButton extends StatelessWidget {
             Image.asset('assets/icons/graduationcap.png'),
             SizedBox(width: 5),
             Text(
-              'Узнать  больше',
+              t.trackers.knowMoreText.title,
               style: AppTextStyles.f10w700.copyWith(
                 color: AppColors.primaryColor,
               ),

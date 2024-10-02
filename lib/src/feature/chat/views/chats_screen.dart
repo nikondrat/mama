@@ -16,7 +16,23 @@ class ChatsScreen extends StatefulWidget {
   State<ChatsScreen> createState() => _ChatsScreenState();
 }
 
-class _ChatsScreenState extends State<ChatsScreen> {
+class _ChatsScreenState extends State<ChatsScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  int _selectedIndex = 2;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+    _tabController.addListener(() {
+      setState(() {
+        _selectedIndex = _tabController.index;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -63,6 +79,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => GroupChatScreen(
+                                  chat: listChatSingle[0],
                                   listMessages: listGroup,
                                   chatEntity: ChatEntity.groupChat,
                                 ),
@@ -97,6 +114,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               builder: (context) => GroupChatScreen(
                                 listMessages: list,
                                 chatEntity: ChatEntity.singleChat,
+                                chat: listChatSingle[0],
                               ),
                             ));
                       },
@@ -109,7 +127,9 @@ class _ChatsScreenState extends State<ChatsScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: BottomBar(
+        tabController: _tabController,
+      ),
     );
   }
 }

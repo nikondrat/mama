@@ -8,5 +8,3 @@ export 'register_title_widget.dart';
 export 'welcome_container.dart';
 export 'register_input_info.dart';
 export 'decoration.dart';
-export 'auth_input_body.dart';
-export 'input_decoration.dart';

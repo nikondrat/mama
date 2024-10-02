@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/constant/constant.dart';
 import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 
-class CustomBloc extends StatefulWidget {
-  const CustomBloc({super.key});
+class CustomBlog extends StatefulWidget {
+  const CustomBlog({super.key});
 
   @override
-  _CustomBlocState createState() => _CustomBlocState();
+  _CustomBlogState createState() => _CustomBlogState();
 }
 
-class _CustomBlocState extends State<CustomBloc> {
+class _CustomBlogState extends State<CustomBlog> {
   List<bool> isSelected = [true, false];
 
   @override
@@ -59,7 +59,7 @@ class _CustomBlocState extends State<CustomBloc> {
                       splashColor: Colors.transparent,
                       children: [
                         Text(
-                          'КГ',
+                          t.trackers.kg.title,
                           style: TextStyle(
                             color: isSelected[0]
                                 ? AppColors.primaryColor
@@ -69,7 +69,7 @@ class _CustomBlocState extends State<CustomBloc> {
                           ),
                         ),
                         Text(
-                          'Г',
+                          t.trackers.g.title,
                           style: TextStyle(
                             color: isSelected[1]
                                 ? AppColors.primaryColor
@@ -106,9 +106,9 @@ class _CustomBlocState extends State<CustomBloc> {
               SizedBox(height: 10),
 
               DateSwitchContainer(
-                title1: 'Сейчас',
-                title2: '16:32',
-                title3: '14 сентября',
+                title1: t.trackers.now.title,
+                title2: t.trackers.sixTeenThirtyTwo.title,
+                title3: t.trackers.fourteensOfSeptember.title,
               ),
               SizedBox(height: 10),
 
@@ -121,7 +121,7 @@ class _CustomBlocState extends State<CustomBloc> {
                     child: OutlinedButton.icon(
                       icon: Icon(Icons.edit, color: AppColors.primaryColor),
                       label: Text(
-                        'Заметка',
+                        t.trackers.note.title,
                         style: AppTextStyles.f17w600.copyWith(
                           color: AppColors.primaryColor,
                         ),
@@ -150,7 +150,7 @@ class _CustomBlocState extends State<CustomBloc> {
                         ),
                       ),
                       child: Text(
-                        'Добавить',
+                        t.trackers.add.title,
                         style: AppTextStyles.f17w600.copyWith(
                           color: AppColors.primaryColor,
                         ),

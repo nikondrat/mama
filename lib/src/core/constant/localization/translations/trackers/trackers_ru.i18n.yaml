@@ -37,6 +37,9 @@ findOutMoreTextTwo:
 date:
   title: Дата
 
+weeks:
+  title: Неделя
+
 time:
   title: Время
 
@@ -60,3 +63,36 @@ fourteensOfSeptember:
 
 note:
   title: Заметка
+
+knowMoreOne:
+  title: Здесь вы можете следить за весом своего ребенка и контролировать его развитие, сравнивая с нормативами Всемирной Организации Здравоохранения.
+
+knowMoreTwo:
+  title: Узнайте больше про эти нормативы и научитесь правильно измерять вес в нашем Центре Знаний
+
+knowMoreText:
+  title: Узнать больше
+
+current: 
+  title: Текущий
+
+dynamics:
+  title: Динамика
+
+kg:
+  title: КГ
+
+g: 
+  title: Г
+
+stories:
+  title: История
+
+news:
+  title: Новые
+
+old:
+  title: Старые
+
+
+

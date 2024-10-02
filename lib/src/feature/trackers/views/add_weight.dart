@@ -8,14 +8,15 @@ class AddWeight extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.blueLighter1,
       appBar: CustomAppBar(title: t.trackers.weight.add),
-      // appBar: CustomAppBar(isSizeTrue: false),
       body: ListView(
         children: [
-          FixedCenterIndicator(kgOrG: 'КГ', painter: CustomPointKG()),
+          FixedCenterIndicator(
+              kgOrG: t.trackers.kg.title, painter: CustomPointKG()),
           SizedBox(height: 8),
-          FixedCenterIndicator(kgOrG: 'Г', painter: CustomPointG()),
+          FixedCenterIndicator(
+              kgOrG: t.trackers.g.title, painter: CustomPointG()),
           SizedBox(height: 8),
-          CustomBloc(),
+          CustomBlog(),
           SizedBox(height: 8),
         ],
       ),

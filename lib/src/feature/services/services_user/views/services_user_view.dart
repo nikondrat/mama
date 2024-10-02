@@ -36,7 +36,7 @@ class ServicesUserView extends StatelessWidget {
                     buttons: [
                       ButtonModel(
                         title: t.services.myRecords.title,
-                        onTap: navigateToMyRecordsView,
+                        onTap: () {},
                       ),
                       ButtonModel(
                         title: t.services.specialists.title,
@@ -54,18 +54,32 @@ class ServicesUserView extends StatelessWidget {
                   MainBoxWithButtons(
                     image: Assets.images.imgMoonMusic4x.path,
                     mainText: t.services.sleepMusic.title,
+                    onTap: () =>
+                        context.pushNamed(AppViews.servicesSleepMusicView),
                     buttons: [
                       ButtonModel(
                         title: t.services.music.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView);
+                        },
                       ),
                       ButtonModel(
                         title: t.services.whiteNoise.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView,
+                              extra: {
+                                'selectedTab': 1,
+                              });
+                        },
                       ),
                       ButtonModel(
                         title: t.services.fairyTales.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView,
+                              extra: {
+                                'selectedTab': 2,
+                              });
+                        },
                       )
                     ],
                   ),

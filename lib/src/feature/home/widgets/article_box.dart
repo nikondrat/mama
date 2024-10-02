@@ -68,15 +68,13 @@ class ArticleBox extends StatelessWidget {
                 bottomRight: Radius.circular(16),
               ),
             ),
-            child: Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8).copyWith(top: 4),
-                child: Text(
-                  articleTitle,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
+            child: Padding(
+              padding: const EdgeInsets.all(8).copyWith(top: 4),
+              child: Text(
+                articleTitle,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

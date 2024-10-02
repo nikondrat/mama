@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../core/core.dart';
@@ -22,9 +21,7 @@ class WelcomeContainer extends StatelessWidget {
         Image.asset(content.assetImage),
         Text(content.title,
             style: textTheme.labelLarge
-                ?.copyWith(
-                fontSize: 24,
-                color: AppColors.primaryColor)),
+                ?.copyWith(fontSize: 24, color: AppColors.primaryColor)),
         15.h,
         Text(
           content.text,

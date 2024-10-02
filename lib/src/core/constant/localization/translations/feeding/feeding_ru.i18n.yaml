@@ -1,0 +1,29 @@
+feeding: Кормление
+breast: Грудь
+pumping: Сцеживание
+bottle: Бутылочка
+lure: Прикорм
+
+learnMoreText: Здесь вы можете отслеживать, как проходит кормление грудью.\n\nУзнайте больше про процесс грудного вскармливания в нашем Центре Знаний
+
+learnMoreBtn: Узнать\nбольше
+
+left: Левая
+right: Правая
+
+addManually: Добавить вручную
+
+pressForAddFeedingTime:
+  first: Нажмите на
+  second: или добавьте вручную
+
+addFeeding: Добавить кормление
+story: История
+newS: Новые
+old: Старые
+l: Л
+r: П
+general: Общее
+wholeStory: Вся история
+
+feedingEndTime: Время окончания\nкормление

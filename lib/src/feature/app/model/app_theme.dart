@@ -100,7 +100,7 @@ abstract class _AppThemeStore with Store {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AppThemeStore && seed == other.seed && mode == other.mode;
+          other is AppThemeStore && seed == other.seed && mode == other.mode;
 
   @override
   int get hashCode => Object.hash(seed, mode);

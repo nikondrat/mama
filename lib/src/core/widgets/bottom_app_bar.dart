@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 
 class BottomBar extends StatefulWidget {
-  const BottomBar({super.key});
+  final TabController tabController;
+  const BottomBar({
+    super.key,
+    required this.tabController,
+  });
 
   @override
   State<BottomBar> createState() => _BottomBarState();
@@ -12,6 +16,7 @@ class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
+    widget.tabController.animateTo(index);
     setState(() {
       _selectedIndex = index;
     });
