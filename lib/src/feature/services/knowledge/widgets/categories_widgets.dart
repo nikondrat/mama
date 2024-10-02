@@ -1,6 +1,7 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/constant/colors.dart';
+import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/common_checkbox.dart';
 
 class BuildCategory extends StatelessWidget {
   final String title;
@@ -19,7 +20,8 @@ class BuildCategory extends StatelessWidget {
     return Theme(
       data: ThemeData().copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
-        iconColor: Color(0xff4D4DE8),
+        iconColor: AppColors.blue,
+        collapsedIconColor: AppColors.blue,
         controlAffinity: ListTileControlAffinity.leading,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,13 +31,17 @@ class BuildCategory extends StatelessWidget {
               child: Text(
                 title,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 17,
+                  fontFamily: Assets.fonts.sFProTextBold,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             Expanded(
               child: Text(
                 count.toString(),
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(),
               ),
             ),
             Expanded(
@@ -45,31 +51,6 @@ class BuildCategory extends StatelessWidget {
         ),
         children: subCategories,
       ),
-    );
-  }
-}
-
-class CommonCheckBoxWidget extends StatefulWidget {
-  const CommonCheckBoxWidget({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBoxWidget> createState() => _CommonCheckBoxWidgetState();
-}
-
-class _CommonCheckBoxWidgetState extends State<CommonCheckBoxWidget> {
-  bool isChecked = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: isChecked,
-      activeColor: Color(0xff4D4DE8),
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
     );
   }
 }
@@ -93,43 +74,28 @@ class BuildSubCategory extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 17),
+            style: TextStyle(
+              color: AppColors.blackColor,
+              fontSize: 17,
+              fontFamily: Assets.fonts.sFProTextMedium,
+              fontWeight: FontWeight.w400,
+            ),
           ),
           Row(
             children: [
               Text(
                 count.toString(),
-                style: TextStyle(color: Colors.grey, fontSize: 17),
+                style: TextStyle(
+                  fontSize: 17,
+                  fontFamily: Assets.fonts.sFProTextMedium,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-              CommonCheckBox(),
+              CommonCheckBoxWidget(),
             ],
           ),
         ],
       ),
     );
-  }
-}
-
-class CommonCheckBox extends StatefulWidget {
-  const CommonCheckBox({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBox> createState() => _CommonCheckBoxState();
-}
-
-class _CommonCheckBoxState extends State<CommonCheckBox> {
-  bool firstValue = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-        activeColor: Color(0xff4D4DE8),
-        value: firstValue,
-        onChanged: (bool? value) {
-          setState(() {
-            firstValue = value!;
-          });
-        });
   }
 }

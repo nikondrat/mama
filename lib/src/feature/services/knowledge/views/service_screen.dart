@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/core/utils/router.dart';
-import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_article_card.dart';
-import 'package:mama/src/feature/services/knowledge/widgets/common_elev_btn.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/common_chip_btn.dart';
 
 class ServiceKnowledgeScreen extends StatelessWidget {
   const ServiceKnowledgeScreen({super.key});
@@ -12,24 +11,17 @@ class ServiceKnowledgeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          t.services.knowledgeCenter.title,
-          style: TextStyle(
-            color: AppColors.blueBrightTextColor,
-            fontFamily: Assets.fonts.sFProTextMedium,
+      appBar: CustomAppBar(
+        title: t.services.knowledgeCenter.title,
+        action: IconButton(
+          onPressed: () {
+            context.pushNamed(AppViews.savedFiles);
+          },
+          icon: Image.asset(
+            Assets.images.save.path,
+            height: 28,
           ),
         ),
-        leading: CustomBackButton(),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.pushNamed(AppViews.savedFiles);
-            },
-            icon: Image.asset(Assets.images.save.path),
-          ),
-        ],
       ),
       body: ListView(
         children: [

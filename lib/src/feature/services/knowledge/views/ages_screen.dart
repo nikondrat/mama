@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/services/knowledge/model/ages_model.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/ages_widgets.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_filter_views.dart';
 
@@ -9,8 +10,11 @@ class AgesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilterView(
-      title: 'title',
-      builder: () => AgeSelection(title: '1 month', count: 3),
+      title: t.services.ageBtn.title,
+      builder: (index) => AgeSelection(
+        title: agesList[index].tittle,
+        count: agesList[index].count,
+      ),
     );
 
     // Scaffold(

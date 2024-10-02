@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
+import 'package:mama/src/core/utils/router.dart';
 
 class ArticleCard extends StatelessWidget {
   final String author;
@@ -19,12 +20,7 @@ class ArticleCard extends StatelessWidget {
     return InkWell(
       splashFactory: NoSplash.splashFactory,
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ServiceInfoScreen(),
-          ),
-        );
+        context.pushNamed(AppViews.serviceKnowledgeInfo);
       },
       child: Row(
         children: [

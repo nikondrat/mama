@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/core/utils/router.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_article_card.dart';
 
 class SavedFilesScreen extends StatelessWidget {
@@ -27,7 +26,7 @@ class SavedFilesScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image.asset('assets/images/save.png'),
+            icon: Image.asset(Assets.images.save.path),
           ),
         ],
       ),
@@ -48,12 +47,13 @@ class SavedFilesScreen extends StatelessWidget {
             );
           },
           separatorBuilder: (context, index) {
-            return const Column(
-              children: [
-                SizedBox(height: 15),
-                Divider(),
-                SizedBox(height: 15),
-              ],
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: const Column(
+                children: [
+                  Divider(),
+                ],
+              ),
             );
           },
         ),
@@ -61,4 +61,3 @@ class SavedFilesScreen extends StatelessWidget {
     );
   }
 }
-

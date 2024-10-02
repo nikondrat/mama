@@ -3,7 +3,7 @@ import 'package:mama/src/core/core.dart';
 
 class FilterView extends StatelessWidget {
   final String title;
-  final Widget Function() builder;
+  final Widget Function(int) builder;
   const FilterView({
     super.key,
     required this.title,
@@ -20,24 +20,26 @@ class FilterView extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           ListView.builder(
-            itemCount: 7,
-            itemBuilder: (context, index) => builder(),
+            itemCount: 5,
+            itemBuilder: (context, index) => builder(index),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Expanded(
-                    child: CustomButton(
-                  title: 'Clear',
-                  onTap: () {},
-                  backgroundColor: AppColors.greyLighterColor,
-                )),
+                  child: CustomButton(
+                    title: 'Очистить',
+                    onTap: () {},
+                    backgroundColor: AppColors.greyLighterColor,
+                    type: CustomButtonType.filled,
+                  ),
+                ),
                 10.w,
                 Expanded(
                   flex: 2,
                   child: CustomButton(
-                    title: 'COnfirm',
+                    title: 'Подтвердить',
                     onTap: () {},
                     backgroundColor: AppColors.purpleBrighterBackgroundColor,
                   ),

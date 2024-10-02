@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/common_checkbox.dart';
 
 class AuthorsSub extends StatelessWidget {
   final String title;
@@ -58,9 +59,9 @@ class AuthorsSub extends StatelessWidget {
           children: [
             Text(
               count.toString(),
-              style: TextStyle(color: Colors.grey, fontSize: 17),
+              style: TextStyle(color: AppColors.greyLighterColor, fontSize: 17),
             ),
-            CommonCheckBox(),
+            CommonCheckBoxWidget(),
           ],
         ),
       ],
@@ -108,61 +109,12 @@ class SchoolSub extends StatelessWidget {
           children: [
             Text(
               count.toString(),
-              style: TextStyle(color: Colors.grey, fontSize: 17),
+              style: TextStyle(color: AppColors.greyLighterColor, fontSize: 17),
             ),
-            CommonCheckBox(),
+            CommonCheckBoxWidget(),
           ],
         ),
       ],
-    );
-  }
-}
-
-class CommonCheckBox extends StatefulWidget {
-  const CommonCheckBox({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBox> createState() => _CommonCheckBoxState();
-}
-
-class _CommonCheckBoxState extends State<CommonCheckBox> {
-  bool firstValue = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-        activeColor: Color(0xff4D4DE8),
-        value: firstValue,
-        onChanged: (bool? value) {
-          setState(() {
-            firstValue = value!;
-          });
-        });
-  }
-}
-
-class CommonCheckBoxWidget extends StatefulWidget {
-  const CommonCheckBoxWidget({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBoxWidget> createState() => _CommonCheckBoxWidgetState();
-}
-
-class _CommonCheckBoxWidgetState extends State<CommonCheckBoxWidget> {
-  bool isChecked = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: isChecked,
-      activeColor: Color(0xff4D4DE8),
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
     );
   }
 }

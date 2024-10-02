@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/services/knowledge/widgets/common_checkbox.dart';
 
 class AgeSelection extends StatelessWidget {
   final String title;
@@ -13,74 +14,28 @@ class AgeSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Text(
-            title,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 17,
-              fontFamily: Assets.fonts.sFProTextRegular,
-              fontWeight: FontWeight.w300,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 17,
+                fontFamily: Assets.fonts.sFProTextRegular,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
-        ),
-        Text(
-          count.toString(),
-          style: TextStyle(color: Colors.grey),
-        ),
-        CommonCheckBoxWidget()
-      ],
+          Text(
+            count.toString(),
+            style: TextStyle(color: Colors.grey),
+          ),
+          CommonCheckBoxWidget()
+        ],
+      ),
     );
-  }
-}
-
-class CommonCheckBoxWidget extends StatefulWidget {
-  const CommonCheckBoxWidget({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBoxWidget> createState() => _CommonCheckBoxWidgetState();
-}
-
-class _CommonCheckBoxWidgetState extends State<CommonCheckBoxWidget> {
-  bool isChecked = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: isChecked,
-      activeColor: AppColors.blueChildStatusBackgroundColor,
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
-    );
-  }
-}
-
-class CommonCheckBox extends StatefulWidget {
-  const CommonCheckBox({
-    super.key,
-  });
-
-  @override
-  State<CommonCheckBox> createState() => _CommonCheckBoxState();
-}
-
-class _CommonCheckBoxState extends State<CommonCheckBox> {
-  bool firstValue = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-        activeColor: Color(0xff4D4DE8),
-        value: firstValue,
-        onChanged: (bool? value) {
-          setState(() {
-            firstValue = value!;
-          });
-        });
   }
 }
