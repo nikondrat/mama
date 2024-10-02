@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mama/src/data.dart';
 
-class TokenStorageImpl implements TokenStorage<String?> {
+class TokenStorageImpl implements TokenStorage<Map?> {
   final FlutterSecureStorage storage;
 
   TokenStorageImpl({required this.storage});
 
   static const _accessTokenKey = 'access';
-  // static const _refreshTokenKey = 'refresh';
+  static const _refreshTokenKey = 'refresh';
 
   @override
   Future<void> clearTokenPair() async {
     storage.delete(key: _accessTokenKey);
-    // storage.delete(key: _refreshTokenKey);
+    storage.delete(key: _refreshTokenKey);
   }
 
   @override
@@ -24,9 +24,13 @@ class TokenStorageImpl implements TokenStorage<String?> {
   }
 
   @override
-  Stream<String?> getTokenPairStream() {
+  Stream<Map?> getTokenPairStream() {
     // final controller = StreamController<Future<String?>>();
-    return storage.read(key: _accessTokenKey).asStream();
+
+    return Stream.value({
+      _accessTokenKey: storage.read(key: _accessTokenKey),
+      _refreshTokenKey: storage.read(key: _refreshTokenKey)
+    });
 
     // storage.read(key: _accessTokenKey).then((value) async {
     //   controller.add(Future.value(value));
@@ -40,15 +44,19 @@ class TokenStorageImpl implements TokenStorage<String?> {
   }
 
   @override
-  Future<String?> loadTokenPair() async {
+  Future<Map?> loadTokenPair() async {
     final accessToken = storage.read(key: _accessTokenKey);
-    return accessToken;
+    final refreshToken = storage.read(key: _refreshTokenKey);
+
+    return {'access': accessToken, 'refresh': refreshToken};
   }
 
   @override
-  Future<void> saveTokenPair(accessToken) async {
-    final String? accessTokenString = accessToken;
+  Future<void> saveTokenPair(tokens) async {
+    final String? accessTokenString = tokens?['access'];
+    final String? refreshTokenString = tokens?['refresh'];
 
     storage.write(key: _accessTokenKey, value: accessTokenString);
+    storage.write(key: _refreshTokenKey, value: refreshTokenString);
   }
 }

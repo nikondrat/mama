@@ -52,6 +52,7 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
+  // initialLocation: _Paths.homeScreen,
   routes: [
     GoRoute(
         path: _Paths.startScreen,
@@ -147,23 +148,16 @@ final GoRouter router = GoRouter(
         builder: (context, state) => HomeView(),
         routes: [
           GoRoute(
-            name: AppViews.servicesUserView,
-            path: _Paths.servicesUserPath,
-            builder: (context, state) => const ServicesUserView(),
-            routes: [
-              GoRoute(
-                name: AppViews.servicesSleepMusicView,
-                path: _Paths.servicesSleepMusicPath,
-                builder: (context, state) {
-                  final Map? extra = state.extra as Map?;
-                  final int? selectedTab = extra?['selectedTab'] as int?;
+            name: AppViews.servicesSleepMusicView,
+            path: _Paths.servicesSleepMusicPath,
+            builder: (context, state) {
+              final Map? extra = state.extra as Map?;
+              final int? selectedTab = extra?['selectedTab'] as int?;
 
-                  return ServicesSleepMusicView(
-                    index: selectedTab,
-                  );
-                },
-              ),
-            ],
+              return ServicesSleepMusicView(
+                index: selectedTab,
+              );
+            },
           ),
           GoRoute(
               path: _Paths.evolutionView,
@@ -210,10 +204,6 @@ final GoRouter router = GoRouter(
                   builder: (context, state) => PromoScreen(),
                 )
               ]),
-          GoRoute(
-              path: _Paths.chatView,
-              name: AppViews.chatView,
-              builder: (context, state) => const ChatsScreen()),
         ]),
   ],
 );
@@ -240,7 +230,6 @@ abstract class _Paths {
   static const trackersHealthAddTemperaturePath =
       AppViews.trackersHealthAddTemperatureView;
 
-  static const servicesUserPath = AppViews.servicesUserView;
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
   static const evolutionView = AppViews.evolutionView;
 
@@ -248,8 +237,6 @@ abstract class _Paths {
 
   static const profile = AppViews.profile;
   static const promoView = AppViews.promoView;
-
-  static const chatView = AppViews.chatView;
 
   static const feeding = AppViews.feeding;
 
