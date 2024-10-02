@@ -54,11 +54,8 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-
-  // initialLocation: '/',
-  // initialLocation: _Paths.evolutionView,
-  initialLocation: _Paths.homeScreen,
-
+  initialLocation: '/',
+  // initialLocation: _Paths.homeScreen,
   routes: [
     GoRoute(
       path: _Paths.startScreen,
@@ -154,84 +151,68 @@ final GoRouter router = GoRouter(
       ],
     ),
     GoRoute(
-      path: _Paths.homeScreen,
-      name: AppViews.homeScreen,
-      builder: (context, state) => HomeView(),
-      routes: [
-        GoRoute(
-          name: AppViews.servicesUserView,
-          path: _Paths.servicesUserPath,
-          builder: (context, state) => const ServicesUserView(),
-          routes: [
-            GoRoute(
-              name: AppViews.servicesSleepMusicView,
-              path: _Paths.servicesSleepMusicPath,
-              builder: (context, state) {
-                final Map? extra = state.extra as Map?;
-                final int? selectedTab = extra?['selectedTab'] as int?;
+        path: _Paths.homeScreen,
+        name: AppViews.homeScreen,
+        builder: (context, state) => HomeView(),
+        routes: [
+          GoRoute(
+            name: AppViews.servicesSleepMusicView,
+            path: _Paths.servicesSleepMusicPath,
+            builder: (context, state) {
+              final Map? extra = state.extra as Map?;
+              final int? selectedTab = extra?['selectedTab'] as int?;
 
-                return ServicesSleepMusicView(
-                  index: selectedTab,
-                );
-              },
-            ),
-          ],
-        ),
-        GoRoute(
-          path: _Paths.evolutionView,
-          name: AppViews.evolutionView,
-          builder: (context, state) => const EvolutionView(),
-          routes: [
-            GoRoute(
-              name: AppViews.addWeightView,
-              path: _Paths.addWeightView,
-              builder: (context, state) => AddWeight(),
-            )
-          ],
-        ),
-        GoRoute(
-          path: _Paths.feeding,
-          name: AppViews.feeding,
-          builder: (context, state) => const FeedingScreen(),
-          routes: [
-            GoRoute(
-              name: AppViews.addManually,
-              path: _Paths.addManually,
-              builder: (context, state) => const AddManuallyScreen(),
-            ),
-          ],
-        ),
-        GoRoute(
-          name: AppViews.trackersHealthView,
-          path: _Paths.trackersHealthPath,
-          builder: (context, state) => TrackersHealthView(),
-          routes: [
-            GoRoute(
-              name: AppViews.trackersHealthAddTemperatureView,
-              path: _Paths.trackersHealthAddTemperaturePath,
-              builder: (context, state) => TrackersHealthAddTemperature(),
-            )
-          ],
-        ),
-        GoRoute(
-          path: _Paths.profile,
-          name: AppViews.profile,
-          builder: (context, state) => const ProfileScreen(),
-          routes: [
-            GoRoute(
-              path: _Paths.promoView,
-              name: AppViews.promoView,
-              builder: (context, state) => PromoScreen(),
-            )
-          ],
-        ),
-        GoRoute(
-          path: _Paths.chatView,
-          name: AppViews.chatView,
-          builder: (context, state) => const ChatsScreen(),
-        ),
-      ],
-    ),
+              return ServicesSleepMusicView(
+                index: selectedTab,
+              );
+            },
+          ),
+          GoRoute(
+              path: _Paths.evolutionView,
+              name: AppViews.evolutionView,
+              builder: (context, state) => const EvolutionView(),
+              routes: [
+                GoRoute(
+                  name: AppViews.addWeightView,
+                  path: _Paths.addWeightView,
+                  builder: (context, state) => AddWeight(),
+                )
+              ]),
+          GoRoute(
+              path: _Paths.feeding,
+              name: AppViews.feeding,
+              builder: (context, state) => const FeedingScreen(),
+              routes: [
+                GoRoute(
+                  name: AppViews.addManually,
+                  path: _Paths.addManually,
+                  builder: (context, state) => const AddManuallyScreen(),
+                ),
+              ]),
+          GoRoute(
+            name: AppViews.trackersHealthView,
+            path: _Paths.trackersHealthPath,
+            builder: (context, state) => TrackersHealthView(),
+            routes: [
+              GoRoute(
+                name: AppViews.trackersHealthAddTemperatureView,
+                path: _Paths.trackersHealthAddTemperaturePath,
+                builder: (context, state) => TrackersHealthAddTemperature(),
+              )
+            ],
+          ),
+          GoRoute(
+              path: _Paths.profile,
+              name: AppViews.profile,
+              builder: (context, state) => const ProfileScreen(),
+              routes: [
+                GoRoute(
+                  path: _Paths.promoView,
+                  name: AppViews.promoView,
+                  builder: (context, state) => PromoScreen(),
+                )
+              ]),
+        ]),
   ],
 );
 
@@ -257,7 +238,6 @@ abstract class _Paths {
   static const trackersHealthAddTemperaturePath =
       AppViews.trackersHealthAddTemperatureView;
 
-  static const servicesUserPath = AppViews.servicesUserView;
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;
   static const evolutionView = AppViews.evolutionView;
 
@@ -267,8 +247,6 @@ abstract class _Paths {
 
   static const profile = AppViews.profile;
   static const promoView = AppViews.promoView;
-
-  static const chatView = AppViews.chatView;
 
   static const feeding = AppViews.feeding;
 

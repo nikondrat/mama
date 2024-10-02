@@ -24,6 +24,7 @@ final class RestClientDio extends RestClientBase {
       final options = Options(
         headers: headers,
         method: method,
+        followRedirects: true,
         contentType: contentType ?? 'application/json',
         responseType: ResponseType.json,
       );

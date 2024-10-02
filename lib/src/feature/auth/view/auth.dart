@@ -24,53 +24,48 @@ class AuthView extends StatelessWidget {
           ),
           alignment: Alignment.topLeft,
         ),
-        child: AppBody(
-          builder: (windowWidth, windowSize) => Padding(
-            padding: HorizontalSpacing.centered(windowWidth),
-            child: Column(
-              children: [
-                Spacer(),
-                SvgPicture.asset(
-                  Assets.images.mamaCo,
-                ),
-                20.h,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: AutoSizeText(
-                          t.auth.slogan,
-                          textAlign: TextAlign.center,
-                          style: textTheme.bodySmall!.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                20.h,
-                AuthInputBodyWidget(isLogin: isLogin),
-                Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () => context.pushNamed(
-                          isLogin ? AppViews.register : AppViews.auth),
-                      child: AutoSizeText(
-                        isLogin ? t.auth.noAccount : t.auth.alreadyHaveAccount,
-                        style: textTheme.titleMedium,
+        child: Column(
+          children: [
+            Spacer(),
+            SvgPicture.asset(
+              Assets.images.mamaCo,
+            ),
+            20.h,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: AutoSizeText(
+                      t.auth.slogan,
+                      textAlign: TextAlign.center,
+                      style: textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
+                  ),
+                ],
+              ),
+            ),
+            20.h,
+            AuthInputBodyWidget(isLogin: isLogin),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () => context
+                      .pushNamed(isLogin ? AppViews.register : AppViews.auth),
+                  child: AutoSizeText(
+                    isLogin ? t.auth.noAccount : t.auth.alreadyHaveAccount,
+                    style: textTheme.titleMedium,
+                  ),
                 ),
-                20.h,
               ],
             ),
-          ),
+            20.h,
+          ],
         ),
       ),
     );

@@ -110,10 +110,12 @@ class _ChildItemState extends State<ChildItem> {
                     borderRadius: 6,
                     outerContainerColor: AppColors.purpleLighterBackgroundColor,
                     onTap: (index) =>
-                        widget.model.setGender(ChildGender.values[index]),
+                        widget.model.setGender(Gender.values[index]),
                     items: [
-                      t.profile.sex(context: GenderContext.female),
-                      t.profile.sex(context: GenderContext.male),
+                      Gender.female,
+                      Gender.male,
+                      // t.profile.sex(context: GenderContext.female),
+                      // t.profile.sex(context: GenderContext.male),
                     ],
                   ),
                 )),
@@ -206,8 +208,12 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setChildbirth(Childbirth.values[index]),
                     items: [
-                      t.profile.birth(context: BirthContext.nature),
-                      t.profile.birth(context: BirthContext.cesarean)
+                      'd',
+                      's'
+                      // Childbirth.natural.name,
+                      // Childbirth.cesarian.name,
+                      // t.profile.birth(context: BirthContext.nature),
+                      // t.profile.birth(context: BirthContext.cesarean)
                     ],
                   ),
                 )),

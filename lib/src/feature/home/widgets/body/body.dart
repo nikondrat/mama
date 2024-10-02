@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mama/src/feature/home/widgets/body/home_school_body.dart';
-import 'package:mama/src/feature/home/widgets/body/home_specialist_body.dart';
+import 'package:mama/src/data.dart';
 
 import 'user_body.dart';
 
 class HomeBodyWidget extends StatelessWidget {
-  const HomeBodyWidget({super.key});
+  final CustomAppBar appBar;
+  const HomeBodyWidget({
+    super.key,
+    required this.appBar,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return HomeSpecialistBody();
+    return Scaffold(appBar: appBar, body: HomeUserBody());
   }
 }

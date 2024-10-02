@@ -54,7 +54,9 @@ class _VerifyInputBodyState extends State<VerifyInputBody> {
             ),
           ),
           20.h,
-          const VerifyInputWidget(),
+          VerifyInputWidget(
+            isLogin: widget.isLogin,
+          ),
           Observer(builder: (context) {
             // final bool isValid = verifyState.isValid;
 

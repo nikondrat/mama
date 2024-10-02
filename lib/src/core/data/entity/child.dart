@@ -3,7 +3,7 @@ import 'package:mobx/mobx.dart';
 
 part 'child.g.dart';
 
-enum ChildGender {
+enum Gender {
   @JsonValue('FEMALE')
   female,
   @JsonValue('MALE')
@@ -61,7 +61,7 @@ class ChildModel extends _ChildModel with _$ChildModel {
 abstract class _ChildModel with Store {
   _ChildModel({
     this.avatarUrl,
-    this.gender = ChildGender.male,
+    this.gender = Gender.male,
     this.isTwins = false,
     this.childbirth,
     this.birthDate,
@@ -102,10 +102,10 @@ abstract class _ChildModel with Store {
   setAvatar(String value) => avatarUrl = value;
 
   @observable
-  ChildGender gender = ChildGender.male;
+  Gender gender = Gender.male;
 
   @action
-  setGender(ChildGender value) {
+  setGender(Gender value) {
     gender = value;
   }
 
