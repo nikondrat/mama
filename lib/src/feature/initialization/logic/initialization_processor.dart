@@ -72,13 +72,21 @@ final class InitializationProcessor {
     final dio = Dio();
     final refreshClient = RefreshClientImpl(tokenStorage: tokenStorage);
 
+    // TODO delete when the authorization problem is resolved
+    tokenStorage.loadTokenPair().then((v) {
+      if (v == null) {
+        tokenStorage.saveTokenPair(
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjA1Yzg5YzYtYTE4NC00ZjEzLWJiZmMtMDU0ZmRiMGZmYmQzIiwic3RhdGUiOiJBQ1RJVkUiLCJyb2xlIjoiVVNFUiIsInN0YXR1cyI6Ik5PX1NVQlNDUklCRUQiLCJleHAiOjE3Mjc5NDkyODQsImlhdCI6MTcyNzg5NTI4NCwiaXNzIjoiTWFtYUNvIiwic3ViIjoiYWNjZXNzIn0.P3Th_3jZQiLiCZShS0q3irxKQJzkCoNANvnFLljgq74');
+      }
+    });
+
     // Configure AuthInterceptor with tokenStorage and refreshClient
     final authInterceptor = AuthInterceptor(
       storage: tokenStorage,
       refreshClient: refreshClient,
       buildHeaders: (token) async {
         if (token != null) {
-          return {'Authorization': 'Token $token'};
+          return {'Authorization': 'Bearer $token'};
         }
         return {};
       },

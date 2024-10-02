@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:mama/src/data.dart';
 
-import 'refresh_client.dart';
-
 class RefreshClientImpl implements RefreshClient<String?> {
   final TokenStorageImpl tokenStorage;
 

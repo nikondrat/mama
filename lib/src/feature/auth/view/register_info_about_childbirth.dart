@@ -12,6 +12,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthViewStore store = context.watch();
+    final ChildStore childStore = context.watch();
 
     return Scaffold(
       body: BodyDecoration(
@@ -72,7 +73,10 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                           type: CustomButtonType.outline,
                           title: t.register.skip,
                           maxLines: 1,
-                          onTap: () => context.pushNamed(AppViews.citySearch),
+                          onTap: () {
+                            childStore.update(model: store.child);
+                            context.pushNamed(AppViews.citySearch);
+                          },
                         ),
                       ),
                       20.w,
@@ -84,7 +88,10 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 50, vertical: 16),
                             title: t.register.next,
-                            onTap: () => context.pushNamed(AppViews.citySearch),
+                            onTap: () {
+                              childStore.update(model: store.child);
+                              context.pushNamed(AppViews.citySearch);
+                            },
                           ))
                     ],
                   ),
