@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/chat/widgets/widgets.dart';
 
 class ChatItem extends StatelessWidget {
   const ChatItem({super.key});
@@ -39,37 +40,15 @@ class ChatItem extends StatelessWidget {
                           style: textTheme.bodyMedium,
                         ),
                         WidgetSpan(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 3.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: 4.r,
-                                color: AppColors.purpleLighterBackgroundColor,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 5, vertical: 1),
-                              child: Text(
-                                'Педиатр',
-                                style: textTheme.labelSmall!
-                                    .copyWith(color: AppColors.primaryColor),
-                              ),
-                            ),
+                          child: ProfessionBox(
+                            profession: 'Педиатр',
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: 100.r,
-                      color: AppColors.primaryColor,
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                    child: Text(
-                      '1000',
-                      style: textTheme.labelMedium!
-                          .copyWith(color: AppColors.whiteColor),
-                    ),
+                  UnreadBox(
+                    text: '1000',
                   ),
                 ],
               ),

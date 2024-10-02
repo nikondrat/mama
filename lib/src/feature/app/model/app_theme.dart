@@ -28,7 +28,11 @@ abstract class _AppThemeStore with Store {
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
               ),
-              labelLarge: const TextStyle(
+              titleSmall: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w400,
+              ),
+              labelLarge: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
                 fontSize: 14,
@@ -41,16 +45,16 @@ abstract class _AppThemeStore with Store {
                 fontSize: 17,
                 color: AppColors.greyBrighterColor,
               ),
-              labelMedium: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: AppColors.blackColor,
-              ),
-              labelSmall: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
-                color: AppColors.greyBrighterColor,
-              ),
+              labelMedium: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.blackColor,
+                  letterSpacing: 0),
+              labelSmall: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.greyBrighterColor,
+                  letterSpacing: 0),
             ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
@@ -96,7 +100,7 @@ abstract class _AppThemeStore with Store {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is AppThemeStore && seed == other.seed && mode == other.mode;
+      other is AppThemeStore && seed == other.seed && mode == other.mode;
 
   @override
   int get hashCode => Object.hash(seed, mode);
