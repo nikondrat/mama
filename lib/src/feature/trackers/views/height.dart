@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mama/src/core/core.dart';
+import 'package:mama/src/core/constant/constant.dart';
+import 'package:mama/src/feature/trackers/views/views.dart';
 import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 
 class Height extends StatelessWidget {
@@ -24,24 +24,23 @@ class Height extends StatelessWidget {
               child: CurrentAndDymanicContainer(),
             ),
 
-            /// CM Or M Container
+            /// СМ Or М Container
             Padding(
               padding: const EdgeInsets.only(
                   left: 16, right: 16, bottom: 5, top: 16),
               child: Row(
                 children: [
-                  SwitchContainer(
-                    title1: 'СМ',
-                    title2: 'М',
-                  ),
+                  SwitchContainer(title1: 'СМ', title2: 'М'),
                 ],
               ),
             ),
 
             /// Grafic
             Padding(
-              padding: const EdgeInsets.only(bottom: 16, top: 0),
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, bottom: 16, top: 0),
               child: SizedBox(
+                width: MediaQuery.of(context).size.width,
                 height: 278,
                 child: FlProgressChart(),
               ),
@@ -56,10 +55,14 @@ class Height extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   AddButton(
-                    title: 'Добавить Рост',
                     onTap: () {
-                      context.pushNamed(AppViews.addGrowthView);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddWeight(),
+                          ));
                     },
+                    title: 'Добавить Рост',
                   ),
                 ],
               ),
@@ -69,7 +72,7 @@ class Height extends StatelessWidget {
             /// Stories
             Center(
               child: Text(
-                t.trackers.stories.title,
+                'История',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -85,14 +88,11 @@ class Height extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SwitchContainer(
-                    title1: t.trackers.news.title,
-                    title2: t.trackers.old.title,
+                    title1: 'Новые',
+                    title2: 'Старые',
                     // isTrue: false,
                   ),
-                  SwitchContainer(
-                    title1: 'СМ',
-                    title2: 'С',
-                  ),
+                  SwitchContainer(title1: 'СМ', title2: 'М'),
                 ],
               ),
             ),
@@ -100,9 +100,9 @@ class Height extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RowStroriesData(
-                data: t.trackers.date.title,
-                week: t.trackers.weeks.title,
-                weight: t.trackers.growth,
+                data: 'Дата',
+                week: 'Неделя',
+                weight: 'Рост',
                 style: AppTextStyles.f10w700.copyWith(
                   color: AppColors.greyBrighterColor,
                 ),
@@ -117,9 +117,9 @@ class Height extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: RowStroriesData(
-                      data: '02 октября',
-                      week: '20',
-                      weight: '67',
+                      data: '01 сентября',
+                      week: '17',
+                      weight: '6,25',
                       style: AppTextStyles.f17w400,
                     ),
                   );

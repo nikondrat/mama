@@ -54,9 +54,11 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
+
   // initialLocation: '/',
   // initialLocation: _Paths.evolutionView,
   initialLocation: _Paths.homeScreen,
+
   routes: [
     GoRoute(
         path: _Paths.startScreen,
