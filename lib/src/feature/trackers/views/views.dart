@@ -5,3 +5,4 @@ export 'head.dart';
 export 'table.dart';
 export 'add_weight.dart';
 export 'trackers.dart';
+export 'add_growth.dart';

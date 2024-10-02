@@ -5,7 +5,22 @@ import 'package:mama/src/core/constant/constant.dart';
 import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 
 class CustomBlog extends StatefulWidget {
-  const CustomBlog({super.key});
+  const CustomBlog({
+    super.key,
+    this.kgOrCm,
+    this.gOrM,
+    this.onPressedElevated,
+    this.onPressedOutlined,
+    this.controller,
+    this.verticalSwitch,
+  });
+
+  final String? kgOrCm;
+  final String? gOrM;
+  final void Function()? onPressedElevated;
+  final void Function()? onPressedOutlined;
+  final TextEditingController? controller;
+  final Widget? verticalSwitch;
 
   @override
   _CustomBlogState createState() => _CustomBlogState();
@@ -39,58 +54,60 @@ class _CustomBlogState extends State<CustomBlog> {
               // КГ / Г кнопки (вертикально)
               Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(1),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: AppColors.purpleLighterBackgroundColor,
-                    ),
-                    child: ToggleButtons(
-                      constraints: BoxConstraints(
-                        minHeight: 30, // минимальная высота
-                        minWidth: 60, // минимальная ширина
+                  widget.verticalSwitch ??
+                      Container(
+                        padding: EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: AppColors.purpleLighterBackgroundColor,
+                        ),
+                        child: ToggleButtons(
+                          constraints: BoxConstraints(
+                            minHeight: 30, // минимальная высота
+                            minWidth: 60, // минимальная ширина
+                          ),
+                          direction: Axis.vertical,
+                          isSelected: isSelected,
+                          borderRadius: BorderRadius.circular(8),
+                          fillColor: AppColors.whiteColor,
+                          selectedColor: AppColors.whiteColor,
+                          color: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          children: [
+                            Text(
+                              widget.kgOrCm ?? t.trackers.kg.title,
+                              style: TextStyle(
+                                color: isSelected[0]
+                                    ? AppColors.primaryColor
+                                    : AppColors.greyBrighterColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              widget.gOrM ?? t.trackers.g.title,
+                              style: TextStyle(
+                                color: isSelected[1]
+                                    ? AppColors.primaryColor
+                                    : AppColors.greyBrighterColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ],
+                          onPressed: (int index) {
+                            setState(() {
+                              for (int i = 0; i < isSelected.length; i++) {
+                                isSelected[i] = i == index;
+                              }
+                            });
+                          },
+                        ),
                       ),
-                      direction: Axis.vertical,
-                      isSelected: isSelected,
-                      borderRadius: BorderRadius.circular(8),
-                      fillColor: AppColors.whiteColor,
-                      selectedColor: AppColors.whiteColor,
-                      color: Colors.transparent,
-                      splashColor: Colors.transparent,
-                      children: [
-                        Text(
-                          t.trackers.kg.title,
-                          style: TextStyle(
-                            color: isSelected[0]
-                                ? AppColors.primaryColor
-                                : AppColors.greyBrighterColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text(
-                          t.trackers.g.title,
-                          style: TextStyle(
-                            color: isSelected[1]
-                                ? AppColors.primaryColor
-                                : AppColors.greyBrighterColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                      onPressed: (int index) {
-                        setState(() {
-                          for (int i = 0; i < isSelected.length; i++) {
-                            isSelected[i] = i == index;
-                          }
-                        });
-                      },
-                    ),
-                  ),
                   SizedBox(width: 8),
                   Expanded(
                     child: TextFormField(
+                      controller: widget.controller,
                       keyboardType: TextInputType.phone,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(),
@@ -126,7 +143,7 @@ class _CustomBlogState extends State<CustomBlog> {
                           color: AppColors.primaryColor,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: widget.onPressedOutlined,
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(
                           width: 2,
@@ -142,7 +159,7 @@ class _CustomBlogState extends State<CustomBlog> {
                   Expanded(
                     flex: 3,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: widget.onPressedElevated,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         shape: RoundedRectangleBorder(

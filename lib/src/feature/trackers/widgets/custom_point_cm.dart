@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/constant/constant.dart';
 
-class CustomPointG extends CustomPainter {
+class CustomPointCm extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint linePaint = Paint()
@@ -12,9 +12,9 @@ class CustomPointG extends CustomPainter {
       ..color = AppColors.greyColor
       ..strokeWidth = 1;
 
-    double lineHeight = 40; // Высота длинной строки
-    double midLineHeight = 30; // Более короткая длинная линия в 5-м интервале
-    double shortLineHeight = 20; // Короткая высота строки
+    double lineHeight = 140; // Высота длинной строки
+    double midLineHeight = 75; // Более короткая длинная линия в 5-м интервале
+    double shortLineHeight = 55; // Короткая высота строки
     double spacing = 10; // Расстояние между линиями
     int label = 0; // Начальные цифры с 0
 
@@ -38,8 +38,7 @@ class CustomPointG extends CustomPainter {
         textPainter.paint(canvas,
             Offset(i - 5, lineHeight + 5)); // Цифры написаны под длинной чертой
 
-        label +=
-            100; // Увеличьте число на единицу рядом с каждой длинной линией
+        label += 10; // Увеличьте число на единицу рядом с каждой длинной линией
       } else if ((i / spacing) % 5 == 0) {
         // Немного короче длинная линия каждый 5-й интервал
         canvas.drawLine(Offset(i, 0), Offset(i, midLineHeight), shortLinePaint);

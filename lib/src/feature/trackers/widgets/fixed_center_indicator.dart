@@ -6,10 +6,14 @@ class FixedCenterIndicator extends StatelessWidget {
     super.key,
     required this.kgOrG,
     this.painter,
+    this.size,
+    this.top,
   });
 
   final String kgOrG;
   final CustomPainter? painter;
+  final Size? size;
+  final double? top;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@ class FixedCenterIndicator extends StatelessWidget {
             child: Container(
               color: Colors.white,
               child: CustomPaint(
-                size: Size(200 * 10, 100),
+                size: size ?? Size(200 * 10, 100),
                 painter: painter,
               ),
             ),
@@ -41,8 +45,9 @@ class FixedCenterIndicator extends StatelessWidget {
         ),
         Positioned(
           left: MediaQuery.of(context).size.width / 2 -
-              6, // Расположить по центру (for KG text)
-          top: 70,
+              10, // Расположить по центру (for KG text)
+          top: top ?? 70,
+
           child: Text(
             kgOrG,
             style: AppTextStyles.f17w700.copyWith(

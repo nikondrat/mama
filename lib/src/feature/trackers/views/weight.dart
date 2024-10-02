@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/trackers/widgets/fl_chart.dart';
 
 class Weight extends StatelessWidget {
   const Weight({super.key});
@@ -56,6 +55,7 @@ class Weight extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   AddButton(
+                    title: t.trackers.weight.add,
                     onTap: () {
                       context.pushNamed(AppViews.addWeightView);
                     },

@@ -5,6 +5,7 @@ import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
 import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
 import 'package:mama/src/feature/home/home.dart';
+import 'package:mama/src/feature/trackers/views/add_head.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
 
@@ -37,6 +38,8 @@ abstract class AppViews {
   static const evolutionView = 'evolutionView';
 
   static const addWeightView = 'addWeightView';
+  static const addGrowthView = 'addGrowthView';
+  static const addHeadView = 'addHeadView';
 
   static const profile = 'profile';
   static const promoView = 'promoView';
@@ -176,6 +179,16 @@ final GoRouter router = GoRouter(
                   name: AppViews.addWeightView,
                   path: _Paths.addWeightView,
                   builder: (context, state) => AddWeight(),
+                ),
+                GoRoute(
+                  name: AppViews.addGrowthView,
+                  path: _Paths.addGrowthView,
+                  builder: (context, state) => AddGrowth(),
+                ),
+                GoRoute(
+                  name: AppViews.addHeadView,
+                  path: _Paths.addHeadView,
+                  builder: (context, state) => AddHead(),
                 )
               ]),
           GoRoute(
@@ -247,6 +260,8 @@ abstract class _Paths {
   static const evolutionView = AppViews.evolutionView;
 
   static const addWeightView = AppViews.addWeightView;
+  static const addGrowthView = AppViews.addGrowthView;
+  static const addHeadView = AppViews.addHeadView;
 
   static const profile = AppViews.profile;
   static const promoView = AppViews.promoView;
