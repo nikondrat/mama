@@ -28,6 +28,10 @@ abstract class _AppThemeStore with Store {
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
               ),
+              titleSmall: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w400,
+              ),
               labelLarge: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
@@ -42,15 +46,15 @@ abstract class _AppThemeStore with Store {
                 color: AppColors.greyBrighterColor,
               ),
               labelMedium: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: AppColors.blackColor,
-              ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.blackColor,
+                  letterSpacing: 0),
               labelSmall: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
-                color: AppColors.greyBrighterColor,
-              ),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.greyBrighterColor,
+                  letterSpacing: 0),
             ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: seed,
