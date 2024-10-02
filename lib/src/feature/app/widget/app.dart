@@ -23,6 +23,16 @@ class App extends StatelessWidget {
             create: (context) => AuthViewStore(),
             dispose: (context, value) => value.dispose(),
           ),
+          Provider(
+            create: (context) => UserStore(
+              restClient: context.read<Dependencies>().restClient,
+            ),
+          ),
+          Provider(
+            create: (context) => ChildStore(
+              restClient: context.read<Dependencies>().restClient,
+            ),
+          ),
         ],
         child: TranslationProvider(child: const MaterialContext()),
       );

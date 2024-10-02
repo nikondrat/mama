@@ -5,6 +5,7 @@ abstract class RestClient {
   /// Sends a GET request to the given [path].
   Future<Map<String, Object?>?> get(
     String path, {
+    Map<String, Object?>? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
   });
@@ -29,6 +30,7 @@ abstract class RestClient {
   /// Sends a DELETE request to the given [path].
   Future<Map<String, Object?>?> delete(
     String path, {
+    Map<String, Object?>? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
   });

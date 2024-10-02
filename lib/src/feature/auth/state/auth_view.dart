@@ -45,7 +45,7 @@ abstract class _AuthViewStore with Store {
   AbstractControl get headCircumference =>
       childData.control('headCircumference');
 
-  ChildModel child = ChildModel(id: '', firstName: '', secondName: '');
+  ChildModel child = ChildModel(firstName: '');
 
   void dispose() {
     formGroup.dispose();
