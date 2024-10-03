@@ -13,7 +13,6 @@ import 'package:mama/src/feature/services/knowledge/views/service_info_screen.da
 import 'package:mama/src/feature/services/knowledge/views/service_screen.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
-import 'package:path/path.dart';
 
 import '../../feature/feature.dart';
 
