@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/core/widgets/bottom_app_bar.dart';
-import 'package:mama/src/feature/chat/chat.dart';
 import 'package:mama/src/feature/chat/views/group_chat.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -57,6 +55,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => GroupChatScreen(
+                                  singleChat: listChatSingle[0],
                                   listMessages: listGroup,
                                   chatEntity: ChatEntity.groupChat,
                                 ),
@@ -91,6 +90,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               builder: (context) => GroupChatScreen(
                                 listMessages: list,
                                 chatEntity: ChatEntity.singleChat,
+                                singleChat: listChatSingle[0],
                               ),
                             ));
                       },
