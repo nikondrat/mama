@@ -7,19 +7,19 @@ class AddGrowth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blueLighter1,
-      appBar: CustomAppBar(title: t.trackers.growth.title),
+      appBar: CustomAppBar(title: t.trackers.growth.add),
       body: ListView(
         children: [
           FixedCenterIndicator(
-            kgOrG: 'СМ',
+            kgOrG: t.trackers.cm.title,
             painter: CustomPointCm(),
             size: Size(200 * 10, 200),
             top: 170,
           ),
           SizedBox(height: 8),
           CustomBlog(
-            kgOrCm: 'CM',
-            gOrM: 'M',
+            kgOrCm: t.trackers.cm.title,
+            gOrM: t.trackers.m.title,
             onPressedElevated: () {},
             onPressedOutlined: () {},
           ),

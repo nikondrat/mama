@@ -1,4 +1,7 @@
 evolution: Evolution
+sleepAndCrying: Sleep and crying
+feeding: Feeding
+diapers: Diapers
 
 weight:
   title: Weight
@@ -98,8 +101,8 @@ news:
 old:
   title: Old
 
-CM:
+cm:
   title: CM
 
-M: 
+m: 
   title: M

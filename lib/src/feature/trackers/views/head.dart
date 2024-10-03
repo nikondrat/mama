@@ -41,7 +41,7 @@ class Head extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   AddButton(
-                    title: 'Добавить Окружность',
+                    title: t.trackers.head.add,
                     onTap: () {
                       context.pushNamed(AppViews.addHeadView);
                     },

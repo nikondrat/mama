@@ -42,7 +42,7 @@ class _EvolutionViewState extends State<EvolutionView>
         controller: _tabController,
         children: [
           Center(child: Weight()),
-          Center(child: Height()),
+          Center(child: Growth()),
           Center(child: Head()),
           Center(child: TableW()),
         ],

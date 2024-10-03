@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/constant/constant.dart';
-import 'package:mama/src/feature/trackers/views/views.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 
-class Height extends StatelessWidget {
-  const Height({super.key});
+class Growth extends StatelessWidget {
+  const Growth({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +30,10 @@ class Height extends StatelessWidget {
                   left: 16, right: 16, bottom: 5, top: 16),
               child: Row(
                 children: [
-                  SwitchContainer(title1: 'СМ', title2: 'М'),
+                  SwitchContainer(
+                    title1: t.trackers.cm.title,
+                    title2: t.trackers.m.title,
+                  ),
                 ],
               ),
             ),
@@ -55,14 +58,10 @@ class Height extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   AddButton(
+                    title: t.trackers.growth.add,
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddWeight(),
-                          ));
+                      context.pushNamed(AppViews.addGrowthView);
                     },
-                    title: 'Добавить Рост',
                   ),
                 ],
               ),
@@ -72,7 +71,7 @@ class Height extends StatelessWidget {
             /// Stories
             Center(
               child: Text(
-                'История',
+                t.trackers.stories.title,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -88,11 +87,14 @@ class Height extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SwitchContainer(
-                    title1: 'Новые',
-                    title2: 'Старые',
+                    title1: t.trackers.news.title,
+                    title2: t.trackers.old.title,
                     // isTrue: false,
                   ),
-                  SwitchContainer(title1: 'СМ', title2: 'М'),
+                  SwitchContainer(
+                    title1: t.trackers.cm.title,
+                    title2: t.trackers.m.title,
+                  ),
                 ],
               ),
             ),
@@ -100,9 +102,9 @@ class Height extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RowStroriesData(
-                data: 'Дата',
-                week: 'Неделя',
-                weight: 'Рост',
+                data: t.trackers.date.title,
+                week: t.trackers.weeks.title,
+                weight: t.trackers.growth.title,
                 style: AppTextStyles.f10w700.copyWith(
                   color: AppColors.greyBrighterColor,
                 ),

@@ -21,7 +21,7 @@ class TrackersView extends StatelessWidget {
                   onTap: () {
                     context.pushNamed(AppViews.evolutionView);
                   },
-                  title: "Развитие",
+                  title: t.trackers.evolution,
                   icon: IconModel(
                     // size: iconSize,
                     iconPath: Assets.images.grow.path,
@@ -33,7 +33,7 @@ class TrackersView extends StatelessWidget {
               Expanded(
                 child: CategoryCard(
                   onTap: () {},
-                  title: "Сон и плач",
+                  title: t.trackers.sleepAndCrying,
                   icon: IconModel(
                     // size: iconSize,
                     iconPath: Assets.images.sleep.path,
@@ -50,7 +50,7 @@ class TrackersView extends StatelessWidget {
                 onTap: () {
                   context.pushNamed(AppViews.feeding);
                 },
-                title: "Кормление",
+                title: t.trackers.feeding,
                 icon: IconModel(
                   // size: iconSize,
                   iconPath: Assets.images.feeding.path,
@@ -67,7 +67,7 @@ class TrackersView extends StatelessWidget {
                   onTap: () {
                     context.pushNamed(AppViews.trackersHealthView);
                   },
-                  title: "Здоровье",
+                  title: t.trackers.health.title,
                   icon: IconModel(
                     // size: iconSize,
                     iconPath: Assets.images.health.path,
@@ -79,7 +79,7 @@ class TrackersView extends StatelessWidget {
               Expanded(
                 child: CategoryCard(
                   onTap: () {},
-                  title: "Подгузники",
+                  title: t.trackers.diapers,
                   icon: IconModel(
                     // size: iconSize,
                     iconPath: Assets.images.diaper.path,

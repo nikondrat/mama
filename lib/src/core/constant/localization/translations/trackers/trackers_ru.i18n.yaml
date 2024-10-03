@@ -1,4 +1,7 @@
 evolution: Развитие
+sleepAndCrying: Сон и плач
+feeding: Кормление
+diapers: Подгузники
 
 weight:
   title: Вес
@@ -98,10 +101,10 @@ news:
 old:
   title: Старые
 
-CM:
+cm:
   title: СМ
 
-M: 
+m: 
   title: M
 
 
