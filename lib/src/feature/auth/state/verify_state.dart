@@ -82,43 +82,12 @@ abstract class _VerifyStore with Store {
   void register({
     required RegisterData data,
   }) {
-    // TODO: add fcm token
-    // TODO: use data model
     restClient.patch(Endpoint().register, body: {
-      'account': {
-        'first_name': 'Elina',
-        'gender': 'FEMALE',
-        'last_name': 'Alexeevna',
-        'phone': '+79871231234',
-        'second_name': 'Ivanova',
+      'account': data.user.toJson(),
+      'child': data.child.toJson(),
+      'user': {
+        'city': data.city,
       }
     });
-
-    //   "account": {
-    //   "fcm_token": "string",
-    //   "first_name": "Elina",
-    //   "gender": "FEMALE",
-    //   "last_name": "Alexeevna",
-    //   "phone": "+79871231234",
-    //   "second_name": "Ivanova"
-    // },
-    // "child": {
-    //   "birth_date": "2022-01-01",
-    //   "childbirth": "NATURAL",
-    //   "childbirth_with_complications": true,
-    //   "first_name": "Alla",
-    //   "gender": "FEMALE",
-    //   "head_circ": 35,
-    //   "height": 49,
-    //   "second_name": "Born",
-    //   "weight": 3.56
-    // },
-    // "user": {
-    //   "city": "Moscow",
-    //   "roles": [
-    //     "брат",
-    //     "сестра"
-    //   ]
-    // }
   }
 }
