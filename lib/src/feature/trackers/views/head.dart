@@ -83,7 +83,7 @@ class Head extends StatelessWidget {
               child: RowStroriesData(
                 data: t.trackers.date.title,
                 week: t.trackers.weeks.title,
-                weight: t.trackers.head,
+                weight: t.trackers.head.title,
                 style: AppTextStyles.f10w700.copyWith(
                   color: AppColors.greyBrighterColor,
                 ),

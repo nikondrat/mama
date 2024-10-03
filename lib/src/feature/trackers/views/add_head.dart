@@ -7,7 +7,7 @@ class AddHead extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blueLighter1,
-      appBar: CustomAppBar(title: t.trackers.head),
+      appBar: CustomAppBar(title: t.trackers.head.title),
       body: ListView(
         children: [
           FixedCenterIndicator(

@@ -33,8 +33,8 @@ class _EvolutionViewState extends State<EvolutionView>
         action: ProfileWidget(),
         tabs: [
           t.trackers.weight.title,
-          t.trackers.growth,
-          t.trackers.head,
+          t.trackers.growth.title,
+          t.trackers.head.title,
           t.trackers.table,
         ],
       ),

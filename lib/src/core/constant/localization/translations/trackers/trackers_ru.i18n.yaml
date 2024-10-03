@@ -4,9 +4,13 @@ weight:
   title: Вес
   add: Добавить вес
 
-growth: Рост
+growth: 
+  title: Рост
+  add: Добавить рост
 
-head: Голова
+head: 
+  title: Голова
+  add: Добавить окружность
 
 table: Таблица
 
@@ -93,6 +97,12 @@ news:
 
 old:
   title: Старые
+
+CM:
+  title: СМ
+
+M: 
+  title: M
 
 
 

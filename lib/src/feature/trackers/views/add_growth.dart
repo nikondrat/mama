@@ -7,7 +7,7 @@ class AddGrowth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blueLighter1,
-      appBar: CustomAppBar(title: t.trackers.growth),
+      appBar: CustomAppBar(title: t.trackers.growth.title),
       body: ListView(
         children: [
           FixedCenterIndicator(

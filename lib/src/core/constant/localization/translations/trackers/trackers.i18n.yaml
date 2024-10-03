@@ -4,9 +4,13 @@ weight:
   title: Weight
   add: Add weight
 
-growth: Growth
+growth: 
+  title: Growth
+  add: Add growth
 
-head: Head
+head: 
+  title: Head
+  add: Add head
 
 table: Table
 
@@ -93,3 +97,9 @@ news:
 
 old:
   title: Old
+
+CM:
+  title: CM
+
+M: 
+  title: M
