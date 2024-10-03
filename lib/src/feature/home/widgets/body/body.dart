@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-
 import 'user_body.dart';
 
 class HomeBodyWidget extends StatelessWidget {
