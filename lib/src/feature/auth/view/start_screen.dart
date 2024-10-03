@@ -52,11 +52,14 @@ class StartScreen extends StatelessWidget {
                 //   height: 25,
                 // ),
                 25.h,
-                AutoSizeText(
-                  t.auth.slogan,
-                  textAlign: TextAlign.center,
-                  style: textTheme.bodyMedium!.copyWith(
-                    color: colorScheme.onPrimary,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: AutoSizeText(
+                    t.auth.slogan,
+                    textAlign: TextAlign.center,
+                    style: textTheme.bodyMedium!.copyWith(
+                      color: colorScheme.onPrimary,
+                    ),
                   ),
                 ),
                 const Spacer(),

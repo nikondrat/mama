@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/data.dart';
 
 import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
@@ -57,6 +58,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
+
       /// TODO: change before merge
       builder: (context, state) => const HomeView(),
       routes: [
@@ -154,7 +156,9 @@ final GoRouter router = GoRouter(
         GoRoute(
           name: AppViews.servicesUserView,
           path: _Paths.servicesUserPath,
-          builder: (context, state) => const ServicesUserView(),
+          builder: (context, state) => const ServicesUserView(
+            appBar: CustomAppBar(),
+          ),
           routes: [
             GoRoute(
               name: AppViews.servicesSleepMusicView,
@@ -221,7 +225,9 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: _Paths.chatView,
           name: AppViews.chatView,
-          builder: (context, state) => const ChatsScreen(),
+          builder: (context, state) => const ChatsScreen(
+            appBar: CustomAppBar(),
+          ),
         ),
       ],
     ),

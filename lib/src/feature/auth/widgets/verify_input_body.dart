@@ -54,7 +54,9 @@ class _VerifyInputBodyState extends State<VerifyInputBody> {
             ),
           ),
           20.h,
-          const VerifyInputWidget(),
+          VerifyInputWidget(
+            isLogin: widget.isLogin,
+          ),
           Observer(builder: (context) {
             // final bool isValid = verifyState.isValid;
 
@@ -82,32 +84,41 @@ class _VerifyInputBodyState extends State<VerifyInputBody> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(t.auth.messageDoesntArrive,
-                  style: textTheme.bodySmall!.copyWith(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                  )),
+              Expanded(
+                child: AutoSizeText(t.auth.messageDoesntArrive,
+                    maxLines: 2,
+                    minFontSize: 6,
+                    style: textTheme.bodySmall!.copyWith(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                    )),
+              ),
               Observer(builder: (context) {
-                return stopwatch.isRunning
-                    ? Text(
-                        '${t.auth.sendAnotherOneIn} ${stopwatch.countdownTimeString}',
-                        style: const TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.greyBrighterColor),
-                      )
-                    : TextButton(
-                        onPressed: () {
-                          stopwatch.startTimer();
-                        },
-                        child: Text(
-                          t.auth.sendOneMore,
+                return Expanded(
+                  child: stopwatch.isRunning
+                      ? AutoSizeText(
+                          '${t.auth.sendAnotherOneIn} ${stopwatch.countdownTimeString}',
+                          maxLines: 2,
+                          minFontSize: 6,
+                          textAlign: TextAlign.end,
                           style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.primaryColor),
+                              color: AppColors.greyBrighterColor),
+                        )
+                      : TextButton(
+                          onPressed: () {
+                            stopwatch.startTimer();
+                          },
+                          child: Text(
+                            t.auth.sendOneMore,
+                            style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.primaryColor),
+                          ),
                         ),
-                      );
+                );
               })
             ],
           )

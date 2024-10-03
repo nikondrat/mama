@@ -3,15 +3,16 @@ import 'package:mama/src/data.dart';
 import 'package:go_router/go_router.dart';
 
 class ServicesUserView extends StatelessWidget {
-  const ServicesUserView({super.key});
+  final CustomAppBar appBar;
+  const ServicesUserView({
+    super.key,
+    required this.appBar,
+  });
 
   @override
   Widget build(BuildContext context) {
-    void navigateToMyRecordsView() {
-      context.pushNamed(AppViews.servicesSleepMusicView);
-    }
-
     return Scaffold(
+      appBar: appBar,
       body: SafeArea(
         child: AppBody(
           builder: (width, size) {

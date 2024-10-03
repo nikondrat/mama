@@ -3,10 +3,10 @@ import 'package:mobx/mobx.dart';
 
 part 'child.g.dart';
 
-enum ChildGender {
-  @JsonValue('female')
+enum Gender {
+  @JsonValue('FEMALE')
   female,
-  @JsonValue('male')
+  @JsonValue('MALE')
   male,
 }
 
@@ -19,19 +19,25 @@ enum Childbirth {
 
 @JsonSerializable()
 class ChildModel extends _ChildModel with _$ChildModel {
-  @JsonKey(name: 'id')
-  final String id;
+  @JsonKey(name: 'id', includeIfNull: false)
+  final String? id;
 
-  @JsonKey(name: 'updated_at')
+  @JsonKey(
+    name: 'updated_at',
+    includeToJson: false,
+  )
   final DateTime? updatedAt;
 
-  @JsonKey(name: 'created_at')
+  @JsonKey(
+    name: 'created_at',
+    includeToJson: false,
+  )
   final DateTime? createdAt;
 
   ChildModel({
-    required this.id,
+    this.id,
     required super.firstName,
-    required super.secondName,
+    super.secondName,
     this.updatedAt,
     this.createdAt,
     super.avatarUrl,
@@ -55,7 +61,7 @@ class ChildModel extends _ChildModel with _$ChildModel {
 abstract class _ChildModel with Store {
   _ChildModel({
     this.avatarUrl,
-    this.gender = ChildGender.male,
+    this.gender = Gender.male,
     this.isTwins = false,
     this.childbirth,
     this.birthDate,
@@ -76,24 +82,30 @@ abstract class _ChildModel with Store {
   setFirstName(String value) => firstName = value;
 
   @observable
-  @JsonKey(name: 'second_name')
-  String secondName;
+  @JsonKey(
+    name: 'second_name',
+    includeIfNull: false,
+  )
+  String? secondName;
 
   @action
-  setSecondName(String value) => secondName = value;
+  setSecondName(String? value) => secondName = value;
 
   @observable
-  @JsonKey(name: 'avatar')
+  @JsonKey(
+    name: 'avatar',
+    includeToJson: false,
+  )
   String? avatarUrl;
 
   @action
   setAvatar(String value) => avatarUrl = value;
 
   @observable
-  ChildGender gender = ChildGender.male;
+  Gender gender = Gender.male;
 
   @action
-  setGender(ChildGender value) {
+  setGender(Gender value) {
     gender = value;
   }
 
@@ -105,7 +117,10 @@ abstract class _ChildModel with Store {
   setIsTwins(bool value) => isTwins = value;
 
   @observable
-  @JsonKey(name: 'childbirth')
+  @JsonKey(
+    name: 'childbirth',
+    includeIfNull: false,
+  )
   Childbirth? childbirth;
 
   @action
@@ -120,7 +135,10 @@ abstract class _ChildModel with Store {
       childBirthWithComplications = value;
 
   @observable
-  @JsonKey(name: 'birth_date')
+  @JsonKey(
+    name: 'birth_date',
+    includeIfNull: false,
+  )
   DateTime? birthDate;
 
   @action
@@ -148,7 +166,10 @@ abstract class _ChildModel with Store {
   setHeadCircumference(double? value) => headCircumference = value;
 
   @observable
-  @JsonKey(name: 'about')
+  @JsonKey(
+    name: 'about',
+    includeIfNull: false,
+  )
   String? about;
 
   @action

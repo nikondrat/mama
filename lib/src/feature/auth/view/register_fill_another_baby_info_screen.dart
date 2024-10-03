@@ -19,7 +19,6 @@ class _RegisterFillAnotherBabyInfoScreenState
 
   @override
   Widget build(BuildContext context) {
-
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 
@@ -56,7 +55,7 @@ class _RegisterFillAnotherBabyInfoScreenState
           alignment: Alignment.topLeft,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               const Spacer(),
@@ -69,7 +68,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                       context: GenderContext.values[store.child.gender.index])),
               10.h,
               ReactiveForm(
-                formGroup: store.formGroup.control('child') as FormGroup,
+                formGroup: store.childData,
                 child: BodyGroup(title: '', items: [
                   BodyItemWidget(
                     item: ItemWithInput(
@@ -150,10 +149,14 @@ class _RegisterFillAnotherBabyInfoScreenState
                   isSmall: false,
                   title: t.register.next,
                   onTap: () {
-                    store.child.setWeight(double.tryParse(store.weight.value));
-                    store.child.setHeight(double.tryParse(store.height.value));
+                    store.child.setWeight(
+                        (store.weight.value as String).extractNumber());
+                    store.child.setHeight(
+                        (store.height.value as String).extractNumber());
                     store.child.setHeadCircumference(
-                        double.tryParse(store.headCircumference.value));
+                        (store.headCircumference.value as String)
+                            .extractNumber());
+
                     context.pushNamed(AppViews.registerInfoAboutChildbirth);
                   }),
               40.h

@@ -27,7 +27,7 @@ class CurrentAndDymanicContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Текущий',
+                  t.trackers.current.title,
                   style: AppTextStyles.f14w700.copyWith(
                     color: AppColors.greyBrighterColor,
                   ),
@@ -100,7 +100,7 @@ class CurrentAndDymanicContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Динамика',
+                  t.trackers.dynamics.title,
                   style: AppTextStyles.f14w700.copyWith(
                     color: AppColors.greyBrighterColor,
                   ),

@@ -11,7 +11,6 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final AuthViewStore store = context.watch();
 
     return Scaffold(
@@ -23,7 +22,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
           alignment: Alignment.topLeft,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               Spacer(),
@@ -31,7 +30,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
               20.h,
               FlutterToggleButton(
                 outerContainerMargin: 3,
-                buttonWidth: (MediaQuery.of(context).size.width / 2) * 0.85,
+                buttonWidth: MediaQuery.of(context).size.width * .45,
                 buttonHeight: 38,
                 buttonColor: Colors.white,
                 enableTextColor: AppColors.primaryColor,
@@ -68,17 +67,27 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                   children: [
                     Expanded(
                       child: CustomButton(
+                        height: 50,
                         type: CustomButtonType.outline,
                         title: t.register.skip,
-                        onTap: () => context.pushNamed(AppViews.citySearch),
+                        maxLines: 1,
+                        onTap: () {
+                          context.pushNamed(AppViews.citySearch);
+                        },
                       ),
                     ),
                     20.w,
                     Expanded(
                         flex: 2,
                         child: CustomButton(
+                          height: 50,
+                          maxLines: 1,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 16),
                           title: t.register.next,
-                          onTap: () => context.pushNamed(AppViews.citySearch),
+                          onTap: () {
+                            context.pushNamed(AppViews.citySearch);
+                          },
                         ))
                   ],
                 ),
