@@ -27,7 +27,7 @@ class ArticleBox extends StatelessWidget {
               height: 165,
               image: AssetImage(imagePath),
             ),
-
+    
             /// #category
             Padding(
               padding: EdgeInsets.all(8),
@@ -56,25 +56,29 @@ class ArticleBox extends StatelessWidget {
             ),
           ],
         ),
-
+    
         /// #article title
-        SizedBox(
-          width: 165,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: AppColors.blackColor.withOpacity(0.1),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
+        Expanded(
+          child: SizedBox(
+            width: 165,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: AppColors.blackColor.withOpacity(0.1),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8).copyWith(top: 4),
-              child: Text(
-                articleTitle,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
+              child: Padding(
+                padding: const EdgeInsets.all(8).copyWith(top: 4),
+                child: Text(
+                  articleTitle,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),

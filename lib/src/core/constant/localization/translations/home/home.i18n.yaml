@@ -122,9 +122,30 @@ debunkingFourteenBreastfeedingMyths:
   title: "Debunking 14 breastfeeding myths"
 
 articleTitleOne:
-  title: Child development at 6 months
+  title: "Child development at 6 months"
 
 articleTitleTwo:
-  title: Recovery after cesarean section
+  title: "Recovery after cesarean section"
 
-switch_hint: Switch
+switch_hint: "Switch"
+
+septemberTwentySecond:
+  title: "22 september"
+
+today:
+  title: "Today"
+
+timeScheduleOne:
+  title: "9:00-9:15"
+
+chat:
+  title: "Chat"
+
+video:
+  title: "Video"
+
+express:
+  title: "Express"
+
+tutorFullNameOne:
+  title: "Марина Алексеева"

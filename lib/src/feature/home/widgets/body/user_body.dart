@@ -16,20 +16,13 @@ class HomeUserBody extends StatelessWidget {
       child: ListView(
         children: [
           /// #good afternoon title
-          Text(
-            t.home.goodAfternoon.title,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
+          GreetingTitle(title: t.home.goodAfternoon.title),
 
           /// #today's date subtitle
-          Text(
-            t.home.todayIsFridaySeptemberTwentySecond.title,
-            style: TextStyle(fontSize: 17),
+          DateSubtitle(
+            subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
           ),
-          SizedBox(height: 24),
+          24.h,
 
           /// #baby image
           CustomBackground(
@@ -47,36 +40,37 @@ class HomeUserBody extends StatelessWidget {
                         clipBehavior: Clip.none,
                         children: [
                           ShaderMask(
-                              shaderCallback: (bounds) {
-                                return LinearGradient(
-                                  begin: Alignment.center,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.whiteColor,
-                                    AppColors.yellowColor,
-                                  ],
-                                ).createShader(bounds);
-                              },
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: AppColors.yellowColor,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(16)),
+                            shaderCallback: (bounds) {
+                              return LinearGradient(
+                                begin: Alignment.center,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  AppColors.whiteColor,
+                                  AppColors.yellowColor,
+                                ],
+                              ).createShader(bounds);
+                            },
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: AppColors.yellowColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(16),
                                 ),
-                                child: Padding(
-                                  padding:
-                                      EdgeInsets.all(8.0).copyWith(top: 24),
-                                  child: Text(
-                                    t.home.soonSixMonths.title,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0).copyWith(top: 24),
+                                child: Text(
+                                  t.home.soonSixMonths.title,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                              )),
+                              ),
+                            ),
+                          ),
 
-                          //                 /// #icon
+                          /// #icon
                           Positioned(
                             top: -40,
                             child: Text(
@@ -110,7 +104,7 @@ class HomeUserBody extends StatelessWidget {
                 ),
                 8.w,
 
-                //       /// #baby image, edit button
+                /// #baby image, edit button
                 Stack(
                   clipBehavior: Clip.none,
                   alignment: Alignment.center,
@@ -121,26 +115,27 @@ class HomeUserBody extends StatelessWidget {
                       image: AssetImage(Assets.images.imgKid.path),
                     ),
                     Positioned(
-                        bottom: -30,
-                        child: FloatingActionButton(
-                          onPressed: () {},
-                          backgroundColor: colorScheme.primary,
-                          shape: CircleBorder(),
-                          child: IconWidget(
-                              model: IconModel(
+                      bottom: -30,
+                      child: FloatingActionButton(
+                        onPressed: () {},
+                        backgroundColor: colorScheme.primary,
+                        shape: CircleBorder(),
+                        child: IconWidget(
+                          model: IconModel(
                             icon: Icons.edit,
                             color: colorScheme.onPrimary,
-                          )),
-                        ))
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ],
             ),
           ),
-          // SizedBox(height: 26),
           26.h,
 
-          // /// #services
+          /// #services
           CustomBackground(
             height: 515,
             padding: 16,
@@ -197,9 +192,8 @@ class HomeUserBody extends StatelessWidget {
             ),
           ),
           16.h,
-          // SizedBox(height: 16),
 
-          // /// #current
+          /// #current
           CustomBackground(
             height: null,
             padding: 0,
@@ -243,7 +237,6 @@ class HomeUserBody extends StatelessWidget {
               ],
             ),
           ),
-          // SizedBox(height: 16),
           16.h,
 
           // /// #for you
