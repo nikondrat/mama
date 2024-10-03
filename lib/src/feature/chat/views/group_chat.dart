@@ -9,10 +9,14 @@ import 'package:mama/src/feature/chat/widgets/widgets.dart';
 class GroupChatScreen extends StatefulWidget {
   final List<MessageModel> listMessages;
   final ChatEntity chatEntity;
+  final ChatModelSingle? singleChat;
+  final ChatModelGroup? groupChat;
   const GroupChatScreen({
     super.key,
     required this.listMessages,
     required this.chatEntity,
+    this.singleChat,
+    this.groupChat,
   });
 
   @override
@@ -51,9 +55,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
-
+    var chat = widget.groupChat ?? widget.singleChat;
     return Scaffold(
       backgroundColor: AppColors.lightPirple,
       appBar: ChatsAppBar(

@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/core/widgets/bottom_app_bar.dart';
-import 'package:mama/src/feature/chat/chat.dart';
 import 'package:mama/src/feature/chat/views/group_chat.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -16,38 +14,13 @@ class ChatsScreen extends StatefulWidget {
   State<ChatsScreen> createState() => _ChatsScreenState();
 }
 
-class _ChatsScreenState extends State<ChatsScreen>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  int _selectedIndex = 2;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-    _tabController.addListener(() {
-      setState(() {
-        _selectedIndex = _tabController.index;
-      });
-    });
-  }
-
+class _ChatsScreenState extends State<ChatsScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
     return Scaffold(
       backgroundColor: AppColors.purpleLighterBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: CircleAvatar(
-          radius: 54,
-          backgroundImage: AssetImage(
-            mom.image!,
-          ),
-        ),
-      ),
       body: ListView(
         children: [
           CardWithoutMargin(
@@ -79,7 +52,7 @@ class _ChatsScreenState extends State<ChatsScreen>
                               context,
                               MaterialPageRoute(
                                 builder: (context) => GroupChatScreen(
-                                  chat: listChatSingle[0],
+                                  singleChat: listChatSingle[0],
                                   listMessages: listGroup,
                                   chatEntity: ChatEntity.groupChat,
                                 ),
@@ -114,7 +87,7 @@ class _ChatsScreenState extends State<ChatsScreen>
                               builder: (context) => GroupChatScreen(
                                 listMessages: list,
                                 chatEntity: ChatEntity.singleChat,
-                                chat: listChatSingle[0],
+                                singleChat: listChatSingle[0],
                               ),
                             ));
                       },
@@ -126,9 +99,6 @@ class _ChatsScreenState extends State<ChatsScreen>
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomBar(
-        tabController: _tabController,
       ),
     );
   }
