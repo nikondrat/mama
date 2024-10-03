@@ -93,10 +93,8 @@ bottomBarDiaries: Дневники
 bottomBarChats: Чаты
 bottomBarServices: Сервисы
 
-sex(context=GenderContext):
-  male: Мальчик
-  female: Девочка
+male: Мальчик
+female: Девочка
 
-birth(context=BirthContext):
-  nature: Естественные
-  cesarean: Кесарево
+nature: Естественные
+cesarean: Кесарево

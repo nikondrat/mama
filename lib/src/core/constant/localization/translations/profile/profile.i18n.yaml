@@ -93,10 +93,8 @@ bottomBarChats: Chats
 bottomBarServices: Services
 
 
-sex(context=GenderContext):
-  male: Boy
-  female: Girl
+male: Boy
+female: Girl
 
-birth(context=BirthContext):
-  nature: Nature
-  cesarean: Cesarean
+nature: Nature
+cesarean: Cesarean

@@ -23,11 +23,7 @@ class CitySearchView extends StatelessWidget {
               ),
               alignment: Alignment.topLeft,
             ),
-            child: AppBody(
-                builder: (windowWidth, windowSize) => Padding(
-                      padding: HorizontalSpacing.centered(windowWidth),
-                      child: CitySearchBody(store: store),
-                    )),
+            child: CitySearchBody(store: store),
           ),
         );
       },

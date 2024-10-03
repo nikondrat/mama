@@ -35,73 +35,70 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyDecoration(
-        child: AppBody(
-          builder: (windowWidth, windowSize) => Padding(
-            padding: HorizontalSpacing.centered(windowWidth),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Swiper(
-                    loop: false,
-                    controller: swiperController,
-                    itemBuilder: (BuildContext context, int index) {
-                      return WelcomeContainer(content: onBoardData[index]);
-                    },
-                    itemCount: onBoardData.length,
-                    pagination:
-                        const SwiperPagination(builder: SwiperPagination.rect),
-                    //control: const SwiperControl(),
-                    onIndexChanged: (index) {
-                      setState(() {
-                        initialPage = index;
-                        if (index == 4) {
-                          isEnd = true;
-                        } else {
-                          isEnd = false;
-                        }
-                      });
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Expanded(
+                child: Swiper(
+                  loop: false,
+                  controller: swiperController,
+                  itemBuilder: (BuildContext context, int index) {
+                    return WelcomeContainer(content: onBoardData[index]);
+                  },
+                  itemCount: onBoardData.length,
+                  pagination:
+                      const SwiperPagination(builder: SwiperPagination.rect),
+                  //control: const SwiperControl(),
+                  onIndexChanged: (index) {
+                    setState(() {
+                      initialPage = index;
+                      if (index == 4) {
+                        isEnd = true;
+                      } else {
+                        isEnd = false;
+                      }
+                    });
+                  },
+                ),
+              ),
+              Row(
+                children: [
+                  SmoothPageIndicator(
+                    controller: PageController(initialPage: initialPage),
+                    count: onBoardData.length,
+                    effect: const SlideEffect(
+                        type: SlideType.slideUnder,
+                        activeDotColor: AppColors.primaryColor,
+                        dotColor: AppColors.greyColor), // your preferred effect
+                    onDotClicked: (index) {
+                      swiperController.move(index);
                     },
                   ),
-                ),
-                Row(
-                  children: [
-                    SmoothPageIndicator(
-                      controller: PageController(initialPage: initialPage),
-                      count: onBoardData.length,
-                      effect: const SlideEffect(
-                          type: SlideType.slideUnder,
-                          activeDotColor: AppColors.primaryColor,
-                          dotColor:
-                              AppColors.greyColor), // your preferred effect
-                      onDotClicked: (index) {
-                        swiperController.move(index);
+                  20.w,
+                  Expanded(
+                    child: CustomButton(
+                      title: isEnd ? t.register.goToAcc : t.register.next,
+                      backgroundColor: isEnd
+                          ? AppColors.greenLighterBackgroundColor
+                          : AppColors.purpleLighterBackgroundColor,
+                      onTap: () {
+                        if (!isEnd) {
+                          setState(
+                            () {
+                              swiperController.move(++initialPage);
+                            },
+                          );
+                        } else {
+                          router.pushReplacementNamed(AppViews.homeScreen);
+                        }
                       },
                     ),
-                    20.w,
-                    Expanded(
-                      child: CustomButton(
-                        title: isEnd ? t.register.goToAcc : t.register.next,
-                        backgroundColor: isEnd
-                            ? AppColors.greenLighterBackgroundColor
-                            : AppColors.purpleLighterBackgroundColor,
-                        onTap: () {
-                          if (!isEnd) {
-                            setState(
-                              () {
-                                swiperController.move(++initialPage);
-                              },
-                            );
-                          } else {
-                            router.pushReplacementNamed(AppViews.homeScreen);
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                20.h
-              ],
-            ),
+                  ),
+                ],
+              ),
+              20.h
+            ],
           ),
         ),
       ),

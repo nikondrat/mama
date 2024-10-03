@@ -21,77 +21,79 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
           ),
           alignment: Alignment.topLeft,
         ),
-        child: AppBody(
-          builder: (windowWidth, windowSize) => Padding(
-            padding: HorizontalSpacing.centered(windowWidth),
-            child: Column(
-              children: [
-                Spacer(),
-                TitleWidget(text: t.register.howWasBirth),
-                20.h,
-                FlutterToggleButton(
-                  outerContainerMargin: 3,
-                  buttonWidth: 200,
-                  buttonHeight: 38,
-                  buttonColor: Colors.white,
-                  enableTextColor: AppColors.primaryColor,
-                  disableTextColor: AppColors.greyBrighterColor,
-                  disableTextFontWeight: FontWeight.w700,
-                  buttonTextFontSize: 17,
-                  borderRadius: 6,
-                  outerContainerColor: const Color(0xFFE1E6FF),
-                  onTap: (index) {
-                    store.child.setChildbirth(Childbirth.values[index]);
-                  },
-                  items: [t.register.natural, t.register.caesarean],
-                ),
-                20.h,
-                Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Spacer(),
+              TitleWidget(text: t.register.howWasBirth),
+              20.h,
+              FlutterToggleButton(
+                outerContainerMargin: 3,
+                buttonWidth: MediaQuery.of(context).size.width * .45,
+                buttonHeight: 38,
+                buttonColor: Colors.white,
+                enableTextColor: AppColors.primaryColor,
+                disableTextColor: AppColors.greyBrighterColor,
+                disableTextFontWeight: FontWeight.w700,
+                buttonTextFontSize: 17,
+                borderRadius: 6,
+                outerContainerColor: const Color(0xFFE1E6FF),
+                onTap: (index) {
+                  store.child.setChildbirth(Childbirth.values[index]);
+                },
+                items: [t.register.natural, t.register.caesarean],
+              ),
+              20.h,
+              Row(
+                children: [
+                  Text(t.register.wasComplications),
+                  const Spacer(),
+                  Observer(builder: (context) {
+                    return CupertinoSwitch(
+                        activeColor: AppColors.primaryColor,
+                        value: store.child.childBirthWithComplications,
+                        onChanged: (value) {
+                          store.child.setChildbirthWithComplications(value);
+                        });
+                  }),
+                ],
+              ),
+              const Spacer(),
+              SizedBox(
+                height: 100,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
                   children: [
-                    Text(t.register.wasComplications),
-                    const Spacer(),
-                    Observer(builder: (context) {
-                      return CupertinoSwitch(
-                          activeColor: AppColors.primaryColor,
-                          value: store.child.childBirthWithComplications,
-                          onChanged: (value) {
-                            store.child.setChildbirthWithComplications(value);
-                          });
-                    }),
-                  ],
-                ),
-                const Spacer(),
-                SizedBox(
-                  height: 100,
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    children: [
-                      Expanded(
+                    Expanded(
+                      child: CustomButton(
+                        height: 50,
+                        type: CustomButtonType.outline,
+                        title: t.register.skip,
+                        maxLines: 1,
+                        onTap: () {
+                          context.pushNamed(AppViews.citySearch);
+                        },
+                      ),
+                    ),
+                    20.w,
+                    Expanded(
+                        flex: 2,
                         child: CustomButton(
                           height: 50,
-                          type: CustomButtonType.outline,
-                          title: t.register.skip,
                           maxLines: 1,
-                          onTap: () => context.pushNamed(AppViews.citySearch),
-                        ),
-                      ),
-                      20.w,
-                      Expanded(
-                          flex: 2,
-                          child: CustomButton(
-                            height: 50,
-                            maxLines: 1,
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 50, vertical: 16),
-                            title: t.register.next,
-                            onTap: () => context.pushNamed(AppViews.citySearch),
-                          ))
-                    ],
-                  ),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 16),
+                          title: t.register.next,
+                          onTap: () {
+                            context.pushNamed(AppViews.citySearch);
+                          },
+                        ))
+                  ],
                 ),
-                40.h
-              ],
-            ),
+              ),
+              40.h
+            ],
           ),
         ),
       ),

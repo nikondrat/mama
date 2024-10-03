@@ -24,6 +24,7 @@ final class InitializationProcessor {
       settingsStore: settingsStore,
       errorTrackingManager: errorTrackingManager,
       restClient: restClient,
+      tokenStorage: tokenStorage,
     );
   }
 
@@ -70,7 +71,8 @@ final class InitializationProcessor {
   Future<RestClient> _initRestClient(
       FlutterSecureStorage storage, TokenStorageImpl tokenStorage) async {
     final dio = Dio();
-    final refreshClient = RefreshClientImpl(tokenStorage: tokenStorage);
+    final refreshClient =
+        RefreshClientImpl(restClient: dio, tokenStorage: tokenStorage);
 
     // Configure AuthInterceptor with tokenStorage and refreshClient
     final authInterceptor = AuthInterceptor(
@@ -78,7 +80,7 @@ final class InitializationProcessor {
       refreshClient: refreshClient,
       buildHeaders: (token) async {
         if (token != null) {
-          return {'Authorization': 'Token $token'};
+          return {'Authorization': 'Bearer $token'};
         }
         return {};
       },
@@ -89,7 +91,7 @@ final class InitializationProcessor {
     dio.interceptors.add(LogInterceptor(
         requestBody: true,
         request: true,
-        requestHeader: true,
+        requestHeader: false,
         responseHeader: false,
         responseBody: true));
 

@@ -4,9 +4,11 @@ import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/chat/views/group_chat.dart';
 
 class ChatsScreen extends StatefulWidget {
+  final CustomAppBar appBar;
   // final MomInfo mom;
   const ChatsScreen({
     super.key,
+    required this.appBar,
     // required this.mom,
   });
 
