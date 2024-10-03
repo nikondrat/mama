@@ -4,12 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
 import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
-import 'package:mama/src/feature/home/home.dart';
-import 'package:mama/src/feature/trackers/views/add_head.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
 import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
-
-import '../../feature/feature.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';

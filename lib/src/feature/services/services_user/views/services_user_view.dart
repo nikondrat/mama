@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 class ServicesUserView extends StatelessWidget {
   final CustomAppBar appBar;
+
   const ServicesUserView({
     super.key,
     required this.appBar,
