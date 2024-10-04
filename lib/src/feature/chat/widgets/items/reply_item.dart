@@ -17,9 +17,12 @@ class ReplyItemWidget extends StatelessWidget {
         children: [
           Flexible(
             flex: 1,
-            child: Image.asset(
-              Assets.icons.replyFilled.path,
-              height: 28,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                Assets.icons.replyFilled.path,
+                height: 28,
+              ),
             ),
           ),
           Expanded(

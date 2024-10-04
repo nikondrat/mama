@@ -68,10 +68,10 @@ abstract class _LastMessage with Store {
 
   @observable
   @JsonKey(name: 'read_at')
-  String? readAt;
+  DateTime? readAt;
 
   @action
-  setReadAt(String? value) => readAt = value;
+  setReadAt(DateTime? value) => readAt = value;
 
   @observable
   @JsonKey(name: 'reply')

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import 'package:mama/src/core/core.dart';
@@ -55,15 +56,22 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var chat = widget.groupChat ?? widget.singleChat;
     return Scaffold(
       backgroundColor: AppColors.lightPirple,
       appBar: ChatsAppBar(
-        title: 'Жанна Коршунова',
-        // t.services.sleepMusic.title,
-        subTitle: 'Был(а) в 15:12',
-        // t.services.sleepMusic.title,
-        profession: 'Акушер',
+        title: widget.groupChat != null
+            ? widget.groupChat!.groupChatInfo.name
+            : '${widget.singleChat!.participant1.firstName} ${widget.singleChat!.participant1.secondName}',
+// тут для групп чата нужно сколько специалистов, этой инфо в модели нет
+        subTitle: widget.groupChat != null
+            ? widget.groupChat!.participant.firstName
+            : '${t.chat.lastSeen} ${DateFormat('kk:mm').format(widget.singleChat!.participant1.lastActiveAt!)}',
+        profession: widget.groupChat != null
+            ? null
+            : widget.singleChat!.participant1.profession,
+        avatarUrl: widget.groupChat != null
+            ? widget.groupChat!.groupChatInfo.avatar
+            : widget.singleChat!.participant1.avatarUrl,
       ),
       body: Stack(
         children: [

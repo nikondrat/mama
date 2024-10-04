@@ -14,7 +14,7 @@ enum ChatEntity {
 @JsonSerializable()
 class ChatModelSingle extends _ChatModelSingle with _$ChatModelSingle {
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final DateTime createdAt;
 
   @JsonKey(name: 'id')
   final String id;
@@ -34,12 +34,14 @@ class ChatModelSingle extends _ChatModelSingle with _$ChatModelSingle {
   @JsonKey(name: 'participant2_id')
   final String participant2Id;
 
-  ChatModelSingle(
+  ChatModelSingle({
     super.lastMessage,
     super.lastMessageAt,
-    this.createdAt,
-    this.participant1,
-    this.participant2, {
+    super.participant1Unread,
+    super.participant2Unread,
+    required this.createdAt,
+    required this.participant1,
+    required this.participant2,
     required this.id,
     this.isDeleted = true,
     required this.participant1Id,
@@ -53,10 +55,12 @@ class ChatModelSingle extends _ChatModelSingle with _$ChatModelSingle {
 }
 
 abstract class _ChatModelSingle with Store {
-  _ChatModelSingle(
+  _ChatModelSingle({
     this.lastMessage,
     this.lastMessageAt,
-  );
+    this.participant1Unread,
+    this.participant2Unread,
+  });
 
   @observable
   @JsonKey(name: 'last_message')
@@ -67,22 +71,22 @@ abstract class _ChatModelSingle with Store {
 
   @observable
   @JsonKey(name: 'last_message_at')
-  String? lastMessageAt;
+  DateTime? lastMessageAt;
 
   @action
-  setLlastMessageAt(String value) => lastMessageAt = value;
+  setLlastMessageAt(DateTime value) => lastMessageAt = value;
 
   @observable
   @JsonKey(name: 'participant1_unread')
-  String? participant1Unread;
+  int? participant1Unread;
 
   @action
-  setParticipant1Unread(String value) => participant1Unread = value;
+  setParticipant1Unread(int value) => participant1Unread = value;
 
   @observable
   @JsonKey(name: 'participant2_unread')
-  String? participant2Unread;
+  int? participant2Unread;
 
   @action
-  setParticipant2Unread(String value) => participant2Unread = value;
+  setParticipant2Unread(int value) => participant2Unread = value;
 }

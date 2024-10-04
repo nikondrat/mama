@@ -51,7 +51,7 @@ class MessageInput extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     Assets.icons.attach.path,
-                    height: 28,
+                    height: 24,
                   ),
                 ),
                 IconButton(

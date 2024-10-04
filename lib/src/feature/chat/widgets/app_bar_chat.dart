@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/core/utils/router.dart';
 import 'package:mama/src/feature/chat/chat.dart';
 
 class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -10,6 +9,7 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String subTitle;
   final String? profession;
+  final String? avatarUrl;
   final Widget? action;
 
   final TabController? tabController;
@@ -23,6 +23,7 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.tabController,
     this.action,
     required this.subTitle,
+    this.avatarUrl,
     this.profession,
   });
 
@@ -66,7 +67,8 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
                                         style: textTheme.bodyMedium,
                                       ),
                                       3.w,
-                                      ProfessionBox(profession: profession!)
+                                      if (profession != null)
+                                        ProfessionBox(profession: profession!)
                                     ],
                                   )
                                 : Text(
@@ -96,7 +98,7 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
                           CircleAvatar(
                             radius: 23,
                             backgroundImage: AssetImage(
-                              Assets.images.imgPerson1.path,
+                              avatarUrl!,
                             ),
                           ),
                         ],

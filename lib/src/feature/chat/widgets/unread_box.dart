@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 
 class UnreadBox extends StatelessWidget {
-  final String text;
-  const UnreadBox({super.key, required this.text});
+  final int unread;
+  const UnreadBox({super.key, required this.unread});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class UnreadBox extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
       child: Text(
-        text,
+        unread.toString(),
         style: textTheme.labelMedium!.copyWith(color: AppColors.whiteColor),
       ),
     );
