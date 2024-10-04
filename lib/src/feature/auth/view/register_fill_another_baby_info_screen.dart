@@ -24,6 +24,8 @@ class _RegisterFillAnotherBabyInfoScreenState
 
     final AuthViewStore store = context.watch();
 
+    final ChildStore childStore = context.watch();
+
     final InputBorder inputBorder = OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(6),
@@ -70,7 +72,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                               GenderContext.values[store.child.gender.index])),
                   10.h,
                   ReactiveForm(
-                    formGroup: store.formGroup.control('child') as FormGroup,
+                    formGroup: store.childData,
                     child: BodyGroup(title: '', items: [
                       BodyItemWidget(
                         item: ItemWithInput(
@@ -151,12 +153,17 @@ class _RegisterFillAnotherBabyInfoScreenState
                       isSmall: false,
                       title: t.register.next,
                       onTap: () {
-                        store.child
-                            .setWeight(double.tryParse(store.weight.value));
-                        store.child
-                            .setHeight(double.tryParse(store.height.value));
+                        store.child.setWeight(
+                            (store.weight.value as String).extractNumber());
+                        store.child.setHeight(
+                            (store.height.value as String).extractNumber());
                         store.child.setHeadCircumference(
-                            double.tryParse(store.headCircumference.value));
+                            (store.headCircumference.value as String)
+                                .extractNumber());
+
+                        childStore.add(
+                          model: store.child,
+                        );
                         context.pushNamed(AppViews.registerInfoAboutChildbirth);
                       }),
                   40.h

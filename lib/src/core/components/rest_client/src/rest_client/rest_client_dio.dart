@@ -82,11 +82,13 @@ final class RestClientDio extends RestClientBase {
   @override
   Future<Map<String, Object?>?> delete(
     String path, {
+    Map<String, Object?>? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
   }) =>
       sendRequest(
         path: path,
+        body: body,
         method: 'DELETE',
         headers: headers,
         queryParams: queryParams,
@@ -95,12 +97,14 @@ final class RestClientDio extends RestClientBase {
   @override
   Future<Map<String, Object?>?> get(
     String path, {
+    Map<String, Object?>? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
   }) =>
       sendRequest(
         path: path,
         method: 'GET',
+        body: body,
         headers: headers,
         queryParams: queryParams,
       );

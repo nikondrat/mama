@@ -7,3 +7,4 @@ export 'profile/profile.dart';
 export 'trackers/trackers.dart';
 export 'chat/chat.dart';
 export 'feeding/feeding.dart';
+export 'home/home.dart';
