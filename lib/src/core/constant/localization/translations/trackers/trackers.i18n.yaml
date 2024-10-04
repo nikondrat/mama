@@ -89,7 +89,7 @@ dynamics:
 kg:
   title: KG
 
-g: 
+g:
   title: G
 
 stories:
@@ -101,8 +101,17 @@ news:
 old:
   title: Old
 
-cm:
-  title: CM
+showCompleted:
+  title: Show completed
 
-m: 
-  title: M
+pillTitleOne:
+  title: Сироп Нурофен детский
+
+pillDescriptionOne:
+  title: 1 spoon after a meal
+
+pillExactTimeOne:
+  title: В 20:00
+
+pillRemainingTimeOne:
+  title: In 2 hours 12 minutes
