@@ -75,162 +75,152 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
         alignment: Alignment.bottomCenter,
         children: [
           /// #main content
-          Column(
-            children: [
-              /// #custom app bar
+          Expanded(
+            child: ColoredBox(
+              color: AppColors.whiteColor,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ListView(
+                  padding: EdgeInsets.only(top: 16),
+                  children: [
+                    /// #find out more box
+                    ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      child: ColoredBox(
+                        color: AppColors.lightBlue,
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                /// #exit button
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: SvgPicture.asset(
+                                      Assets.icons.icCrossMark,
+                                    ),
+                                  ),
+                                ),
 
-              /// #tracks
-              Expanded(
-                child: ColoredBox(
-                  color: AppColors.whiteColor,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: ListView(
-                      padding: EdgeInsets.only(top: 16),
-                      children: [
-                        /// #find out more box
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                          child: ColoredBox(
-                            color: AppColors.lightBlue,
-                            child: SizedBox(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    /// #exit button
-                                    Align(
-                                      alignment: Alignment.centerRight,
-                                      child: IconButton(
-                                        onPressed: () {},
-                                        icon: SvgPicture.asset(
-                                          Assets.icons.icCrossMark,
+                                /// #find out more text
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      /// #find out more one text
+                                      Text(
+                                        t.trackers.findOutMoreTextOne.title,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColors.greyBrighterColor,
                                         ),
                                       ),
-                                    ),
+                                      SizedBox(height: 8),
 
-                                    /// #find out more text
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
+                                      /// #find out more two text
+                                      Text(
+                                        t.trackers.findOutMoreTextTwo.title,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColors.greyBrighterColor,
+                                        ),
                                       ),
-                                      child: Column(
-                                        children: [
-                                          /// #find out more one text
-                                          Text(
-                                            t.trackers.findOutMoreTextOne.title,
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color:
-                                                  AppColors.greyBrighterColor,
-                                            ),
-                                          ),
-                                          SizedBox(height: 8),
+                                      SizedBox(height: 16),
 
-                                          /// #find out more two text
-                                          Text(
-                                            t.trackers.findOutMoreTextTwo.title,
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color:
-                                                  AppColors.greyBrighterColor,
-                                            ),
-                                          ),
-                                          SizedBox(height: 16),
-
-                                          /// #find out more button
-                                          CustomButton(
-                                            onTap: () {},
-                                            type: CustomButtonType.outline,
-                                            title: t.trackers.findOutMore.title,
-                                            contentPadding:
-                                                EdgeInsets.symmetric(
-                                                    horizontal: 140,
-                                                    vertical: 12),
-                                            isSmall: false,
-                                            icon: IconModel(
-                                              iconPath: Assets
-                                                  .icons.icGraduationCapFilled,
-                                            ),
-                                          ),
-                                        ],
+                                      /// #find out more button
+                                      CustomButton(
+                                        onTap: () {},
+                                        type: CustomButtonType.outline,
+                                        title: t.trackers.findOutMore.title,
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 140, vertical: 12),
+                                        isSmall: false,
+                                        icon: IconModel(
+                                          iconPath: Assets
+                                              .icons.icGraduationCapFilled,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 16),
+                      ),
+                    ),
+                    SizedBox(height: 16),
 
-                        /// #
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 4,
-                              child: Text(
-                                'Дата',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.greyBrighterColor,
-                                ),
-                              ),
+                    /// #tabel header
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Text(
+                            'Дата',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.greyBrighterColor,
                             ),
-                            Expanded(
-                              flex: 3,
-                              child: Text(
-                                'Время',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.greyBrighterColor,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: Text(
-                                'Температура',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.greyBrighterColor,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        SizedBox(height: 5),
-
-                        Table(
-                          children: tableData
-                              .map(
-                                (row) => TableRow(
-                                  children: row
-                                      .map(
-                                        (cell) => Text(cell),
-                                      )
-                                      .toList(),
-                                ),
-                              )
-                              .toList(),
+                        Expanded(
+                          flex: 3,
+                          child: Text(
+                            'Время',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.greyBrighterColor,
+                            ),
+                          ),
                         ),
-
-                        SizedBox(height: phonePadding.bottom + 16),
+                        Expanded(
+                          flex: 3,
+                          child: Text(
+                            'Температура',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.greyBrighterColor,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  ),
+                    SizedBox(height: 5),
+
+                    /// #actual table
+                    Table(
+                      children: tableData
+                          .map(
+                            (row) => TableRow(
+                              children: row
+                                  .map(
+                                    (cell) => Text(cell),
+                                  )
+                                  .toList(),
+                            ),
+                          )
+                          .toList(),
+                    ),
+
+                    SizedBox(height: phonePadding.bottom + 16),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
 
-          /// #
+          /// #bottom buttons
           ColoredBox(
             color: AppColors.whiteColor,
             child: Padding(
