@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'user_body.dart';
+
+import 'package:mama/src/feature/home/widgets/body/home_specialist_body.dart';
 
 class HomeBodyWidget extends StatelessWidget {
   final CustomAppBar appBar;
@@ -11,6 +12,9 @@ class HomeBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: appBar, body: HomeUserBody());
+    return Scaffold(
+      appBar: appBar,
+      body: HomeSpecialistBody(),
+    );
   }
 }
