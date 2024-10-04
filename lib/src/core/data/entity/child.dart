@@ -37,7 +37,7 @@ class ChildModel extends _ChildModel with _$ChildModel {
   ChildModel({
     this.id,
     required super.firstName,
-    super.secondName,
+    required super.secondName,
     this.updatedAt,
     this.createdAt,
     super.avatarUrl,
@@ -45,7 +45,7 @@ class ChildModel extends _ChildModel with _$ChildModel {
     super.isTwins,
     super.childbirth,
     super.childBirthWithComplications,
-    super.birthDate,
+    required super.birthDate,
     super.height,
     super.weight,
     super.headCircumference,
@@ -63,8 +63,8 @@ abstract class _ChildModel with Store {
     this.avatarUrl,
     this.gender = Gender.male,
     this.isTwins = false,
-    this.childbirth,
-    this.birthDate,
+    this.childbirth = Childbirth.natural,
+    required this.birthDate,
     this.height,
     this.weight,
     this.headCircumference,
@@ -84,12 +84,11 @@ abstract class _ChildModel with Store {
   @observable
   @JsonKey(
     name: 'second_name',
-    includeIfNull: false,
   )
-  String? secondName;
+  String secondName;
 
   @action
-  setSecondName(String? value) => secondName = value;
+  setSecondName(String value) => secondName = value;
 
   @observable
   @JsonKey(
@@ -121,7 +120,7 @@ abstract class _ChildModel with Store {
     name: 'childbirth',
     includeIfNull: false,
   )
-  Childbirth? childbirth;
+  Childbirth childbirth;
 
   @action
   setChildbirth(Childbirth value) => childbirth = value;
@@ -135,14 +134,15 @@ abstract class _ChildModel with Store {
       childBirthWithComplications = value;
 
   @observable
-  @JsonKey(
-    name: 'birth_date',
-    includeIfNull: false,
-  )
-  DateTime? birthDate;
+  @JsonKey(name: 'birth_date', toJson: _dateTimeToJson)
+  DateTime birthDate;
 
   @action
-  setBirthDate(DateTime? value) => birthDate = value;
+  setBirthDate(DateTime value) => birthDate = value;
+
+  static String _dateTimeToJson(DateTime date) {
+    return date.toIso8601String().split('T').first;
+  }
 
   @observable
   @JsonKey(name: 'weight')

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -12,6 +13,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final VerifyStore verifyStore = context.watch();
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
 
@@ -56,6 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Stack(
           children: [
             ListView(
+              padding: EdgeInsets.zero,
               children: <Widget>[
                 MomsProfile(
                   titlesStyle: titlesStyle,
@@ -68,7 +71,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     null,
                     Assets.images.imgProfile.path,
                     [
-                      ChildModel(id: '', firstName: 'Виктория', secondName: ''),
+                      ChildModel(
+                        id: '',
+                        firstName: 'Виктория',
+                        secondName: '',
+                        birthDate: DateTime.now(),
+                      ),
                     ],
                   ),
                 ),
@@ -124,7 +132,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onTapExit: () {
                               context.pop();
                             },
-                            onTapContinue: () {},
+                            onTapContinue: () {
+                              context.pop();
+                              verifyStore.logout();
+                            },
                           ),
                         ),
                       );

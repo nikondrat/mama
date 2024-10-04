@@ -7,7 +7,9 @@ import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
 class RegisterInfoAboutChildbirth extends StatelessWidget {
-  const RegisterInfoAboutChildbirth({super.key});
+  const RegisterInfoAboutChildbirth({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,9 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                         title: t.register.skip,
                         maxLines: 1,
                         onTap: () {
-                          context.pushNamed(AppViews.citySearch);
+                          context.pushNamed(
+                            AppViews.citySearch,
+                          );
                         },
                       ),
                     ),
@@ -86,7 +90,9 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                               horizontal: 50, vertical: 16),
                           title: t.register.next,
                           onTap: () {
-                            context.pushNamed(AppViews.citySearch);
+                            context.pushNamed(
+                              AppViews.citySearch,
+                            );
                           },
                         ))
                   ],

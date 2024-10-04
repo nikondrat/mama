@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -38,26 +39,29 @@ class _HomeViewState extends State<HomeView>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          HomeBodyWidget(
-            appBar: appBar,
-          ),
-          TrackersView(
-            appBar: appBar,
-          ),
-          ChatsScreen(
-            appBar: appBar,
-          ),
-          ServicesUserView(
-            appBar: appBar,
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomBar(
-        tabController: _tabController,
+    return LoadHomeData(
+      userStore: context.watch<UserStore>(),
+      child: Scaffold(
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            HomeBodyWidget(
+              appBar: appBar,
+            ),
+            TrackersView(
+              appBar: appBar,
+            ),
+            ChatsScreen(
+              appBar: appBar,
+            ),
+            ServicesUserView(
+              appBar: appBar,
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomBar(
+          tabController: _tabController,
+        ),
       ),
     );
   }

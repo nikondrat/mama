@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterFillName extends StatelessWidget {
-  const RegisterFillName({super.key});
+  const RegisterFillName({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,8 @@ class RegisterFillName extends StatelessWidget {
                               onTap: isValid
                                   ? () {
                                       context.pushNamed(
-                                          AppViews.registerFillBabyName);
+                                        AppViews.registerFillBabyName,
+                                      );
                                     }
                                   : null,
                             );

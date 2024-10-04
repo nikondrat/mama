@@ -78,9 +78,9 @@ final class InitializationProcessor {
     final authInterceptor = AuthInterceptor(
       storage: tokenStorage,
       refreshClient: refreshClient,
-      buildHeaders: (token) async {
-        if (token != null) {
-          return {'Authorization': 'Bearer $token'};
+      buildHeaders: (tokens) async {
+        if (tokens != null) {
+          return {'Authorization': 'Bearer ${tokens['access']}'};
         }
         return {};
       },
