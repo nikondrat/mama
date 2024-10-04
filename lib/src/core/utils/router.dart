@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
-import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
-import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
-import 'package:mama/src/feature/trackers/views/health/views/add_medicine.dart';
-import 'package:mama/src/feature/trackers/views/health/views/medicine.dart';
-import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
-import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
 import 'package:provider/provider.dart';
 
 abstract class AppViews {
@@ -29,11 +22,12 @@ abstract class AppViews {
   static const String homeScreen = 'homeScreen';
 
   static const trackersHealthView = 'trackersHealthView';
-  static const trackersHealthAddTemperatureView =
-      'trackersHealthAddTemperatureView';
+  static const addTemperature = 'addTemperature';
 
-  static const healthMedicine = '/';
-  static const addMedicine = '/';
+  static const trackersHealthAddMedicineView = 'trackersHealthAddMedicineView';
+
+  // static const healthMedicine = '/';
+  static const addMedicine = 'addMedicine';
 
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
@@ -59,7 +53,6 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   // initialLocation: _Paths.homeScreen,
   routes: [
-    /// TODO: Fix before merge
     GoRoute(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
@@ -182,70 +175,75 @@ final GoRouter router = GoRouter(
                 final Map? extra = state.extra as Map?;
                 final int? selectedTab = extra?['selectedTab'] as int?;
 
-    //             return ServicesSleepMusicView(
-    //               index: selectedTab,
-    //             );
-    //           },
-    //         ),
-    //       ],
-    //     ),
-    //     GoRoute(
-    //       path: _Paths.evolutionView,
-    //       name: AppViews.evolutionView,
-    //       builder: (context, state) => const EvolutionView(),
-    //       routes: [
-    //         GoRoute(
-    //           name: AppViews.addWeightView,
-    //           path: _Paths.addWeightView,
-    //           builder: (context, state) => const AddWeight(),
-    //         )
-    //       ],
-    //     ),
-    //     GoRoute(
-    //       path: _Paths.feeding,
-    //       name: AppViews.feeding,
-    //       builder: (context, state) => const FeedingScreen(),
-    //       routes: [
-    //         GoRoute(
-    //           name: AppViews.addManually,
-    //           path: _Paths.addManually,
-    //           builder: (context, state) => const AddManuallyScreen(),
-    //         ),
-    //       ],
-    //     ),
-    //     GoRoute(
-    //       name: AppViews.trackersHealthView,
-    //       path: _Paths.trackersHealthPath,
-    //       builder: (context, state) => const TrackersHealthView(),
-    //       routes: [
-    //         GoRoute(
-    //           name: AppViews.trackersHealthAddTemperatureView,
-    //           path: _Paths.trackersHealthAddTemperaturePath,
-    //           builder: (context, state) => const TrackersHealthAddTemperature(),
-    //         )
-    //       ],
-    //     ),
-    //     GoRoute(
-    //       path: _Paths.profile,
-    //       name: AppViews.profile,
-    //       builder: (context, state) => const ProfileScreen(),
-    //       routes: [
-    //         GoRoute(
-    //           path: _Paths.promoView,
-    //           name: AppViews.promoView,
-    //           builder: (context, state) => const PromoScreen(),
-    //         )
-    //       ],
-    //     ),
-    //     GoRoute(
-    //       path: _Paths.chatView,
-    //       name: AppViews.chatView,
-    //       builder: (context, state) => const ChatsScreen(
-    //         appBar: CustomAppBar(),
-    //       ),
-    //     ),
-    //   ],
-    // ),
+                return ServicesSleepMusicView(
+                  index: selectedTab,
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: _Paths.evolutionView,
+          name: AppViews.evolutionView,
+          builder: (context, state) => const EvolutionView(),
+          routes: [
+            GoRoute(
+              name: AppViews.addWeightView,
+              path: _Paths.addWeightView,
+              builder: (context, state) => const AddWeight(),
+            )
+          ],
+        ),
+        GoRoute(
+          path: _Paths.feeding,
+          name: AppViews.feeding,
+          builder: (context, state) => const FeedingScreen(),
+          routes: [
+            GoRoute(
+              name: AppViews.addManually,
+              path: _Paths.addManually,
+              builder: (context, state) => const AddManuallyScreen(),
+            ),
+          ],
+        ),
+        GoRoute(
+          name: AppViews.trackersHealthView,
+          path: _Paths.trackersHealthPath,
+          builder: (context, state) => const TrackersHealthView(),
+          routes: [
+            GoRoute(
+              name: AppViews.addTemperature,
+              path: _Paths.trackersHealthAddTemperaturePath,
+              builder: (context, state) => const TrackersHealthAddTemperature(),
+            ),
+            GoRoute(
+              path: _Paths.addMedicine,
+              name: AppViews.addMedicine,
+              builder: (context, state) => const AddMedicine(),
+            )
+          ],
+        ),
+        GoRoute(
+          path: _Paths.profile,
+          name: AppViews.profile,
+          builder: (context, state) => const ProfileScreen(),
+          routes: [
+            GoRoute(
+              path: _Paths.promoView,
+              name: AppViews.promoView,
+              builder: (context, state) => const PromoScreen(),
+            )
+          ],
+        ),
+        GoRoute(
+          path: _Paths.chatView,
+          name: AppViews.chatView,
+          builder: (context, state) => const ChatsScreen(
+            appBar: CustomAppBar(),
+          ),
+        ),
+      ],
+    ),
   ],
 );
 
@@ -268,10 +266,9 @@ abstract class _Paths {
   static const String homeScreen = '/${AppViews.homeScreen}';
 
   static const trackersHealthPath = AppViews.trackersHealthView;
-  static const trackersHealthAddTemperaturePath =
-      AppViews.trackersHealthAddTemperatureView;
+  static const trackersHealthAddTemperaturePath = AppViews.addTemperature;
 
-  static const healthMedicine = AppViews.healthMedicine;
+  // static const healthMedicine = AppViews.healthMedicine;
   static const addMedicine = AppViews.addMedicine;
 
   static const servicesUserPath = AppViews.servicesUserView;

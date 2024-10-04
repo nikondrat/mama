@@ -10,279 +10,283 @@ class HomeUserBody extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final ColorScheme colorScheme = themeData.colorScheme;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView(
-        children: [
-          /// #good afternoon title
-          GreetingTitle(title: t.home.goodAfternoon.title),
+    return ListView(
+      children: [
+        /// #good afternoon title
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: GreetingTitle(title: t.home.goodAfternoon.title),
+        ),
 
-          /// #today's date subtitle
-          DateSubtitle(
-            subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
-          ),
-          24.h,
+        /// #today's date subtitle
+        Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: DateSubtitle(
+              subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
+            )),
+        24.h,
 
-          /// #baby image
-          CustomBackground(
-            height: 220,
-            padding: 16,
-            child: Row(
-              children: [
-                /// #left side
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      /// #counter
-                      Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) {
-                              return const LinearGradient(
-                                begin: Alignment.center,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  AppColors.whiteColor,
-                                  AppColors.yellowColor,
-                                ],
-                              ).createShader(bounds);
-                            },
-                            child: DecoratedBox(
-                              decoration: const BoxDecoration(
-                                color: AppColors.yellowColor,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(16),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0).copyWith(top: 24),
-                                child: Text(
-                                  t.home.soonSixMonths.title,
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          /// #icon
-                          const Positioned(
-                            top: -40,
-                            child: Text(
-                              '🥳',
-                              style: TextStyle(fontSize: 50),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-
-                      /// #birth date
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /// #first type
-                          Text(
-                            t.home.FiveMonthsEighteenDays.title,
-                            style: const TextStyle(fontSize: 17),
-                          ),
-
-                          /// #second type
-                          Text(
-                            t.home.orTwentyFourWeeks.title,
-                            style: const TextStyle(fontSize: 17),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                8.w,
-
-                /// #baby image, edit button
-                Stack(
-                  clipBehavior: Clip.none,
-                  alignment: Alignment.center,
+        /// #baby image
+        CustomBackground(
+          height: 220,
+          padding: 16,
+          child: Row(
+            children: [
+              /// #left side
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /// #
-                    Image(
-                      fit: BoxFit.contain,
-                      image: AssetImage(Assets.images.imgKid.path),
-                    ),
-                    Positioned(
-                      bottom: -30,
-                      child: FloatingActionButton(
-                        onPressed: () {},
-                        backgroundColor: colorScheme.primary,
-                        shape: const CircleBorder(),
-                        child: IconWidget(
-                          model: IconModel(
-                            icon: Icons.edit,
-                            color: colorScheme.onPrimary,
+                    /// #counter
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        ShaderMask(
+                          shaderCallback: (bounds) {
+                            return const LinearGradient(
+                              begin: Alignment.center,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                AppColors.whiteColor,
+                                AppColors.yellowColor,
+                              ],
+                            ).createShader(bounds);
+                          },
+                          child: DecoratedBox(
+                            decoration: const BoxDecoration(
+                              color: AppColors.yellowColor,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(16),
+                              ),
+                            ),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.all(8.0).copyWith(top: 24),
+                              child: Text(
+                                t.home.soonSixMonths.title,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+
+                        /// #icon
+                        const Positioned(
+                          top: -40,
+                          child: Text(
+                            '🥳',
+                            style: TextStyle(fontSize: 50),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+
+                    /// #birth date
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        /// #first type
+                        Text(
+                          t.home.FiveMonthsEighteenDays.title,
+                          style: const TextStyle(fontSize: 17),
+                        ),
+
+                        /// #second type
+                        Text(
+                          t.home.orTwentyFourWeeks.title,
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ],
                     )
                   ],
                 ),
-              ],
-            ),
-          ),
-          26.h,
+              ),
+              8.w,
 
-          /// #services
-          CustomBackground(
-            height: 515,
-            padding: 16,
-            child: Column(
-              children: [
-                /// #custom service box
-                Row(
-                  children: [
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgChat4x.path,
-                      text: t.home.supportChats.title,
-                    ),
-                    8.w,
-
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgChatVideo4x.path,
-                      text: t.home.supportChats.title,
-                    ),
-                  ],
-                ),
-                8.h,
-
-                /// #custom service box
-                Row(
-                  children: [
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgProgress4x.path,
-                      text: t.home.progressDiary.title,
-                    ),
-                    const SizedBox(width: 8),
-
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgMoonMusic4x.path,
-                      text: t.home.musicForSleep.title,
-                      onTap: () {
-                        context.pushNamed(AppViews.servicesSleepMusicView);
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-
-                /// #long box
-                CustomServiceBoxTwo(
-                  imagePath: Assets.images.imgHat4x.path,
-                  text: t.home.knowledgeCenter.title,
-                  onTap: () {},
-                ),
-              ],
-            ),
-          ),
-          16.h,
-
-          /// #current
-          CustomBackground(
-            height: null,
-            padding: 0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 16),
-
-                /// #article category text
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    t.home.current.title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    ),
+              /// #baby image, edit button
+              Stack(
+                clipBehavior: Clip.none,
+                alignment: Alignment.center,
+                children: [
+                  /// #
+                  Image(
+                    fit: BoxFit.contain,
+                    image: AssetImage(Assets.images.imgKid.path),
                   ),
-                ),
-                const SizedBox(height: 16),
+                  Positioned(
+                    bottom: -30,
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: colorScheme.primary,
+                      shape: const CircleBorder(),
+                      child: IconWidget(
+                        model: IconModel(
+                          icon: Icons.edit,
+                          color: colorScheme.onPrimary,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+        26.h,
 
-                /// #articles
-                SizedBox(
-                  height: 220,
-                  child: ListView.separated(
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemBuilder: (context, index) {
-                      return ArticleBox(
-                        imagePath: Assets.images.imgMomOne4x.path,
-                        articleCategory: t.home.sixMonths.title,
-                        articleTitle: t.home.articleTitleOne.title,
-                      );
+        /// #services
+        CustomBackground(
+          height: 515,
+          padding: 16,
+          child: Column(
+            children: [
+              /// #custom service box
+              Row(
+                children: [
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgChat4x.path,
+                    text: t.home.supportChats.title,
+                  ),
+                  8.w,
+
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgChatVideo4x.path,
+                    text: t.home.supportChats.title,
+                  ),
+                ],
+              ),
+              8.h,
+
+              /// #custom service box
+              Row(
+                children: [
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgProgress4x.path,
+                    text: t.home.progressDiary.title,
+                  ),
+                  const SizedBox(width: 8),
+
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgMoonMusic4x.path,
+                    text: t.home.musicForSleep.title,
+                    onTap: () {
+                      context.pushNamed(AppViews.servicesSleepMusicView);
                     },
-                    separatorBuilder: (context, index) => const SizedBox(width: 8),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+
+              /// #long box
+              CustomServiceBoxTwo(
+                imagePath: Assets.images.imgHat4x.path,
+                text: t.home.knowledgeCenter.title,
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+        16.h,
+
+        /// #current
+        CustomBackground(
+          height: null,
+          padding: 0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+
+              /// #article category text
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  t.home.current.title,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
+              ),
+              const SizedBox(height: 16),
 
-                const SizedBox(height: 24),
-              ],
-            ),
+              /// #articles
+              SizedBox(
+                height: 220,
+                child: ListView.separated(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  itemBuilder: (context, index) {
+                    return ArticleBox(
+                      imagePath: Assets.images.imgMomOne4x.path,
+                      articleCategory: t.home.sixMonths.title,
+                      articleTitle: t.home.articleTitleOne.title,
+                    );
+                  },
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(width: 8),
+                ),
+              ),
+
+              const SizedBox(height: 24),
+            ],
           ),
-          16.h,
+        ),
+        16.h,
 
-          // /// #for you
-          // CustomBackground(
-          //     height: null,
-          //     padding: 0,
-          //     child: Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: [
-          //           SizedBox(height: 16),
+        // /// #for you
+        // CustomBackground(
+        //     height: null,
+        //     padding: 0,
+        //     child: Column(
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           SizedBox(height: 16),
 
-          //           /// #article category text
-          //           Padding(
-          //             padding: const EdgeInsets.symmetric(horizontal: 16),
-          //             child: Text(
-          //               t.home.forYou.title,
-          //               style: TextStyle(
-          //                 fontSize: 24,
-          //                 fontWeight: FontWeight.w700,
-          //               ),
-          //             ),
-          //           ),
-          //           SizedBox(height: 16),
+        //           /// #article category text
+        //           Padding(
+        //             padding: const EdgeInsets.symmetric(horizontal: 16),
+        //             child: Text(
+        //               t.home.forYou.title,
+        //               style: TextStyle(
+        //                 fontSize: 24,
+        //                 fontWeight: FontWeight.w700,
+        //               ),
+        //             ),
+        //           ),
+        //           SizedBox(height: 16),
 
-          //           /// #articles
-          //           SizedBox(
-          //             height: 220,
-          //             child: ListView.separated(
-          //               itemCount: 10,
-          //               scrollDirection: Axis.horizontal,
-          //               padding: EdgeInsets.symmetric(horizontal: 16),
-          //               itemBuilder: (context, index) {
-          //                 return ArticleBox(
-          //                   imagePath: Assets.images.imgKidOne4x.path,
-          //                   articleCategory: t.home.cesarean.title,
-          //                   articleTitle: t.home.articleTitleTwo.title,
-          //                 );
-          //               },
-          //               separatorBuilder: (context, index) =>
-          //                   SizedBox(width: 8),
-          //             ),
-          //           ),
-          //         ])),
-          16.h
-          //       SizedBox(height: 24),
-        ],
-      ),
+        //           /// #articles
+        //           SizedBox(
+        //             height: 220,
+        //             child: ListView.separated(
+        //               itemCount: 10,
+        //               scrollDirection: Axis.horizontal,
+        //               padding: EdgeInsets.symmetric(horizontal: 16),
+        //               itemBuilder: (context, index) {
+        //                 return ArticleBox(
+        //                   imagePath: Assets.images.imgKidOne4x.path,
+        //                   articleCategory: t.home.cesarean.title,
+        //                   articleTitle: t.home.articleTitleTwo.title,
+        //                 );
+        //               },
+        //               separatorBuilder: (context, index) =>
+        //                   SizedBox(width: 8),
+        //             ),
+        //           ),
+        //         ])),
+        16.h
+        //       SizedBox(height: 24),
+      ],
     );
   }
 }

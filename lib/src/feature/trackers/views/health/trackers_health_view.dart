@@ -45,7 +45,7 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
   }
 
   void _onAddTemperatureButtonPressed() =>
-      context.goNamed(AppViews.trackersHealthAddTemperatureView);
+      context.goNamed(AppViews.addTemperature);
 
   @override
   Widget build(BuildContext context) {
@@ -170,8 +170,8 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
                       icon: IconModel(
                         iconPath: Assets.icons.icGraduationCapFilled,
                       ),
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       type: CustomButtonType.outline,
                       textStyle: textTheme.titleMedium!.copyWith(
                         fontSize: 12,
