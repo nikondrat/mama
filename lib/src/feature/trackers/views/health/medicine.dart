@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/trackers/views/health/views/add_medicine.dart';
+import 'package:mama/src/feature/trackers/views/health/add_medicine.dart';
 import 'package:mama/src/feature/trackers/widgets/big_find_out_more_button.dart';
 
 class Medicine extends StatelessWidget {

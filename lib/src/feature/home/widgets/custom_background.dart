@@ -18,7 +18,6 @@ class CustomBackground extends StatelessWidget {
     return SizedBox(
       height: height,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: const BorderRadius.all(Radius.circular(32)),
