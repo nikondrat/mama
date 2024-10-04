@@ -73,7 +73,7 @@ knowMoreTwo:
 knowMoreText:
   title: Узнать больше
 
-current: 
+current:
   title: Текущий
 
 dynamics:
@@ -82,7 +82,7 @@ dynamics:
 kg:
   title: КГ
 
-g: 
+g:
   title: Г
 
 stories:
@@ -94,5 +94,17 @@ news:
 old:
   title: Старые
 
+showCompleted:
+  title: Показывать завершенные
 
+pillTitleOne:
+  title: Сироп Нурофен детский
 
+pillDescriptionOne:
+  title: 1 ложку после еды
+
+pillExactTimeOne:
+  title: В 20:00
+
+pillRemainingTimeOne:
+  title: Через 2 часа 12 минут
