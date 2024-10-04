@@ -24,6 +24,11 @@ class App extends StatelessWidget {
             dispose: (context, value) => value.dispose(),
           ),
           Provider(
+              create: (context) => VerifyStore(
+                    restClient: context.read<Dependencies>().restClient,
+                    tokenStorage: context.read<Dependencies>().tokenStorage,
+                  )),
+          Provider(
             create: (context) => UserStore(
               restClient: context.read<Dependencies>().restClient,
             ),

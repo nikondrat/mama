@@ -13,8 +13,8 @@ class TokenStorageImpl implements TokenStorage<Map?> {
 
   @override
   Future<void> clearTokenPair() async {
-    storage.delete(key: _accessTokenKey);
-    storage.delete(key: _refreshTokenKey);
+    await storage.delete(key: _accessTokenKey);
+    await storage.delete(key: _refreshTokenKey);
   }
 
   @override
@@ -24,12 +24,12 @@ class TokenStorageImpl implements TokenStorage<Map?> {
   }
 
   @override
-  Stream<Map?> getTokenPairStream() {
+  Stream<Map?> getTokenPairStream() async* {
     // final controller = StreamController<Future<String?>>();
 
-    return Stream.value({
-      _accessTokenKey: storage.read(key: _accessTokenKey),
-      _refreshTokenKey: storage.read(key: _refreshTokenKey)
+    yield* Stream.value({
+      _accessTokenKey: await storage.read(key: _accessTokenKey),
+      _refreshTokenKey: await storage.read(key: _refreshTokenKey)
     });
 
     // storage.read(key: _accessTokenKey).then((value) async {
@@ -45,8 +45,8 @@ class TokenStorageImpl implements TokenStorage<Map?> {
 
   @override
   Future<Map?> loadTokenPair() async {
-    final accessToken = storage.read(key: _accessTokenKey);
-    final refreshToken = storage.read(key: _refreshTokenKey);
+    final String? accessToken = await storage.read(key: _accessTokenKey);
+    final String? refreshToken = await storage.read(key: _refreshTokenKey);
 
     return {'access': accessToken, 'refresh': refreshToken};
   }
@@ -56,7 +56,11 @@ class TokenStorageImpl implements TokenStorage<Map?> {
     final String? accessTokenString = tokens?['access'];
     final String? refreshTokenString = tokens?['refresh'];
 
-    storage.write(key: _accessTokenKey, value: accessTokenString);
-    storage.write(key: _refreshTokenKey, value: refreshTokenString);
+    if (accessTokenString != null) {
+      await storage.write(key: _accessTokenKey, value: accessTokenString);
+    }
+    if (refreshTokenString != null) {
+      await storage.write(key: _refreshTokenKey, value: refreshTokenString);
+    }
   }
 }

@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
-  const RegisterFillAnotherBabyInfoScreen({super.key});
+  const RegisterFillAnotherBabyInfoScreen({
+    super.key,
+  });
 
   @override
   State<RegisterFillAnotherBabyInfoScreen> createState() =>
@@ -157,7 +159,9 @@ class _RegisterFillAnotherBabyInfoScreenState
                         (store.headCircumference.value as String)
                             .extractNumber());
 
-                    context.pushNamed(AppViews.registerInfoAboutChildbirth);
+                    context.pushNamed(
+                      AppViews.registerInfoAboutChildbirth,
+                    );
                   }),
               40.h
             ],

@@ -10,9 +10,14 @@ class UserStore extends _UserStore with _$UserStore {
 }
 
 abstract class _UserStore with Store {
+  final RestClient restClient;
   _UserStore({required this.restClient});
 
-  final RestClient restClient;
+  @observable
+  AccountModel? user;
+
+  @observable
+  List<ChildModel> children = [];
 
   @action
   void updateData({
@@ -28,6 +33,19 @@ abstract class _UserStore with Store {
       if (secondName != null) 'second_name': secondName,
       if (email != null) 'email': email,
       if (info != null) 'info': info,
+    });
+  }
+
+  @action
+  void getData() {
+    restClient.get(Endpoint().userData).then((v) {
+      if (v != null) {
+        user = AccountModel.fromJson(v['account'] as Map<String, dynamic>);
+
+        children = (v['childs'] as List)
+            .map((e) => ChildModel.fromJson(e as Map<String, dynamic>))
+            .toList();
+      }
     });
   }
 }

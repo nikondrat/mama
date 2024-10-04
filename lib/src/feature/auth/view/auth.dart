@@ -55,8 +55,9 @@ class AuthView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () => context
-                      .pushNamed(isLogin ? AppViews.register : AppViews.auth),
+                  onPressed: () => context.pushNamed(
+                    isLogin ? AppViews.register : AppViews.auth,
+                  ),
                   child: AutoSizeText(
                     isLogin ? t.auth.noAccount : t.auth.alreadyHaveAccount,
                     style: textTheme.titleMedium,
