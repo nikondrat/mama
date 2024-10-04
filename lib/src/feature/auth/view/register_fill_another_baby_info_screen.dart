@@ -28,7 +28,7 @@ class _RegisterFillAnotherBabyInfoScreenState
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(6),
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(

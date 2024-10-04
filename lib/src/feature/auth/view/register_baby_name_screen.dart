@@ -76,7 +76,7 @@ class RegisterBabyNameScreen extends StatelessWidget {
 
                   return CustomButton(
                     isSmall: false,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     // contentPadding:
                     //     const EdgeInsets.symmetric(horizontal: 16),
                     title: t.register.next,

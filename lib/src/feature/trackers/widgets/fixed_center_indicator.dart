@@ -26,7 +26,7 @@ class FixedCenterIndicator extends StatelessWidget {
             child: Container(
               color: Colors.white,
               child: CustomPaint(
-                size: size ?? Size(200 * 10, 100),
+                size: const Size(200 * 10, 100),
                 painter: painter,
               ),
             ),

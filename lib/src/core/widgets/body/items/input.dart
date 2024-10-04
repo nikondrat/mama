@@ -75,7 +75,7 @@ class _InputItemWidgetState extends State<InputItemWidget> {
         errorBorder: widget.item.errorBorder ??
             OutlineInputBorder(
                 borderRadius: 6.r,
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: AppColors.redColor,
                   width: 2,
                 )),

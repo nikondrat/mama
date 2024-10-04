@@ -6,7 +6,7 @@ class Head extends StatelessWidget {
   const Head({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: SingleChildScrollView(
         child: Column(

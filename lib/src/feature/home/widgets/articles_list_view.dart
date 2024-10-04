@@ -13,7 +13,7 @@ class ArticlesListView extends StatelessWidget {
       child: ListView.separated(
         itemCount: 10,
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemBuilder: (context, index) {
           return ArticleBox(
             imagePath: Assets.images.imgMomOne4x.path,
@@ -21,7 +21,7 @@ class ArticlesListView extends StatelessWidget {
             articleTitle: t.home.articleTitleOne.title,
           );
         },
-        separatorBuilder: (context, index) => SizedBox(width: 8),
+        separatorBuilder: (context, index) => const SizedBox(width: 8),
       ),
     );
   }

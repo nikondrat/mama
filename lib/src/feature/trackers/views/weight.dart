@@ -12,21 +12,25 @@ class Weight extends StatelessWidget {
         child: Column(
           children: [
             /// To Know More Contaner
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: ToKnowMoreContainer(),
             ),
 
             /// Current and Dynamic Container
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: CurrentAndDymanicContainer(),
             ),
 
             /// KG Or gramm Container
             Padding(
               padding: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 5, top: 16),
+                left: 16,
+                right: 16,
+                bottom: 5,
+                top: 16,
+              ),
               child: Row(
                 children: [
                   SwitchContainer(
@@ -38,8 +42,8 @@ class Weight extends StatelessWidget {
             ),
 
             /// Grafic
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16, top: 0),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16, top: 0),
               child: SizedBox(
                 height: 278,
                 child: FlProgressChart(),
@@ -47,13 +51,13 @@ class Weight extends StatelessWidget {
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 children: [
                   KnowMoreButton(
                     onTap: () {},
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   AddButton(
                     title: t.trackers.weight.add,
                     onTap: () {
@@ -63,20 +67,20 @@ class Weight extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             /// Stories
             Center(
               child: Text(
                 t.trackers.stories.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                 ),
               ),
             ),
 
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -95,7 +99,7 @@ class Weight extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RowStroriesData(
@@ -107,7 +111,7 @@ class Weight extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             SizedBox(
               height: 200,
               child: ListView.builder(
@@ -125,7 +129,7 @@ class Weight extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

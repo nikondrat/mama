@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -70,7 +69,7 @@ class _MomsProfileState extends State<MomsProfile> {
     return Column(
       children: [
         widget.mom.image == null
-            ? DashedPhotoProfile()
+            ? const DashedPhotoProfile()
             : ProfilePhoto(img: widget.mom.image!),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -158,7 +157,7 @@ class _MomsProfileState extends State<MomsProfile> {
                         childs: widget.mom.childs,
                       ),
                     ),
-                    if (!subscribed) SubscribeBlockItem(),
+                    if (!subscribed) const SubscribeBlockItem(),
                   ],
                 ),
               ),

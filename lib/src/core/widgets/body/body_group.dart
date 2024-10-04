@@ -31,7 +31,7 @@ class BodyGroup extends StatelessWidget {
     final List<Widget> items = [
       ...this.items.map((e) {
         return Padding(
-            padding: padding ?? EdgeInsets.symmetric(vertical: 8), child: e);
+            padding: padding ?? const EdgeInsets.symmetric(vertical: 8), child: e);
       })
     ];
 

@@ -20,12 +20,12 @@ class TrackersHealthAddTemperature extends StatelessWidget {
             child: Row(
               children: [
                 /// #arrow left, back text
-                CustomBackButton(),
+                const CustomBackButton(),
 
                 /// #sleep music text
                 Text(
                   t.trackers.addTemperature.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     
                   ),
                 ),

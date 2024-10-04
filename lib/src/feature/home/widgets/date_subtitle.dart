@@ -9,7 +9,7 @@ class DateSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       subtitle,
-      style: TextStyle(fontSize: 17),
+      style: const TextStyle(fontSize: 17),
     );
   }
 }

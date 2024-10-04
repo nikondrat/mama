@@ -17,7 +17,7 @@ class AddButton extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 13),
+          padding: const EdgeInsets.symmetric(vertical: 13),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: AppColors.purpleLighterBackgroundColor,
