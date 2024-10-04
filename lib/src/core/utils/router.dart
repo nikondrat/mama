@@ -94,48 +94,49 @@ final GoRouter router = GoRouter(
               },
             ),
             GoRoute(
-                path: _Paths.welcomeScreen,
-                name: AppViews.welcomeScreen,
-                routes: [
-                  GoRoute(
-                    path: _Paths.registerFillName,
-                    name: AppViews.registerFillName,
-                    builder: (context, state) => const RegisterFillName(),
-                    routes: [
-                      GoRoute(
-                        path: _Paths.registerFillBabyName,
-                        name: AppViews.registerFillBabyName,
-                        builder: (context, state) =>
-                            const RegisterBabyNameScreen(),
-                        routes: [
-                          GoRoute(
-                            path: _Paths.registerFillAnotherBabyInfo,
-                            name: AppViews.registerFillAnotherBabyInfo,
-                            builder: (context, state) =>
-                                const RegisterFillAnotherBabyInfoScreen(),
-                            routes: [
-                              GoRoute(
-                                path: _Paths.registerInfoAboutChildbirth,
-                                name: AppViews.registerInfoAboutChildbirth,
-                                builder: (context, state) =>
-                                    const RegisterInfoAboutChildbirth(),
-                                routes: [
-                                  GoRoute(
-                                    path: _Paths.citySearch,
-                                    name: AppViews.citySearch,
-                                    builder: (context, state) =>
-                                        const CitySearchView(),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-                builder: (context, state) => const WelcomeScreen()),
+              path: _Paths.welcomeScreen,
+              name: AppViews.welcomeScreen,
+              routes: [
+                GoRoute(
+                  path: _Paths.registerFillName,
+                  name: AppViews.registerFillName,
+                  builder: (context, state) => const RegisterFillName(),
+                  routes: [
+                    GoRoute(
+                      path: _Paths.registerFillBabyName,
+                      name: AppViews.registerFillBabyName,
+                      builder: (context, state) =>
+                          const RegisterBabyNameScreen(),
+                      routes: [
+                        GoRoute(
+                          path: _Paths.registerFillAnotherBabyInfo,
+                          name: AppViews.registerFillAnotherBabyInfo,
+                          builder: (context, state) =>
+                              const RegisterFillAnotherBabyInfoScreen(),
+                          routes: [
+                            GoRoute(
+                              path: _Paths.registerInfoAboutChildbirth,
+                              name: AppViews.registerInfoAboutChildbirth,
+                              builder: (context, state) =>
+                                  const RegisterInfoAboutChildbirth(),
+                              routes: [
+                                GoRoute(
+                                  path: _Paths.citySearch,
+                                  name: AppViews.citySearch,
+                                  builder: (context, state) =>
+                                      const CitySearchView(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+              builder: (context, state) => const WelcomeScreen(),
+            ),
             GoRoute(
               path: _Paths.congratsScreen,
               name: AppViews.congratsScreen,
@@ -145,6 +146,7 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
+    
     GoRoute(
       path: _Paths.homeScreen,
       name: AppViews.homeScreen,

@@ -7,6 +7,7 @@ class MeetingBox extends StatelessWidget {
   final String meetingType;
   final bool isCancelled;
   final String tutorFullName;
+  final int whichSection;
 
   const MeetingBox({
     super.key,
@@ -14,6 +15,7 @@ class MeetingBox extends StatelessWidget {
     required this.meetingType,
     required this.isCancelled,
     required this.tutorFullName,
+    required this.whichSection,
   });
 
   @override
@@ -21,9 +23,11 @@ class MeetingBox extends StatelessWidget {
     return IntrinsicWidth(
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: isCancelled
-              ? AppColors.redLighterBackgroundColor
-              : AppColors.greenLighterBackgroundColor,
+          color: whichSection == 1
+              ? isCancelled
+                  ? AppColors.redLighterBackgroundColor
+                  : AppColors.greenLighterBackgroundColor
+              : AppColors.purpleLighterBackgroundColor,
           borderRadius: BorderRadius.all(
             Radius.circular(16),
           ),
@@ -36,9 +40,11 @@ class MeetingBox extends StatelessWidget {
               /// #time schedule
               Text(
                 scheduledTime,
+                maxLines: 1,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
 
@@ -48,22 +54,28 @@ class MeetingBox extends StatelessWidget {
                   /// #type
                   Text(
                     meetingType,
+                    maxLines: 1,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: isCancelled
-                          ? AppColors.redColor
-                          : AppColors.greenTextColor,
+                      color: whichSection == 1
+                          ? isCancelled
+                              ? AppColors.redColor
+                              : AppColors.greenTextColor
+                          : AppColors.primaryColor,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   SizedBox(width: 4),
 
                   /// #mark
-                  SvgPicture.asset(
-                    isCancelled
-                        ? Assets.icons.icXmark
-                        : Assets.icons.icCheckmark,
-                  ),
+                  whichSection == 1
+                      ? SvgPicture.asset(
+                          isCancelled
+                              ? Assets.icons.icXmark
+                              : Assets.icons.icCheckmark,
+                        )
+                      : SizedBox.shrink(),
                 ],
               ),
 
@@ -71,9 +83,11 @@ class MeetingBox extends StatelessWidget {
               FittedBox(
                 child: Text(
                   tutorFullName,
+                  maxLines: 1,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w400,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),

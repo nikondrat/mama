@@ -17,7 +17,8 @@ class CustomBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
-      child: DecoratedBox(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.all(Radius.circular(32)),
