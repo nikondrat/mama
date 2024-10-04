@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 import 'package:mama/src/feature/chat/views/group_chat.dart';
 
+import '../../../core/widgets/custom_toggle_button.dart';
+
 class ChatsScreen extends StatefulWidget {
   final CustomAppBar appBar;
-  // final MomInfo mom;
   const ChatsScreen({
     super.key,
     required this.appBar,
-    // required this.mom,
   });
 
   @override
@@ -16,6 +16,23 @@ class ChatsScreen extends StatefulWidget {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
+  var toogleSelected = 0;
+  List<ChatModelSingle> sortdlistSingle = [];
+
+  @override
+  void initState() {
+    sortdlistSingle = List.from(listChatSingle);
+    super.initState();
+  }
+
+  void filterSingle() {
+    sortdlistSingle = toogleSelected == 1
+        ? listChatSingle.where((item) {
+            return item.participant1.profession != null;
+          }).toList()
+        : listChatSingle;
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -32,7 +49,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Группы',
+                  t.chat.groupChatsListTitle,
                   textAlign: TextAlign.center,
                   style: textTheme.labelLarge!
                       .copyWith(color: AppColors.greyBrighterColor),
@@ -55,13 +72,15 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => GroupChatScreen(
-                                  singleChat: listChatSingle[0],
+                                  groupChat: listChatGroup[0],
                                   listMessages: listGroup,
                                   chatEntity: ChatEntity.groupChat,
                                 ),
                               ));
                         },
-                        child: GroupChatItem(),
+                        child: ChatItemGroup(
+                          chat: listChatGroup[0],
+                        ),
                       );
                     },
                   ),
@@ -72,16 +91,34 @@ class _ChatsScreenState extends State<ChatsScreen> {
           CardWithoutMargin(
             child: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: CustomToggleButton(
+                    items: [
+                      t.chat.buttonToogleAll,
+                      t.chat.buttonToogleSpecialist,
+                    ],
+                    onTap: (index) {
+                      setState(() {
+                        toogleSelected = index;
+                        filterSingle();
+                      });
+                    },
+                    btnWidth: MediaQuery.of(context).size.width / 2.3,
+                    btnHeight: 38,
+                  ),
+                ),
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemCount: 4,
+                  itemCount: sortdlistSingle.length,
                   separatorBuilder: (BuildContext context, int index) =>
                       Divider(
                     indent: MediaQuery.of(context).size.width * 0.15,
                   ),
                   itemBuilder: (BuildContext context, int index) {
+                    ChatModelSingle itemChat = sortdlistSingle[index];
                     return InkWell(
                       onTap: () {
                         Navigator.push(
@@ -90,11 +127,13 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               builder: (context) => GroupChatScreen(
                                 listMessages: list,
                                 chatEntity: ChatEntity.singleChat,
-                                singleChat: listChatSingle[0],
+                                singleChat: sortdlistSingle[index],
                               ),
                             ));
                       },
-                      child: ChatItem(),
+                      child: ChatItemSingle(
+                        chat: itemChat,
+                      ),
                     );
                   },
                 ),
@@ -106,26 +145,6 @@ class _ChatsScreenState extends State<ChatsScreen> {
     );
   }
 }
-
-MomInfo mom = MomInfo(
-  'Кристина Константинова',
-  '+7 996 997-06-24',
-  null,
-  null,
-  Assets.images.imgProfile.path,
-  [
-    ChildModel(
-        id: '',
-        firstName: 'Виктория',
-        secondName: '',
-        avatarUrl: Assets.images.imgProfile.path),
-    ChildModel(
-        id: '',
-        firstName: 'Андрей',
-        secondName: '',
-        avatarUrl: Assets.images.imgPerson1.path),
-  ],
-);
 
 List<MessageModel> list = [
   MessageModel(
@@ -170,32 +189,83 @@ List<MessageModel> listGroup = [
 
 List<ChatModelSingle> listChatSingle = [
   ChatModelSingle(
-    LastMessage(
+    lastMessage: LastMessage(
+        filePath: 'kjhg',
         chatId: '0',
         id: '0',
-        nikName: 'Жанна Коршунова',
+        nikName: 'Марина',
         senderId: '234',
         text: 'В прошлый раз я успела на вопросики, а тут совсем некогда'),
-    '12:33',
-    '16:55',
-    PartisipantModel(
+    createdAt: DateTime.now(),
+    lastMessageAt: DateTime.now(),
+    participant1Unread: 10,
+    participant2Unread: 15,
+    participant1: PartisipantModel(
+      firstName: 'Марина',
+      secondName: 'Евгеньева',
+      createdAt: DateTime.now(),
       avatarUrl: Assets.images.imgProfile.path,
       email: 'email',
-      '01-01-1970 01:00',
-      'state',
-      'status',
-      'updatedAt',
+      // profession: 'Педиатр',
+      id: '234',
+      gender: 'female',
+      phone: '89034567833',
+      updatedAt: DateTime.now(),
+      lastActiveAt: DateTime.now(),
+      state: 'state',
+      status: 'status',
     ),
-    PartisipantModel(
+    participant2: PartisipantModel(
+      firstName: 'Марина',
+      secondName: 'Евгеньева',
+      createdAt: DateTime.now(),
+      phone: '89034567833',
+      id: '234',
+      gender: 'female',
       avatarUrl: Assets.images.imgPerson2.path,
       email: 'email',
-      '01-01-1970 13:44',
-      'state',
-      'status',
-      'updatedAt',
+      updatedAt: DateTime.now(),
+      lastActiveAt: DateTime.now(),
+      state: 'state',
+      status: 'status',
     ),
     id: '0',
     participant1Id: 'participant1Id',
     participant2Id: 'participant2Id',
+  )
+];
+
+List<ChatModelGroup> listChatGroup = [
+  ChatModelGroup(
+    createdAt: DateTime.now(),
+    lastMessageAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+    unreadMessages: 3,
+    idGroupChat: 'idGroupChat',
+    idParticipant: 'idParticipant',
+    groupChatInfo: GroupChatInfo(
+        Assets.images.imgPerson2.path, 'groupChat', 'id', 'Sos Поддержка'),
+    id: 'id',
+    lastMessage: LastMessage(
+        chatId: '0',
+        id: '0',
+        nikName: 'Марина',
+        senderId: '234',
+        text: 'В прошлый раз я успела на вопросики, а тут совсем некогда'),
+    participant: PartisipantModel(
+      firstName: 'Марина',
+      secondName: 'Евгеньева',
+      createdAt: DateTime.now(),
+      avatarUrl: Assets.images.imgProfile.path,
+      email: 'email',
+      profession: 'Педиатр',
+      id: '234',
+      gender: 'female',
+      phone: '89034567833',
+      updatedAt: DateTime.now(),
+      lastActiveAt: DateTime.now(),
+      state: 'state',
+      status: 'status',
+    ),
   )
 ];

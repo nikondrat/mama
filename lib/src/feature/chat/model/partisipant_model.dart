@@ -6,21 +6,24 @@ part 'partisipant_model.g.dart';
 @JsonSerializable()
 class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
   PartisipantModel(
-      super.lastActiveAt, super.state, super.status, super.updatedAt,
-      {this.avatarUrl,
+      {super.lastActiveAt,
+      super.state,
+      super.status,
+      super.updatedAt,
+      this.avatarUrl,
       this.email,
-      this.createdAt,
+      required this.createdAt,
       this.favoriteArticle,
-      this.firstName,
-      this.gender,
-      this.id,
+      required this.firstName,
+      required this.gender,
+      required this.id,
       this.info,
       this.isDeleted,
       this.lastName,
-      this.phone,
+      required this.phone,
       this.profession,
       this.role,
-      this.secondName});
+      required this.secondName});
 
   @JsonKey(name: 'avatar')
   final String? avatarUrl;
@@ -29,19 +32,19 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
   final String? email;
 
   @JsonKey(name: 'created_at')
-  final String? createdAt;
+  final DateTime createdAt;
 
   @JsonKey(name: 'favorite_article')
   final String? favoriteArticle;
 
   @JsonKey(name: 'first_name')
-  final String? firstName;
+  final String firstName;
 
   @JsonKey(name: 'gender')
-  final String? gender;
+  final String gender;
 
   @JsonKey(name: 'id')
-  final String? id;
+  final String id;
 
   @JsonKey(name: 'info')
   final String? info;
@@ -53,7 +56,7 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
   final String? lastName;
 
   @JsonKey(name: 'phone')
-  final String? phone;
+  final String phone;
 
   @JsonKey(name: 'profession')
   final String? profession;
@@ -62,7 +65,7 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
   final String? role;
 
   @JsonKey(name: 'second_name')
-  final String? secondName;
+  final String secondName;
 
   factory PartisipantModel.fromJson(Map<String, dynamic> json) =>
       _$PartisipantModelFromJson(json);
@@ -71,14 +74,19 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
 }
 
 abstract class _PartisipantModel with Store {
-  _PartisipantModel(this.lastActiveAt, this.state, this.status, this.updatedAt);
+  _PartisipantModel({
+    this.lastActiveAt,
+    this.state,
+    this.status,
+    this.updatedAt,
+  });
 
   @observable
   @JsonKey(name: 'last_active_at')
-  String? lastActiveAt;
+  DateTime? lastActiveAt;
 
   @action
-  setLastActiveAt(String value) => lastActiveAt = value;
+  setLastActiveAt(DateTime value) => lastActiveAt = value;
 
   @observable
   @JsonKey(name: 'state')
@@ -96,8 +104,8 @@ abstract class _PartisipantModel with Store {
 
   @observable
   @JsonKey(name: 'updated_at')
-  String? updatedAt;
+  DateTime? updatedAt;
 
   @action
-  setUpdatedAt(String value) => updatedAt = value;
+  setUpdatedAt(DateTime value) => updatedAt = value;
 }
