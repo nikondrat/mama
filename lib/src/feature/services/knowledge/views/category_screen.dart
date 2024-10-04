@@ -18,6 +18,9 @@ class CategoryScreen extends StatelessWidget {
           BuildSubCategory(
               title: 'Чек-листы по здоровью',
               count: categoriesList[index].count),
+          BuildSubCategory(
+              title: 'Чек-листы по здоровью',
+              count: categoriesList[index].count),
         ],
       ),
     );

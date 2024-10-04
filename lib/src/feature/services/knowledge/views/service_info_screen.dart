@@ -10,7 +10,37 @@ class ServiceInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      appBar: CustomAppBar(
+        action: SizedBox(
+          height: 46,
+          width: MediaQuery.of(context).size.width * 0.4,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: AppColors.lightPirple,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24),
+                bottomLeft: Radius.circular(24),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  t.services.toSave.title,
+                  style: TextStyle(
+                    fontFamily: Assets.fonts.sFProTextMedium,
+                    fontSize: 14,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(Assets.images.save.path),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -19,42 +49,9 @@ class ServiceInfoScreen extends StatelessWidget {
               padding: HorizontalSpacing.centered(windowWidth),
               children: [
                 Positioned(
-                  bottom: 200,
-                  right: 0,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomBackButton(),
-                      SizedBox(
-                        height: 46,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: AppColors.lightPirple,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(24),
-                              bottomLeft: Radius.circular(24),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                t.services.toSave.title,
-                                style: TextStyle(
-                                  fontFamily: Assets.fonts.sFProTextMedium,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(Assets.images.save.path),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ),
                 SizedBox(height: 10),
@@ -229,8 +226,6 @@ class ServiceInfoScreen extends StatelessWidget {
     );
   }
 }
-
-
 
 /*  AppBar(
         centerTitle: true,
