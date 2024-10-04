@@ -59,76 +59,10 @@ class HomeSpecialistBody extends StatelessWidget {
           child: Column(
             children: [
               /// #switch section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  /// #switch
-                  Row(
-                    children: [
-                      /// #left button
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          Assets.icons.icArrowLeftFilled,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-
-                      /// #number date, word date
-                      Column(
-                        children: [
-                          /// #number date
-                          Text(
-                            t.home.septemberTwentySecond.title,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-
-                          /// #word date
-                          Text(
-                            t.home.today.title,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.greyBrighterColor,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      /// #right button
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          Assets.icons.icArrowRightFilled,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  /// #calendar button
-                  Material(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    color: AppColors.purpleLighterBackgroundColor,
-                    child: InkWell(
-                      onTap: () {},
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
-                      child: SizedBox(
-                        width: 48,
-                        height: 48,
-                        child: Padding(
-                          padding: const EdgeInsets.all(14),
-                          child: SvgPicture.asset(
-                            Assets.icons.icCalendarBadgeClockFilled,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              DateSwitchSection(
+                leftButtonOnPressed: () {},
+                rightButtonOnPressed: () {},
+                calendarButtonOnPressed: () {},
               ),
               SizedBox(height: 8),
 
@@ -172,23 +106,7 @@ class HomeSpecialistBody extends StatelessWidget {
               SizedBox(height: 16),
 
               /// #articles
-              SizedBox(
-                height: 220,
-                child: ListView.separated(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  itemBuilder: (context, index) {
-                    return ArticleBox(
-                      imagePath: Assets.images.imgMomOne4x.path,
-                      articleCategory: t.home.sixMonths.title,
-                      articleTitle:
-                          '${t.home.articleTitleOne.title}aadfadsfadsfsdafasdfasdfas',
-                    );
-                  },
-                  separatorBuilder: (context, index) => SizedBox(width: 8),
-                ),
-              ),
+              ArticlesListView(),
 
               SizedBox(height: 24),
             ],
