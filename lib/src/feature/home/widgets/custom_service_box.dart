@@ -19,7 +19,7 @@ class CustomServiceBox extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: DecoratedBox(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColors.purpleLighterBackgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(16)),
           ),
@@ -42,7 +42,7 @@ class CustomServiceBox extends StatelessWidget {
                     child: FittedBox(
                       child: Text(
                         text,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
                           color: AppColors.primaryColor,

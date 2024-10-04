@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -120,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         await showDialog(
                           context: context,
                           builder: (context) => Dialog(
-                            insetPadding: EdgeInsets.all(8.0),
+                            insetPadding: const EdgeInsets.all(8.0),
                             child: DialogWidget(
                               errorDialog: true,
                               item: alertDialog[0],

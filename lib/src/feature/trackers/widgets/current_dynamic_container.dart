@@ -14,7 +14,7 @@ class CurrentAndDymanicContainer extends StatelessWidget {
         Expanded(
           child: Container(
             height: 90,
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
@@ -42,7 +42,7 @@ class CurrentAndDymanicContainer extends StatelessWidget {
                         color: AppColors.blackColor,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Text(
@@ -65,7 +65,7 @@ class CurrentAndDymanicContainer extends StatelessWidget {
                         color: AppColors.greyBrighterColor,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Text(
@@ -81,13 +81,13 @@ class CurrentAndDymanicContainer extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
 
         /// Dynamic Container
         Expanded(
           child: Container(
             height: 90,
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
@@ -115,7 +115,7 @@ class CurrentAndDymanicContainer extends StatelessWidget {
                         color: AppColors.blackColor,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 1),
                       child: Text(

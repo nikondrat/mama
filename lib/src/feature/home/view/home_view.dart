@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView>
       avatarUrl:
           'https://i.pinimg.com/564x/49/3c/e7/493ce760bc067f2530d73365ace0d66c.jpg',
     ),
-    action: ProfileWidget(
+    action: const ProfileWidget(
       isShowText: true,
       childrenAvatars: [
         'https://i.pinimg.com/564x/63/c3/99/63c399373f8afa96dfb36eb6a1874a2c.jpg',

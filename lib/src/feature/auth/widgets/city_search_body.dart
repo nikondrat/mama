@@ -51,7 +51,7 @@ class _CitySearchBodyState extends State<CitySearchBody> {
           return SafeArea(
             child: Column(
               children: [
-                if (!isFocused && widget.store.cities.isEmpty) Spacer(),
+                if (!isFocused && widget.store.cities.isEmpty) const Spacer(),
                 SearchInput(focusNode: focusNode),
                 20.h,
                 Expanded(

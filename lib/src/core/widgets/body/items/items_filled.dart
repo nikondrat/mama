@@ -71,7 +71,7 @@ class ItemsNeedToFill extends StatelessWidget {
               );
             }
           } else {
-            return TextSpan(
+            return const TextSpan(
               text: '',
               // style: style,
             );

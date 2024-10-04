@@ -16,7 +16,7 @@ class ButtonLeading extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-          fixedSize: Size(100, 46),
+          fixedSize: const Size(100, 46),
           padding: EdgeInsets.zero,
           backgroundColor: AppColors.greyButton,
           shape: const RoundedRectangleBorder(

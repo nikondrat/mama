@@ -36,7 +36,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: leading ??
-                      Row(
+                      const Row(
                         children: [
                           CustomBackButton(),
                         ],

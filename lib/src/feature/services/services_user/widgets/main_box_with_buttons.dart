@@ -30,7 +30,7 @@ class MainBoxWithButtons extends StatelessWidget {
             color: AppColors.purpleLighterBackgroundColor,
             width: 2,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: SizedBox(
           height: 205,
@@ -39,7 +39,7 @@ class MainBoxWithButtons extends StatelessWidget {
               /// #image and main text
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 16,
                     horizontal: 8,
                   ),
@@ -64,12 +64,12 @@ class MainBoxWithButtons extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
 
               /// #three buttons
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Column(
                     children: buttons.map(
                       (button) {

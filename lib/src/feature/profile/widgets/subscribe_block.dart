@@ -22,7 +22,7 @@ class SubscribeBlockItem extends StatelessWidget {
           ),
           30.h,
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppColors.whiteColor,

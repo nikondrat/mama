@@ -37,13 +37,13 @@ class CButton extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Icon(
                     icon,
-                    color: color == null ? AppColors.primaryColor : color,
+                    color: color ?? AppColors.primaryColor,
                   ),
                 ),
                 Text(
                   text,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: color == null ? AppColors.primaryColor : color,
+                      color: color ?? AppColors.primaryColor,
                       fontWeight: FontWeight.w600,
                       fontSize: 17),
                 ),

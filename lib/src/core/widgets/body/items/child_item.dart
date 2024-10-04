@@ -70,7 +70,7 @@ class _ChildItemState extends State<ChildItem> {
       borderSide: BorderSide.none,
       borderRadius: 6.r,
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
@@ -111,7 +111,7 @@ class _ChildItemState extends State<ChildItem> {
                     outerContainerColor: AppColors.purpleLighterBackgroundColor,
                     onTap: (index) =>
                         widget.model.setGender(Gender.values[index]),
-                    items: [
+                    items: const [
                       Gender.female,
                       Gender.male,
                       // t.profile.sex(context: GenderContext.female),
@@ -207,7 +207,7 @@ class _ChildItemState extends State<ChildItem> {
                     outerContainerColor: AppColors.purpleLighterBackgroundColor,
                     onTap: (index) =>
                         widget.model.setChildbirth(Childbirth.values[index]),
-                    items: [
+                    items: const [
                       'd',
                       's'
                       // Childbirth.natural.name,
@@ -227,7 +227,7 @@ class _ChildItemState extends State<ChildItem> {
                         })),
                 if (formGroup.controls.values.isNotEmpty)
                   ItemsNeedToFill(formGroup: formGroup),
-                DottedInput(),
+                const DottedInput(),
               ]),
         ],
       );

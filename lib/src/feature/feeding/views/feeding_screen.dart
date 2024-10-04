@@ -39,13 +39,13 @@ class _FeedingScreenState extends State<FeedingScreen>
           t.feeding.bottle,
           t.feeding.lure,
         ],
-        action: CircleAvatar(
+        action: const CircleAvatar(
           radius: 20,
         ),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           BreastScreen(),
           PumpingScreen(),
           PumpingScreen(),

@@ -16,7 +16,7 @@ class MeetingsSection extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(24)),
+          borderRadius: const BorderRadius.all(Radius.circular(24)),
           border: Border.all(
             color: whichSection == 1
                 ? AppColors.greenLighterBackgroundColor

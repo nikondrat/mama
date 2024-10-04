@@ -16,7 +16,7 @@ class KnowMoreButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         alignment: Alignment.center,
         // width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -30,7 +30,7 @@ class KnowMoreButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/icons/graduationcap.png'),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             Text(
               t.trackers.knowMoreText.title,
               style: AppTextStyles.f10w700.copyWith(

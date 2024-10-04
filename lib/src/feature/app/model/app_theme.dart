@@ -19,34 +19,34 @@ abstract class _AppThemeStore with Store {
             textTheme: TextTheme(
               headlineSmall:
                   GoogleFonts.nunito(fontSize: 32, fontWeight: FontWeight.w700),
-              titleMedium: TextStyle(
+              titleMedium: const TextStyle(
                 color: AppColors.primaryColor,
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
               ),
-              titleLarge: TextStyle(
+              titleLarge: const TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
               ),
-              labelLarge: TextStyle(
+              labelLarge: const TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
                 fontSize: 14,
               ),
-              bodyMedium: TextStyle(
+              bodyMedium: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
               ),
-              bodySmall: TextStyle(
+              bodySmall: const TextStyle(
                 fontSize: 17,
                 color: AppColors.greyBrighterColor,
               ),
-              labelMedium: TextStyle(
+              labelMedium: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
                 color: AppColors.blackColor,
               ),
-              labelSmall: TextStyle(
+              labelSmall: const TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w700,
                 color: AppColors.greyBrighterColor,
