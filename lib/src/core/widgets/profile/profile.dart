@@ -34,7 +34,7 @@ class ProfileWidget extends StatelessWidget {
         radius: 25,
         backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null,
         child: avatarUrl == null
-            ? Center(
+            ? const Center(
                 child: Icon(Icons.people),
               )
             : null,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/home/home.dart';
 
 class HomeUserBody extends StatelessWidget {
   const HomeUserBody({super.key});
@@ -41,7 +40,7 @@ class HomeUserBody extends StatelessWidget {
                         children: [
                           ShaderMask(
                             shaderCallback: (bounds) {
-                              return LinearGradient(
+                              return const LinearGradient(
                                 begin: Alignment.center,
                                 end: Alignment.bottomCenter,
                                 colors: [
@@ -51,17 +50,17 @@ class HomeUserBody extends StatelessWidget {
                               ).createShader(bounds);
                             },
                             child: DecoratedBox(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: AppColors.yellowColor,
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(16),
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0).copyWith(top: 24),
+                                padding: const EdgeInsets.all(8.0).copyWith(top: 24),
                                 child: Text(
                                   t.home.soonSixMonths.title,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -71,7 +70,7 @@ class HomeUserBody extends StatelessWidget {
                           ),
 
                           /// #icon
-                          Positioned(
+                          const Positioned(
                             top: -40,
                             child: Text(
                               '🥳',
@@ -80,7 +79,7 @@ class HomeUserBody extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
 
                       /// #birth date
                       Column(
@@ -89,13 +88,13 @@ class HomeUserBody extends StatelessWidget {
                           /// #first type
                           Text(
                             t.home.FiveMonthsEighteenDays.title,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                           ),
 
                           /// #second type
                           Text(
                             t.home.orTwentyFourWeeks.title,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                           ),
                         ],
                       )
@@ -119,7 +118,7 @@ class HomeUserBody extends StatelessWidget {
                       child: FloatingActionButton(
                         onPressed: () {},
                         backgroundColor: colorScheme.primary,
-                        shape: CircleBorder(),
+                        shape: const CircleBorder(),
                         child: IconWidget(
                           model: IconModel(
                             icon: Icons.edit,
@@ -168,7 +167,7 @@ class HomeUserBody extends StatelessWidget {
                       imagePath: Assets.images.imgProgress4x.path,
                       text: t.home.progressDiary.title,
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
 
                     /// #
                     CustomServiceBox(
@@ -180,7 +179,7 @@ class HomeUserBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
 
                 /// #long box
                 CustomServiceBoxTwo(
@@ -200,20 +199,20 @@ class HomeUserBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 /// #article category text
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     t.home.current.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 /// #articles
                 SizedBox(
@@ -221,7 +220,7 @@ class HomeUserBody extends StatelessWidget {
                   child: ListView.separated(
                     itemCount: 10,
                     scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     itemBuilder: (context, index) {
                       return ArticleBox(
                         imagePath: Assets.images.imgMomOne4x.path,
@@ -229,11 +228,11 @@ class HomeUserBody extends StatelessWidget {
                         articleTitle: t.home.articleTitleOne.title,
                       );
                     },
-                    separatorBuilder: (context, index) => SizedBox(width: 8),
+                    separatorBuilder: (context, index) => const SizedBox(width: 8),
                   ),
                 ),
 
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
               ],
             ),
           ),

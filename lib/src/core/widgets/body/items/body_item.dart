@@ -51,7 +51,7 @@ class BodyItemWidget extends StatelessWidget {
       case ItemWithSwitch _:
         return ItemWithSwitchWidget(item: item as ItemWithSwitch);
       default:
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
     }
   }
 }

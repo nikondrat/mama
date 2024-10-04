@@ -68,13 +68,13 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
             ),
           // Нижний кружок
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             left: !isOnRight ? firstCircle : null,
             right: isOnRight ? firstCircle : null,
             child: GestureDetector(
               onTap: _toggleCircles,
               child: AnimatedSwitcher(
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 child: CustomAvatar(
                   radius: _isFirstCircleOnTop ? 25 : 20,
                   key: ValueKey<bool>(!_isFirstCircleOnTop),
@@ -85,13 +85,13 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
           ),
           // Верхний кружок
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             left: !isOnRight ? secondCircle : null,
             right: isOnRight ? secondCircle : null, // Позиция по горизонтали
             child: GestureDetector(
               onTap: _toggleCircles,
               child: AnimatedSwitcher(
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 child: CustomAvatar(
                   key: ValueKey<bool>(_isFirstCircleOnTop),
                   avatarUrl: widget.avatarsUrl[1],

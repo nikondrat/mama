@@ -36,8 +36,8 @@ class CustomAppBa extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         isSizeTrue ? 'Развитие' : 'Добавить вес',
         style: isSizeTrue
-            ? TextStyle(fontSize: 20, fontWeight: FontWeight.w700)
-            : TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+            ? const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)
+            : const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
       ),
       centerTitle: true,
       bottom: bottom,
@@ -48,7 +48,7 @@ class CustomAppBa extends StatelessWidget implements PreferredSizeWidget {
                 child: Stack(
                   children: [
                     // First (background) circular image
-                    ClipOval(
+                    const ClipOval(
                       child: SizedBox(
                         height: double.infinity,
                         width: 80,
@@ -61,7 +61,7 @@ class CustomAppBa extends StatelessWidget implements PreferredSizeWidget {
                       child: Container(
                         width: 45,
                         height: 45,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.whiteColor,
                         ),
@@ -84,7 +84,7 @@ class CustomAppBa extends StatelessWidget implements PreferredSizeWidget {
                       child: Container(
                         width: 55,
                         height: 55,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.whiteColor,
                         ),
@@ -103,7 +103,7 @@ class CustomAppBa extends StatelessWidget implements PreferredSizeWidget {
                   ],
                 ),
               )
-            : SizedBox(),
+            : const SizedBox(),
       ],
     );
   }

@@ -33,7 +33,7 @@ class AuthInputBodyWidget extends StatelessWidget {
                 ),
               ),
               20.h,
-              InputWidget(),
+              const InputWidget(),
               if (!isLogin)
                 Observer(
                     builder: (context) => Row(

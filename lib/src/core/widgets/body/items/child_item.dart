@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -69,7 +70,7 @@ class _ChildItemState extends State<ChildItem> {
       borderSide: BorderSide.none,
       borderRadius: 6.r,
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
@@ -84,145 +85,152 @@ class _ChildItemState extends State<ChildItem> {
 
     const TextAlign inputTextAlign = TextAlign.center;
 
-    return Column(
-      children: [
-        BodyGroup(
-            title: t.profile.childTitle,
-            formGroup: formGroup,
-            isDecorated: true,
-            items: [
-              ChildBarWidget(
-                child: widget.model,
-              ),
-              BodyItemWidget(
-                  item: CustomBodyItem(
-                titleStyle: titlesStyle,
-                title: t.profile.genderTitle,
-                body: FlutterToggleButton(
-                  outerContainerMargin: 3,
-                  buttonWidth: 128,
-                  buttonHeight: 38,
-                  buttonColor: Colors.white,
-                  enableTextColor: AppColors.primaryColor,
-                  buttonTextFontSize: 14,
-                  borderRadius: 6,
-                  outerContainerColor: AppColors.purpleLighterBackgroundColor,
-                  onTap: (index) =>
-                      widget.model.setGender(Gender.values[index]),
-                  items: [
-                    Gender.female.name,
-                    Gender.male.name,
-                    // t.profile.sex(context: GenderContext.female),
-                    // t.profile.sex(context: GenderContext.male),
-                  ],
+    return Observer(builder: (context) {
+      return Column(
+        children: [
+          BodyGroup(
+              title: t.profile.childTitle,
+              formGroup: formGroup,
+              isDecorated: true,
+              items: [
+                ChildBarWidget(
+                  child: widget.model,
                 ),
-              )),
-              BodyItemWidget(
-                  item: ItemWithSwitch(
-                      title: t.profile.twinsTitle,
-                      titleStyle: titlesStyle,
-                      subtitle: t.profile.twinsHelper,
-                      value: widget.model.isTwins,
-                      onChanged: (value) => widget.model.setIsTwins(value))),
-              BodyItemWidget(
-                item: ItemWithInput(
-                    inputItem: InputItem(
-                      controlName: 'weight',
-                      isCollapsed: true,
-                      textAlign: inputTextAlign,
-                      textInputAction: TextInputAction.next,
-                      maskFormatter: weightFormatter,
-                      border: inputBorder,
-                      contentPadding: inputPadding,
-                      backgroundColor: AppColors.purpleLighterBackgroundColor,
-                      inputHint: t.profile.inputHint,
-                      inputHintStyle: titlesStyle.copyWith(
-                          color: AppColors.greyBrighterColor),
-                    ),
-                    bodyItem: CustomBodyItem(
-                      title: t.profile.weightTitle,
-                      titleStyle: titlesStyle,
-                    )),
-              ),
-              BodyItemWidget(
-                item: ItemWithInput(
-                    inputItem: InputItem(
-                      controlName: 'height',
-                      isCollapsed: true,
-                      textAlign: inputTextAlign,
-                      textInputAction: TextInputAction.next,
-                      maskFormatter: sizeFormatter,
-                      border: inputBorder,
-                      contentPadding: inputPadding,
-                      backgroundColor: AppColors.purpleLighterBackgroundColor,
-                      inputHint: t.profile.inputHint,
-                      inputHintStyle: titlesStyle.copyWith(
-                          color: AppColors.greyBrighterColor),
-                    ),
-                    bodyItem: CustomBodyItem(
-                      title: t.profile.heightTitle,
-                      titleStyle: titlesStyle,
-                    )),
-              ),
-              BodyItemWidget(
-                item: ItemWithInput(
-                    inputItem: InputItem(
-                      controlName: 'headCircumference',
-                      isCollapsed: true,
-                      textAlign: inputTextAlign,
-                      textInputAction: TextInputAction.next,
-                      maskFormatter: sizeFormatter,
-                      border: inputBorder,
-                      contentPadding: inputPadding,
-                      backgroundColor: AppColors.purpleLighterBackgroundColor,
-                      inputHint: t.profile.inputHint,
-                      inputHintStyle: titlesStyle.copyWith(
-                          color: AppColors.greyBrighterColor),
-                    ),
-                    bodyItem: CustomBodyItem(
-                      title: t.profile.headCircumferenceTitle,
-                      titleStyle: titlesStyle,
-                    )),
-              ),
-              BodyItemWidget(
-                  item: CustomBodyItem(
-                title: t.profile.birthTitle,
-                subTitle: widget.model.childbirth == null ? 'не указано' : null,
-                titleStyle: titlesStyle,
-                hintStyle: textTheme.bodySmall!.copyWith(
-                    fontSize: 10, letterSpacing: 0, color: AppColors.redColor),
-                body: MyFlutterToggleButton(
-                  outerContainerMargin: 3,
-                  buttonWidth: 128,
-                  buttonHeight: 38,
-                  buttonColor: Colors.white,
-                  enableTextColor: AppColors.primaryColor,
-                  buttonTextFontSize: 14,
-                  borderRadius: 6,
-                  outerContainerColor: AppColors.purpleLighterBackgroundColor,
-                  onTap: (index) =>
-                      widget.model.setChildbirth(Childbirth.values[index]),
-                  items: [
-                    Childbirth.natural.name,
-                    Childbirth.cesarian.name,
-                    // t.profile.birth(context: BirthContext.nature),
-                    // t.profile.birth(context: BirthContext.cesarean)
-                  ],
+                BodyItemWidget(
+                    item: CustomBodyItem(
+                  titleStyle: titlesStyle,
+                  title: t.profile.genderTitle,
+                  body: FlutterToggleButton(
+                    outerContainerMargin: 3,
+                    buttonWidth: 128,
+                    buttonHeight: 38,
+                    buttonColor: Colors.white,
+                    enableTextColor: AppColors.primaryColor,
+                    buttonTextFontSize: 14,
+                    borderRadius: 6,
+                    outerContainerColor: AppColors.purpleLighterBackgroundColor,
+                    onTap: (index) =>
+                        widget.model.setGender(Gender.values[index]),
+                    items: [
+                      Gender.female,
+                      Gender.male,
+                      // t.profile.sex(context: GenderContext.female),
+                      // t.profile.sex(context: GenderContext.male),
+                    ],
+                  ),
+                )),
+                BodyItemWidget(
+                    item: ItemWithSwitch(
+                        title: t.profile.twinsTitle,
+                        titleStyle: titlesStyle,
+                        subtitle: t.profile.twinsHelper,
+                        value: widget.model.isTwins,
+                        onChanged: (value) => widget.model.setIsTwins(value))),
+                BodyItemWidget(
+                  item: ItemWithInput(
+                      inputItem: InputItem(
+                        controlName: 'weight',
+                        isCollapsed: true,
+                        textAlign: inputTextAlign,
+                        textInputAction: TextInputAction.next,
+                        maskFormatter: weightFormatter,
+                        border: inputBorder,
+                        contentPadding: inputPadding,
+                        backgroundColor: AppColors.purpleLighterBackgroundColor,
+                        inputHint: t.profile.inputHint,
+                        inputHintStyle: titlesStyle.copyWith(
+                            color: AppColors.greyBrighterColor),
+                      ),
+                      bodyItem: CustomBodyItem(
+                        title: t.profile.weightTitle,
+                        titleStyle: titlesStyle,
+                      )),
                 ),
-              )),
-              BodyItemWidget(
-                  item: ItemWithSwitch(
-                      title: t.profile.birthComplicationsTitle,
-                      titleStyle: titlesStyle,
-                      value: widget.model.childBirthWithComplications,
-                      onChanged: (value) {
-                        widget.model.setChildbirthWithComplications(value);
-                      })),
-              if (formGroup.controls.values.isNotEmpty)
-                ItemsNeedToFill(formGroup: formGroup),
-              DottedInput(),
-            ]),
-      ],
-    );
+                BodyItemWidget(
+                  item: ItemWithInput(
+                      inputItem: InputItem(
+                        controlName: 'height',
+                        isCollapsed: true,
+                        textAlign: inputTextAlign,
+                        textInputAction: TextInputAction.next,
+                        maskFormatter: sizeFormatter,
+                        border: inputBorder,
+                        contentPadding: inputPadding,
+                        backgroundColor: AppColors.purpleLighterBackgroundColor,
+                        inputHint: t.profile.inputHint,
+                        inputHintStyle: titlesStyle.copyWith(
+                            color: AppColors.greyBrighterColor),
+                      ),
+                      bodyItem: CustomBodyItem(
+                        title: t.profile.heightTitle,
+                        titleStyle: titlesStyle,
+                      )),
+                ),
+                BodyItemWidget(
+                  item: ItemWithInput(
+                      inputItem: InputItem(
+                        controlName: 'headCircumference',
+                        isCollapsed: true,
+                        textAlign: inputTextAlign,
+                        textInputAction: TextInputAction.next,
+                        maskFormatter: sizeFormatter,
+                        border: inputBorder,
+                        contentPadding: inputPadding,
+                        backgroundColor: AppColors.purpleLighterBackgroundColor,
+                        inputHint: t.profile.inputHint,
+                        inputHintStyle: titlesStyle.copyWith(
+                            color: AppColors.greyBrighterColor),
+                      ),
+                      bodyItem: CustomBodyItem(
+                        title: t.profile.headCircumferenceTitle,
+                        titleStyle: titlesStyle,
+                      )),
+                ),
+                BodyItemWidget(
+                    item: CustomBodyItem(
+                  title: t.profile.birthTitle,
+                  subTitle:
+                      widget.model.childbirth == null ? 'не указано' : null,
+                  titleStyle: titlesStyle,
+                  hintStyle: textTheme.bodySmall!.copyWith(
+                      fontSize: 10,
+                      letterSpacing: 0,
+                      color: AppColors.redColor),
+                  body: MyFlutterToggleButton(
+                    outerContainerMargin: 3,
+                    buttonWidth: 128,
+                    buttonHeight: 38,
+                    buttonColor: Colors.white,
+                    enableTextColor: AppColors.primaryColor,
+                    buttonTextFontSize: 14,
+                    borderRadius: 6,
+                    outerContainerColor: AppColors.purpleLighterBackgroundColor,
+                    onTap: (index) =>
+                        widget.model.setChildbirth(Childbirth.values[index]),
+                    items: [
+                      'd',
+                      's'
+                      // Childbirth.natural.name,
+                      // Childbirth.cesarian.name,
+                      // t.profile.birth(context: BirthContext.nature),
+                      // t.profile.birth(context: BirthContext.cesarean)
+                    ],
+                  ),
+                )),
+                BodyItemWidget(
+                    item: ItemWithSwitch(
+                        title: t.profile.birthComplicationsTitle,
+                        titleStyle: titlesStyle,
+                        value: widget.model.childBirthWithComplications,
+                        onChanged: (value) {
+                          widget.model.setChildbirthWithComplications(value);
+                        })),
+                if (formGroup.controls.values.isNotEmpty)
+                  ItemsNeedToFill(formGroup: formGroup),
+                DottedInput(),
+              ]),
+        ],
+      );
+    });
   }
 }

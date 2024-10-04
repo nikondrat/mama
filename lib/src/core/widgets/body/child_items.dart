@@ -12,7 +12,7 @@ class ChildItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: childs.length,
       itemBuilder: (context, index) {
         return ChildItem(

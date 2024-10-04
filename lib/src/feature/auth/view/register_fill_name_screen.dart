@@ -59,7 +59,7 @@ class RegisterFillName extends StatelessWidget {
                               // const EdgeInsets.symmetric(horizontal: 16),
                               title: t.register.next,
                               isSmall: false,
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               textStyle: textTheme.bodyMedium?.copyWith(
                                   color: isValid
                                       ? AppColors.primaryColor

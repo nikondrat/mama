@@ -63,7 +63,7 @@ class HomeSpecialistBody extends StatelessWidget {
                 rightButtonOnPressed: () {},
                 calendarButtonOnPressed: () {},
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
 
               /// #meetings section one
               MeetingsSection(
@@ -89,25 +89,25 @@ class HomeSpecialistBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               /// #article category text
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   t.home.current.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               /// #articles
-              ArticlesListView(),
+              const ArticlesListView(),
 
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
             ],
           ),
         ),

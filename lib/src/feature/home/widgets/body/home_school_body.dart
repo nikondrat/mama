@@ -27,20 +27,20 @@ class HomeSchoolBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
       
                   /// #article category text
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
                       t.home.current.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
       
                   /// #articles
                   SizedBox(
@@ -48,7 +48,7 @@ class HomeSchoolBody extends StatelessWidget {
                     child: ListView.separated(
                       itemCount: 10,
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       itemBuilder: (context, index) {
                         return ArticleBox(
                           imagePath: Assets.images.imgMomOne4x.path,
@@ -56,11 +56,11 @@ class HomeSchoolBody extends StatelessWidget {
                           articleTitle: '${t.home.articleTitleOne.title}aadfadsfadsfsdafasdfasdfas',
                         );
                       },
-                      separatorBuilder: (context, index) => SizedBox(width: 8),
+                      separatorBuilder: (context, index) => const SizedBox(width: 8),
                     ),
                   ),
       
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),

@@ -25,7 +25,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              Spacer(),
+              const Spacer(),
               TitleWidget(text: t.register.howWasBirth),
               20.h,
               FlutterToggleButton(
@@ -82,7 +82,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                         child: CustomButton(
                           height: 50,
                           maxLines: 1,
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 16),
                           title: t.register.next,
                           onTap: () {

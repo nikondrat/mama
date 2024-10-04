@@ -72,14 +72,14 @@ class CustomButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         side: !isFilled
-            ? BorderSide(
+            ? const BorderSide(
                 color: AppColors.purpleLighterBackgroundColor,
                 width: 2,
               )
             : BorderSide.none,
       ),
       padding:
-          contentPadding ?? EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          contentPadding ?? const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
     );
 
     return _PaddingWidget(

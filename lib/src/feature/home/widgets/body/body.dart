@@ -14,7 +14,7 @@ class HomeBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
-      body: HomeSpecialistBody(),
+      body: const HomeSpecialistBody(),
     );
   }
 }

@@ -37,7 +37,7 @@ class DateSwitchSection extends StatelessWidget {
                 /// #number date
                 Text(
                   t.home.septemberTwentySecond.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
@@ -46,7 +46,7 @@ class DateSwitchSection extends StatelessWidget {
                 /// #word date
                 Text(
                   t.home.today.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w400,
                     color: AppColors.greyBrighterColor,
@@ -68,11 +68,11 @@ class DateSwitchSection extends StatelessWidget {
 
         /// #calendar button
         Material(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
           color: AppColors.purpleLighterBackgroundColor,
           child: InkWell(
             onTap: calendarButtonOnPressed,
-            borderRadius: BorderRadius.all(Radius.circular(16)),
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
             child: SizedBox(
               width: 48,
               height: 48,

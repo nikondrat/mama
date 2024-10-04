@@ -28,7 +28,7 @@ class MeetingBox extends StatelessWidget {
                   ? AppColors.redLighterBackgroundColor
                   : AppColors.greenLighterBackgroundColor
               : AppColors.purpleLighterBackgroundColor,
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(16),
           ),
         ),
@@ -41,7 +41,7 @@ class MeetingBox extends StatelessWidget {
               Text(
                 scheduledTime,
                 maxLines: 1,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   overflow: TextOverflow.ellipsis,
@@ -66,7 +66,7 @@ class MeetingBox extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
 
                   /// #mark
                   whichSection == 1
@@ -75,7 +75,7 @@ class MeetingBox extends StatelessWidget {
                               ? Assets.icons.icXmark
                               : Assets.icons.icCheckmark,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                 ],
               ),
 
@@ -84,7 +84,7 @@ class MeetingBox extends StatelessWidget {
                 child: Text(
                   tutorFullName,
                   maxLines: 1,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w400,
                     overflow: TextOverflow.ellipsis,

@@ -39,7 +39,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                 8.h,
                 Flexible(
                   child: ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: 4,
@@ -48,7 +48,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                       indent: MediaQuery.of(context).size.width * 0.15,
                     ),
                     itemBuilder: (BuildContext context, int index) {
-                      return GroupChatItem();
+                      return const GroupChatItem();
                     },
                   ),
                 ),
@@ -59,7 +59,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
             child: Column(
               children: [
                 ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: 4,
@@ -68,7 +68,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                     indent: MediaQuery.of(context).size.width * 0.15,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    return ChatItem();
+                    return const ChatItem();
                   },
                 ),
               ],

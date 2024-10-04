@@ -148,7 +148,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: _Paths.homeScreen,
       name: AppViews.homeScreen,
-      builder: (context, state) => HomeView(),
+      builder: (context, state) => const HomeView(),
       routes: [
         GoRoute(
           name: AppViews.servicesUserView,
@@ -179,7 +179,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               name: AppViews.addWeightView,
               path: _Paths.addWeightView,
-              builder: (context, state) => AddWeight(),
+              builder: (context, state) => const AddWeight(),
             )
           ],
         ),
@@ -198,12 +198,12 @@ final GoRouter router = GoRouter(
         GoRoute(
           name: AppViews.trackersHealthView,
           path: _Paths.trackersHealthPath,
-          builder: (context, state) => TrackersHealthView(),
+          builder: (context, state) => const TrackersHealthView(),
           routes: [
             GoRoute(
               name: AppViews.trackersHealthAddTemperatureView,
               path: _Paths.trackersHealthAddTemperaturePath,
-              builder: (context, state) => TrackersHealthAddTemperature(),
+              builder: (context, state) => const TrackersHealthAddTemperature(),
             )
           ],
         ),
@@ -215,7 +215,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: _Paths.promoView,
               name: AppViews.promoView,
-              builder: (context, state) => PromoScreen(),
+              builder: (context, state) => const PromoScreen(),
             )
           ],
         ),

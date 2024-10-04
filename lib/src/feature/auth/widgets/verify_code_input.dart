@@ -106,7 +106,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
                             children: List.generate(3, (e) {
-                              return Expanded(child: VerticalDivider());
+                              return const Expanded(child: VerticalDivider());
                             }).toList(),
                           ),
                         )

@@ -14,7 +14,7 @@ class ProfilePhoto extends StatelessWidget {
         Container(
           height: 390,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(32),
               bottomRight: Radius.circular(32),
             ),

@@ -24,7 +24,7 @@ class CustomAvatar extends StatelessWidget {
               color: AppColors.primaryColor.withOpacity(.1), // Цвет тени
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ]),
       child: CircleAvatar(

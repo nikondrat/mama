@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:mama/src/feature/trackers/widgets/big_find_out_more_button.dart';
 
 class TrackersHealthView extends StatefulWidget {
   const TrackersHealthView({super.key});
@@ -68,7 +68,7 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
         height: 110,
         title: t.trackers.health.title,
         tabs: tabs,
-        action: ProfileWidget(),
+        action: const ProfileWidget(),
         tabController: _tabController,
       ),
       body: Stack(
@@ -81,85 +81,17 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ListView(
-                  padding: EdgeInsets.only(top: 16),
+                  padding: const EdgeInsets.only(top: 16),
                   children: [
                     /// #find out more box
-                    ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
-                      child: ColoredBox(
-                        color: AppColors.lightBlue,
-                        child: SizedBox(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                /// #exit button
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: SvgPicture.asset(
-                                      Assets.icons.icCrossMark,
-                                    ),
-                                  ),
-                                ),
-
-                                /// #find out more text
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8,
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      /// #find out more one text
-                                      Text(
-                                        t.trackers.findOutMoreTextOne.title,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: AppColors.greyBrighterColor,
-                                        ),
-                                      ),
-                                      SizedBox(height: 8),
-
-                                      /// #find out more two text
-                                      Text(
-                                        t.trackers.findOutMoreTextTwo.title,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: AppColors.greyBrighterColor,
-                                        ),
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      /// #find out more button
-                                      CustomButton(
-                                        onTap: () {},
-                                        type: CustomButtonType.outline,
-                                        title: t.trackers.findOutMore.title,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 140, vertical: 12),
-                                        isSmall: false,
-                                        icon: IconModel(
-                                          iconPath: Assets
-                                              .icons.icGraduationCapFilled,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    BigFindOutMoreButton(
+                      closeButtonOnPressed: () {},
+                      findOutMoreButtonOnPressed: () {},
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
 
                     /// #tabel header
-                    Row(
+                    const Row(
                       children: [
                         Expanded(
                           flex: 4,
@@ -196,7 +128,7 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
                         ),
                       ],
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
 
                     /// #actual table
                     Table(
@@ -239,7 +171,7 @@ class _TrackersHealthViewState extends State<TrackersHealthView>
                         iconPath: Assets.icons.icGraduationCapFilled,
                       ),
                       contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       type: CustomButtonType.outline,
                       textStyle: textTheme.titleMedium!.copyWith(
                         fontSize: 12,
