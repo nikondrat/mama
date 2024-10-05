@@ -13,7 +13,7 @@ class ProfileSwitch extends StatefulWidget {
     required this.children,
     this.alignment = Alignment.centerRight,
     this.isShowText = false,
-  }) : assert(children.length == 2);
+  }) : assert(children.length >= 2);
 
   @override
   State<ProfileSwitch> createState() => _ProfileSwitchState();

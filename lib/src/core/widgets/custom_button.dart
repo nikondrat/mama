@@ -71,8 +71,8 @@ class CustomButton extends StatelessWidget {
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       elevation: 0,
       minimumSize: Size(width ?? 64.0, height ?? 40.0),
-      backgroundColor: backgroundColor,
-      // backgroundColor: !isFilled ? Colors.transparent : bgColor,
+      // backgroundColor: bgColor,
+      backgroundColor: !isFilled ? Colors.transparent : bgColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         side: !isFilled

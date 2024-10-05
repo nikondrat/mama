@@ -111,6 +111,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'email',
+                      maxLines: 1,
                       hintText: t.profile.hintChangeEmail,
                       keyboardType: TextInputType.emailAddress,
                       titleStyle: titlesStyle,
@@ -121,6 +122,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'about',
+                      maxLines: 1,
                       hintText: t.profile.hintChangeNote,
                       titleStyle: titlesStyle,
                       inputHint: t.profile.labelChangeNote,
