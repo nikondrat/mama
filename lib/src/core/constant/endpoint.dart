@@ -21,6 +21,10 @@ class Endpoint {
 
   String get userData => '$user/me';
 
+  static const String account = 'account';
+
+  String get accountAvatar => '$account/avatar';
+
   static const String child = 'child';
 
   String get childAvatar => '$child/avatar';

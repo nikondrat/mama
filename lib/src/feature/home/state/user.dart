@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -70,5 +72,11 @@ abstract class _UserStore with Store {
     fetchUserDataFuture = ObservableFuture(future);
 
     return userData = await future;
+  }
+
+  void updateAvatar(XFile file) {
+    restClient.put(Endpoint().accountAvatar, body: {
+      'avatar': MultipartFile.fromFileSync(file.path),
+    }).then((v) {});
   }
 }

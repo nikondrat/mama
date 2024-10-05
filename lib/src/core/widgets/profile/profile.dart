@@ -23,7 +23,7 @@ class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (children != null && children!.isNotEmpty) {
-      if (children!.length == 2) {
+      if (children!.length >= 2) {
         return ProfileSwitch(
           children: children!,
           alignment: alignment,

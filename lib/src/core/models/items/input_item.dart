@@ -19,6 +19,7 @@ class InputItem extends BodyItem {
   final MaskTextInputFormatter? maskFormatter;
 
   final Color? backgroundColor;
+  final bool needBackgroundOnFocus;
 
   final Function(String? value)? onChanged;
 
@@ -40,5 +41,6 @@ class InputItem extends BodyItem {
     this.isCollapsed = false,
     this.backgroundColor,
     this.contentPadding,
+    this.needBackgroundOnFocus = false,
   });
 }
