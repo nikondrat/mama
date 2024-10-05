@@ -5,15 +5,15 @@ import 'animated_text.dart';
 import 'avatar.dart';
 
 class ProfileSwitch extends StatefulWidget {
-  final List<String> avatarsUrl;
+  final List<ChildModel?> children;
   final Alignment alignment;
   final bool isShowText;
   const ProfileSwitch({
     super.key,
-    required this.avatarsUrl,
+    required this.children,
     this.alignment = Alignment.centerRight,
     this.isShowText = false,
-  }) : assert(avatarsUrl.length >= 2);
+  }) : assert(children.length == 2);
 
   @override
   State<ProfileSwitch> createState() => _ProfileSwitchState();
@@ -53,8 +53,9 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
                 children: [
                   AnimatedText(
                     isSwitched: _isFirstCircleOnTop,
-                    // TODO add names
-                    title: _isFirstCircleOnTop ? 'Roma' : 'Maksim',
+                    title: _isFirstCircleOnTop
+                        ? widget.children[0]!.firstName
+                        : widget.children[1]!.firstName,
                   ),
                   Text(
                     t.home.switch_hint,
@@ -78,7 +79,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
                 child: CustomAvatar(
                   radius: _isFirstCircleOnTop ? 25 : 20,
                   key: ValueKey<bool>(!_isFirstCircleOnTop),
-                  avatarUrl: widget.avatarsUrl[0],
+                  avatarUrl: widget.children[0]?.avatarUrl,
                 ),
               ),
             ),
@@ -94,7 +95,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
                 duration: const Duration(milliseconds: 300),
                 child: CustomAvatar(
                   key: ValueKey<bool>(_isFirstCircleOnTop),
-                  avatarUrl: widget.avatarsUrl[1],
+                  avatarUrl: widget.children[1]?.avatarUrl,
                   radius: _isFirstCircleOnTop ? 20 : 25,
                 ),
               ),

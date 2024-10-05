@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:mama/src/data.dart';
 
 class HomeUserBody extends StatelessWidget {
@@ -9,6 +10,15 @@ class HomeUserBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final ColorScheme colorScheme = themeData.colorScheme;
+
+    final String locale =
+        TranslationProvider.of(context).flutterLocale.languageCode;
+
+    final DateTime today = DateTime.now();
+
+    String dayOfWeek = DateFormat.EEEE(locale).format(today);
+    String day = DateFormat.d(locale).format(today);
+    String month = DateFormat.MMMM(locale).format(today);
 
     return ListView(
       children: [
@@ -22,7 +32,9 @@ class HomeUserBody extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: DateSubtitle(
-              subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
+              subtitle: 'Сегодня $dayOfWeek $day $month',
+
+              // t.home.todayIsFridaySeptemberTwentySecond.title,
             )),
         24.h,
 

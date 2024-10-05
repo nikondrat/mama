@@ -14,10 +14,21 @@ abstract class _UserStore with Store {
   _UserStore({required this.restClient});
 
   @observable
-  AccountModel? user;
+  ObservableFuture<UserData> fetchUserDataFuture = emptyResponse;
 
   @observable
-  List<ChildModel> children = [];
+  UserData? userData;
+
+  @computed
+  bool get hasResults =>
+      fetchUserDataFuture != emptyResponse &&
+      fetchUserDataFuture.status == FutureStatus.fulfilled;
+
+  static ObservableFuture<UserData> emptyResponse = ObservableFuture.value(
+      UserData(
+          account: AccountModel(
+              gender: Gender.female, firstName: '', phone: '', secondName: ''),
+          childs: []));
 
   @action
   void updateData({
@@ -37,15 +48,18 @@ abstract class _UserStore with Store {
   }
 
   @action
-  void getData() {
-    restClient.get(Endpoint().userData).then((v) {
+  Future<UserData> getData() async {
+    final Future<UserData> future =
+        restClient.get(Endpoint().userData).then((v) {
       if (v != null) {
-        user = AccountModel.fromJson(v['account'] as Map<String, dynamic>);
-
-        children = (v['childs'] as List)
-            .map((e) => ChildModel.fromJson(e as Map<String, dynamic>))
-            .toList();
+        final data = UserData.fromJson(v);
+        return data;
       }
+      return emptyResponse;
     });
+
+    fetchUserDataFuture = ObservableFuture(future);
+
+    return userData = await future;
   }
 }
