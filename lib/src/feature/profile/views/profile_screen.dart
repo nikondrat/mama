@@ -3,17 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
   Widget build(BuildContext context) {
     final VerifyStore verifyStore = context.watch();
+    final UserStore userStore = context.watch();
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
 
@@ -64,21 +60,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   titlesStyle: titlesStyle,
                   helpersStyle: helpersStyle,
                   titlesColoredStyle: titlesColoredStyle,
-                  mom: MomInfo(
-                    'Кристина Константинова',
-                    '+7 996 997-06-24',
-                    null,
-                    null,
-                    Assets.images.imgProfile.path,
-                    [
-                      ChildModel(
-                        id: '',
-                        firstName: 'Виктория',
-                        secondName: '',
-                        birthDate: DateTime.now(),
-                      ),
-                    ],
-                  ),
+                  accountModel: userStore.account,
+                  children: userStore.children,
+                  // mom: MomInfo(
+                  //   'Кристина Константинова',
+                  //   '+7 996 997-06-24',
+                  //   null,
+                  //   null,
+                  //   Assets.images.imgProfile.path,
+                  //   [
+                  //     ChildModel(
+                  //       id: '',
+                  //       firstName: 'Виктория',
+                  //       secondName: '',
+                  //       birthDate: DateTime.now(),
+                  //     ),
+                  //   ],
+                  // ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
