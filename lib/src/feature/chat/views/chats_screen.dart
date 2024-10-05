@@ -79,27 +79,3 @@ class _ChatsScreenState extends State<ChatsScreen> {
     );
   }
 }
-
-MomInfo mom = MomInfo(
-  'Кристина Константинова',
-  '+7 996 997-06-24',
-  null,
-  null,
-  Assets.images.imgProfile.path,
-  [
-    ChildModel(
-      id: '',
-      firstName: 'Виктория',
-      secondName: '',
-      birthDate: DateTime.now(),
-      avatarUrl: Assets.images.imgProfile.path,
-    ),
-    ChildModel(
-      id: '',
-      firstName: 'Андрей',
-      secondName: '',
-      birthDate: DateTime.now(),
-      avatarUrl: Assets.images.imgPerson1.path,
-    ),
-  ],
-);
