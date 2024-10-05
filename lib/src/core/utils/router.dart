@@ -12,8 +12,8 @@ import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_screen.dart';
-import 'package:mama/src/feature/trackers/views/trackers_health_add_temperature.dart';
-import 'package:mama/src/feature/trackers/views/trackers_health_view.dart';
+
+import 'package:provider/provider.dart';
 
 import '../../feature/feature.dart';
 
@@ -182,7 +182,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           name: AppViews.servicesUserView,
           path: _Paths.servicesUserPath,
-          builder: (context, state) => const ServicesUserView(),
+          builder: (context, state) =>  ServicesUserView(appBar: CustomAppBar(),),
           routes: [
             GoRoute(
               name: AppViews.servicesSleepMusicView,
@@ -258,7 +258,7 @@ final GoRouter router = GoRouter(
           builder: (context, state) => TrackersHealthView(),
           routes: [
             GoRoute(
-              name: AppViews.trackersHealthAddTemperatureView,
+              name: AppViews.trackersHealthAddMedicineView,
               path: _Paths.trackersHealthAddTemperaturePath,
               builder: (context, state) => TrackersHealthAddTemperature(),
             )
@@ -278,7 +278,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: _Paths.chatView,
           name: AppViews.chatView,
-          builder: (context, state) => const ChatsScreen(),
+          builder: (context, state) => const ChatsScreen(appBar: CustomAppBar(),),
         ),
       ],
     ),

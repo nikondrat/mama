@@ -34,7 +34,7 @@ class ArticleCard extends StatelessWidget {
                     height: 58,
                     width: MediaQuery.of(context).size.width * 0.55,
                     decoration: BoxDecoration(
-                      color: AppColors.f8faff,
+                      color: AppColors.greyColor,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Row(

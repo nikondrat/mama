@@ -106,7 +106,7 @@ class BuildButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
         ),
         minimumSize: Size(73, 26),
-        backgroundColor: AppColors.f8faff,
+        backgroundColor: AppColors.greyColor,
         foregroundColor: Colors.black,
       ),
       child: Text(
