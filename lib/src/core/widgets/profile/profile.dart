@@ -49,7 +49,8 @@ class ProfileWidget extends StatelessWidget {
         );
       }
     } else if (avatarUrl != null) {
-      return _Avatar(avatarUrl: avatarUrl);
+      return GestureDetector(
+          onTap: onTap, child: _Avatar(avatarUrl: avatarUrl));
     }
     return const SizedBox.shrink();
   }

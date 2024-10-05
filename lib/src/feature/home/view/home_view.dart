@@ -30,7 +30,7 @@ class _HomeViewState extends State<HomeView>
               router.pushNamed(AppViews.profile);
             },
             alignment: Alignment.centerLeft,
-            avatarUrl: data.account.avatarUrl ?? '',
+            avatarUrl: data.account?.avatarUrl ?? '',
           ),
           action: ProfileWidget(
             isShowText: true,

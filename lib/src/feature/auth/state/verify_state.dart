@@ -111,12 +111,7 @@ abstract class _VerifyStore with Store {
       'user': {
         'city': data.city,
       }
-    }).then((v) async {
-      final String? accessToken = v?['access_token'] as String?;
-
-      logger.info('accessToken: $accessToken');
-      await tokenStorage.saveTokenPair({'access': accessToken});
-    });
+    }).then((v) async {});
   }
 
   void logout() async {
