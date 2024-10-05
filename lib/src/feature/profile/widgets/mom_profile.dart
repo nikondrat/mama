@@ -149,12 +149,7 @@ class _MomsProfileState extends State<MomsProfile> {
                 ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
-              32.h,
-              // Text(
-              //   t.profile.childTitle,
-              //   style: widget.titlesColoredStyle,
-              // ),
-              8.h,
+              30.h,
               IgnorePointer(
                 ignoring: !subscribed,
                 child: Stack(

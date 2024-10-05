@@ -10,3 +10,4 @@ export 'meetings_section.dart';
 export 'articles_list_view.dart';
 export 'date_switch_section.dart';
 export 'load.dart';
+export 'child_info/child_info.dart';

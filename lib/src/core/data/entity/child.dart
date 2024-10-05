@@ -140,6 +140,24 @@ abstract class _ChildModel with Store {
   @action
   setBirthDate(DateTime value) => birthDate = value;
 
+  @computed
+  String get birthDateCounter {
+    DateTime currentDate = DateTime.now();
+
+    Duration difference = currentDate.difference(birthDate ?? DateTime.now());
+
+    int months = (difference.inDays / 30).floor();
+    int days = difference.inDays - (months * 30);
+
+    int weeks = difference.inDays ~/ 7;
+
+    // TODO: use localization
+    String formattedDifference = '$months месяцев $days дней';
+    String formattedWeeks = '$weeks недель';
+
+    return '$formattedDifference или $formattedWeeks';
+  }
+
   static String? _dateTimeToJson(DateTime? date) {
     return date?.toIso8601String().split('T').first;
   }

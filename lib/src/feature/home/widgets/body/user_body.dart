@@ -8,9 +8,6 @@ class HomeUserBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final ColorScheme colorScheme = themeData.colorScheme;
-
     final String locale =
         TranslationProvider.of(context).flutterLocale.languageCode;
 
@@ -39,115 +36,7 @@ class HomeUserBody extends StatelessWidget {
         24.h,
 
         /// #baby image
-        CustomBackground(
-          height: 220,
-          padding: 16,
-          child: Row(
-            children: [
-              /// #left side
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /// #counter
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        ShaderMask(
-                          shaderCallback: (bounds) {
-                            return const LinearGradient(
-                              begin: Alignment.center,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                AppColors.whiteColor,
-                                AppColors.yellowColor,
-                              ],
-                            ).createShader(bounds);
-                          },
-                          child: DecoratedBox(
-                            decoration: const BoxDecoration(
-                              color: AppColors.yellowColor,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(16),
-                              ),
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.all(8.0).copyWith(top: 24),
-                              child: Text(
-                                t.home.soonSixMonths.title,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// #icon
-                        const Positioned(
-                          top: -40,
-                          child: Text(
-                            '🥳',
-                            style: TextStyle(fontSize: 50),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-
-                    /// #birth date
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        /// #first type
-                        Text(
-                          t.home.FiveMonthsEighteenDays.title,
-                          style: const TextStyle(fontSize: 17),
-                        ),
-
-                        /// #second type
-                        Text(
-                          t.home.orTwentyFourWeeks.title,
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              8.w,
-
-              /// #baby image, edit button
-              Stack(
-                clipBehavior: Clip.none,
-                alignment: Alignment.center,
-                children: [
-                  /// #
-                  Image(
-                    fit: BoxFit.contain,
-                    image: AssetImage(Assets.images.imgKid.path),
-                  ),
-                  Positioned(
-                    bottom: -30,
-                    child: FloatingActionButton(
-                      onPressed: () {},
-                      backgroundColor: colorScheme.primary,
-                      shape: const CircleBorder(),
-                      child: IconWidget(
-                        model: IconModel(
-                          icon: Icons.edit,
-                          color: colorScheme.onPrimary,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
+        const ChildInfo(),
         26.h,
 
         /// #services

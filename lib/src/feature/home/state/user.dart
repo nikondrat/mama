@@ -30,6 +30,9 @@ abstract class _UserStore with Store {
   @computed
   List<ChildModel> get children => userData?.childs ?? [];
 
+  @observable
+  ChildModel? selectedChild;
+
   @computed
   bool get hasResults =>
       fetchUserDataFuture != emptyResponse &&
@@ -64,6 +67,7 @@ abstract class _UserStore with Store {
         restClient.get(Endpoint().userData).then((v) {
       if (v != null) {
         final data = UserData.fromJson(v);
+        selectedChild = data.childs?.first;
         return data;
       }
       return emptyResponse;
@@ -78,5 +82,10 @@ abstract class _UserStore with Store {
     restClient.put(Endpoint().accountAvatar, body: {
       'avatar': MultipartFile.fromFileSync(file.path),
     }).then((v) {});
+  }
+
+  @action
+  void selectChild({required ChildModel child}) {
+    selectedChild = child;
   }
 }
