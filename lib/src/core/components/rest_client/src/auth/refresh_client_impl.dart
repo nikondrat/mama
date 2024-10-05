@@ -13,12 +13,13 @@ class RefreshClientImpl implements RefreshClient<Map?> {
 
   @override
   Future<Map?> refreshToken(token) async {
+    Map tokenPair = {};
     try {
       final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
 
       restClient
           .get(
-        '${Config().apiUrl}${Endpoint().accessToken}',
+        '${const Config().apiUrl}${Endpoint().accessToken}',
         options: Options(
           headers: {'Refresh-Token': 'Bearer $token'},
           followRedirects: true,
@@ -27,13 +28,14 @@ class RefreshClientImpl implements RefreshClient<Map?> {
         ),
       )
           .then((v) {
-        tokenStorage.saveTokenPair({
+        tokenPair = {
           'access': v.data['access_token'],
           'refresh': v.data['refresh_token']
-        });
+        };
+        tokenStorage.saveTokenPair(tokenPair);
       });
 
-      return await Future.value();
+      return await Future.value(tokenPair);
     } catch (e) {
       // Handle any errors that occur during the token refresh process
       log('Error refreshing token: $e');

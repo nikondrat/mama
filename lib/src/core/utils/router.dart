@@ -60,6 +60,8 @@ final GoRouter router = GoRouter(
         final TokenStorage tokenStorage =
             Provider.of<Dependencies>(context, listen: false).tokenStorage;
 
+        // tokenStorage.clearTokenPair();
+
         final String? token = (await tokenStorage.loadTokenPair())?['access'];
 
         if (token != null) {
@@ -158,7 +160,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: _Paths.homeScreen,
       name: AppViews.homeScreen,
-      builder: (context, state) => HomeView(),
+      builder: (context, state) => const HomeView(),
       routes: [
         GoRoute(
           name: AppViews.servicesUserView,

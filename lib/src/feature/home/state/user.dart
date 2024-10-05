@@ -20,6 +20,15 @@ abstract class _UserStore with Store {
   UserData? userData;
 
   @computed
+  AccountModel get account =>
+      userData?.account ??
+      AccountModel(
+          gender: Gender.female, firstName: '', secondName: '', phone: '');
+
+  @computed
+  List<ChildModel> get children => userData?.childs ?? [];
+
+  @computed
   bool get hasResults =>
       fetchUserDataFuture != emptyResponse &&
       fetchUserDataFuture.status == FutureStatus.fulfilled;

@@ -85,7 +85,7 @@ abstract class _ChildModel with Store {
   @JsonKey(
     name: 'second_name',
   )
-  String secondName;
+  String? secondName;
 
   @action
   setSecondName(String value) => secondName = value;
@@ -135,13 +135,13 @@ abstract class _ChildModel with Store {
 
   @observable
   @JsonKey(name: 'birth_date', toJson: _dateTimeToJson)
-  DateTime birthDate;
+  DateTime? birthDate;
 
   @action
   setBirthDate(DateTime value) => birthDate = value;
 
-  static String _dateTimeToJson(DateTime date) {
-    return date.toIso8601String().split('T').first;
+  static String? _dateTimeToJson(DateTime? date) {
+    return date?.toIso8601String().split('T').first;
   }
 
   @observable
