@@ -66,7 +66,7 @@ class StartScreen extends StatelessWidget {
                 CustomButton(
                   title: t.start.join,
                   isSmall: false,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   onTap: () => context.pushReplacementNamed(AppViews.register),
                 ),
                 // const SizedBox(

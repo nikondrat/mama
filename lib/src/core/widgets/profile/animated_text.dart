@@ -13,10 +13,10 @@ class AnimatedText extends StatelessWidget {
     final TextTheme textTheme = themeData.textTheme;
 
     return AnimatedSwitcher(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       transitionBuilder: (Widget child, Animation<double> animation) {
         final slideAnimation = Tween<Offset>(
-          begin: Offset(.9, 0.0),
+          begin: const Offset(.9, 0.0),
           end: Offset.zero,
         ).animate(animation);
 

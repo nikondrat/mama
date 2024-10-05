@@ -27,7 +27,7 @@ class TableWidget extends StatelessWidget {
         SizedBox(
           height: listOfData.length * 140,
           child: ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 final item = listOfData[index];
                 return Column(
@@ -57,7 +57,7 @@ class TableWidget extends StatelessWidget {
                     SizedBox(
                       height: item.detailTimeOfFeeding.length * 25,
                       child: ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
                             final detailInfo = item.detailTimeOfFeeding[index];
                             return Table(
@@ -120,7 +120,7 @@ class _RowText extends StatelessWidget {
   final bool? alignEnd;
 
   const _RowText(
-      {super.key, required this.text, required this.type, this.alignEnd});
+      {required this.text, required this.type, this.alignEnd});
 
   @override
   Widget build(BuildContext context) {

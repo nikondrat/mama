@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/core/models/icon.dart';
 import 'package:mama/src/feature/feeding/widgets/play_button.dart';
 
 class AddFeedingWidget extends StatelessWidget {
@@ -66,7 +65,7 @@ class AddFeedingWidget extends StatelessWidget {
                   type: CustomButtonType.outline,
                   onTap: () {},
                   icon: IconModel(iconPath: Assets.icons.icLearnMore),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   textStyle: textTheme.titleLarge?.copyWith(
                       fontSize: 10
                   ),
@@ -81,7 +80,7 @@ class AddFeedingWidget extends StatelessWidget {
                   onTap: () {},
                   title: t.feeding.addManually,
                   icon: IconModel(iconPath: Assets.icons.icCalendar),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                   textStyle: textTheme.bodyMedium?.copyWith(
                       color: AppColors.primaryColor),
                 ),

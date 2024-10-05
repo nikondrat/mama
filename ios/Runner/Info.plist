@@ -47,5 +47,19 @@
 		<true/>
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>ru</string>
+		</array>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>The app needs access to the photo library to upload and display images.</string>
+
+		<key>NSCameraUsageDescription</key>
+		<string>The app needs access to the camera to take photos and videos.</string>
+
+		<key>NSMicrophoneUsageDescription</key>
+		<string>The app needs access to the microphone to record sound while filming videos.</string>
+
 	</dict>
 </plist>

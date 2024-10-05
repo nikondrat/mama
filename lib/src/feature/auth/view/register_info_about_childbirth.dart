@@ -7,7 +7,9 @@ import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
 class RegisterInfoAboutChildbirth extends StatelessWidget {
-  const RegisterInfoAboutChildbirth({super.key});
+  const RegisterInfoAboutChildbirth({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              Spacer(),
+              const Spacer(),
               TitleWidget(text: t.register.howWasBirth),
               20.h,
               FlutterToggleButton(
@@ -72,7 +74,9 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                         title: t.register.skip,
                         maxLines: 1,
                         onTap: () {
-                          context.pushNamed(AppViews.citySearch);
+                          context.pushNamed(
+                            AppViews.citySearch,
+                          );
                         },
                       ),
                     ),
@@ -82,11 +86,13 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                         child: CustomButton(
                           height: 50,
                           maxLines: 1,
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 16),
                           title: t.register.next,
                           onTap: () {
-                            context.pushNamed(AppViews.citySearch);
+                            context.pushNamed(
+                              AppViews.citySearch,
+                            );
                           },
                         ))
                   ],

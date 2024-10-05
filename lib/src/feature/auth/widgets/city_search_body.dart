@@ -7,10 +7,14 @@ import 'package:mobx/mobx.dart';
 import 'search_input.dart';
 
 class CitySearchBody extends StatefulWidget {
+  final VerifyStore? verifyStore;
   final SearchCityStore store;
+  final AuthViewStore authViewStore;
   const CitySearchBody({
     super.key,
+    required this.verifyStore,
     required this.store,
+    required this.authViewStore,
   });
 
   @override
@@ -41,6 +45,22 @@ class _CitySearchBodyState extends State<CitySearchBody> {
     super.dispose();
   }
 
+  void go() {
+    if (widget.verifyStore != null && !widget.verifyStore!.isRegistered) {
+      widget.verifyStore!.register(
+          data: RegisterData(
+        user: AccountModel(
+            gender: Gender.female,
+            firstName: widget.authViewStore.name.value,
+            secondName: widget.authViewStore.surname.value,
+            phone: widget.verifyStore!.phoneNumber),
+        child: widget.authViewStore.child,
+        city: selectedCity?.name ?? '',
+      ));
+      context.goNamed(AppViews.welcomeScreen);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (value) {
@@ -51,7 +71,7 @@ class _CitySearchBodyState extends State<CitySearchBody> {
           return SafeArea(
             child: Column(
               children: [
-                if (!isFocused && widget.store.cities.isEmpty) Spacer(),
+                if (!isFocused && widget.store.cities.isEmpty) const Spacer(),
                 SearchInput(focusNode: focusNode),
                 20.h,
                 Expanded(
@@ -82,8 +102,10 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                           child: CustomButton(
                             type: CustomButtonType.outline,
                             title: t.register.skip,
-                            onTap: () =>
-                                context.goNamed(AppViews.welcomeScreen),
+                            onTap: () {
+                              go();
+                              // context.goNamed(AppViews.welcomeScreen);
+                            },
                           ),
                         ),
                         20.w,
@@ -92,7 +114,8 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                             child: CustomButton(
                               onTap: selectedCity != null
                                   ? () {
-                                      context.goNamed(AppViews.welcomeScreen);
+                                      go();
+                                      // context.goNamed(AppViews.welcomeScreen);
                                     }
                                   : null,
                               icon: selectedCity != null

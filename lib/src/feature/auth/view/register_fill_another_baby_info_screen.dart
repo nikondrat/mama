@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
-  const RegisterFillAnotherBabyInfoScreen({super.key});
+  const RegisterFillAnotherBabyInfoScreen({
+    super.key,
+  });
 
   @override
   State<RegisterFillAnotherBabyInfoScreen> createState() =>
@@ -28,7 +30,7 @@ class _RegisterFillAnotherBabyInfoScreenState
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(6),
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
@@ -76,6 +78,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                           inputHint: t.profile.inputHint,
                           inputHintStyle: inputHintStyle,
                           controlName: 'weight',
+                          needBackgroundOnFocus: true,
                           isCollapsed: true,
                           textAlign: inputTextAlign,
                           textInputAction: TextInputAction.next,
@@ -96,6 +99,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                           inputHintStyle: inputHintStyle,
                           controlName: 'height',
                           isCollapsed: true,
+                          needBackgroundOnFocus: true,
                           textAlign: inputTextAlign,
                           textInputAction: TextInputAction.next,
                           maskFormatter: sizeFormatter,
@@ -115,6 +119,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                           inputHint: t.register.enter,
                           controlName: 'headCircumference',
                           isCollapsed: true,
+                          needBackgroundOnFocus: true,
                           textAlign: inputTextAlign,
                           textInputAction: TextInputAction.next,
                           maskFormatter: sizeFormatter,
@@ -157,7 +162,9 @@ class _RegisterFillAnotherBabyInfoScreenState
                         (store.headCircumference.value as String)
                             .extractNumber());
 
-                    context.pushNamed(AppViews.registerInfoAboutChildbirth);
+                    context.pushNamed(
+                      AppViews.registerInfoAboutChildbirth,
+                    );
                   }),
               40.h
             ],

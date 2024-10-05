@@ -70,7 +70,7 @@ class _ChildItemState extends State<ChildItem> {
       borderSide: BorderSide.none,
       borderRadius: 6.r,
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
@@ -112,10 +112,8 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setGender(Gender.values[index]),
                     items: [
-                      Gender.female,
-                      Gender.male,
-                      // t.profile.sex(context: GenderContext.female),
-                      // t.profile.sex(context: GenderContext.male),
+                      Gender.female.name,
+                      Gender.male.name,
                     ],
                   ),
                 )),
@@ -208,12 +206,8 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setChildbirth(Childbirth.values[index]),
                     items: [
-                      'd',
-                      's'
-                      // Childbirth.natural.name,
-                      // Childbirth.cesarian.name,
-                      // t.profile.birth(context: BirthContext.nature),
-                      // t.profile.birth(context: BirthContext.cesarean)
+                      Childbirth.natural.name,
+                      Childbirth.cesarian.name,
                     ],
                   ),
                 )),

@@ -6,7 +6,9 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../data.dart';
 
 class RegisterBabyNameScreen extends StatelessWidget {
-  const RegisterBabyNameScreen({super.key});
+  const RegisterBabyNameScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class RegisterBabyNameScreen extends StatelessWidget {
 
                   return CustomButton(
                     isSmall: false,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     // contentPadding:
                     //     const EdgeInsets.symmetric(horizontal: 16),
                     title: t.register.next,
@@ -86,9 +88,14 @@ class RegisterBabyNameScreen extends StatelessWidget {
                             : AppColors.greyBrighterColor),
                     onTap: isNameValid
                         ? () {
-                            store.child.setFirstName(control.value as String);
+                            final List<String> values =
+                                (control.value as String).split(RegExp('[ -]'));
+                            store.child.setFirstName(values[0]);
+                            store.child.setSecondName(
+                                values.length > 1 ? values[1] : ' ');
                             context.pushNamed(
-                                AppViews.registerFillAnotherBabyInfo);
+                              AppViews.registerFillAnotherBabyInfo,
+                            );
                           }
                         : null,
                   );

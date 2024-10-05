@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
   Widget build(BuildContext context) {
+    final VerifyStore verifyStore = context.watch();
+    final UserStore userStore = context.watch();
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
 
@@ -43,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -55,93 +53,100 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         child: Stack(
           children: [
-            AppBody(
-              builder: (windowWidth, windowSize) => ListView(
-                padding: HorizontalSpacing.centered(windowWidth),
-                children: <Widget>[
-                  MomsProfile(
-                    titlesStyle: titlesStyle,
-                    helpersStyle: helpersStyle,
-                    titlesColoredStyle: titlesColoredStyle,
-                    mom: MomInfo(
-                      'Кристина Константинова',
-                      '+7 996 997-06-24',
-                      null,
-                      null,
-                      Assets.images.imgProfile.path,
-                      [
-                        ChildModel(
-                            id: '', firstName: 'Виктория', secondName: ''),
-                      ],
+            ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                MomsProfile(
+                  titlesStyle: titlesStyle,
+                  helpersStyle: helpersStyle,
+                  titlesColoredStyle: titlesColoredStyle,
+                  accountModel: userStore.account,
+                  children: userStore.children,
+                  // mom: MomInfo(
+                  //   'Кристина Константинова',
+                  //   '+7 996 997-06-24',
+                  //   null,
+                  //   null,
+                  //   Assets.images.imgProfile.path,
+                  //   [
+                  //     ChildModel(
+                  //       id: '',
+                  //       firstName: 'Виктория',
+                  //       secondName: '',
+                  //       birthDate: DateTime.now(),
+                  //     ),
+                  //   ],
+                  // ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          //TODO добавить tap о компании
+                        },
+                        child: Text(
+                          t.profile.aboutCompanyTitle,
+                          style: titlesColoredStyle,
+                        )),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          //TODO добавить tap условия использования
+                        },
+                        child: Text(
+                          t.profile.termOfUseTitle,
+                          style: titlesColoredStyle,
+                        )),
+                  ],
+                ),
+                16.h,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: CustomButton(
+                    title: t.profile.feedbackButtonTitle,
+                    onTap: () {},
+                    icon: IconModel(
+                      icon: Icons.language,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            //TODO добавить tap о компании
-                          },
-                          child: Text(
-                            t.profile.aboutCompanyTitle,
-                            style: titlesColoredStyle,
-                          )),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            //TODO добавить tap условия использования
-                          },
-                          child: Text(
-                            t.profile.termOfUseTitle,
-                            style: titlesColoredStyle,
-                          )),
-                    ],
-                  ),
-                  16.h,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: CustomButton(
-                      title: t.profile.feedbackButtonTitle,
-                      onTap: () {},
-                      icon: IconModel(
-                        icon: Icons.language,
-                      ),
-                    ),
-                  ),
-                  8.h,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: CustomButton(
-                      onTap: () async {
-                        await showDialog(
-                          context: context,
-                          builder: (context) => Dialog(
-                            insetPadding: EdgeInsets.all(8.0),
-                            child: DialogWidget(
-                              errorDialog: true,
-                              item: alertDialog[0],
-                              onTapExit: () {
-                                context.pop();
-                              },
-                              onTapContinue: () {},
-                            ),
+                ),
+                8.h,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: CustomButton(
+                    onTap: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                          insetPadding: EdgeInsets.all(8.0),
+                          child: DialogWidget(
+                            errorDialog: true,
+                            item: alertDialog[0],
+                            onTapExit: () {
+                              context.pop();
+                            },
+                            onTapContinue: () {
+                              context.pop();
+                              verifyStore.logout();
+                            },
                           ),
-                        );
-                      },
-                      backgroundColor: AppColors.redLighterBackgroundColor,
-                      title: t.profile.leaveAccountButtonTitle,
-                      textStyle: textTheme.titleMedium!.copyWith(
-                        color: AppColors.redColor,
-                      ),
+                        ),
+                      );
+                    },
+                    backgroundColor: AppColors.redLighterBackgroundColor,
+                    title: t.profile.leaveAccountButtonTitle,
+                    textStyle: textTheme.titleMedium!.copyWith(
+                      color: AppColors.redColor,
                     ),
                   ),
-                  32.h,
-                ],
-              ),
+                ),
+                32.h,
+              ],
             ),
             //   ),
             // ],

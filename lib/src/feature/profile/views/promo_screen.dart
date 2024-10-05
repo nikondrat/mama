@@ -80,7 +80,7 @@ class _PromoScreenState extends State<PromoScreen> {
           ),
           centerTitle: true,
           leadingWidth: 120,
-          leading: CustomBackButton(),
+          leading: const CustomBackButton(),
         ),
         body: AppBody(
           builder: (windowWidth, windowSize) => Padding(

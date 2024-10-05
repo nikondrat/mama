@@ -87,7 +87,7 @@ class _BottomBarState extends State<BottomBar> {
                   color: AppColors.whiteColor,
                   shadowColor: AppColors.skyBlue,
                   elevation: 1,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyFlutterToggleButton extends StatefulWidget {
   /// List of items to display as buttons.

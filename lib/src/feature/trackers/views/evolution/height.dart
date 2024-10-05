@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/constant/constant.dart';
 
-class Head extends StatelessWidget {
-  const Head({super.key});
+class Height extends StatelessWidget {
+  const Height({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: Center(
-        child: Text('Head'),
+        child: Text('Height'),
       ),
     );
   }

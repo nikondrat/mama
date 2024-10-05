@@ -122,9 +122,30 @@ debunkingFourteenBreastfeedingMyths:
   title: "Развенчание 14 мифов о грудном вскармливании"
 
 articleTitleOne:
-  title: Развитие ребенка в 6 месяцев
+  title: "Развитие ребенка в 6 месяцев"
 
 articleTitleTwo:
-  title: Восстановление после кесарева сечения
+  title: "Восстановление после кесарева сечения"
 
-switch_hint: Переключить
+switch_hint: "Переключить"
+
+septemberTwentySecond:
+  title: "22 сентября"
+
+today:
+  title: "Сегодня"
+
+timeScheduleOne:
+  title: "9:00-9:15"
+
+chat:
+  title: "Чат"
+
+video:
+  title: "Видео"
+
+express:
+  title: "Экспресс"
+
+tutorFullNameOne:
+  title: "Марина Алексеева"

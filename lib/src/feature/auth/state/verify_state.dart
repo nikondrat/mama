@@ -7,22 +7,28 @@ part 'verify_state.g.dart';
 class VerifyStore extends _VerifyStore with _$VerifyStore {
   VerifyStore({
     required super.restClient,
-    required super.formattedPhoneNumber,
     required super.tokenStorage,
   });
 }
 
 abstract class _VerifyStore with Store {
   final RestClient restClient;
-  final String formattedPhoneNumber;
   final TokenStorage tokenStorage;
 
   _VerifyStore({
     required this.restClient,
-    required this.formattedPhoneNumber,
     required this.tokenStorage,
   });
 
+  @observable
+  String formattedPhoneNumber = '';
+
+  @action
+  void setPhoneNumber(String value) {
+    formattedPhoneNumber = value;
+  }
+
+  @computed
   String get phoneNumber =>
       '+7${formattedPhoneNumber.replaceAll(' ', '').replaceAll('-', '')}';
 
@@ -31,6 +37,9 @@ abstract class _VerifyStore with Store {
 
   @observable
   String? error;
+
+  @observable
+  bool isRegistered = false;
 
   @action
   void sendCode() {
@@ -52,27 +61,37 @@ abstract class _VerifyStore with Store {
     if (value.length == 4) {
       logger.info('len $value');
 
-      if (isLogin) {
-        login(value);
-      } else {
-        assert(data != null);
-        register(data: data!);
-      }
+      login(value, data: data);
     } else {
       error = null;
     }
   }
 
-  void login(String code) {
+  @action
+  void login(
+    String code, {
+    RegisterData? data,
+  }) {
     restClient.patch(Endpoint().login, body: {
       'code': code,
       'phone': phoneNumber,
       'fcm_token': '' // TODO: add fcm token
-    }).then((v) {
+    }).then((v) async {
       final String? refreshToken = v?['refresh_token'] as String?;
 
+      logger.info('refreshToken: $refreshToken');
+
+      final String? state = v?['state'] as String?;
+
       if (refreshToken != null) {
-        tokenStorage.saveTokenPair({'refresh': refreshToken});
+        await tokenStorage.saveTokenPair({'refresh': refreshToken});
+
+        logger.info('Status: $state');
+
+        if (state == 'ACTIVE') {
+          isRegistered = true;
+        }
+        logger.info('isRegistered: $isRegistered');
       }
     }).catchError((e) {
       error = t.auth.invalidPassword;
@@ -81,44 +100,25 @@ abstract class _VerifyStore with Store {
 
   void register({
     required RegisterData data,
-  }) {
-    // TODO: add fcm token
-    // TODO: use data model
-    restClient.patch(Endpoint().register, body: {
-      'account': {
-        'first_name': 'Elina',
-        'gender': 'FEMALE',
-        'last_name': 'Alexeevna',
-        'phone': '+79871231234',
-        'second_name': 'Ivanova',
-      }
-    });
+  }) async {
+    final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
 
-    //   "account": {
-    //   "fcm_token": "string",
-    //   "first_name": "Elina",
-    //   "gender": "FEMALE",
-    //   "last_name": "Alexeevna",
-    //   "phone": "+79871231234",
-    //   "second_name": "Ivanova"
-    // },
-    // "child": {
-    //   "birth_date": "2022-01-01",
-    //   "childbirth": "NATURAL",
-    //   "childbirth_with_complications": true,
-    //   "first_name": "Alla",
-    //   "gender": "FEMALE",
-    //   "head_circ": 35,
-    //   "height": 49,
-    //   "second_name": "Born",
-    //   "weight": 3.56
-    // },
-    // "user": {
-    //   "city": "Moscow",
-    //   "roles": [
-    //     "брат",
-    //     "сестра"
-    //   ]
-    // }
+    restClient.patch(Endpoint().register, headers: {
+      'Refresh-Token': 'Bearer $token',
+    }, body: {
+      'account': data.user.toJson(),
+      'child': data.child.toJson(),
+      'user': {
+        'city': data.city,
+      }
+    }).then((v) async {});
+  }
+
+  void logout() async {
+    await tokenStorage.clearTokenPair();
+
+    restClient.get(Endpoint().logout).then((_) {
+      router.replaceNamed(AppViews.startScreen);
+    });
   }
 }

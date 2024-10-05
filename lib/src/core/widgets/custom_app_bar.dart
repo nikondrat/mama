@@ -10,14 +10,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController? tabController;
   final List<String>? tabs;
 
-  const CustomAppBar(
-      {super.key,
-      this.leading,
-      this.title,
-      this.height,
-      this.tabs,
-      this.tabController,
-      this.action});
+  const CustomAppBar({
+    super.key,
+    this.leading,
+    this.title,
+    this.height,
+    this.tabs,
+    this.tabController,
+    this.action,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,42 +29,45 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: leading ??
-                        Row(
-                          children: [
-                            CustomBackButton(),
-                          ],
-                        ),
-                  ),
-                  if (title != null)
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        title!,
-                        style: textTheme.titleLarge,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: leading ??
+                      const Row(
+                        children: [
+                          CustomBackButton(),
+                        ],
                       ),
-                    ),
+                ),
+                if (title != null)
                   Align(
-                    alignment: Alignment.centerRight,
-                    child: action ??
-                        const SizedBox(
-                          width: 40,
-                          height: 40,
-                        ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      title!,
+                      style: textTheme.titleLarge,
+                    ),
                   ),
-                ],
-              )),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: action ??
+                      const SizedBox(
+                        width: 40,
+                        height: 40,
+                      ),
+                ),
+              ],
+            ),
+          ),
           if (tabs != null && tabController != null) ...[
             10.h,
             TabBar(
-                controller: tabController,
-                tabs: tabs!.map((e) => Tab(text: e)).toList())
+              isScrollable: true,
+              controller: tabController,
+              tabs: tabs!.map((e) => Tab(text: e)).toList(),
+            )
           ]
         ],
       ),

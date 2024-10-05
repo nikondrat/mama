@@ -3,6 +3,8 @@ class Endpoint {
 
   String get accessToken => '$auth/access-token';
 
+  String get logout => '$auth/log-out';
+
   String get login => '$auth/sign-in';
 
   String get register => '$auth/sign-up';
@@ -18,6 +20,10 @@ class Endpoint {
   static const String user = 'user';
 
   String get userData => '$user/me';
+
+  static const String account = 'account';
+
+  String get accountAvatar => '$account/avatar';
 
   static const String child = 'child';
 

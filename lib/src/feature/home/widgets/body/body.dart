@@ -12,6 +12,9 @@ class HomeBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: appBar, body: HomeUserBody());
+    return Scaffold(
+      appBar: appBar,
+      body: const HomeUserBody(),
+    );
   }
 }

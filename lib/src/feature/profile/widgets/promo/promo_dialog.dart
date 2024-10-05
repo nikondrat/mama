@@ -37,7 +37,7 @@ class DialogWidget extends StatelessWidget {
                     : AppColors.greenLighterBackgroundColor,
                 borderRadius: 16.r,
               ),
-              padding: EdgeInsets.all(40),
+              padding: const EdgeInsets.all(40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,

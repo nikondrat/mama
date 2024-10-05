@@ -19,12 +19,12 @@ abstract class _AppThemeStore with Store {
             textTheme: TextTheme(
               headlineSmall:
                   GoogleFonts.nunito(fontSize: 32, fontWeight: FontWeight.w700),
-              titleMedium: TextStyle(
+              titleMedium: const TextStyle(
                 color: AppColors.primaryColor,
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
               ),
-              titleLarge: TextStyle(
+              titleLarge: const TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
               ),
@@ -37,11 +37,11 @@ abstract class _AppThemeStore with Store {
                 fontWeight: FontWeight.w700,
                 fontSize: 14,
               ),
-              bodyMedium: TextStyle(
+              bodyMedium: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
               ),
-              bodySmall: TextStyle(
+              bodySmall: const TextStyle(
                 fontSize: 17,
                 color: AppColors.greyBrighterColor,
               ),
@@ -100,7 +100,7 @@ abstract class _AppThemeStore with Store {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is AppThemeStore && seed == other.seed && mode == other.mode;
+      other is AppThemeStore && seed == other.seed && mode == other.mode;
 
   @override
   int get hashCode => Object.hash(seed, mode);

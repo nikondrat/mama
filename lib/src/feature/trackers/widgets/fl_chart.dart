@@ -35,11 +35,11 @@ class FlProgressChart extends StatelessWidget {
         enablePanning: true,
         enableDoubleTapZooming: true,
       ),
-      primaryXAxis: CategoryAxis(
+      primaryXAxis: const CategoryAxis(
         axisLine: AxisLine(color: Colors.transparent),
         initialVisibleMaximum: 5,
       ),
-      primaryYAxis: NumericAxis(
+      primaryYAxis: const NumericAxis(
         minimum: 2,
         maximum: 9,
         interval: 1,
@@ -49,8 +49,8 @@ class FlProgressChart extends StatelessWidget {
           dataSource: chartData,
           xValueMapper: (WeightData data, _) => data.month,
           yValueMapper: (WeightData data, _) => data.weight,
-          dataLabelSettings: DataLabelSettings(isVisible: true),
-          markerSettings: MarkerSettings(isVisible: true),
+          dataLabelSettings: const DataLabelSettings(isVisible: true),
+          markerSettings: const MarkerSettings(isVisible: true),
           color: Colors.blue,
         ),
         SplineAreaSeries<WeightData, String>(

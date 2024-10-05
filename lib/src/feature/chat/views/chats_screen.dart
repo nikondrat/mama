@@ -57,7 +57,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                 8.h,
                 Flexible(
                   child: ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: 4,
@@ -109,7 +109,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                   ),
                 ),
                 ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: sortdlistSingle.length,

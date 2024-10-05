@@ -6,10 +6,10 @@ class BreastScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FeedingBody(
+    return const FeedingBody(
       children: [
-        const AddFeedingWidget(),
-        const HistoryWidget(),
+        AddFeedingWidget(),
+        HistoryWidget(),
       ],
     );
   }

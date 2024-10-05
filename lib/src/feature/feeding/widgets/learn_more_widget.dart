@@ -41,7 +41,7 @@ class LearnMoreWidget extends StatelessWidget {
               icon: IconModel(iconPath: Assets.icons.icLearnMore),
               title: t.feeding.learnMoreBtn,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               textStyle: textTheme.titleLarge?.copyWith(fontSize: 10),
             ),
             16.h

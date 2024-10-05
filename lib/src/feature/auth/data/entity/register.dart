@@ -1,7 +1,7 @@
 import 'package:mama/src/data.dart';
 
 class RegisterData {
-  final UserStore user;
+  final AccountModel user;
 
   final ChildModel child;
 
