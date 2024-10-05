@@ -1,13 +1,12 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
 class LoadHomeData extends StatefulWidget {
-  final Widget child;
+  final Widget Function(UserData data) builder;
   final UserStore userStore;
   const LoadHomeData({
     super.key,
-    required this.child,
+    required this.builder,
     required this.userStore,
   });
 
@@ -24,10 +23,13 @@ class _LoadHomeDataState extends State<LoadHomeData> {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(
-      builder: (context) {
-        return widget.child;
-      },
+    return Scaffold(
+      body: LoadingWidget(
+        future: widget.userStore.fetchUserDataFuture,
+        builder: (v) {
+          return widget.builder(v);
+        },
+      ),
     );
   }
 }
