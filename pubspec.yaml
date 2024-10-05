@@ -55,8 +55,9 @@ dependencies:
   mocktail: ^1.0.1
   reactive_forms: ^17.0.1
   json_serializable: ^6.8.0
-
-  icons_launcher: ^3.0.0
+  mask_text_input_formatter: ^2.9.0
+  icons_launcher: ^2.1.7
+  image_picker: ^1.1.2
 
   # -- navigation -- #
   go_router: ^14.2.7
@@ -80,7 +81,6 @@ dependencies:
   reactive_date_time_picker: ^4.0.0
   flutter_envify: ^3.0.1
   flutter_svg: ^2.0.10+1
-  mask_text_input_formatter: ^2.9.0
   syncfusion_flutter_charts: ^27.1.50
 
 dev_dependencies:
