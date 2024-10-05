@@ -60,7 +60,7 @@ class ChildBarWidget extends StatelessWidget {
                     backgroundColor: AppColors.whiteColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    side: BorderSide(color: AppColors.redColor, width: 1),
+                    side: const BorderSide(color: AppColors.redColor, width: 1),
                     minimumSize:
                         Size(MediaQuery.of(context).size.width / 4, 28)),
                 onPressed: () {},
@@ -101,7 +101,7 @@ class ChildBarWidget extends StatelessWidget {
                       child: AutoSizeText(
                         // TODO: add format to child.birthDate
                         // '24 недели\n5 месяцев 8 дней',
-                        DateFormat.yMMMd().format(child.birthDate!),
+                        DateFormat.yMMMd().format(child.birthDate),
                         style: titleStyle.copyWith(
                             color: AppColors.greyBrighterColor, fontSize: 10),
                       ),
@@ -139,7 +139,7 @@ class ChildBarWidget extends StatelessWidget {
               child: RawMaterialButton(
                 onPressed: () {},
                 fillColor: AppColors.primaryColor,
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 child: Image.asset(
                   Assets.icons.icPhotoAdd.path,
                   alignment: Alignment.center,

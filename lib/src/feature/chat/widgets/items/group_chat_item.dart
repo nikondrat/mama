@@ -37,7 +37,7 @@ class GroupChatItem extends StatelessWidget {
                       borderRadius: 100.r,
                       color: AppColors.primaryColor,
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                     child: Text(
                       '1000',
                       style: textTheme.labelMedium!
@@ -68,7 +68,7 @@ class GroupChatItem extends StatelessWidget {
                                   borderRadius: 4.r,
                                   color: AppColors.purpleLighterBackgroundColor,
                                 ),
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 5, vertical: 1),
                                 child: Text(
                                   'Педиатр',

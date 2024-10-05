@@ -18,6 +18,7 @@ class AuthInputBodyWidget extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
     final AuthViewStore store = context.watch();
+    final VerifyStore verifyStore = context.watch();
 
     return InputPlace(
         child: Padding(
@@ -33,7 +34,7 @@ class AuthInputBodyWidget extends StatelessWidget {
                 ),
               ),
               20.h,
-              InputWidget(),
+              const InputWidget(),
               if (!isLogin)
                 Observer(
                     builder: (context) => Row(
@@ -74,13 +75,13 @@ class AuthInputBodyWidget extends StatelessWidget {
                     isSmall: false,
                     onTap: isValid
                         ? () {
+                            verifyStore
+                                .setPhoneNumber(control.value as String? ?? '');
                             context.pushNamed(
-                                isLogin
-                                    ? AppViews.authVerify
-                                    : AppViews.registerVerify,
-                                extra: {
-                                  'phone': control.value,
-                                });
+                              isLogin
+                                  ? AppViews.authVerify
+                                  : AppViews.registerVerify,
+                            );
                           }
                         : null,
                     textStyle: textTheme.titleMedium!.copyWith(

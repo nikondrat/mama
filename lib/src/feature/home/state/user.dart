@@ -10,9 +10,25 @@ class UserStore extends _UserStore with _$UserStore {
 }
 
 abstract class _UserStore with Store {
+  final RestClient restClient;
   _UserStore({required this.restClient});
 
-  final RestClient restClient;
+  @observable
+  ObservableFuture<UserData> fetchUserDataFuture = emptyResponse;
+
+  @observable
+  UserData? userData;
+
+  @computed
+  bool get hasResults =>
+      fetchUserDataFuture != emptyResponse &&
+      fetchUserDataFuture.status == FutureStatus.fulfilled;
+
+  static ObservableFuture<UserData> emptyResponse = ObservableFuture.value(
+      UserData(
+          account: AccountModel(
+              gender: Gender.female, firstName: '', phone: '', secondName: ''),
+          childs: []));
 
   @action
   void updateData({
@@ -29,5 +45,21 @@ abstract class _UserStore with Store {
       if (email != null) 'email': email,
       if (info != null) 'info': info,
     });
+  }
+
+  @action
+  Future<UserData> getData() async {
+    final Future<UserData> future =
+        restClient.get(Endpoint().userData).then((v) {
+      if (v != null) {
+        final data = UserData.fromJson(v);
+        return data;
+      }
+      return emptyResponse;
+    });
+
+    fetchUserDataFuture = ObservableFuture(future);
+
+    return userData = await future;
   }
 }

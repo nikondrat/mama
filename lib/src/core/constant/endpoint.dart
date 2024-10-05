@@ -1,6 +1,10 @@
 class Endpoint {
   static const String auth = 'auth';
 
+  String get accessToken => '$auth/access-token';
+
+  String get logout => '$auth/log-out';
+
   String get login => '$auth/sign-in';
 
   String get register => '$auth/sign-up';

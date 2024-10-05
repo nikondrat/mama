@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/data.dart';
 
 import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
 import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
@@ -35,8 +36,12 @@ abstract class AppViews {
   static const String homeScreen = 'homeScreen';
 
   static const trackersHealthView = 'trackersHealthView';
-  static const trackersHealthAddTemperatureView =
-      'trackersHealthAddTemperatureView';
+  static const addTemperature = 'addTemperature';
+
+  static const trackersHealthAddMedicineView = 'trackersHealthAddMedicineView';
+
+  // static const healthMedicine = '/';
+  static const addMedicine = 'addMedicine';
 
   static const servicesUserView = 'servicesUserView';
   static const servicesSleepMusicView = 'servicesSleepMusicView';
@@ -64,95 +69,111 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
+  // initialLocation: _Paths.homeScreen,
   routes: [
     GoRoute(
-        path: _Paths.startScreen,
-        name: AppViews.startScreen,
-        builder: (context, state) => const StartScreen(),
-        routes: [
-          GoRoute(
-              path: _Paths.register,
-              name: AppViews.register,
-              builder: (context, state) => const AuthView(),
+      path: _Paths.startScreen,
+      name: AppViews.startScreen,
+      builder: (context, state) => const StartScreen(),
+      redirect: (context, state) async {
+        final TokenStorage tokenStorage =
+            Provider.of<Dependencies>(context, listen: false).tokenStorage;
+
+        final String? token = (await tokenStorage.loadTokenPair())?['access'];
+
+        if (token != null) {
+          return _Paths.homeScreen;
+        }
+        return null;
+      },
+      routes: [
+        GoRoute(
+          path: _Paths.register,
+          name: AppViews.register,
+          builder: (context, state) {
+            return AuthView();
+          },
+          routes: [
+            GoRoute(
+              path: _Paths.auth,
+              name: AppViews.auth,
+              builder: (context, state) => const AuthView(isLogin: true),
+            ),
+            GoRoute(
+              path: _Paths.registerVerify,
+              name: AppViews.registerVerify,
               routes: [
                 GoRoute(
-                  path: _Paths.auth,
-                  name: AppViews.auth,
-                  builder: (context, state) => const AuthView(isLogin: true),
-                ),
-                GoRoute(
-                  path: _Paths.registerVerify,
-                  name: AppViews.registerVerify,
-                  routes: [
-                    GoRoute(
-                        path: _Paths.authVerify,
-                        name: AppViews.authVerify,
-                        builder: (context, state) {
-                          final Map? data = state.extra as Map?;
-                          final String? phone = data!['phone'] as String?;
-                          return PhoneVerify(
-                            isLogin: true,
-                            phone: phone ?? '',
-                          );
-                        }),
-                  ],
-                  builder: (context, state) {
-                    final Map? data = state.extra as Map?;
-                    final String? phone = data!['phone'] as String?;
-                    return PhoneVerify(
-                      phone: phone ?? '',
-                    );
-                  },
-                ),
-                GoRoute(
-                    path: _Paths.welcomeScreen,
-                    name: AppViews.welcomeScreen,
+                    path: _Paths.authVerify,
+                    name: AppViews.authVerify,
+                    builder: (context, state) {
+                      return PhoneVerify(
+                        isLogin: true,
+                      );
+                    }),
+              ],
+              builder: (context, state) {
+                return PhoneVerify();
+              },
+            ),
+            GoRoute(
+                path: _Paths.welcomeScreen,
+                name: AppViews.welcomeScreen,
+                routes: [
+                  GoRoute(
+                    path: _Paths.registerFillName,
+                    name: AppViews.registerFillName,
+                    builder: (context, state) {
+                      return RegisterFillName();
+                    },
                     routes: [
                       GoRoute(
-                          path: _Paths.registerFillName,
-                          name: AppViews.registerFillName,
-                          builder: (context, state) => const RegisterFillName(),
-                          routes: [
-                            GoRoute(
-                                path: _Paths.registerFillBabyName,
-                                name: AppViews.registerFillBabyName,
-                                builder: (context, state) =>
-                                    const RegisterBabyNameScreen(),
+                        path: _Paths.registerFillBabyName,
+                        name: AppViews.registerFillBabyName,
+                        builder: (context, state) {
+                          return RegisterBabyNameScreen();
+                        },
+                        routes: [
+                          GoRoute(
+                            path: _Paths.registerFillAnotherBabyInfo,
+                            name: AppViews.registerFillAnotherBabyInfo,
+                            builder: (context, state) {
+                              return RegisterFillAnotherBabyInfoScreen();
+                            },
+                            routes: [
+                              GoRoute(
+                                path: _Paths.registerInfoAboutChildbirth,
+                                name: AppViews.registerInfoAboutChildbirth,
+                                builder: (context, state) {
+                                  return RegisterInfoAboutChildbirth();
+                                },
                                 routes: [
                                   GoRoute(
-                                      path: _Paths.registerFillAnotherBabyInfo,
-                                      name:
-                                          AppViews.registerFillAnotherBabyInfo,
-                                      builder: (context, state) =>
-                                          const RegisterFillAnotherBabyInfoScreen(),
-                                      routes: [
-                                        GoRoute(
-                                            path: _Paths
-                                                .registerInfoAboutChildbirth,
-                                            name: AppViews
-                                                .registerInfoAboutChildbirth,
-                                            builder: (context, state) =>
-                                                const RegisterInfoAboutChildbirth(),
-                                            routes: [
-                                              GoRoute(
-                                                path: _Paths.citySearch,
-                                                name: AppViews.citySearch,
-                                                builder: (context, state) =>
-                                                    const CitySearchView(),
-                                              ),
-                                            ]),
-                                      ]),
-                                ]),
-                          ]),
+                                    path: _Paths.citySearch,
+                                    name: AppViews.citySearch,
+                                    builder: (context, state) {
+                                      return CitySearchView();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ],
-                    builder: (context, state) => const WelcomeScreen()),
-                GoRoute(
-                  path: _Paths.congratsScreen,
-                  name: AppViews.congratsScreen,
-                  builder: (context, state) => const CongratsScreen(),
-                ),
-              ]),
-        ]),
+                  ),
+                ],
+                builder: (context, state) => const WelcomeScreen()),
+            GoRoute(
+              path: _Paths.congratsScreen,
+              name: AppViews.congratsScreen,
+              builder: (context, state) => const CongratsScreen(),
+            ),
+          ],
+        ),
+      ],
+    ),
     GoRoute(
       path: _Paths.homeScreen,
       name: AppViews.homeScreen,
@@ -283,8 +304,10 @@ abstract class _Paths {
   static const String homeScreen = '/${AppViews.homeScreen}';
 
   static const trackersHealthPath = AppViews.trackersHealthView;
-  static const trackersHealthAddTemperaturePath =
-      AppViews.trackersHealthAddTemperatureView;
+  static const trackersHealthAddTemperaturePath = AppViews.addTemperature;
+
+  // static const healthMedicine = AppViews.healthMedicine;
+  static const addMedicine = AppViews.addMedicine;
 
   static const servicesUserPath = AppViews.servicesUserView;
   static const servicesSleepMusicPath = AppViews.servicesSleepMusicView;

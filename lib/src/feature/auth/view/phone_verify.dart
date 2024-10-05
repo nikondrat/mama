@@ -8,9 +8,11 @@ import 'package:provider/provider.dart';
 
 class PhoneVerify extends StatelessWidget {
   final bool isLogin;
-  final String phone;
 
-  const PhoneVerify({super.key, this.isLogin = false, required this.phone});
+  const PhoneVerify({
+    super.key,
+    this.isLogin = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,76 +22,69 @@ class PhoneVerify extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(
-          create: (context) => VerifyStore(
-            restClient: context.read<Dependencies>().restClient,
-            formattedPhoneNumber: phone,
-          ),
-        ),
-        Provider(
           create: (context) => StopwatchStore(),
         ),
       ],
-      builder: (context, child) => Scaffold(
-          body: BodyDecoration(
-              backgroundImage: DecorationImage(
-                image: AssetImage(
-                  Assets.images.authDecor.path,
+      builder: (context, child) {
+        return Scaffold(
+            body: BodyDecoration(
+                backgroundImage: DecorationImage(
+                  image: AssetImage(
+                    Assets.images.authDecor.path,
+                  ),
+                  alignment: Alignment.topLeft,
                 ),
-                alignment: Alignment.topLeft,
-              ),
-              child: AppBody(
-                  builder: (windowWidth, windowSize) => Padding(
-                      padding: HorizontalSpacing.centered(windowWidth),
-                      child: Column(
-                        children: [
-                          const Spacer(),
-                          SvgPicture.asset(
-                            Assets.images.mamaCo,
-                          ),
-                          20.h,
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: AutoSizeText(
-                                    t.auth.slogan,
-                                    textAlign: TextAlign.center,
-                                    style: textTheme.bodySmall!.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    SvgPicture.asset(
+                      Assets.images.mamaCo,
+                    ),
+                    20.h,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: AutoSizeText(
+                              t.auth.slogan,
+                              textAlign: TextAlign.center,
+                              style: textTheme.bodySmall!.copyWith(
+                                fontWeight: FontWeight.w600,
                               ),
-                            ],
+                            ),
                           ),
-                          20.h,
-                          VerifyInputBody(
-                            isLogin: isLogin,
-                            phone: phone,
-                            store: context.watch(),
-                          ),
-                          const Spacer(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                  onPressed: () => context.pushNamed(isLogin
-                                      ? AppViews.register
-                                      : AppViews.auth),
-                                  child: AutoSizeText(
-                                    isLogin
-                                        ? t.auth.noAccount
-                                        : t.auth.alreadyHaveAccount,
-                                    style: textTheme.titleMedium,
-                                  )),
-                            ],
-                          ),
-                          20.h,
-                        ],
-                      ))))),
+                        ),
+                      ],
+                    ),
+                    20.h,
+                    VerifyInputBody(
+                      isLogin: isLogin,
+                      store: context.watch(),
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              context.pushNamed(
+                                isLogin ? AppViews.register : AppViews.auth,
+                              );
+                            },
+                            child: AutoSizeText(
+                              isLogin
+                                  ? t.auth.noAccount
+                                  : t.auth.alreadyHaveAccount,
+                              style: textTheme.titleMedium,
+                            )),
+                      ],
+                    ),
+                    20.h,
+                  ],
+                )));
+      },
     );
   }
 }

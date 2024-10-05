@@ -17,19 +17,19 @@ class CustomBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
-      child: DecoratedBox(
+      child: Container(
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
-          borderRadius: BorderRadius.all(Radius.circular(32)),
+          borderRadius: const BorderRadius.all(Radius.circular(32)),
           boxShadow: [
             BoxShadow(
               blurRadius: 1,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
               color: AppColors.deepBlue.withOpacity(0.1),
             ),
             BoxShadow(
               blurRadius: 8,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
               color: AppColors.skyBlue.withOpacity(0.15),
             ),
           ],

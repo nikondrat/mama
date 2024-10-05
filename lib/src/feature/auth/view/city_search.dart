@@ -4,10 +4,14 @@ import 'package:mama/src/feature/auth/widgets/city_search_body.dart';
 import 'package:provider/provider.dart';
 
 class CitySearchView extends StatelessWidget {
-  const CitySearchView({super.key});
+  const CitySearchView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final VerifyStore verifyStore = context.watch();
+
     return Provider(
       create: (context) => SearchCityStore(
         restClient: context.read<Dependencies>().restClient,
@@ -23,11 +27,11 @@ class CitySearchView extends StatelessWidget {
               ),
               alignment: Alignment.topLeft,
             ),
-            child: AppBody(
-                builder: (windowWidth, windowSize) => Padding(
-                      padding: HorizontalSpacing.centered(windowWidth),
-                      child: CitySearchBody(store: store),
-                    )),
+            child: CitySearchBody(
+              store: store,
+              verifyStore: verifyStore,
+              authViewStore: context.watch(),
+            ),
           ),
         );
       },

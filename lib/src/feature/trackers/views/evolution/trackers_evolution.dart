@@ -30,7 +30,7 @@ class _EvolutionViewState extends State<EvolutionView>
         height: 110,
         title: t.trackers.evolution,
         tabController: _tabController,
-        action: ProfileWidget(),
+        action: const ProfileWidget(),
         tabs: [
           t.trackers.weight.title,
           t.trackers.growth,
@@ -40,7 +40,7 @@ class _EvolutionViewState extends State<EvolutionView>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           Center(child: Weight()),
           Center(child: Height()),
           Center(child: Head()),

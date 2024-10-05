@@ -3,93 +3,97 @@ import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
 class TrackersView extends StatelessWidget {
-  const TrackersView({super.key});
+  final CustomAppBar appBar;
+  const TrackersView({super.key, required this.appBar});
 
   @override
   Widget build(BuildContext context) {
     // const Size iconSize = Size(100, 180);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView(
-        // mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
+    return Scaffold(
+      appBar: appBar,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: CategoryCard(
+                    onTap: () {
+                      context.pushNamed(AppViews.evolutionView);
+                    },
+                    title: 'Развитие',
+                    icon: IconModel(
+                      // size: iconSize,
+                      iconPath: Assets.images.grow.path,
+                    ),
+                    backgroundColor: AppColors.blueLighter1,
+                  ),
+                ),
+                16.w,
+                Expanded(
+                  child: CategoryCard(
+                    onTap: () {},
+                    title: 'Сон и плач',
+                    icon: IconModel(
+                      // size: iconSize,
+                      iconPath: Assets.images.sleep.path,
+                    ),
+                    backgroundColor: AppColors.lavenderBlue,
+                  ),
+                ),
+              ],
+            ),
+            16.h,
+            Row(children: [
               Expanded(
                 child: CategoryCard(
                   onTap: () {
-                    context.pushNamed(AppViews.evolutionView);
+                    context.pushNamed(AppViews.feeding);
                   },
-                  title: "Развитие",
+                  title: 'Кормление',
                   icon: IconModel(
                     // size: iconSize,
-                    iconPath: Assets.images.grow.path,
+                    iconPath: Assets.images.feeding.path,
                   ),
-                  backgroundColor: AppColors.blueLighter1,
+                  backgroundColor: AppColors.paleBlue,
                 ),
-              ),
-              16.w,
-              Expanded(
-                child: CategoryCard(
-                  onTap: () {},
-                  title: "Сон и плач",
-                  icon: IconModel(
-                    // size: iconSize,
-                    iconPath: Assets.images.sleep.path,
+              )
+            ]),
+            16.h,
+            Row(
+              children: [
+                Expanded(
+                  child: CategoryCard(
+                    onTap: () {
+                      context.pushNamed(AppViews.trackersHealthView);
+                    },
+                    title: 'Здоровье',
+                    icon: IconModel(
+                      // size: iconSize,
+                      iconPath: Assets.images.health.path,
+                    ),
+                    backgroundColor: AppColors.lightPurple,
                   ),
-                  backgroundColor: AppColors.lavenderBlue,
                 ),
-              ),
-            ],
-          ),
-          16.h,
-          Row(children: [
-            Expanded(
-              child: CategoryCard(
-                onTap: () {
-                  context.pushNamed(AppViews.feeding);
-                },
-                title: "Кормление",
-                icon: IconModel(
-                  // size: iconSize,
-                  iconPath: Assets.images.feeding.path,
-                ),
-                backgroundColor: AppColors.paleBlue,
-              ),
-            )
-          ]),
-          16.h,
-          Row(
-            children: [
-              Expanded(
-                child: CategoryCard(
-                  onTap: () {
-                    context.pushNamed(AppViews.trackersHealthView);
-                  },
-                  title: "Здоровье",
-                  icon: IconModel(
-                    // size: iconSize,
-                    iconPath: Assets.images.health.path,
+                16.w,
+                Expanded(
+                  child: CategoryCard(
+                    onTap: () {},
+                    title: 'Подгузники',
+                    icon: IconModel(
+                      // size: iconSize,
+                      iconPath: Assets.images.diaper.path,
+                    ),
+                    backgroundColor: AppColors.mintGreen,
                   ),
-                  backgroundColor: AppColors.lightPurple,
                 ),
-              ),
-              16.w,
-              Expanded(
-                child: CategoryCard(
-                  onTap: () {},
-                  title: "Подгузники",
-                  icon: IconModel(
-                    // size: iconSize,
-                    iconPath: Assets.images.diaper.path,
-                  ),
-                  backgroundColor: AppColors.mintGreen,
-                ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

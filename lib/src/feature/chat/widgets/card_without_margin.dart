@@ -14,7 +14,7 @@ class CardWithoutMargin extends StatelessWidget {
         elevation: 1,
         color: AppColors.whiteColor,
         margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(24))),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8.0),

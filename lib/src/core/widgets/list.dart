@@ -18,7 +18,7 @@ class CustomList<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        padding: padding ?? EdgeInsets.all(8),
+        padding: padding ?? const EdgeInsets.all(8),
         itemBuilder: (context, index) => itemBuilder(data[index]),
         separatorBuilder: (context, index) =>
             SizedBox(height: itemVerticalMargin ?? 8),

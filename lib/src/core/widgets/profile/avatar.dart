@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
 class CustomAvatar extends StatelessWidget {
-  final String avatarUrl;
+  final String? avatarUrl;
   final double radius;
   const CustomAvatar({
     super.key,
@@ -24,12 +24,17 @@ class CustomAvatar extends StatelessWidget {
               color: AppColors.primaryColor.withOpacity(.1), // Цвет тени
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ]),
       child: CircleAvatar(
         radius: radius,
-        backgroundImage: NetworkImage(avatarUrl),
+        backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null,
+        child: avatarUrl == null
+            ? const Center(
+                child: Icon(Icons.people),
+              )
+            : null,
       ),
     );
   }

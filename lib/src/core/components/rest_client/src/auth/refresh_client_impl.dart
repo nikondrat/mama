@@ -1,27 +1,37 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:dio/dio.dart';
 import 'package:mama/src/data.dart';
 
-class RefreshClientImpl implements RefreshClient<String?> {
+class RefreshClientImpl implements RefreshClient<Map?> {
+  final Dio restClient;
   final TokenStorageImpl tokenStorage;
 
-  RefreshClientImpl({required this.tokenStorage});
+  RefreshClientImpl({required this.restClient, required this.tokenStorage});
 
   // final Dio _dio = Dio(); // Assuming you are using Dio for HTTP requests
 
   @override
-  Future<String?> refreshToken(token) async {
+  Future<Map?> refreshToken(token) async {
     try {
-      // Make a POST request to your token refresh endpoint
-      // final response = await _dio.post(
-      //   '${Config().apiUrl}/refresh-token',
-      //   data: {'token': token},
-      // );
+      final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
 
-      tokenStorage.clearTokenPair();
-
-      // Assuming your API responds with the new token in the 'newToken' key
-      // final newToken = response.data['access'];
+      restClient
+          .get(
+        '${Config().apiUrl}${Endpoint().accessToken}',
+        options: Options(
+          headers: {'Refresh-Token': 'Bearer $token'},
+          followRedirects: true,
+          contentType: 'application/json',
+          responseType: ResponseType.json,
+        ),
+      )
+          .then((v) {
+        tokenStorage.saveTokenPair({
+          'access': v.data['access_token'],
+          'refresh': v.data['refresh_token']
+        });
+      });
 
       return await Future.value();
     } catch (e) {

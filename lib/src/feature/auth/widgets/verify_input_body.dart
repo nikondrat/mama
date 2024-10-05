@@ -8,13 +8,11 @@ import 'package:provider/provider.dart';
 
 class VerifyInputBody extends StatefulWidget {
   final bool isLogin;
-  final String phone;
   final VerifyStore store;
 
   const VerifyInputBody({
     super.key,
     this.isLogin = false,
-    required this.phone,
     required this.store,
   });
 
@@ -48,13 +46,15 @@ class _VerifyInputBodyState extends State<VerifyInputBody> {
           ),
           20.h,
           AutoSizeText(
-            '${t.auth.sendSmsCode} +7 ${widget.phone}',
+            '${t.auth.sendSmsCode} +7 ${widget.store.phoneNumber}',
             style: textTheme.bodySmall!.copyWith(
               fontWeight: FontWeight.w600,
             ),
           ),
           20.h,
-          const VerifyInputWidget(),
+          VerifyInputWidget(
+            isLogin: widget.isLogin,
+          ),
           Observer(builder: (context) {
             // final bool isValid = verifyState.isValid;
 
@@ -66,7 +66,7 @@ class _VerifyInputBodyState extends State<VerifyInputBody> {
               height: 48,
               onTap: widget.store.isValid
                   ? () {
-                      context.pushNamed(widget.isLogin
+                      context.pushNamed(widget.store.isRegistered
                           ? AppViews.welcomeScreen
                           : AppViews.congratsScreen);
                     }

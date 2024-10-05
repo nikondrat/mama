@@ -7,19 +7,28 @@ part 'verify_state.g.dart';
 class VerifyStore extends _VerifyStore with _$VerifyStore {
   VerifyStore({
     required super.restClient,
-    required super.formattedPhoneNumber,
+    required super.tokenStorage,
   });
 }
 
 abstract class _VerifyStore with Store {
   final RestClient restClient;
-  final String formattedPhoneNumber;
+  final TokenStorage tokenStorage;
 
   _VerifyStore({
     required this.restClient,
-    required this.formattedPhoneNumber,
+    required this.tokenStorage,
   });
 
+  @observable
+  String formattedPhoneNumber = '';
+
+  @action
+  void setPhoneNumber(String value) {
+    formattedPhoneNumber = value;
+  }
+
+  @computed
   String get phoneNumber =>
       '+7${formattedPhoneNumber.replaceAll(' ', '').replaceAll('-', '')}';
 
@@ -28,6 +37,9 @@ abstract class _VerifyStore with Store {
 
   @observable
   String? error;
+
+  @observable
+  bool isRegistered = false;
 
   @action
   void sendCode() {
@@ -41,21 +53,77 @@ abstract class _VerifyStore with Store {
   }
 
   @action
-  void update(String value) {
+  void update(
+    String value,
+    bool isLogin, {
+    RegisterData? data,
+  }) {
     if (value.length == 4) {
       logger.info('len $value');
-      restClient
-          .patch(Endpoint().login, body: {
-            'code': value,
-            'phone': phoneNumber,
-            'fcm_token': '' // TODO: add fcm token
-          })
-          .then((v) {})
-          .catchError((e) {
-            error = t.auth.invalidPassword;
-          });
+
+      login(value, data: data);
     } else {
       error = null;
     }
+  }
+
+  @action
+  void login(
+    String code, {
+    RegisterData? data,
+  }) {
+    restClient.patch(Endpoint().login, body: {
+      'code': code,
+      'phone': phoneNumber,
+      'fcm_token': '' // TODO: add fcm token
+    }).then((v) async {
+      final String? refreshToken = v?['refresh_token'] as String?;
+
+      logger.info('refreshToken: $refreshToken');
+
+      final String? state = v?['state'] as String?;
+
+      if (refreshToken != null) {
+        await tokenStorage.saveTokenPair({'refresh': refreshToken});
+
+        logger.info('Status: $state');
+
+        if (state == 'ACTIVE') {
+          isRegistered = true;
+        }
+        logger.info('isRegistered: $isRegistered');
+      }
+    }).catchError((e) {
+      error = t.auth.invalidPassword;
+    });
+  }
+
+  void register({
+    required RegisterData data,
+  }) async {
+    final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
+
+    restClient.patch(Endpoint().register, headers: {
+      'Refresh-Token': 'Bearer $token',
+    }, body: {
+      'account': data.user.toJson(),
+      'child': data.child.toJson(),
+      'user': {
+        'city': data.city,
+      }
+    }).then((v) async {
+      final String? accessToken = v?['access_token'] as String?;
+
+      logger.info('accessToken: $accessToken');
+      await tokenStorage.saveTokenPair({'access': accessToken});
+    });
+  }
+
+  void logout() async {
+    await tokenStorage.clearTokenPair();
+
+    restClient.get(Endpoint().logout).then((_) {
+      router.replaceNamed(AppViews.startScreen);
+    });
   }
 }

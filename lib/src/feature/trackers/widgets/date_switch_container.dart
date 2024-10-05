@@ -52,7 +52,7 @@ class _DateSwitchContainerState extends State<DateSwitchContainer> {
           content: Text(
             "Тандалган убакыт: ${selectedDate!.day}.${selectedDate!.month}.${selectedDate!.year} ${selectedTime!.format(context)}",
           ),
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 3),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
@@ -63,7 +63,7 @@ class _DateSwitchContainerState extends State<DateSwitchContainer> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.all(2),
+      padding: const EdgeInsets.all(2),
       height: 35,
       decoration: BoxDecoration(
         color: AppColors.purpleLighterBackgroundColor,
@@ -92,7 +92,7 @@ class _DateSwitchContainerState extends State<DateSwitchContainer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               GestureDetector(
                 onTap: () async {
                   await DateTimeService.selectedTime(context, (value) {
@@ -118,7 +118,7 @@ class _DateSwitchContainerState extends State<DateSwitchContainer> {
                   ],
                 ),
               ),
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
               GestureDetector(
                 onTap: () async {
                   // await DateTimeService.selectedTime(context, (value) {
@@ -143,7 +143,7 @@ class _DateSwitchContainerState extends State<DateSwitchContainer> {
                             : AppColors.greyBrighterColor,
                       ),
                     ),
-                    SizedBox(width: 40),
+                    const SizedBox(width: 40),
                   ],
                 ),
               ),

@@ -5,7 +5,11 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
 class VerifyInputWidget extends StatefulWidget {
-  const VerifyInputWidget({super.key});
+  final bool isLogin;
+  const VerifyInputWidget({
+    super.key,
+    required this.isLogin,
+  });
 
   @override
   State<VerifyInputWidget> createState() => _VerifyInputWidgetState();
@@ -63,7 +67,10 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                         PinCodeTextField(
                             autoDisposeControllers: true,
                             onChanged: (value) {
-                              store.update(value);
+                              store.update(
+                                value,
+                                widget.isLogin,
+                              );
                             },
                             autoFocus: true,
                             hintCharacter: '0',
@@ -99,7 +106,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
                             children: List.generate(3, (e) {
-                              return Expanded(child: VerticalDivider());
+                              return const Expanded(child: VerticalDivider());
                             }).toList(),
                           ),
                         )

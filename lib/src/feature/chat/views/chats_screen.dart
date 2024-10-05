@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
 class ChatsScreen extends StatefulWidget {
+  final CustomAppBar appBar;
   // final MomInfo mom;
   const ChatsScreen({
     super.key,
+    required this.appBar,
     // required this.mom,
   });
 
@@ -18,23 +20,46 @@ class _ChatsScreenState extends State<ChatsScreen> {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
 
-    return ListView(
-      children: [
-        CardWithoutMargin(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Группы',
-                textAlign: TextAlign.center,
-                style: textTheme.labelLarge!
-                    .copyWith(color: AppColors.greyBrighterColor),
-              ),
-              8.h,
-              Flexible(
-                child: ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
+    return Scaffold(
+      appBar: widget.appBar,
+      backgroundColor: AppColors.purpleLighterBackgroundColor,
+      body: ListView(
+        children: [
+          CardWithoutMargin(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Группы',
+                  textAlign: TextAlign.center,
+                  style: textTheme.labelLarge!
+                      .copyWith(color: AppColors.greyBrighterColor),
+                ),
+                8.h,
+                Flexible(
+                  child: ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    separatorBuilder: (BuildContext context, int index) =>
+                        Divider(
+                      indent: MediaQuery.of(context).size.width * 0.15,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return const GroupChatItem();
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CardWithoutMargin(
+            child: Column(
+              children: [
+                ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: 4,
@@ -43,32 +68,14 @@ class _ChatsScreenState extends State<ChatsScreen> {
                     indent: MediaQuery.of(context).size.width * 0.15,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    return GroupChatItem();
+                    return const ChatItem();
                   },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        CardWithoutMargin(
-          child: Column(
-            children: [
-              ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: 4,
-                separatorBuilder: (BuildContext context, int index) => Divider(
-                  indent: MediaQuery.of(context).size.width * 0.15,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return ChatItem();
-                },
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -81,14 +88,18 @@ MomInfo mom = MomInfo(
   Assets.images.imgProfile.path,
   [
     ChildModel(
-        id: '',
-        firstName: 'Виктория',
-        secondName: '',
-        avatarUrl: Assets.images.imgProfile.path),
+      id: '',
+      firstName: 'Виктория',
+      secondName: '',
+      birthDate: DateTime.now(),
+      avatarUrl: Assets.images.imgProfile.path,
+    ),
     ChildModel(
-        id: '',
-        firstName: 'Андрей',
-        secondName: '',
-        avatarUrl: Assets.images.imgPerson1.path),
+      id: '',
+      firstName: 'Андрей',
+      secondName: '',
+      birthDate: DateTime.now(),
+      avatarUrl: Assets.images.imgPerson1.path,
+    ),
   ],
 );

@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/data.dart';
 
 import 'user_body.dart';
 
 class HomeBodyWidget extends StatelessWidget {
-  const HomeBodyWidget({super.key});
+  final CustomAppBar appBar;
+  const HomeBodyWidget({
+    super.key,
+    required this.appBar,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return HomeUserBody();
+    return Scaffold(
+      appBar: appBar,
+      body: const HomeUserBody(),
+    );
   }
 }

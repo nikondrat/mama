@@ -9,7 +9,7 @@ class ChildInfo {
   final double? weight;
   final int? height;
   final int? headCircumference;
-  final Birth birth;
+  final Childbirth birth;
   final bool birthComplications;
   final String? notes;
 
@@ -45,35 +45,3 @@ class MomInfo {
     this.childs,
   );
 }
-
-enum Gender {
-  female,
-  male,
-}
-
-enum Birth {
-  natural,
-  cesarean,
-}
-
-// extension GenderExtension on Gender {
-//   String get name {
-//     switch (this) {
-//       case Gender.male:
-//         return t.profile.boy;
-//       case Gender.female:
-//         return t.profile.girl;
-//     }
-//   }
-// }
-
-// extension BirthExtension on Birth {
-//   String get name {
-//     switch (this) {
-//       case Birth.natural:
-//         return t.profile.nature;
-//       case Birth.cesarean:
-//         return t.profile.cesarean;
-//     }
-//   }
-// }
