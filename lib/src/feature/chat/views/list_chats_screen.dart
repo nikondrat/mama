@@ -1,22 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
-import 'package:mama/src/feature/chat/views/group_chat.dart';
+import 'package:mama/src/feature/chat/views/chat_screen.dart';
 
 import '../../../core/widgets/custom_toggle_button.dart';
 
-class ChatsScreen extends StatefulWidget {
+class ChatsListScreen extends StatefulWidget {
   final CustomAppBar appBar;
-  const ChatsScreen({
+  const ChatsListScreen({
     super.key,
     required this.appBar,
   });
 
   @override
-  State<ChatsScreen> createState() => _ChatsScreenState();
+  State<ChatsListScreen> createState() => _ChatsListScreenState();
 }
 
-class _ChatsScreenState extends State<ChatsScreen> {
+class _ChatsListScreenState extends State<ChatsListScreen> {
   var toogleSelected = 0;
   List<ChatModelSingle> sortdlistSingle = [];
 
@@ -41,6 +41,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.purpleLighterBackgroundColor,
+      appBar: widget.appBar,
       body: ListView(
         children: [
           CardWithoutMargin(
@@ -71,7 +72,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => GroupChatScreen(
+                                builder: (context) => ChatScreen(
                                   groupChat: listChatGroup[0],
                                   listMessages: listGroup,
                                   chatEntity: ChatEntity.groupChat,
@@ -124,7 +125,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => GroupChatScreen(
+                              builder: (context) => ChatScreen(
                                 listMessages: list,
                                 chatEntity: ChatEntity.singleChat,
                                 singleChat: sortdlistSingle[index],

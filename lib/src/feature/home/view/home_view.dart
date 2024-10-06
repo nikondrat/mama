@@ -48,7 +48,7 @@ class _HomeViewState extends State<HomeView>
               TrackersView(
                 appBar: appBar,
               ),
-              ChatsScreen(
+              ChatsListScreen(
                 appBar: appBar,
               ),
               ServicesUserView(

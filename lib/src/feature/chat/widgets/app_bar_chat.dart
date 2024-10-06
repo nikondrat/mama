@@ -11,7 +11,8 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? profession;
   final String? avatarUrl;
   final Widget? action;
-
+  final VoidCallback onTapSearch;
+  final VoidCallback? onTapAvatar;
   final TabController? tabController;
   final List<String>? tabs;
 
@@ -25,6 +26,8 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.subTitle,
     this.avatarUrl,
     this.profession,
+    required this.onTapSearch,
+    this.onTapAvatar,
   });
 
   @override
@@ -90,15 +93,25 @@ class ChatsAppBar extends StatelessWidget implements PreferredSizeWidget {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Image.asset(
-                            height: 28,
-                            Assets.icons.magnifier.path,
+                          GestureDetector(
+                            onTap: () {
+                              onTapSearch();
+                            },
+                            child: Image.asset(
+                              height: 28,
+                              Assets.icons.magnifier.path,
+                            ),
                           ),
                           8.w,
-                          CircleAvatar(
-                            radius: 23,
-                            backgroundImage: AssetImage(
-                              avatarUrl!,
+                          GestureDetector(
+                            onTap: () {
+                              onTapAvatar!();
+                            },
+                            child: CircleAvatar(
+                              radius: 23,
+                              backgroundImage: AssetImage(
+                                avatarUrl!,
+                              ),
                             ),
                           ),
                         ],
