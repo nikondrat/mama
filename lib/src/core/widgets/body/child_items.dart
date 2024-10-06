@@ -17,6 +17,7 @@ class ChildItems extends StatelessWidget {
       itemCount: childs.length,
       itemBuilder: (context, index) {
         return ChildItem(
+          index: index,
           model: childs[index],
         );
       },

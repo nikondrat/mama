@@ -4,31 +4,31 @@ part 'user_model.g.dart';
 
 @JsonSerializable()
 class UserModel {
-  @JsonKey()
+  @JsonKey(includeToJson: false)
   final String id;
 
-  @JsonKey(name: 'account_id')
+  @JsonKey(name: 'account_id', includeToJson: false)
   final String accountId;
 
   @JsonKey()
   final String city;
 
-  @JsonKey(name: 'created_id')
+  @JsonKey(name: 'created_id', includeToJson: false)
   final String createdId;
 
-  @JsonKey(name: 'end_prime')
+  @JsonKey(name: 'end_prime', includeToJson: false)
   final String endPrime;
 
-  @JsonKey()
+  @JsonKey(includeToJson: false)
   final List<String> roles;
 
-  @JsonKey(name: 'start_prime')
+  @JsonKey(name: 'start_prime', includeToJson: false)
   final String startPrime;
 
-  @JsonKey(name: 'type_prime')
+  @JsonKey(name: 'type_prime', includeToJson: false)
   final String typePrime;
 
-  @JsonKey(name: 'updated_id')
+  @JsonKey(name: 'updated_id', includeToJson: false)
   final String updatedId;
 
   UserModel(
@@ -52,5 +52,4 @@ class UserModel {
   String toString() {
     return 'UserModel{accountId: $accountId, city: $city, createdAt: $createdId, endPrime: $endPrime, id: $id, roles: $roles, startPrime: $startPrime, typePrime: $typePrime, updatedId: $updatedId}';
   }
-
 }
