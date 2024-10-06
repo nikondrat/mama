@@ -36,60 +36,67 @@ class TableWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         _RowText(
-                          text: item.dateTime,
+                          text: item.firstColumnText,
                           type: RowTextType.title,
                         ),
                         _RowText(
-                          text: item.allLeftSideTime,
+                          text: item.secondColumnText,
                           type: RowTextType.titleText,
                         ),
                         _RowText(
-                          text: item.allRightSideTime,
+                          text: item.thirdColumnText,
                           type: RowTextType.titleText,
                         ),
                         _RowText(
-                          text: item.allTime,
+                          text: item.fourthColumnText ?? '',
                           type: RowTextType.titleText,
                         ),
                       ],
                     ),
                     5.h,
                     SizedBox(
-                      height: item.detailTimeOfFeeding.length * 25,
+                      height: item.detailColumnText.length * 25,
                       child: ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            final detailInfo = item.detailTimeOfFeeding[index];
+                            final detailInfo = item.detailColumnText[index];
+                            var rowList = [
+                              detailInfo.detailFirstColumnText,
+                              detailInfo.detailSecondColumnText,
+                              detailInfo.detailThirdColumnText,
+                              detailInfo.detailFourthColumnText,
+                            ];
                             return Table(
                               children: [
                                 TableRow(children: [
                                   _RowText(
-                                    text: detailInfo.time,
+                                    text: detailInfo.detailFirstColumnText,
                                     type: RowTextType.text,
                                   ),
                                   _RowText(
-                                    text: detailInfo.leftTime,
+                                    text: detailInfo.detailSecondColumnText,
                                     type: RowTextType.text,
                                     alignEnd: true,
                                   ),
                                   _RowText(
-                                    text: detailInfo.rightTime,
+                                    text: detailInfo.detailThirdColumnText,
                                     type: RowTextType.text,
                                     alignEnd: true,
                                   ),
-                                  _RowText(
-                                    text: detailInfo.allTime,
+                                   _RowText(
+                                    text: detailInfo.detailFourthColumnText ?? '',
                                     type: RowTextType.text,
                                     alignEnd: true,
                                   ),
-                                ]),
+                                ]
+                                ),
                               ],
                             );
                           },
                           separatorBuilder: (context, index) {
                             return 5.h;
                           },
-                          itemCount: item.detailTimeOfFeeding.length),
+                          itemCount: item.detailColumnText.length),
                     )
                   ],
                 );

@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/feeding/widgets/play_button.dart';
+import 'package:provider/provider.dart';
 
 class AddFeedingWidget extends StatelessWidget {
   const AddFeedingWidget({super.key});
@@ -35,27 +39,22 @@ class AddFeedingWidget extends StatelessWidget {
           Text(
             t.feeding.addFeeding,
             style: textTheme.titleMedium
-                ?.copyWith(
-                fontSize: 20,
-                color: AppColors.greyBrighterColor),
+                ?.copyWith(fontSize: 20, color: AppColors.greyBrighterColor),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('${t.feeding.pressForAddFeedingTime.first}  ',
-                  style: textTheme.labelLarge
-                      ?.copyWith(
+                  style: textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w400,
                       color: AppColors.greyBrighterColor)),
               SvgPicture.asset(Assets.icons.icPlayerBtn),
               Text('  ${t.feeding.pressForAddFeedingTime.second}',
-                  style: textTheme.labelLarge
-                      ?.copyWith(
+                  style: textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w400,
                       color: AppColors.greyBrighterColor)),
             ],
           ),
-
           30.h,
           Row(
             children: [
@@ -65,10 +64,9 @@ class AddFeedingWidget extends StatelessWidget {
                   type: CustomButtonType.outline,
                   onTap: () {},
                   icon: IconModel(iconPath: Assets.icons.icLearnMore),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  textStyle: textTheme.titleLarge?.copyWith(
-                      fontSize: 10
-                  ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  textStyle: textTheme.titleLarge?.copyWith(fontSize: 10),
                   title: t.feeding.learnMoreBtn,
                 ),
               ),
@@ -80,9 +78,10 @@ class AddFeedingWidget extends StatelessWidget {
                   onTap: () {},
                   title: t.feeding.addManually,
                   icon: IconModel(iconPath: Assets.icons.icCalendar),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-                  textStyle: textTheme.bodyMedium?.copyWith(
-                      color: AppColors.primaryColor),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                  textStyle: textTheme.bodyMedium
+                      ?.copyWith(color: AppColors.primaryColor),
                 ),
               ),
             ],
