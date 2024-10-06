@@ -237,13 +237,6 @@ final GoRouter router = GoRouter(
             )
           ],
         ),
-        GoRoute(
-          path: _Paths.chatView,
-          name: AppViews.chatView,
-          builder: (context, state) => const ChatsScreen(
-            appBar: CustomAppBar(),
-          ),
-        ),
       ],
     ),
   ],
