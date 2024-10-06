@@ -40,9 +40,23 @@ abstract class _UserStore with Store {
 
   static ObservableFuture<UserData> emptyResponse = ObservableFuture.value(
       UserData(
-          account: AccountModel(
-              gender: Gender.female, firstName: '', phone: '', secondName: ''),
-          childs: []));
+          account:
+              AccountModel(
+                  gender: Gender.female,
+                  firstName: '',
+                  phone: '',
+                  secondName: ''),
+          childs: [],
+          user: UserModel(
+              accountId: '',
+              city: '',
+              createdId: '',
+              endPrime: '',
+              id: '',
+              roles: [],
+              startPrime: '',
+              typePrime: '',
+              updatedId: '')));
 
   @action
   void updateData({

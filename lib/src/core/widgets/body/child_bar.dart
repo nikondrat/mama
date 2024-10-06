@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 import 'package:reactive_date_time_picker/reactive_date_time_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -23,6 +24,9 @@ class ChildBarWidget extends StatelessWidget {
     );
     final TextStyle titleStyle =
         textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w400);
+
+    final ChildStore childStore = context.watch();
+    final UserStore userStore = context.watch();
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +67,10 @@ class ChildBarWidget extends StatelessWidget {
                     side: const BorderSide(color: AppColors.redColor, width: 1),
                     minimumSize:
                         Size(MediaQuery.of(context).size.width / 4, 28)),
-                onPressed: () {},
+                onPressed: () {
+                  childStore.delete(id: child.id!);
+                  userStore.children.removeWhere((e) => e.id == child.id);
+                },
                 child: Text(
                   t.profile.deleteChildButtonTitle,
                   style: helpersStyle.copyWith(

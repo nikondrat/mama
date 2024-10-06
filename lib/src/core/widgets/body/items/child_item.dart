@@ -6,9 +6,11 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class ChildItem extends StatefulWidget {
+  final int index;
   final ChildModel model;
   const ChildItem({
     super.key,
+    required this.index,
     required this.model,
   });
 
@@ -89,7 +91,7 @@ class _ChildItemState extends State<ChildItem> {
       return Column(
         children: [
           BodyGroup(
-              title: t.profile.childTitle,
+              title: widget.index == 0 ? t.profile.childTitle : '',
               formGroup: formGroup,
               isDecorated: true,
               items: [

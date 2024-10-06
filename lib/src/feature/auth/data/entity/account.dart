@@ -12,7 +12,16 @@ class AccountModel extends _AccountModel with _$AccountModel {
   @JsonKey(name: 'fcm_token')
   String fcmToken;
 
+  @JsonKey(includeToJson: false)
+  final String? profession;
+
   Gender gender;
+
+  @JsonKey(includeToJson: false)
+  final Role? role;
+
+  @JsonKey(includeToJson: false)
+  final Status? status;
 
   AccountModel({
     this.fcmToken = '',
@@ -23,6 +32,10 @@ class AccountModel extends _AccountModel with _$AccountModel {
     super.avatarUrl,
     super.email,
     super.info,
+    this.id,
+    this.profession,
+    this.role,
+    this.status,
   });
 
   factory AccountModel.fromJson(Map<String, dynamic> json) =>
@@ -64,4 +77,20 @@ abstract class _AccountModel with Store {
   @observable
   @JsonKey(name: 'info')
   String? info;
+}
+
+enum Role {
+  @JsonValue('ADMIN')
+  admin,
+
+  @JsonValue('USER')
+  user
+}
+
+enum Status {
+  @JsonValue('SUBSCRIBED')
+  subscribed,
+
+  @JsonValue('NO_SUBSCRIBED')
+  noSubscribe
 }
