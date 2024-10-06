@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 class HomeUserBody extends StatelessWidget {
   const HomeUserBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final UserStore userStore = context.watch();
     final String locale =
         TranslationProvider.of(context).flutterLocale.languageCode;
 
@@ -33,10 +35,8 @@ class HomeUserBody extends StatelessWidget {
 
               // t.home.todayIsFridaySeptemberTwentySecond.title,
             )),
-        24.h,
-
-        /// #baby image
-        const ChildInfo(),
+        if (userStore.children.isNotEmpty) 24.h,
+        if (userStore.children.isNotEmpty) const ChildInfo(),
         26.h,
 
         /// #services
