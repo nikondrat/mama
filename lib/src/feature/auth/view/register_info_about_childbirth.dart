@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/widgets/custom_toggle_button.dart';
 import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
@@ -29,22 +30,16 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                 Spacer(),
                 TitleWidget(text: t.register.howWasBirth),
                 20.h,
-                FlutterToggleButton(
-                  outerContainerMargin: 3,
-                  buttonWidth: 200,
-                  buttonHeight: 38,
-                  buttonColor: Colors.white,
-                  enableTextColor: AppColors.primaryColor,
-                  disableTextColor: AppColors.greyBrighterColor,
-                  disableTextFontWeight: FontWeight.w700,
-                  buttonTextFontSize: 17,
-                  borderRadius: 6,
-                  outerContainerColor: const Color(0xFFE1E6FF),
-                  onTap: (index) {
-                    store.child.setChildbirth(Childbirth.values[index]);
-                  },
-                  items: [t.register.natural, t.register.caesarean],
-                ),
+                CustomToggleButton(
+                  fontSize: 17,
+                    items: [
+                      t.register.natural, t.register.caesarean
+                    ],
+                    onTap: (index){
+                      store.child.setChildbirth(Childbirth.values[index]);
+                    },
+                    btnWidth: 175,
+                    btnHeight: 38),
                 20.h,
                 Row(
                   children: [
@@ -69,13 +64,15 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                       Expanded(
                         child: CustomButton(
                           height: 50,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 5),
                           type: CustomButtonType.outline,
                           title: t.register.skip,
                           maxLines: 1,
                           onTap: () => context.pushNamed(AppViews.citySearch),
                         ),
                       ),
-                      20.w,
+                      10.w,
                       Expanded(
                           flex: 2,
                           child: CustomButton(

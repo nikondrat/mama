@@ -44,6 +44,8 @@ class _CitySearchBodyState extends State<CitySearchBody> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final TextTheme textTheme = themeData.textTheme;
     return Observer(builder: (value) {
       switch (widget.store.fetchCitiesFuture.status) {
         case FutureStatus.pending:
@@ -74,20 +76,23 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                       itemCount: widget.store.cities.length),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
                   child: SizedBox(
                     height: 100,
                     child: Row(
                       children: [
                         Expanded(
                           child: CustomButton(
+                            textStyle: textTheme.labelLarge?.copyWith(
+                              fontSize: 15
+                            ),
                             type: CustomButtonType.outline,
                             title: t.register.skip,
                             onTap: () =>
                                 context.goNamed(AppViews.welcomeScreen),
                           ),
                         ),
-                        20.w,
+                        10.w,
                         Expanded(
                             flex: 2,
                             child: CustomButton(

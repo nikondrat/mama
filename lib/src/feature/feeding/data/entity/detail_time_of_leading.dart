@@ -1,13 +1,13 @@
 class DetailTimeOfLeading{
-  final String time;
-  final String leftTime;
-  final String rightTime;
-  final String allTime;
+  final String detailFirstColumnText;
+  final String detailSecondColumnText;
+  final String detailThirdColumnText;
+  final String? detailFourthColumnText;
 
   DetailTimeOfLeading({
-    required this.time,
-    required this.leftTime,
-    required this.rightTime,
-    required this.allTime
+    required this.detailFirstColumnText,
+    required this.detailSecondColumnText,
+    required this.detailThirdColumnText,
+    this.detailFourthColumnText,
   });
 }

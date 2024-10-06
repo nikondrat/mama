@@ -12,4 +12,11 @@ class Endpoint {
   String get cities => '$geo/city';
 
   String get countries => '$geo/country';
+
+  static const String user = 'user';
+
+  String get userMe => '$user/me';
+
+  String get changeUserInfo => '/';
+
 }

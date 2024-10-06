@@ -42,20 +42,21 @@ abstract class _VerifyStore with Store {
 
   @action
   void update(String value) {
-    if (value.length == 4) {
-      logger.info('len $value');
-      restClient
-          .patch(Endpoint().login, body: {
-            'code': value,
-            'phone': phoneNumber,
-            'fcm_token': '' // TODO: add fcm token
-          })
-          .then((v) {})
-          .catchError((e) {
-            error = t.auth.invalidPassword;
-          });
-    } else {
-      error = null;
-    }
+    // if (value.length == 4) {
+    //   logger.info('len $value');
+    //   restClient
+    //       .patch(Endpoint().login, body: {
+    //         'code': value,
+    //         'phone': phoneNumber,
+    //         'fcm_token': '' // TODO: add fcm token
+    //       })
+    //       .then((v) {})
+    //       .catchError((e) {
+    //         error = t.auth.invalidPassword;
+    //       });
+    // }
+    // else {
+    //   error = null;
+    // }
   }
 }
