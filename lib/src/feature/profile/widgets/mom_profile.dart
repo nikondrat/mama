@@ -5,7 +5,11 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class MomsProfile extends StatefulWidget {
-  final MomInfo mom;
+  // final MomInfo mom;
+
+  final AccountModel accountModel;
+  final List<ChildModel> children;
+
   final TextStyle? titlesStyle;
   final TextStyle? helpersStyle;
   final TextStyle? titlesColoredStyle;
@@ -15,7 +19,8 @@ class MomsProfile extends StatefulWidget {
     this.titlesStyle,
     this.helpersStyle,
     this.titlesColoredStyle,
-    required this.mom,
+    required this.accountModel,
+    required this.children,
   });
 
   @override
@@ -30,19 +35,20 @@ class _MomsProfileState extends State<MomsProfile> {
   void initState() {
     formGroup = FormGroup({
       'name': FormControl<String>(
-        value: widget.mom.name,
+        value:
+            '${widget.accountModel.firstName} ${widget.accountModel.secondName}',
         validators: [Validators.required],
       ),
       'phone': FormControl<String>(
-        value: widget.mom.phone,
+        value: widget.accountModel.phone,
         validators: [Validators.required],
       ),
       'email': FormControl<String>(
-        value: widget.mom.mail,
+        value: widget.accountModel.email,
         validators: [Validators.required],
       ),
       'about': FormControl<String>(
-        value: widget.mom.notes,
+        value: widget.accountModel.info,
         validators: [Validators.required],
       ),
     });
@@ -68,9 +74,9 @@ class _MomsProfileState extends State<MomsProfile> {
 
     return Column(
       children: [
-        widget.mom.image == null
+        widget.accountModel.avatarUrl == null
             ? const DashedPhotoProfile()
-            : ProfilePhoto(img: widget.mom.image!),
+            : ProfilePhoto(img: widget.accountModel.avatarUrl!),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -105,6 +111,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'email',
+                      maxLines: 1,
                       hintText: t.profile.hintChangeEmail,
                       keyboardType: TextInputType.emailAddress,
                       titleStyle: titlesStyle,
@@ -115,6 +122,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'about',
+                      maxLines: 1,
                       hintText: t.profile.hintChangeNote,
                       titleStyle: titlesStyle,
                       inputHint: t.profile.labelChangeNote,
@@ -154,7 +162,7 @@ class _MomsProfileState extends State<MomsProfile> {
                     Opacity(
                       opacity: !subscribed ? 0.25 : 1,
                       child: ChildItems(
-                        childs: widget.mom.childs,
+                        childs: widget.children,
                       ),
                     ),
                     if (!subscribed) const SubscribeBlockItem(),

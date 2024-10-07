@@ -24,7 +24,7 @@ class _InputItemWidgetState extends State<InputItemWidget> {
   void initState() {
     focusNode.addListener(() {
       setState(() {
-        if (focusNode.hasFocus) {
+        if (focusNode.hasFocus && widget.item.needBackgroundOnFocus) {
           backgroundColor = AppColors.primaryColor;
           hintColor = AppColors.softPeach;
         } else {
