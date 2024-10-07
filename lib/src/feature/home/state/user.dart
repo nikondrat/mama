@@ -28,10 +28,29 @@ abstract class _UserStore with Store {
           gender: Gender.female, firstName: '', secondName: '', phone: '');
 
   @computed
-  List<ChildModel> get children => userData?.childs ?? [];
+  UserModel get user =>
+      userData?.user ??
+      UserModel(
+        accountId: '',
+        city: '',
+        createdId: '',
+        endPrime: '',
+        id: '',
+        roles: [],
+        startPrime: '',
+        typePrime: '',
+        updatedId: '',
+      );
+
+  @observable
+  ObservableList<ChildModel> children = ObservableList();
 
   @observable
   ChildModel? selectedChild;
+
+  @computed
+  List<ChildModel> get changedDataOfChild =>
+      children.where((element) => element.isChanged).toList();
 
   @computed
   bool get hasResults =>
@@ -66,7 +85,7 @@ abstract class _UserStore with Store {
     String? email,
     String? info,
   }) {
-    restClient.patch(Endpoint.user, body: {
+    restClient.patch('${Endpoint.user}/', body: {
       if (city != null) 'city': city,
       if (firstName != null) 'first_name': firstName,
       if (secondName != null) 'second_name': secondName,
@@ -81,7 +100,8 @@ abstract class _UserStore with Store {
         restClient.get(Endpoint().userData).then((v) {
       if (v != null) {
         final data = UserData.fromJson(v);
-        selectedChild = data.childs?.first;
+        selectedChild = data.childs.first;
+        children = ObservableList.of(data.childs);
         return data;
       }
       return emptyResponse;
