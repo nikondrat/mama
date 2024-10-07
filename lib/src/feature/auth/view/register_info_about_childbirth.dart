@@ -1,22 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/core/widgets/custom_toggle_button.dart';
 import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
 class RegisterInfoAboutChildbirth extends StatelessWidget {
+  final bool isNotRegister;
   const RegisterInfoAboutChildbirth({
     super.key,
+    required this.isNotRegister,
   });
 
   @override
   Widget build(BuildContext context) {
     final AuthViewStore store = context.watch();
+    final ChildStore childStore = context.watch();
+
+    void next() {
+      if (isNotRegister) {
+        childStore.add(model: store.child);
+        context.pushReplacementNamed(AppViews.profile);
+      } else {
+        context.pushNamed(
+          AppViews.citySearch,
+        );
+      }
+    }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: isNotRegister ? const CustomAppBar() : null,
       body: BodyDecoration(
         backgroundImage: DecorationImage(
           image: AssetImage(
@@ -74,11 +89,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                         type: CustomButtonType.outline,
                         title: t.register.skip,
                         maxLines: 1,
-                        onTap: () {
-                          context.pushNamed(
-                            AppViews.citySearch,
-                          );
-                        },
+                        onTap: next,
                       ),
                     ),
                     20.w,
@@ -90,11 +101,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 16),
                           title: t.register.next,
-                          onTap: () {
-                            context.pushNamed(
-                              AppViews.citySearch,
-                            );
-                          },
+                          onTap: next,
                         ))
                   ],
                 ),

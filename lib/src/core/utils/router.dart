@@ -110,42 +110,7 @@ final GoRouter router = GoRouter(
                     builder: (context, state) {
                       return RegisterFillName();
                     },
-                    routes: [
-                      GoRoute(
-                        path: _Paths.registerFillBabyName,
-                        name: AppViews.registerFillBabyName,
-                        builder: (context, state) {
-                          return RegisterBabyNameScreen();
-                        },
-                        routes: [
-                          GoRoute(
-                            path: _Paths.registerFillAnotherBabyInfo,
-                            name: AppViews.registerFillAnotherBabyInfo,
-                            builder: (context, state) {
-                              return RegisterFillAnotherBabyInfoScreen();
-                            },
-                            routes: [
-                              GoRoute(
-                                path: _Paths.registerInfoAboutChildbirth,
-                                name: AppViews.registerInfoAboutChildbirth,
-                                builder: (context, state) {
-                                  return RegisterInfoAboutChildbirth();
-                                },
-                                routes: [
-                                  GoRoute(
-                                    path: _Paths.citySearch,
-                                    name: AppViews.citySearch,
-                                    builder: (context, state) {
-                                      return CitySearchView();
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                    routes: [],
                   ),
                 ],
                 builder: (context, state) => const WelcomeScreen()),
@@ -239,6 +204,55 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: _Paths.registerFillBabyName,
+      name: AppViews.registerFillBabyName,
+      builder: (context, state) {
+        final Map? extra = state.extra as Map?;
+        final bool? isNotRegister = extra?['isNotRegister'] as bool?;
+
+        return RegisterBabyNameScreen(
+          isNotRegister: isNotRegister ?? false,
+        );
+      },
+      routes: [
+        GoRoute(
+          path: _Paths.registerFillAnotherBabyInfo,
+          name: AppViews.registerFillAnotherBabyInfo,
+          builder: (context, state) {
+            final Map? extra = state.extra as Map?;
+            final bool? isNotRegister = extra?['isNotRegister'] as bool?;
+
+            return RegisterFillAnotherBabyInfoScreen(
+              isNotRegister: isNotRegister ?? false,
+            );
+          },
+          routes: [
+            GoRoute(
+              path: _Paths.registerInfoAboutChildbirth,
+              name: AppViews.registerInfoAboutChildbirth,
+              builder: (context, state) {
+                final Map? extra = state.extra as Map?;
+                final bool? isNotRegister = extra?['isNotRegister'] as bool?;
+
+                return RegisterInfoAboutChildbirth(
+                  isNotRegister: isNotRegister ?? false,
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: _Paths.citySearch,
+                  name: AppViews.citySearch,
+                  builder: (context, state) {
+                    return CitySearchView();
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
   ],
 );
 
@@ -250,7 +264,8 @@ abstract class _Paths {
   static const String register = AppViews.register;
   static const String congratsScreen = AppViews.congratsScreen;
   static const String registerFillName = AppViews.registerFillName;
-  static const String registerFillBabyName = AppViews.registerFillBabyName;
+  static const String registerFillBabyName =
+      '/${AppViews.registerFillBabyName}';
   static const String registerFillAnotherBabyInfo =
       AppViews.registerFillAnotherBabyInfo;
   static const String registerInfoAboutChildbirth =

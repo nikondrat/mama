@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
+  final bool isNotRegister;
   const RegisterFillAnotherBabyInfoScreen({
     super.key,
+    required this.isNotRegister,
   });
 
   @override
@@ -49,6 +51,8 @@ class _RegisterFillAnotherBabyInfoScreenState
         color: AppColors.greyBrighterColor, fontWeight: FontWeight.w400);
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: widget.isNotRegister ? const CustomAppBar() : null,
       body: BodyDecoration(
         backgroundImage: DecorationImage(
           image: AssetImage(
@@ -162,9 +166,10 @@ class _RegisterFillAnotherBabyInfoScreenState
                         (store.headCircumference.value as String)
                             .extractNumber());
 
-                    context.pushNamed(
-                      AppViews.registerInfoAboutChildbirth,
-                    );
+                    context.pushNamed(AppViews.registerInfoAboutChildbirth,
+                        extra: {
+                          'isNotRegister': widget.isNotRegister,
+                        });
                   }),
               40.h
             ],

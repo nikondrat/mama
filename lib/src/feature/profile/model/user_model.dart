@@ -5,31 +5,31 @@ part 'user_model.g.dart';
 @JsonSerializable()
 class UserModel {
   @JsonKey(includeToJson: false)
-  final String id;
+  final String? id;
 
   @JsonKey(name: 'account_id', includeToJson: false)
-  final String accountId;
+  final String? accountId;
 
   @JsonKey()
-  final String city;
+  final String? city;
 
   @JsonKey(name: 'created_id', includeToJson: false)
-  final String createdId;
+  final String? createdId;
 
   @JsonKey(name: 'end_prime', includeToJson: false)
-  final String endPrime;
+  final String? endPrime;
 
   @JsonKey(includeToJson: false)
-  final List<String> roles;
+  final List<String?>? roles;
 
   @JsonKey(name: 'start_prime', includeToJson: false)
-  final String startPrime;
+  final String? startPrime;
 
   @JsonKey(name: 'type_prime', includeToJson: false)
-  final String typePrime;
+  final String? typePrime;
 
   @JsonKey(name: 'updated_id', includeToJson: false)
-  final String updatedId;
+  final String? updatedId;
 
   UserModel(
       {required this.accountId,
