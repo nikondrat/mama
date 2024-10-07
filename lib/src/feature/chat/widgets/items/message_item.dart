@@ -7,11 +7,13 @@ import 'package:mama/src/feature/chat/chat.dart';
 class MessageItemWidget extends StatelessWidget {
   final ChatEntity chatEntity;
   final MessageModel message;
+  final VoidCallback onTapReply;
 
   const MessageItemWidget({
     super.key,
     required this.message,
     required this.chatEntity,
+    required this.onTapReply,
   });
 
   @override
@@ -19,7 +21,7 @@ class MessageItemWidget extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
     return BubbleContainer(
-        onTapReply: () => message.onTapReply!(),
+        onTapReply: () => onTapReply(),
         color: AppColors.whiteColor,
         isSender: message.isSender,
         chatEntity: chatEntity,
@@ -79,7 +81,7 @@ class MessageItemWidget extends StatelessWidget {
         IntrinsicHeight(
           child: Row(
             children: [
-              VerticalDivider(
+              const VerticalDivider(
                   width: 3, thickness: 2, color: AppColors.primaryColor),
               5.w,
               Expanded(

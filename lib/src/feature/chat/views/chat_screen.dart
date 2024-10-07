@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart' as emoji;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/feature/chat/chat.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:mama/src/core/core.dart';
+import 'package:flutter/foundation.dart' as foundation;
 
 class ChatScreen extends StatefulWidget {
   final List<MessageModel> listMessages;
@@ -25,6 +27,9 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   late FormGroup formGroup;
   bool _isSearching = false;
+  List<MessageModel> sortedlistMessages = [];
+  bool _emojiShowing = false;
+  final _controller = TextEditingController();
 
   @override
   void initState() {
@@ -36,6 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
           // value: widget.model.firstName,
           ),
     });
+    sortedlistMessages = List.from(widget.listMessages);
     super.initState();
   }
 
@@ -46,8 +52,18 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void saveItem(ReplyItemWidget item) {
-    ReplyItemWidget _replyItem = item;
-    replyItem.add(_replyItem);
+    ReplyItemWidget reply = item;
+    replyItem.add(reply);
+  }
+
+  void filterMessage() {
+    sortedlistMessages = formGroup.control('search').isNotNull
+        ? widget.listMessages.where((item) {
+            return item.text
+                .toLowerCase()
+                .contains(formGroup.control('search').value.toLowerCase());
+          }).toList()
+        : widget.listMessages;
   }
 
   void clearList() {
@@ -94,37 +110,29 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Container(
               height: double.infinity,
-              decoration:
-                  BoxDecoration(color: AppColors.purpleLighterBackgroundColor),
+              decoration: const BoxDecoration(
+                  color: AppColors.purpleLighterBackgroundColor),
               child: ListView.builder(
-                itemCount: widget.listMessages.length,
+                itemCount: sortedlistMessages.length,
                 shrinkWrap: true,
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                physics: NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Expanded(
                     child: MessageItemWidget(
+                      onTapReply: () {
+                        setState(() {
+                          saveItem(ReplyItemWidget(
+                            replyItem: ReplyItem(
+                                sortedlistMessages[index]
+                                    .nameReciever
+                                    .toString(),
+                                sortedlistMessages[index].text),
+                          ));
+                        });
+                      },
                       chatEntity: widget.chatEntity,
-                      message: MessageModel(
-                        isSender: widget.listMessages[index].isSender,
-                        text: widget.listMessages[index].text,
-                        nameReciever: widget.listMessages[index].nameReciever,
-                        profession: widget.listMessages[index].profession,
-                        time: widget.listMessages[index].time,
-                        avatarParticipant:
-                            widget.listMessages[index].avatarParticipant,
-                        replyItem: widget.listMessages[index].replyItem,
-                        onTapReply: () {
-                          setState(() {
-                            saveItem(ReplyItemWidget(
-                              replyItem: ReplyItem(
-                                  widget.listMessages[index].nameReciever
-                                      .toString(),
-                                  widget.listMessages[index].text),
-                            ));
-                          });
-                        },
-                      ),
+                      message: sortedlistMessages[index],
                     ),
                   );
                 },
@@ -144,11 +152,49 @@ class _ChatScreenState extends State<ChatScreen> {
                         },
                         replyItem: replyItem[0].replyItem),
                   Container(
-                    decoration: BoxDecoration(color: AppColors.lightPirple),
+                    decoration:
+                        const BoxDecoration(color: AppColors.lightPirple),
                     child: SafeArea(
                         child: ReactiveForm(
                             formGroup: formGroup,
-                            child: MessageInput(formControllName: 'message'))),
+                            child: MessageInput(
+                                controller: _controller,
+                                onTapSmile: () {
+                                  setState(() {
+                                    _emojiShowing = !_emojiShowing;
+                                  });
+                                },
+                                formControllName: 'message'))),
+                  ),
+                  Offstage(
+                    offstage: !_emojiShowing,
+                    child: emoji.EmojiPicker(
+                      textEditingController: _controller,
+                      config: emoji.Config(
+                        height: 200,
+                        checkPlatformCompatibility: true,
+                        viewOrderConfig: const emoji.ViewOrderConfig(
+                          top: emoji.EmojiPickerItem.categoryBar,
+                          middle: emoji.EmojiPickerItem.emojiView,
+                          bottom: emoji.EmojiPickerItem.searchBar,
+                        ),
+                        emojiViewConfig: emoji.EmojiViewConfig(
+                          backgroundColor: AppColors.lightPirple,
+                          emojiSizeMax: 28 *
+                              (foundation.defaultTargetPlatform ==
+                                      TargetPlatform.iOS
+                                  ? 1.2
+                                  : 1.0),
+                        ),
+                        skinToneConfig: const emoji.SkinToneConfig(),
+                        categoryViewConfig: const emoji.CategoryViewConfig(
+                          backgroundColor: AppColors.lightPirple,
+                        ),
+                        bottomActionBarConfig:
+                            const emoji.BottomActionBarConfig(enabled: false),
+                        searchViewConfig: const emoji.SearchViewConfig(),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -161,28 +207,34 @@ class _ChatScreenState extends State<ChatScreen> {
 
   PreferredSizeWidget finder() {
     return PreferredSize(
-      preferredSize: Size.fromHeight(kToolbarHeight),
+      preferredSize: const Size.fromHeight(kToolbarHeight),
       child: Finder(
         hintText: t.chat.hintSearchChat,
         formControlName: 'search',
         onPressedClear: () {
           _stopSearching();
         },
-        onChange: () {},
+        onChange: () {
+          setState(() {
+            filterMessage();
+          });
+        },
       ),
     );
   }
 
   void _startSearch() {
-//!ToDo поиск
+//!ToDo подсветить искомые слова
     setState(() {
       _isSearching = true;
     });
+    filterMessage();
   }
 
   void _stopSearching() {
     setState(() {
       _isSearching = false;
+      formGroup.control('search').updateValue(null);
     });
   }
 }
