@@ -23,6 +23,8 @@ class ArticleCard extends StatelessWidget {
         context.pushNamed(AppViews.serviceKnowledgeInfo);
       },
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -30,52 +32,9 @@ class ArticleCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    height: 58,
-                    width: MediaQuery.of(context).size.width * 0.55,
-                    decoration: BoxDecoration(
-                      color: AppColors.greyColor,
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage:
-                              AssetImage(Assets.images.imgPerson1.path),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              author,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                fontFamily: Assets.fonts.sFProTextMedium,
-                              ),
-                            ),
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                color:
-                                    AppColors.gradientPurpleBackgroundScaffold,
-                                // light blue background
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                'Акушер',
-                                style: TextStyle(
-                                  color: AppColors.blueBrightTextColor,
-                                  // blue text color
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  CommonMedicBox(
+                    author: author,
+                    role: role,
                   ),
                 ],
               ),
@@ -84,12 +43,15 @@ class ArticleCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 8),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
+                  SizedBox(
+                    width: 222,
+                    height: 52,
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
-                    maxLines: 3,
                   ),
                 ],
               ),
@@ -100,15 +62,17 @@ class ArticleCard extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.greyButton,
                       foregroundColor: AppColors.greyBrighterColor,
+                      minimumSize: Size(122, 26),
                     ),
                     onPressed: () {},
                     child: Text('Развитие детей'),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.greyButton,
                       foregroundColor: AppColors.greyBrighterColor,
+                      minimumSize: Size(122, 26),
                     ),
                     onPressed: () {},
                     child: Text('6 месяцев'),
@@ -117,19 +81,82 @@ class ArticleCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 10),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(24),
               child: SizedBox(
                 height: 128,
-                width: MediaQuery.of(context).size.width * 0.5,
+                width: 144,
                 child: Image.asset(Assets.images.imgKid.path),
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class CommonMedicBox extends StatelessWidget {
+  const CommonMedicBox({super.key, required this.author, required this.role});
+
+  final String author;
+  final String role;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          height: 58,
+          width: MediaQuery.of(context).size.width * 0.55,
+          decoration: BoxDecoration(
+            color: AppColors.lightBlue,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage(Assets.images.imgPerson1.path),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    author,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      fontFamily: Assets.fonts.sFProTextMedium,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                    width: 52,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: AppColors.blueChildStatusBackgroundColor,
+                        // light blue background
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        role,
+                        style: TextStyle(
+                          color: AppColors.blue,
+                          // blue text color
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

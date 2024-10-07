@@ -47,9 +47,9 @@ class SavedFilesScreen extends StatelessWidget {
             );
           },
           separatorBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: const Column(
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Column(
                 children: [
                   Divider(),
                 ],

@@ -25,7 +25,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Center(
             child: SizedBox(
               height: 40,
@@ -40,14 +40,14 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                       context.pushNamed(AppViews.categories);
                     },
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   CommonChipButton(
                     name: t.services.ageBtn.title,
                     onPressed: () {
                       context.pushNamed(AppViews.ages);
                     },
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   CommonChipButton(
                     name: t.services.authorBtn.title,
                     onPressed: () {
@@ -62,7 +62,7 @@ class ServiceKnowledgeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: ListView.separated(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 10,
               itemBuilder: (context, index) {
                 return ArticleCard(
@@ -72,9 +72,9 @@ class ServiceKnowledgeScreen extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: const Column(
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Column(
                     children: [
                       Divider(),
                     ],
