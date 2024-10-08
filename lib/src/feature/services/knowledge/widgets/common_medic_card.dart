@@ -11,7 +11,7 @@ class MedicCard extends StatelessWidget {
       width: double.infinity,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Color(0xffF0F2F7),
+          color: AppColors.greyColorMedicard,
           borderRadius: BorderRadius.circular(24),
         ),
         child: Row(
@@ -46,16 +46,20 @@ class MedicCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 8),
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade100,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        'Акушер',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 12,
+                    SizedBox(
+                      width: 55,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: AppColors.lightBlueBackgroundStatus,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          'Акушер',
+                          style: TextStyle(
+                            color: AppColors.blueBrightTextColor,
+                            fontSize: 12,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -106,8 +110,9 @@ class BuildButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
         ),
         minimumSize: Size(73, 26),
-        backgroundColor: AppColors.greyColor,
-        foregroundColor: Colors.black,
+        backgroundColor: AppColors.greyColorMedicard,
+        foregroundColor: AppColors.blackColor,
+        side: BorderSide(color: AppColors.blackColor),
       ),
       child: Text(
         text,

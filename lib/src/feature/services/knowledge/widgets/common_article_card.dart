@@ -107,53 +107,55 @@ class CommonMedicBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
+        SizedBox(
           height: 58,
           width: MediaQuery.of(context).size.width * 0.55,
-          decoration: BoxDecoration(
-            color: AppColors.lightBlue,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage(Assets.images.imgPerson1.path),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    author,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      fontFamily: Assets.fonts.sFProTextMedium,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                    width: 52,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: AppColors.blueChildStatusBackgroundColor,
-                        // light blue background
-                        borderRadius: BorderRadius.circular(4),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: AppColors.lightBlue,
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage(Assets.images.imgPerson1.path),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      author,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        fontFamily: Assets.fonts.sFProTextMedium,
                       ),
-                      child: Text(
-                        role,
-                        style: TextStyle(
-                          color: AppColors.blue,
-                          // blue text color
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(
+                      height: 16,
+                      width: 52,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: AppColors.lightBlueBackgroundStatus,
+                          // light blue background
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          role,
+                          style: TextStyle(
+                            color: AppColors.blueBrightTextColor,
+                            // blue text color
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],

@@ -15,7 +15,7 @@ class ServiceInfoScreen extends StatelessWidget {
           height: 46,
           width: MediaQuery.of(context).size.width * 0.4,
           child: DecoratedBox(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.lightPirple,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(24),

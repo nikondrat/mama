@@ -12,7 +12,7 @@ class CommonChipButton extends StatelessWidget {
     return RawChip(
       label: Text(name),
       onPressed: onPressed,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
