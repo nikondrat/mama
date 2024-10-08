@@ -1,14 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:io';
-
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart' as emoji;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/feature/chat/chat.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:flutter/foundation.dart' as foundation;
 
 class ChatScreen extends StatefulWidget {
   final List<MessageModel> listMessages;
@@ -197,32 +193,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   Offstage(
                     offstage: !_emojiShowing,
-                    child: emoji.EmojiPicker(
-                      textEditingController: _controller,
-                      config: emoji.Config(
-                        height: 200,
-                        checkPlatformCompatibility: true,
-                        viewOrderConfig: const emoji.ViewOrderConfig(
-                          top: emoji.EmojiPickerItem.categoryBar,
-                          middle: emoji.EmojiPickerItem.emojiView,
-                          bottom: emoji.EmojiPickerItem.searchBar,
-                        ),
-                        emojiViewConfig: emoji.EmojiViewConfig(
-                          backgroundColor: AppColors.lightPirple,
-                          emojiSizeMax: 28 *
-                              (foundation.defaultTargetPlatform ==
-                                      TargetPlatform.iOS
-                                  ? 1.2
-                                  : 1.0),
-                        ),
-                        skinToneConfig: const emoji.SkinToneConfig(),
-                        categoryViewConfig: const emoji.CategoryViewConfig(
-                          backgroundColor: AppColors.lightPirple,
-                        ),
-                        bottomActionBarConfig:
-                            const emoji.BottomActionBarConfig(enabled: false),
-                        searchViewConfig: const emoji.SearchViewConfig(),
-                      ),
+                    child: EmojiWidget(
+                      controller: _controller,
                     ),
                   ),
                 ],

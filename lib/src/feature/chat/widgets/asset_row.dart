@@ -5,25 +5,31 @@ import 'package:mama/src/data.dart';
 class AssetsWidget extends StatelessWidget {
   final VoidCallback onTapDelete;
   final List<PlatformFile> files;
+  final Color? color;
+  final EdgeInsets? padding;
+  final double? height;
 
   const AssetsWidget({
     super.key,
     required this.files,
     required this.onTapDelete,
+    this.color,
+    this.padding,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: height ?? 100,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColors.lightPirple,
+      decoration: BoxDecoration(
+        color: color ?? AppColors.lightPirple,
       ),
       child: ListView.builder(
         itemCount: files.length,
         shrinkWrap: true,
-        padding: const EdgeInsets.all(10),
+        padding: padding ?? const EdgeInsets.all(10),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           PlatformFile file = files[index];

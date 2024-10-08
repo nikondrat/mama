@@ -5,9 +5,13 @@ import 'package:mama/src/data.dart';
 
 class AssetItemWidget extends StatelessWidget {
   final AssetItem asset;
+  final bool? needIcon;
   final VoidCallback onTapDelete;
   const AssetItemWidget(
-      {super.key, required this.asset, required this.onTapDelete});
+      {super.key,
+      required this.asset,
+      required this.onTapDelete,
+      this.needIcon = false});
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +48,22 @@ class AssetItemWidget extends StatelessWidget {
                           color: AppColors.primaryColor,
                         ),
                         child: Center(
-                          child: Text(
-                            extension.toUpperCase(),
-                            style: textTheme.headlineSmall!.copyWith(
-                              fontSize: 20,
-                              color: AppColors.whiteColor,
-                            ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                extension.toUpperCase(),
+                                style: textTheme.headlineSmall!.copyWith(
+                                  fontSize: 20,
+                                  color: AppColors.whiteColor,
+                                ),
+                              ),
+                              if (needIcon!)
+                                Image.asset(
+                                  Assets.icons.download.path,
+                                  height: 28,
+                                ),
+                            ],
                           ),
                         ),
                       ),
@@ -80,7 +94,6 @@ class AssetItemWidget extends StatelessWidget {
               overflow: TextOverflow.clip,
               style: textTheme.labelSmall!.copyWith(
                 fontWeight: FontWeight.w400,
-                // color: AppColors.whiteColor,
               ),
             ),
           ],

@@ -7,12 +7,14 @@ class MessageModel {
   final String text;
   final String? nameReciever;
   final ReplyItem? replyItem;
+  final AssetItem? assetItem;
   final String? avatarParticipant;
   final VoidCallback? onTapReply;
   final String? profession;
   final DateTime? time;
 
   MessageModel({
+    this.assetItem,
     required this.isSender,
     required this.text,
     this.nameReciever,

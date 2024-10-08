@@ -7,3 +7,4 @@ export 'message_input.dart';
 export 'buble.dart';
 export 'finder.dart';
 export 'asset_row.dart';
+export 'emoji.dart';

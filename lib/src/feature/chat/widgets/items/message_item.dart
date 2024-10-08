@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/core/core.dart';
@@ -47,7 +48,16 @@ class MessageItemWidget extends StatelessWidget {
             : Stack(
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      //TODO! сейчас в модели нет сообщений и вложений
+                      // if (message.assetItem != null)
+                      // AssetsWidget(
+                      //     files: files,
+                      //     onTapDelete: () {},
+                      //     height: 110,
+                      //     padding: const EdgeInsets.only(top: 20, bottom: 10),
+                      //     color: AppColors.whiteColor),
                       if (message.replyItem != null)
                         replyWidget(
                           context,
