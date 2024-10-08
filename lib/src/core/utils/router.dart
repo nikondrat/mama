@@ -76,7 +76,7 @@ final GoRouter router = GoRouter(
           path: _Paths.register,
           name: AppViews.register,
           builder: (context, state) {
-            return AuthView();
+            return const AuthView();
           },
           routes: [
             GoRoute(
@@ -92,13 +92,13 @@ final GoRouter router = GoRouter(
                     path: _Paths.authVerify,
                     name: AppViews.authVerify,
                     builder: (context, state) {
-                      return PhoneVerify(
+                      return const PhoneVerify(
                         isLogin: true,
                       );
                     }),
               ],
               builder: (context, state) {
-                return PhoneVerify();
+                return const PhoneVerify();
               },
             ),
             GoRoute(
@@ -109,9 +109,8 @@ final GoRouter router = GoRouter(
                     path: _Paths.registerFillName,
                     name: AppViews.registerFillName,
                     builder: (context, state) {
-                      return RegisterFillName();
+                      return const RegisterFillName();
                     },
-                    routes: [],
                   ),
                 ],
                 builder: (context, state) => const WelcomeScreen()),
@@ -255,7 +254,7 @@ final GoRouter router = GoRouter(
                   path: _Paths.citySearch,
                   name: AppViews.citySearch,
                   builder: (context, state) {
-                    return CitySearchView();
+                    return const CitySearchView();
                   },
                 ),
               ],

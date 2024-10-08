@@ -79,7 +79,7 @@ class MessageItemWidget extends StatelessWidget {
         IntrinsicHeight(
           child: Row(
             children: [
-              VerticalDivider(
+              const VerticalDivider(
                   width: 3, thickness: 2, color: AppColors.primaryColor),
               5.w,
               Expanded(

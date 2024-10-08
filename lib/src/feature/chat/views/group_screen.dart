@@ -53,7 +53,7 @@ class _GroupScreenState extends State<GroupScreen> {
       padding: EdgeInsets.zero,
       height: 130,
       alignment: Alignment.topCenter,
-      leading: BackButton(),
+      leading: const BackButton(),
       action: Align(
         alignment: Alignment.center,
         child: Column(
@@ -94,7 +94,7 @@ class _GroupScreenState extends State<GroupScreen> {
             ),
             CardWithoutMargin(
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: listSpecialist.length,
@@ -107,7 +107,7 @@ class _GroupScreenState extends State<GroupScreen> {
             ),
             8.h,
             DecoratedBox(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColors.whiteColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(16),
@@ -132,14 +132,14 @@ class _GroupScreenState extends State<GroupScreen> {
                       });
                     },
                   ),
-                  Divider(
+                  const Divider(
                     indent: 16,
                     endIndent: 16,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: sortedParticipant.length,

@@ -14,7 +14,7 @@ class UnreadBox extends StatelessWidget {
         borderRadius: 100.r,
         color: AppColors.primaryColor,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
       child: Text(
         unread.toString(),
         style: textTheme.labelMedium!.copyWith(color: AppColors.whiteColor),

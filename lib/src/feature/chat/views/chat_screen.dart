@@ -94,13 +94,13 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Container(
               height: double.infinity,
-              decoration:
-                  BoxDecoration(color: AppColors.purpleLighterBackgroundColor),
+              decoration: const BoxDecoration(
+                  color: AppColors.purpleLighterBackgroundColor),
               child: ListView.builder(
                 itemCount: widget.listMessages.length,
                 shrinkWrap: true,
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                physics: NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Expanded(
                     child: MessageItemWidget(
@@ -144,11 +144,13 @@ class _ChatScreenState extends State<ChatScreen> {
                         },
                         replyItem: replyItem[0].replyItem),
                   Container(
-                    decoration: BoxDecoration(color: AppColors.lightPirple),
+                    decoration:
+                        const BoxDecoration(color: AppColors.lightPirple),
                     child: SafeArea(
                         child: ReactiveForm(
                             formGroup: formGroup,
-                            child: MessageInput(formControllName: 'message'))),
+                            child: const MessageInput(
+                                formControllName: 'message'))),
                   ),
                 ],
               ),
@@ -161,7 +163,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   PreferredSizeWidget finder() {
     return PreferredSize(
-      preferredSize: Size.fromHeight(kToolbarHeight),
+      preferredSize: const Size.fromHeight(kToolbarHeight),
       child: Finder(
         hintText: t.chat.hintSearchChat,
         formControlName: 'search',

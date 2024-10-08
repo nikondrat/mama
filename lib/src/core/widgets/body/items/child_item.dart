@@ -179,9 +179,11 @@ class _ChildItemState extends State<ChildItem> {
                 BodyItemWidget(
                     item: CustomBodyItem(
                         title: t.profile.birthTitle,
-                        subTitle: widget.model.childbirth == null
-                            ? 'не указано'
-                            : null,
+                        subTitle: widget.model.childbirth.name
+                        // == null
+                        //     ? 'не указано'
+                        //     : null
+                        ,
                         titleStyle: titlesStyle,
                         hintStyle: textTheme.bodySmall!.copyWith(
                             fontSize: 10,
@@ -207,7 +209,7 @@ class _ChildItemState extends State<ChildItem> {
                         })),
                 if (formGroup.controls.values.isNotEmpty)
                   ItemsNeedToFill(formGroup: formGroup),
-                DottedInput(),
+                const DottedInput(),
               ]),
         ],
       );
