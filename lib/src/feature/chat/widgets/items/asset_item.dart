@@ -7,10 +7,12 @@ class AssetItemWidget extends StatelessWidget {
   final AssetItem asset;
   final bool? needIcon;
   final VoidCallback onTapDelete;
+  final VoidCallback? onTapDownload;
   const AssetItemWidget(
       {super.key,
       required this.asset,
       required this.onTapDelete,
+      this.onTapDownload,
       this.needIcon = false});
 
   @override
@@ -59,9 +61,12 @@ class AssetItemWidget extends StatelessWidget {
                                 ),
                               ),
                               if (needIcon!)
-                                Image.asset(
-                                  Assets.icons.download.path,
-                                  height: 28,
+                                GestureDetector(
+                                  onTap: () => onTapDownload,
+                                  child: Image.asset(
+                                    Assets.icons.download.path,
+                                    height: 28,
+                                  ),
                                 ),
                             ],
                           ),

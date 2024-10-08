@@ -52,12 +52,14 @@ class MessageItemWidget extends StatelessWidget {
                     children: [
                       //TODO! сейчас в модели нет сообщений и вложений
                       // if (message.assetItem != null)
-                      // AssetsWidget(
-                      //     files: files,
-                      //     onTapDelete: () {},
-                      //     height: 110,
-                      //     padding: const EdgeInsets.only(top: 20, bottom: 10),
-                      //     color: AppColors.whiteColor),
+                      //   AssetsWidget(
+                      //       files: files,
+                      //       onTapDelete: () {},
+                      //       onTapDownload: () {},
+                      //       needIcon: true,
+                      //       height: 110,
+                      //       padding: const EdgeInsets.only(top: 20, bottom: 10),
+                      //       color: AppColors.whiteColor),
                       if (message.replyItem != null)
                         replyWidget(
                           context,
