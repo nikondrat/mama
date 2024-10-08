@@ -159,7 +159,17 @@ final GoRouter router = GoRouter(
               name: AppViews.addWeightView,
               path: _Paths.addWeightView,
               builder: (context, state) => const AddWeight(),
-            )
+            ),
+            GoRoute(
+              path: _Paths.addGrowthView,
+              name: AppViews.addGrowthView,
+              builder: (context, state) => const AddGrowth(),
+            ),
+            GoRoute(
+              path: _Paths.addHeadView,
+              name: AppViews.addHeadView,
+              builder: (context, state) => const AddHead(),
+            ),
           ],
         ),
         GoRoute(
