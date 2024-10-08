@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart' as emoji;
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/feature/chat/chat.dart';
@@ -30,6 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
   List<MessageModel> sortedlistMessages = [];
   bool _emojiShowing = false;
   final _controller = TextEditingController();
+  List<PlatformFile> files = [];
+  FilePickerResult? result;
 
   @override
   void initState() {
@@ -64,6 +69,20 @@ class _ChatScreenState extends State<ChatScreen> {
                 .contains(formGroup.control('search').value.toLowerCase());
           }).toList()
         : widget.listMessages;
+  }
+
+  Future getAttach() async {
+    result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+    );
+
+    if (result != null) {
+      files = result!.files;
+    } else {
+      // User canceled the picker
+    }
+
+    setState(() {});
   }
 
   void clearList() {
@@ -151,6 +170,15 @@ class _ChatScreenState extends State<ChatScreen> {
                           });
                         },
                         replyItem: replyItem[0].replyItem),
+                  Offstage(
+                    offstage: !files.isNotEmpty,
+                    child: AssetsWidget(
+                      files: files,
+                      onTapDelete: () {
+                        setState(() {});
+                      },
+                    ),
+                  ),
                   Container(
                     decoration:
                         const BoxDecoration(color: AppColors.lightPirple),
@@ -159,6 +187,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             formGroup: formGroup,
                             child: MessageInput(
                                 controller: _controller,
+                                onTapAttach: getAttach,
                                 onTapSmile: () {
                                   setState(() {
                                     _emojiShowing = !_emojiShowing;

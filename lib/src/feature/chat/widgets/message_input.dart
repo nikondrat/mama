@@ -6,11 +6,13 @@ class MessageInput extends StatelessWidget {
   final TextEditingController controller;
   final String formControllName;
   final VoidCallback onTapSmile;
+  final VoidCallback onTapAttach;
   const MessageInput(
       {super.key,
       required this.formControllName,
       required this.onTapSmile,
-      required this.controller});
+      required this.controller,
+      required this.onTapAttach});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class MessageInput extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => onTapAttach(),
                   icon: Image.asset(
                     Assets.icons.attach.path,
                     height: 24,
