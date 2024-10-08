@@ -115,3 +115,9 @@ pillExactTimeOne:
 
 pillRemainingTimeOne:
   title: Через 2 часа 12 минут
+
+
+cm: 
+  title: см
+m: 
+  title: м
