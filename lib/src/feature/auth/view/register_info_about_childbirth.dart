@@ -46,22 +46,14 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
               const Spacer(),
               TitleWidget(text: t.register.howWasBirth),
               20.h,
-              FlutterToggleButton(
-                outerContainerMargin: 3,
-                buttonWidth: MediaQuery.of(context).size.width * .45,
-                buttonHeight: 38,
-                buttonColor: Colors.white,
-                enableTextColor: AppColors.primaryColor,
-                disableTextColor: AppColors.greyBrighterColor,
-                disableTextFontWeight: FontWeight.w700,
-                buttonTextFontSize: 17,
-                borderRadius: 6,
-                outerContainerColor: const Color(0xFFE1E6FF),
-                onTap: (index) {
-                  store.child.setChildbirth(Childbirth.values[index]);
-                },
-                items: [t.register.natural, t.register.caesarean],
-              ),
+              CustomToggleButton(
+                  fontSize: 17,
+                  items: [t.register.natural, t.register.caesarean],
+                  onTap: (index) {
+                    store.child.setChildbirth(Childbirth.values[index]);
+                  },
+                  btnWidth: 175,
+                  btnHeight: 38),
               20.h,
               Row(
                 children: [
