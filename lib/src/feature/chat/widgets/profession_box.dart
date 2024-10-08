@@ -21,7 +21,7 @@ class ProfessionBox extends StatelessWidget {
           borderRadius: 4.r,
           color: AppColors.purpleLighterBackgroundColor,
         ),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
         child: Text(
           profession,
           style: textTheme.labelSmall!.copyWith(

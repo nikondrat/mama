@@ -91,7 +91,7 @@ class BubbleContainer extends StatelessWidget {
                   ),
             ),
             isSender
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : IconButton(
                     onPressed: () => onTapReply(),
                     icon: Image.asset(

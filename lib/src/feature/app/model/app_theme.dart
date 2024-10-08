@@ -28,11 +28,11 @@ abstract class _AppThemeStore with Store {
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
               ),
-              titleSmall: TextStyle(
+              titleSmall: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w400,
               ),
-              labelLarge: TextStyle(
+              labelLarge: const TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
                 fontSize: 14,
@@ -45,12 +45,12 @@ abstract class _AppThemeStore with Store {
                 fontSize: 17,
                 color: AppColors.greyBrighterColor,
               ),
-              labelMedium: TextStyle(
+              labelMedium: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: AppColors.blackColor,
                   letterSpacing: 0),
-              labelSmall: TextStyle(
+              labelSmall: const TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
                   color: AppColors.greyBrighterColor,

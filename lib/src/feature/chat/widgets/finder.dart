@@ -20,7 +20,7 @@ class Finder extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
     return CustomAppBar(
-        leading: Icon(
+        leading: const Icon(
           Icons.search,
           size: 24,
           color: AppColors.primaryColor,

@@ -11,7 +11,7 @@ class ReplyItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: AppColors.lightPirple),
+      decoration: const BoxDecoration(color: AppColors.lightPirple),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
