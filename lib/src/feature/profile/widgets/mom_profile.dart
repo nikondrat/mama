@@ -6,7 +6,6 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class MomsProfile extends StatefulWidget {
-  // final MomInfo mom;
   final ProfileViewStore store;
 
   final AccountModel accountModel;
@@ -76,20 +75,27 @@ class _MomsProfileState extends State<MomsProfile> {
                       hintText: t.profile.hintChangeName,
                       titleStyle: textTheme.headlineSmall,
                       maxLines: 1,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
                     ),
                   ),
                   BodyItemWidget(
                     item: InputItem(
-                        controlName: 'phone',
-                        hintText: t.profile.hintChangePhone,
-                        titleStyle:
-                            titlesStyle.copyWith(color: AppColors.blackColor),
-                        inputHintStyle: textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                        inputHint: '+7 996 997-06-24',
-                        maxLines: 1,
-                        maskFormatter: formatter),
+                      controlName: 'phone',
+                      hintText: t.profile.hintChangePhone,
+                      titleStyle:
+                          titlesStyle.copyWith(color: AppColors.blackColor),
+                      inputHintStyle: textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                      inputHint: '+7 996 997-06-24',
+                      maxLines: 1,
+                      maskFormatter: formatter,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
+                    ),
                   ),
                   BodyItemWidget(
                     item: InputItem(
@@ -100,6 +106,9 @@ class _MomsProfileState extends State<MomsProfile> {
                       titleStyle: titlesStyle,
                       inputHintStyle: titlesStyle,
                       inputHint: t.profile.labelChangeEmail,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
                     ),
                   ),
                   BodyItemWidget(
@@ -111,6 +120,9 @@ class _MomsProfileState extends State<MomsProfile> {
                       inputHint: t.profile.labelChangeNote,
                       inputHintStyle: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w700),
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
                     ),
                   ),
                 ],

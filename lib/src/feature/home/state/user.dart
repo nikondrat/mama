@@ -42,6 +42,10 @@ abstract class _UserStore with Store {
         updatedId: '',
       );
 
+  @computed
+  bool get isChanged =>
+      account.isChanged || children.where((e) => e.isChanged).isNotEmpty;
+
   @observable
   ObservableList<ChildModel> children = ObservableList();
 

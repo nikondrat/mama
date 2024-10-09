@@ -21,7 +21,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
     void next() {
       if (isNotRegister) {
         childStore.add(model: store.child);
-        context.pushReplacementNamed(AppViews.profile);
+        context.goNamed(AppViews.profile);
       } else {
         context.pushNamed(
           AppViews.citySearch,
