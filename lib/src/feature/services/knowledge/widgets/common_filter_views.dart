@@ -20,7 +20,7 @@ class FilterView extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           ListView.builder(
-            itemCount: 5,
+            itemCount: 8,
             itemBuilder: (context, index) => builder(index),
           ),
           Padding(

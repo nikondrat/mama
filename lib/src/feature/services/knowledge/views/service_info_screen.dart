@@ -48,12 +48,6 @@ class ServiceInfoScreen extends StatelessWidget {
             builder: (windowWidth, windowSize) => ListView(
               padding: HorizontalSpacing.centered(windowWidth),
               children: [
-                Positioned(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [],
-                  ),
-                ),
                 SizedBox(height: 10),
                 InkWell(
                   splashFactory: NoSplash.splashFactory,
@@ -226,39 +220,3 @@ class ServiceInfoScreen extends StatelessWidget {
     );
   }
 }
-
-/*  AppBar(
-        centerTitle: true,
-        leading: CustomBackButton(),
-        actions: [
-          SizedBox(
-            height: 46,
-            width: MediaQuery.of(context).size.width * 0.45,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: AppColors.lightPirple,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24),
-                  bottomLeft: Radius.circular(24),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    t.services.toSave.title,
-                    style: TextStyle(
-                      fontFamily: Assets.fonts.sFProTextMedium,
-                      fontSize: 14,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(Assets.images.save.path),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ), */

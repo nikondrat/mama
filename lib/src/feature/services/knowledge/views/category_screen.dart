@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
-import 'package:mama/src/feature/services/knowledge/model/category_model.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/categories_widgets.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_filter_views.dart';
 
@@ -12,15 +11,13 @@ class CategoryScreen extends StatelessWidget {
     return FilterView(
       title: t.services.categoriesBtn.title,
       builder: (index) => BuildCategory(
-        title: categoriesList[index].tittle,
-        count: categoriesList[index].count,
+        title: 'Здоровье ребенка',
+        count: 30,
         subCategories: [
           BuildSubCategory(
-              title: 'Чек-листы по здоровью',
-              count: categoriesList[index].count),
-          BuildSubCategory(
-              title: 'Чек-листы по здоровью',
-              count: categoriesList[index].count),
+            title: 'Чек-листы по здоровью',
+            count: 4,
+          ),
         ],
       ),
     );

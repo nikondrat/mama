@@ -201,7 +201,9 @@ class HomeUserBody extends StatelessWidget {
               CustomServiceBoxTwo(
                 imagePath: Assets.images.imgHat4x.path,
                 text: t.home.knowledgeCenter.title,
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(AppViews.serviceKnowlegde);
+                },
               ),
             ],
           ),

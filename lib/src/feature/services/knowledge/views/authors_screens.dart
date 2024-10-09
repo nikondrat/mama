@@ -31,6 +31,10 @@ class AuthorsScreen extends StatelessWidget {
                 title: 'Мамино счастье',
                 count: 2,
               ),
+              SchoolSub(
+                title: 'Мамино счастье',
+                count: 2,
+              ),
             ],
           ),
         ],
