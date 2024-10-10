@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 
@@ -13,7 +14,7 @@ enum Gender {
 enum Childbirth {
   @JsonValue('NATURAL')
   natural,
-  @JsonValue('CESARIAN')
+  @JsonValue('CAESAREAN')
   cesarian,
 }
 
@@ -79,7 +80,11 @@ abstract class _ChildModel with Store {
   String firstName;
 
   @action
-  setFirstName(String value) => firstName = value;
+  setFirstName(String value) {
+    firstName = value;
+
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(
@@ -88,7 +93,10 @@ abstract class _ChildModel with Store {
   String? secondName;
 
   @action
-  setSecondName(String value) => secondName = value;
+  setSecondName(String value) {
+    secondName = value;
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(
@@ -106,6 +114,7 @@ abstract class _ChildModel with Store {
   @action
   setGender(Gender value) {
     gender = value;
+    isChanged = true;
   }
 
   @observable
@@ -113,7 +122,11 @@ abstract class _ChildModel with Store {
   bool isTwins = false;
 
   @action
-  setIsTwins(bool value) => isTwins = value;
+  setIsTwins(bool value) {
+    isTwins = value;
+
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(
@@ -123,25 +136,59 @@ abstract class _ChildModel with Store {
   Childbirth childbirth;
 
   @action
-  setChildbirth(Childbirth value) => childbirth = value;
+  setChildbirth(Childbirth value) {
+    childbirth = value;
+
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(name: 'childbirth_with_complications')
   bool childBirthWithComplications = false;
 
   @action
-  setChildbirthWithComplications(bool value) =>
-      childBirthWithComplications = value;
+  setChildbirthWithComplications(bool value) {
+    childBirthWithComplications = value;
+
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(name: 'birth_date', toJson: _dateTimeToJson)
   DateTime? birthDate;
 
   @action
-  setBirthDate(DateTime value) => birthDate = value;
+  setBirthDate(DateTime value) {
+    birthDate = value;
+
+    isChanged = true;
+  }
+
+  @computed
+  String get birthDateCounter {
+    DateTime currentDate = DateTime.now();
+
+    Duration difference = currentDate.difference(birthDate ?? DateTime.now());
+
+    int months = (difference.inDays / 30).floor();
+    int days = difference.inDays - (months * 30);
+
+    int weeks = difference.inDays ~/ 7;
+
+    // TODO: use localization
+    String formattedDifference = '$months месяцев $days дней';
+    String formattedWeeks = '$weeks недель';
+
+    return '$formattedDifference или $formattedWeeks';
+  }
 
   static String? _dateTimeToJson(DateTime? date) {
-    return date?.toIso8601String().split('T').first;
+    if (date != null) {
+      String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(date);
+      return formattedDate;
+    }
+
+    return null;
   }
 
   @observable
@@ -149,21 +196,32 @@ abstract class _ChildModel with Store {
   double? weight;
 
   @action
-  setWeight(double? value) => weight = value;
+  setWeight(double? value) {
+    weight = value;
+
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(name: 'height')
   double? height;
 
   @action
-  setHeight(double? value) => height = value;
+  setHeight(double? value) {
+    height = value;
+
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(name: 'head_circ')
   double? headCircumference;
 
   @action
-  setHeadCircumference(double? value) => headCircumference = value;
+  setHeadCircumference(double? value) {
+    headCircumference = value;
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(
@@ -173,5 +231,17 @@ abstract class _ChildModel with Store {
   String? about;
 
   @action
-  setAbout(String? value) => about = value;
+  setAbout(String? value) {
+    about = value;
+    isChanged = true;
+  }
+
+  @observable
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool isChanged = false;
+
+  @action
+  setIsChanged(bool value) {
+    isChanged = value;
+  }
 }

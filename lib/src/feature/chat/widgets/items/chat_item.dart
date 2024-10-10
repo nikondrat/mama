@@ -14,7 +14,7 @@ class ChatItemSingle extends StatelessWidget {
         avatarUrl: chat.participant1.avatarUrl!,
         name: '${chat.participant1.firstName} ${chat.participant1.secondName} ',
         isAttach: chat.lastMessage!.filePath != null,
-        profession: chat.participant1.profession ?? null,
+        profession: chat.participant1.profession,
         unreadMessages: chat.participant1Unread,
         lastMessageName: chat.lastMessage!.nikName,
         lastMessageText: chat.lastMessage!.text,

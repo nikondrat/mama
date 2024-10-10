@@ -21,8 +21,10 @@ class _HomeViewState extends State<HomeView>
 
   @override
   Widget build(BuildContext context) {
+    final UserStore userStore = context.watch<UserStore>();
+
     return LoadHomeData(
-      userStore: context.watch<UserStore>(),
+      userStore: userStore,
       builder: (data) {
         CustomAppBar appBar = CustomAppBar(
           leading: ProfileWidget(
@@ -30,11 +32,11 @@ class _HomeViewState extends State<HomeView>
               router.pushNamed(AppViews.profile);
             },
             alignment: Alignment.centerLeft,
-            avatarUrl: data.account?.avatarUrl ?? '',
+            avatarUrl: userStore.account.avatarUrl ?? '',
           ),
           action: ProfileWidget(
             isShowText: true,
-            children: data.childs,
+            children: userStore.children.toList(),
           ),
         );
 

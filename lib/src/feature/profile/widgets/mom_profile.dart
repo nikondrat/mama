@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:provider/provider.dart';
 
 class MomsProfile extends StatefulWidget {
-  // final MomInfo mom;
+  final ProfileViewStore store;
 
   final AccountModel accountModel;
-  final List<ChildModel> children;
 
   final TextStyle? titlesStyle;
   final TextStyle? helpersStyle;
@@ -16,11 +16,11 @@ class MomsProfile extends StatefulWidget {
 
   const MomsProfile({
     super.key,
+    required this.store,
     this.titlesStyle,
     this.helpersStyle,
     this.titlesColoredStyle,
     required this.accountModel,
-    required this.children,
   });
 
   @override
@@ -28,36 +28,17 @@ class MomsProfile extends StatefulWidget {
 }
 
 class _MomsProfileState extends State<MomsProfile> {
-  late FormGroup formGroup;
   bool subscribed = true;
 
   @override
   void initState() {
-    formGroup = FormGroup({
-      'name': FormControl<String>(
-        value:
-            '${widget.accountModel.firstName} ${widget.accountModel.secondName}',
-        validators: [Validators.required],
-      ),
-      'phone': FormControl<String>(
-        value: widget.accountModel.phone,
-        validators: [Validators.required],
-      ),
-      'email': FormControl<String>(
-        value: widget.accountModel.email,
-        validators: [Validators.required],
-      ),
-      'about': FormControl<String>(
-        value: widget.accountModel.info,
-        validators: [Validators.required],
-      ),
-    });
+    widget.store.init();
     super.initState();
   }
 
   @override
   void dispose() {
-    formGroup.dispose();
+    widget.store.dispose();
     super.dispose();
   }
 
@@ -65,6 +46,7 @@ class _MomsProfileState extends State<MomsProfile> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
+    final UserStore userStore = context.watch();
 
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
@@ -84,7 +66,7 @@ class _MomsProfileState extends State<MomsProfile> {
             children: [
               20.h,
               BodyGroup(
-                formGroup: formGroup,
+                formGroup: widget.store.formGroup,
                 title: t.profile.accountTitle,
                 items: [
                   BodyItemWidget(
@@ -93,20 +75,27 @@ class _MomsProfileState extends State<MomsProfile> {
                       hintText: t.profile.hintChangeName,
                       titleStyle: textTheme.headlineSmall,
                       maxLines: 1,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
                     ),
                   ),
                   BodyItemWidget(
                     item: InputItem(
-                        controlName: 'phone',
-                        hintText: t.profile.hintChangePhone,
-                        titleStyle:
-                            titlesStyle.copyWith(color: AppColors.blackColor),
-                        inputHintStyle: textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                        inputHint: '+7 996 997-06-24',
-                        maxLines: 1,
-                        maskFormatter: formatter),
+                      controlName: 'phone',
+                      hintText: t.profile.hintChangePhone,
+                      titleStyle:
+                          titlesStyle.copyWith(color: AppColors.blackColor),
+                      inputHintStyle: textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                      inputHint: '+7 996 997-06-24',
+                      maxLines: 1,
+                      maskFormatter: formatter,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
+                    ),
                   ),
                   BodyItemWidget(
                     item: InputItem(
@@ -117,6 +106,9 @@ class _MomsProfileState extends State<MomsProfile> {
                       titleStyle: titlesStyle,
                       inputHintStyle: titlesStyle,
                       inputHint: t.profile.labelChangeEmail,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
                     ),
                   ),
                   BodyItemWidget(
@@ -128,6 +120,9 @@ class _MomsProfileState extends State<MomsProfile> {
                       inputHint: t.profile.labelChangeNote,
                       inputHintStyle: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w700),
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
                     ),
                   ),
                 ],
@@ -149,21 +144,18 @@ class _MomsProfileState extends State<MomsProfile> {
                 ),
                 title: t.profile.settingsAccountButtonTitle,
               ),
-              32.h,
-              // Text(
-              //   t.profile.childTitle,
-              //   style: widget.titlesColoredStyle,
-              // ),
-              8.h,
+              30.h,
               IgnorePointer(
                 ignoring: !subscribed,
                 child: Stack(
                   children: [
                     Opacity(
                       opacity: !subscribed ? 0.25 : 1,
-                      child: ChildItems(
-                        childs: widget.children,
-                      ),
+                      child: Observer(builder: (_) {
+                        return ChildItems(
+                          childs: userStore.children.toList(),
+                        );
+                      }),
                     ),
                     if (!subscribed) const SubscribeBlockItem(),
                   ],
@@ -173,6 +165,9 @@ class _MomsProfileState extends State<MomsProfile> {
                 padding: const EdgeInsets.all(28.0),
                 child: InkWell(
                   onTap: () {
+                    context.pushNamed(AppViews.registerFillBabyName, extra: {
+                      'isNotRegister': true,
+                    });
                     //! добавить ребенка
                   },
                   child: Row(

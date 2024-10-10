@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 import 'profile_switch.dart';
 
@@ -25,6 +26,7 @@ class ProfileWidget extends StatelessWidget {
     if (children != null && children!.isNotEmpty) {
       if (children!.length >= 2) {
         return ProfileSwitch(
+          userStore: context.watch(),
           children: children!,
           alignment: alignment,
           isShowText: isShowText,
