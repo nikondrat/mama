@@ -28,4 +28,8 @@ class Endpoint {
   static const String child = 'child';
 
   String get childAvatar => '$child/avatar';
+
+  static const String payment = 'payment';
+
+  String get promocode => '$payment/promocode';
 }
