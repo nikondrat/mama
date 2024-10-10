@@ -45,6 +45,9 @@ abstract class AppViews {
 
   static const feeding = 'feeding';
   static const addManually = 'addManually';
+
+  static const docs = 'docs';
+  static const doc = 'doc';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -54,6 +57,21 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   // initialLocation: _Paths.homeScreen,
   routes: [
+    GoRoute(
+        path: _Paths.docs,
+        name: AppViews.docs,
+        builder: (context, state) {
+          return const DocsView();
+        },
+        routes: [
+          GoRoute(
+            path: _Paths.doc,
+            name: AppViews.doc,
+            builder: (context, state) {
+              return const DocView();
+            },
+          ),
+        ]),
     GoRoute(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
@@ -305,4 +323,7 @@ abstract class _Paths {
   static const feeding = AppViews.feeding;
 
   static const addManually = AppViews.addManually;
+
+  static const docs = '/${AppViews.docs}';
+  static const doc = AppViews.doc;
 }
