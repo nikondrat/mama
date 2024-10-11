@@ -32,4 +32,8 @@ class Endpoint {
   static const String payment = 'payment';
 
   String get promocode => '$payment/promocode';
+
+  static const String consultation = 'consultation';
+
+  String get userConsultations => '$consultation/user';
 }

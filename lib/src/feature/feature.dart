@@ -9,3 +9,4 @@ export 'chat/chat.dart';
 export 'feeding/feeding.dart';
 export 'home/home.dart';
 export 'docs/docs.dart';
+export 'consultation/consultation.dart';

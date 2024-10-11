@@ -50,6 +50,8 @@ abstract class AppViews {
 
   static const docs = 'docs';
   static const doc = 'doc';
+
+  static const consultation = 'consultation';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -57,7 +59,6 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
-  // initialLocation: _Paths.homeScreen,
   routes: [
     GoRoute(
         path: _Paths.docs,
@@ -155,6 +156,10 @@ final GoRouter router = GoRouter(
             appBar: CustomAppBar(),
           ),
           routes: [
+            GoRoute(
+                path: _Paths.consultation,
+                name: AppViews.consultation,
+                builder: (context, state) => const ConsultationView()),
             GoRoute(
               name: AppViews.servicesSleepMusicView,
               path: _Paths.servicesSleepMusicPath,
@@ -342,4 +347,6 @@ abstract class _Paths {
 
   static const docs = '/${AppViews.docs}';
   static const doc = AppViews.doc;
+
+  static const consultation = AppViews.consultation;
 }
