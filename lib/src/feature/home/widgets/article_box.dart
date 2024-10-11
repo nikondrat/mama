@@ -15,60 +15,59 @@ class ArticleBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        /// #image, category
-        Stack(
-          children: [
-            /// #image
-            Image(
-              width: 165,
-              height: 165,
-              image: AssetImage(imagePath),
-            ),
-    
-            /// #category
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: DecoratedBox(
-                decoration: const BoxDecoration(
-                  color: AppColors.lightBlue,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(100),
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: AppColors.whiteDarkerButtonColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// #image, category
+          Stack(
+            children: [
+              /// #image
+              Image(
+                width: 165,
+                height: 165,
+                image: AssetImage(imagePath),
+              ),
+
+              /// #category
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    color: AppColors.lightBlue,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(100),
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 1,
-                  ),
-                  child: Text(
-                    articleCategory,
-                    style: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.greyBrighterColor,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 1,
+                    ),
+                    child: Text(
+                      articleCategory,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.greyBrighterColor,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-    
-        /// #article title
-        Expanded(
-          child: SizedBox(
-            width: 165,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: AppColors.blackColor.withOpacity(0.1),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                ),
-              ),
+            ],
+          ),
+
+          /// #article title
+          Expanded(
+            child: SizedBox(
+              width: 165,
               child: Padding(
                 padding: const EdgeInsets.all(8).copyWith(top: 4),
                 child: Text(
@@ -83,8 +82,8 @@ class ArticleBox extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

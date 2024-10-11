@@ -27,6 +27,10 @@ abstract class _ProfileViewStore with Store {
         value: model.phone,
         validators: [Validators.required],
       ),
+      'profession': FormControl<String>(
+        value: model.profession,
+        validators: [Validators.required],
+      ),
       'email': FormControl<String>(
         value: model.email,
         validators: [Validators.required],
@@ -41,6 +45,10 @@ abstract class _ProfileViewStore with Store {
   AbstractControl get name => formGroup.control('name');
 
   bool get isNameValid => name.valid;
+
+  AbstractControl get profession => formGroup.control('profession');
+
+  bool get isProfessionValid => profession.valid;
 
   AbstractControl get phone => formGroup.control('phone');
 
@@ -60,6 +68,10 @@ abstract class _ProfileViewStore with Store {
 
       model.setFirstName(nameValue[0]);
       model.setSecondName(nameValue[1]);
+    }
+
+    if (isProfessionValid && profession.value != model.profession) {
+      model.setProfession(profession.value);
     }
 
     if (isPhoneValid && phone.value != model.phone) {

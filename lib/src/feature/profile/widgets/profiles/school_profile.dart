@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/widgets/body/decoration.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
 
-class MomsProfile extends StatefulWidget {
+class SchoolProfile extends StatefulWidget {
   final ProfileViewStore store;
 
   final AccountModel accountModel;
-
+  final MaskTextInputFormatter formatter;
   final TextStyle? titlesStyle;
   final TextStyle? helpersStyle;
   final TextStyle? titlesColoredStyle;
 
-  const MomsProfile({
+  const SchoolProfile({
     super.key,
     required this.store,
     this.titlesStyle,
     this.helpersStyle,
     this.titlesColoredStyle,
     required this.accountModel,
+    required this.formatter,
   });
 
   @override
-  State<MomsProfile> createState() => _MomsProfileState();
+  State<SchoolProfile> createState() => _SchoolProfileState();
 }
 
-class _MomsProfileState extends State<MomsProfile> {
+class _SchoolProfileState extends State<SchoolProfile> {
   bool subscribed = true;
 
   @override
@@ -46,13 +45,9 @@ class _MomsProfileState extends State<MomsProfile> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
-    final UserStore userStore = context.watch();
 
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
-
-    final MaskTextInputFormatter formatter = MaskTextInputFormatter(
-        mask: '+7 ### ###-##-##', filter: {'#': RegExp(r'[0-9]')});
 
     return Column(
       children: [
@@ -66,13 +61,14 @@ class _MomsProfileState extends State<MomsProfile> {
             children: [
               20.h,
               BodyGroup(
+                padding: const EdgeInsets.symmetric(vertical: 4),
                 formGroup: widget.store.formGroup,
-                title: t.profile.accountTitle,
+                title: t.profile.accountTitleSchool,
                 items: [
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'name',
-                      hintText: t.profile.hintChangeName,
+                      hintText: t.profile.hintChangeNameSchool,
                       titleStyle: textTheme.headlineSmall,
                       maxLines: 1,
                       onChanged: (value) {
@@ -83,7 +79,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'phone',
-                      hintText: t.profile.hintChangePhone,
+                      hintText: t.profile.hintChangePhoneSchool,
                       titleStyle:
                           titlesStyle.copyWith(color: AppColors.blackColor),
                       inputHintStyle: textTheme.bodySmall!.copyWith(
@@ -91,7 +87,7 @@ class _MomsProfileState extends State<MomsProfile> {
                       ),
                       inputHint: '+7 996 997-06-24',
                       maxLines: 1,
-                      maskFormatter: formatter,
+                      maskFormatter: widget.formatter,
                       onChanged: (value) {
                         widget.store.updateData();
                       },
@@ -101,7 +97,7 @@ class _MomsProfileState extends State<MomsProfile> {
                     item: InputItem(
                       controlName: 'email',
                       maxLines: 1,
-                      hintText: t.profile.hintChangeEmail,
+                      hintText: t.profile.hintChangeEmailSchool,
                       keyboardType: TextInputType.emailAddress,
                       titleStyle: titlesStyle,
                       inputHintStyle: titlesStyle,
@@ -111,13 +107,21 @@ class _MomsProfileState extends State<MomsProfile> {
                       },
                     ),
                   ),
+                  8.h,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      t.profile.titleInfo,
+                      style: textTheme.labelLarge!,
+                    ),
+                  ),
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'about',
                       maxLines: 1,
-                      hintText: t.profile.hintChangeNote,
+                      hintText: t.profile.hintChangeNoteSchool,
                       titleStyle: titlesStyle,
-                      inputHint: t.profile.labelChangeNote,
+                      inputHint: t.profile.labelChangeNoteSchool,
                       inputHintStyle: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w700),
                       onChanged: (value) {
@@ -127,15 +131,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   ),
                 ],
               ),
-              32.h,
-              CustomButton(
-                isSmall: false,
-                onTap: () {
-                  context.pushNamed(AppViews.promoView);
-                },
-                title: t.profile.addGiftCodeButtonTitle,
-              ),
-              8.h,
+              16.h,
               CustomButton(
                 onTap: () {},
                 isSmall: false,
@@ -145,49 +141,66 @@ class _MomsProfileState extends State<MomsProfile> {
                 title: t.profile.settingsAccountButtonTitle,
               ),
               30.h,
-              IgnorePointer(
-                ignoring: !subscribed,
-                child: Stack(
-                  children: [
-                    Opacity(
-                      opacity: !subscribed ? 0.25 : 1,
-                      child: Observer(builder: (_) {
-                        return ChildItems(
-                          childs: userStore.children.toList(),
-                        );
-                      }),
-                    ),
-                    if (!subscribed) const SubscribeBlockItem(),
-                  ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  t.profile.titleCourses,
+                  style: textTheme.labelLarge!,
                 ),
               ),
+
+              /// #courses
+              ListView.separated(
+                separatorBuilder: (context, index) => const SizedBox(width: 8),
+                itemCount: 3,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(bottom: 10),
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: CourseItemWidget(
+                      item: CourseItem(
+                          subtitle:
+                              'Запись 6-ти полезных вебинаров с ответами на вопросы',
+                          title: 'Полезные вебинары'),
+                    ),
+                  );
+                },
+              ),
+              20.h,
               Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: InkWell(
-                  onTap: () {
-                    context.pushNamed(AppViews.registerFillBabyName, extra: {
-                      'isNotRegister': true,
-                    });
-                    //! добавить ребенка
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        height: 17,
-                        image: AssetImage(
-                          Assets.icons.icAddChild.path,
-                        ),
-                      ),
-                      16.w,
-                      Text(
-                        t.profile.addChildButtonTitle,
-                        style: widget.titlesColoredStyle,
-                      ),
-                    ],
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  t.profile.titleArticle,
+                  style: textTheme.labelLarge!,
+                ),
+              ),
+              8.h,
+
+              /// #articles
+              BodyItemDecoration(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                shadow: true,
+                child: SizedBox(
+                  height: 220,
+                  child: ListView.separated(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    itemBuilder: (context, index) {
+                      return ArticleBox(
+                        imagePath: Assets.images.imgMomOne4x.path,
+                        articleCategory: t.home.sixMonths.title,
+                        articleTitle: t.home.articleTitleOne.title,
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 8),
                   ),
                 ),
               ),
+              20.h,
             ],
           ),
         ),

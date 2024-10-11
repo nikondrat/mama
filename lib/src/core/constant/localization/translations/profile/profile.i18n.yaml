@@ -1,21 +1,36 @@
 accountTitle: Account
+accountTitleSpecialist: Specialist account
+accountTitleSchool: Online-school account
 
 addPhotoTitle: Tap to add image
 
 backLeadingButton: Back
 
 hintChangeName: Tap to change name
+hintChangeNameSchool: Tap to change school name
+
+hintProfession: Obstetrician
+helperProfession: Tap to change professional card (near name in one line)
+
+titleNameProffession: You will be seen like this
 
 hintChangePhone: Tap to change phone
+hintChangePhoneSchool: Tap to change phone (users will not see)
 
 hintChangeEmail: Tap to fill email
+hintChangeEmailSchool: Tap to change email (users will not see)
 
 labelChangeEmail: We need your email to activate application
 
 hintChangeNote: Tap to share with other users
+hintChangeNoteSpecialist: Tap to change information about you
+hintChangeNoteSchool: Tap to change information about school
 
 labelChangeNote: About me
-
+labelChangeNoteSchool: About school
+titleInfo: Information
+titleCourses: Courses and masterclasses
+titleArticle: Authors articles
 addGiftCodeButtonTitle: Fill in your promo code
 
 settingsAccountButtonTitle: Account Settings

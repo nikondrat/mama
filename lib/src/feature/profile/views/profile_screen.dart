@@ -21,11 +21,6 @@ class ProfileScreen extends StatelessWidget {
       fontWeight: FontWeight.w600,
     );
 
-    final TextStyle helpersStyle = textTheme.bodySmall!.copyWith(
-      fontSize: 10,
-      fontWeight: FontWeight.w700,
-    );
-
     List<DialogItem> alertDialog = [
       DialogItem(
           title: 'Сбросить настройки?',
@@ -66,13 +61,11 @@ class ProfileScreen extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     children: <Widget>[
                       Observer(builder: (_) {
-                        return MomsProfile(
-                          titlesStyle: titlesStyle,
-                          helpersStyle: helpersStyle,
-                          titlesColoredStyle: titlesColoredStyle,
-                          accountModel: userStore.account,
-                          store: store,
-                        );
+                        return ProfileBodyWidget(
+                            item: ProfileItem(
+                                accountModel: userStore.account,
+                                user: Profile.mom,
+                                store: store));
                       }),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

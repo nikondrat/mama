@@ -1,21 +1,37 @@
 accountTitle: Аккаунт
+accountTitleSpecialist: Аккаунт специалиста
+accountTitleSchool: Аккаунт онлайн-школы
 
 addPhotoTitle: Нажмите, чтобы добавить фото
 
 backLeadingButton: Назад
 
 hintChangeName: Нажмите, чтобы изменить имя
+hintChangeNameSchool: Нажмите, чтобы изменить название школы
+
+hintProfession: Акушер
+helperProfession: Нажмите, чтобы изменить профессиональный бейджик (выводится рядом с именем, в одно слово)
+
+titleNameProffession: Вас будут видеть вот так
 
 hintChangePhone: Нажмите, чтобы изменить номер телефона
+hintChangePhoneSchool: Нажмите, чтобы изменить номер телефона (не виден пользователям)
 
 hintChangeEmail: Нажмите, чтобы ввести адрес электронной почты
+hintChangeEmailSchool: Нажмите, чтобы изменить адрес электронной почты (не видна пользователям)
 
 labelChangeEmail: Нам нужна ваша почта для активации приложения
 
 hintChangeNote: Нажмите, чтобы поделиться с другими пользователями информацией о себе
+hintChangeNoteSpecialist: Нажмите, чтобы изменить информацию о себе
+hintChangeNoteSchool: Нажмите, чтобы изменить информацию о школе
 
 labelChangeNote: Обо мне
+labelChangeNoteSchool: О школе
 
+titleInfo: Информация
+titleCourses: Курсы и мастерклассы
+titleArticle: Статьи автора
 addGiftCodeButtonTitle: Ввести код на подарок
 
 settingsAccountButtonTitle: Настройки аккаунта
@@ -92,6 +108,8 @@ bottomBarHome: Главная
 bottomBarDiaries: Дневники
 bottomBarChats: Чаты
 bottomBarServices: Сервисы
+
+
 
 male: Мальчик
 female: Девочка
