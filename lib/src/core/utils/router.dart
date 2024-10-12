@@ -48,6 +48,8 @@ abstract class AppViews {
   static const evolutionView = 'evolutionView';
 
   static const addWeightView = 'addWeightView';
+  static const addGrowthView = 'addGrowthView';
+  static const addHeadView = 'addHeadView';
 
   static const profile = 'profile';
   static const promoView = 'promoView';
@@ -93,7 +95,7 @@ final GoRouter router = GoRouter(
           path: _Paths.register,
           name: AppViews.register,
           builder: (context, state) {
-            return AuthView();
+            return const AuthView();
           },
           routes: [
             GoRoute(
@@ -109,13 +111,13 @@ final GoRouter router = GoRouter(
                     path: _Paths.authVerify,
                     name: AppViews.authVerify,
                     builder: (context, state) {
-                      return PhoneVerify(
+                      return const PhoneVerify(
                         isLogin: true,
                       );
                     }),
               ],
               builder: (context, state) {
-                return PhoneVerify();
+                return const PhoneVerify();
               },
             ),
             GoRoute(
@@ -126,44 +128,8 @@ final GoRouter router = GoRouter(
                     path: _Paths.registerFillName,
                     name: AppViews.registerFillName,
                     builder: (context, state) {
-                      return RegisterFillName();
+                      return const RegisterFillName();
                     },
-                    routes: [
-                      GoRoute(
-                        path: _Paths.registerFillBabyName,
-                        name: AppViews.registerFillBabyName,
-                        builder: (context, state) {
-                          return RegisterBabyNameScreen();
-                        },
-                        routes: [
-                          GoRoute(
-                            path: _Paths.registerFillAnotherBabyInfo,
-                            name: AppViews.registerFillAnotherBabyInfo,
-                            builder: (context, state) {
-                              return RegisterFillAnotherBabyInfoScreen();
-                            },
-                            routes: [
-                              GoRoute(
-                                path: _Paths.registerInfoAboutChildbirth,
-                                name: AppViews.registerInfoAboutChildbirth,
-                                builder: (context, state) {
-                                  return RegisterInfoAboutChildbirth();
-                                },
-                                routes: [
-                                  GoRoute(
-                                    path: _Paths.citySearch,
-                                    name: AppViews.citySearch,
-                                    builder: (context, state) {
-                                      return CitySearchView();
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
                 ],
                 builder: (context, state) => const WelcomeScreen()),
@@ -267,20 +233,65 @@ final GoRouter router = GoRouter(
           ],
         ),
         GoRoute(
-            path: _Paths.profile,
-            name: AppViews.profile,
-            builder: (context, state) => const ProfileScreen(),
-            routes: [
-              GoRoute(
-                path: _Paths.promoView,
-                name: AppViews.promoView,
-                builder: (context, state) => PromoScreen(),
-              )
-            ]),
+          path: _Paths.profile,
+          name: AppViews.profile,
+          builder: (context, state) => const ProfileScreen(),
+          routes: [
+            GoRoute(
+              path: _Paths.promoView,
+              name: AppViews.promoView,
+              builder: (context, state) => const PromoScreen(),
+            )
+          ],
+        ),
+      ],
+    ),
+    GoRoute(
+      path: _Paths.registerFillBabyName,
+      name: AppViews.registerFillBabyName,
+      builder: (context, state) {
+        final Map? extra = state.extra as Map?;
+        final bool? isNotRegister = extra?['isNotRegister'] as bool?;
+
+        return RegisterBabyNameScreen(
+          isNotRegister: isNotRegister ?? false,
+        );
+      },
+      routes: [
         GoRoute(
-          path: _Paths.chatView,
-          name: AppViews.chatView,
-          builder: (context, state) => const ChatsScreen(appBar: CustomAppBar(),),
+          path: _Paths.registerFillAnotherBabyInfo,
+          name: AppViews.registerFillAnotherBabyInfo,
+          builder: (context, state) {
+            final Map? extra = state.extra as Map?;
+            final bool? isNotRegister = extra?['isNotRegister'] as bool?;
+
+            return RegisterFillAnotherBabyInfoScreen(
+              isNotRegister: isNotRegister ?? false,
+            );
+          },
+          routes: [
+            GoRoute(
+              path: _Paths.registerInfoAboutChildbirth,
+              name: AppViews.registerInfoAboutChildbirth,
+              builder: (context, state) {
+                final Map? extra = state.extra as Map?;
+                final bool? isNotRegister = extra?['isNotRegister'] as bool?;
+
+                return RegisterInfoAboutChildbirth(
+                  isNotRegister: isNotRegister ?? false,
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: _Paths.citySearch,
+                  name: AppViews.citySearch,
+                  builder: (context, state) {
+                    return const CitySearchView();
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),
@@ -295,7 +306,8 @@ abstract class _Paths {
   static const String register = AppViews.register;
   static const String congratsScreen = AppViews.congratsScreen;
   static const String registerFillName = AppViews.registerFillName;
-  static const String registerFillBabyName = AppViews.registerFillBabyName;
+  static const String registerFillBabyName =
+      '/${AppViews.registerFillBabyName}';
   static const String registerFillAnotherBabyInfo =
       AppViews.registerFillAnotherBabyInfo;
   static const String registerInfoAboutChildbirth =
@@ -316,11 +328,11 @@ abstract class _Paths {
   static const evolutionView = AppViews.evolutionView;
 
   static const addWeightView = AppViews.addWeightView;
+  static const addGrowthView = AppViews.addGrowthView;
+  static const addHeadView = AppViews.addHeadView;
 
   static const profile = AppViews.profile;
   static const promoView = AppViews.promoView;
-
-  static const chatView = AppViews.chatView;
 
   static const feeding = AppViews.feeding;
 

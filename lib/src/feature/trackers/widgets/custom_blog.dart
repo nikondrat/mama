@@ -5,7 +5,22 @@ import 'package:mama/src/core/constant/constant.dart';
 import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 
 class CustomBlog extends StatefulWidget {
-  const CustomBlog({super.key});
+  const CustomBlog({
+    super.key,
+    this.kgOrCm,
+    this.gOrM,
+    this.onPressedElevated,
+    this.onPressedOutlined,
+    this.controller,
+    this.verticalSwitch,
+  });
+
+  final String? kgOrCm;
+  final String? gOrM;
+  final void Function()? onPressedElevated;
+  final void Function()? onPressedOutlined;
+  final TextEditingController? controller;
+  final Widget? verticalSwitch;
 
   @override
   _CustomBlogState createState() => _CustomBlogState();
@@ -91,6 +106,7 @@ class _CustomBlogState extends State<CustomBlog> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: TextFormField(
+                      controller: widget.controller,
                       keyboardType: TextInputType.phone,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(),
@@ -119,14 +135,15 @@ class _CustomBlogState extends State<CustomBlog> {
                   Expanded(
                     flex: 2,
                     child: OutlinedButton.icon(
-                      icon: const Icon(Icons.edit, color: AppColors.primaryColor),
+                      icon:
+                          const Icon(Icons.edit, color: AppColors.primaryColor),
                       label: Text(
                         t.trackers.note.title,
                         style: AppTextStyles.f17w600.copyWith(
                           color: AppColors.primaryColor,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: widget.onPressedOutlined,
                       style: OutlinedButton.styleFrom(
                         side: const BorderSide(
                           width: 2,
@@ -142,7 +159,7 @@ class _CustomBlogState extends State<CustomBlog> {
                   Expanded(
                     flex: 3,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: widget.onPressedElevated,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         shape: RoundedRectangleBorder(

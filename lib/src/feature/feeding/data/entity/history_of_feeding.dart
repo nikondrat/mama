@@ -1,17 +1,17 @@
 import 'detail_time_of_leading.dart';
 
 class HistoryOfFeeding {
-  final String dateTime;
-  final String allLeftSideTime;
-  final String allRightSideTime;
-  final String allTime;
-  List<DetailTimeOfLeading> detailTimeOfFeeding;
+  final String firstColumnText;
+  final String secondColumnText;
+  final String thirdColumnText;
+  final String? fourthColumnText;
+  List<DetailTimeOfLeading> detailColumnText;
 
   HistoryOfFeeding({
-    required this.dateTime,
-    required this.allLeftSideTime,
-    required this.allRightSideTime,
-    required this.allTime,
-    required this.detailTimeOfFeeding
+    required this.firstColumnText,
+    required this.secondColumnText,
+    required this.thirdColumnText,
+    required this.detailColumnText,
+    this.fourthColumnText,
   });
 }

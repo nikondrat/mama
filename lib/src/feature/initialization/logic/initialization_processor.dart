@@ -70,7 +70,9 @@ final class InitializationProcessor {
   // Initializes the REST client with the provided FlutterSecureStorage.
   Future<RestClient> _initRestClient(
       FlutterSecureStorage storage, TokenStorageImpl tokenStorage) async {
-    final dio = Dio();
+    final dio = Dio(BaseOptions(
+      followRedirects: true,
+    ));
     final refreshClient =
         RefreshClientImpl(restClient: dio, tokenStorage: tokenStorage);
 

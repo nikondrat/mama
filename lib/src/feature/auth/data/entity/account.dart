@@ -12,7 +12,16 @@ class AccountModel extends _AccountModel with _$AccountModel {
   @JsonKey(name: 'fcm_token')
   String fcmToken;
 
+  @JsonKey(includeToJson: false)
+  final String? profession;
+
   Gender gender;
+
+  @JsonKey(includeToJson: false)
+  final Role? role;
+
+  @JsonKey(includeToJson: false)
+  final Status? status;
 
   AccountModel({
     this.fcmToken = '',
@@ -23,6 +32,10 @@ class AccountModel extends _AccountModel with _$AccountModel {
     super.avatarUrl,
     super.email,
     super.info,
+    this.id,
+    this.profession,
+    this.role,
+    this.status,
   });
 
   factory AccountModel.fromJson(Map<String, dynamic> json) =>
@@ -45,23 +58,79 @@ abstract class _AccountModel with Store {
   @JsonKey(name: 'first_name')
   String firstName = '';
 
+  @action
+  void setFirstName(String value) {
+    firstName = value;
+    isChanged = true;
+  }
+
   @observable
   @JsonKey(name: 'second_name')
   String secondName = '';
+
+  @action
+  void setSecondName(String value) {
+    secondName = value;
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(name: 'phone')
   String phone = '';
 
+  @action
+  void setPhone(String value) {
+    phone = value;
+    isChanged = true;
+  }
+
   @observable
   @JsonKey(name: 'avatar', includeIfNull: false)
   String? avatarUrl;
+
+  @action
+  void setAvatar(String value) {
+    avatarUrl = value;
+    isChanged = true;
+  }
 
   @observable
   @JsonKey(name: 'email', includeIfNull: false)
   String? email;
 
+  @action
+  void setEmail(String value) {
+    email = value;
+    isChanged = true;
+  }
+
   @observable
   @JsonKey(name: 'info')
   String? info;
+
+  @action
+  void setInfo(String value) {
+    info = value;
+    isChanged = true;
+  }
+
+  @observable
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool isChanged = false;
+}
+
+enum Role {
+  @JsonValue('ADMIN')
+  admin,
+
+  @JsonValue('USER')
+  user
+}
+
+enum Status {
+  @JsonValue('SUBSCRIBED')
+  subscribed,
+
+  @JsonValue('NO_SUBSCRIBED')
+  noSubscribe
 }

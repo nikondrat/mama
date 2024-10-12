@@ -9,9 +9,13 @@ class UserData {
 
   final List<ChildModel>? childs;
 
+  @JsonKey(name: 'user')
+  final UserModel user;
+
   UserData({
     required this.account,
     required this.childs,
+    required this.user,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

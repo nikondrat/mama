@@ -55,7 +55,6 @@ class AuthInputBodyWidget extends StatelessWidget {
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
                                               // TODO navigate to term of use screen
-                                              print('tap');
                                             },
                                         )),
                                 style: textTheme.bodySmall,

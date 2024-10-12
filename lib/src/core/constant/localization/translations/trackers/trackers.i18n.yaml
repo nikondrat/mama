@@ -1,12 +1,19 @@
 evolution: Evolution
+sleepAndCrying: Sleep and crying
+feeding: Feeding
+diapers: Diapers
 
 weight:
   title: Weight
   add: Add weight
 
-growth: Growth
+growth: 
+  title: Growth
+  add: Add growth
 
-head: Head
+head: 
+  title: Head
+  add: Add head
 
 table: Table
 
@@ -108,3 +115,9 @@ pillExactTimeOne:
 
 pillRemainingTimeOne:
   title: In 2 hours 12 minutes
+
+
+cm:  
+  title: cm
+m: 
+  title: m

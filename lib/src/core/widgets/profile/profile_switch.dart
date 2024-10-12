@@ -8,8 +8,10 @@ class ProfileSwitch extends StatefulWidget {
   final List<ChildModel?> children;
   final Alignment alignment;
   final bool isShowText;
+  final UserStore userStore;
   const ProfileSwitch({
     super.key,
+    required this.userStore,
     required this.children,
     this.alignment = Alignment.centerRight,
     this.isShowText = false,
@@ -26,6 +28,8 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
     setState(() {
       _isFirstCircleOnTop = !_isFirstCircleOnTop;
     });
+    widget.userStore
+        .selectChild(child: widget.children[_isFirstCircleOnTop ? 0 : 1]!);
   }
 
   @override

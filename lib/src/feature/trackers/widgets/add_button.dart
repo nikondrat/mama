@@ -5,9 +5,12 @@ class AddButton extends StatelessWidget {
   const AddButton({
     super.key,
     this.onTap,
+    required this.title,
   });
 
   final void Function()? onTap;
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -21,7 +24,7 @@ class AddButton extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              t.trackers.weight.add,
+              title,
               style: AppTextStyles.f17w600.copyWith(
                 color: AppColors.primaryColor,
               ),

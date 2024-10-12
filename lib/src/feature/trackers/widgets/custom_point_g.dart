@@ -12,22 +12,22 @@ class CustomPointG extends CustomPainter {
       ..color = AppColors.greyColor
       ..strokeWidth = 1;
 
-    double lineHeight = 40; // Узун сызыктын бийиктиги
-    double midLineHeight = 30; // 5-инчи интервалдагы кыскараак узун сызык
-    double shortLineHeight = 20; // Кыска сызыктын бийиктиги
-    double spacing = 10; // Сызыктар ортосундагы аралык
-    int label = 0; // Сандарды 0дон баштоо
+    double lineHeight = 40; // Высота длинной строки
+    double midLineHeight = 30; // Более короткая длинная линия в 5-м интервале
+    double shortLineHeight = 20; // Короткая высота строки
+    double spacing = 10; // Расстояние между линиями
+    int label = 0; // Начальные цифры с 0
 
-    // Линейкадагы сызыктарды чийүү
+    // Рисовать линии на линейке
     for (double i = 0; i < size.width; i += spacing) {
       if ((i / spacing) % 10 == 0) {
-        // Узун сызыктар (ар бир 5-инчи интервалда)
+        // Длинные строки (каждый 5-й интервал)
         canvas.drawLine(Offset(i, 0), Offset(i, lineHeight), linePaint);
 
-        // Сандарды узун сызыктардын ылдый жагына коюу (ар бир узун сызыктын жанына)
+        // Размещаем числа под длинными строками (рядом с каждой длинной строкой)
         TextPainter textPainter = TextPainter(
           text: TextSpan(
-            text: label.toString(), // Сандарды 0дон баштап жазуу
+            text: label.toString(), // Запишите цифры, начиная с 0
             style: AppTextStyles.f17w600.copyWith(
               color: AppColors.blackColor,
             ),
@@ -35,17 +35,16 @@ class CustomPointG extends CustomPainter {
           textDirection: TextDirection.ltr,
         );
         textPainter.layout();
-        textPainter.paint(
-            canvas,
-            Offset(
-                i - 5, lineHeight + 5)); // Сандар узун сызыктын астына жазылат
+        textPainter.paint(canvas,
+            Offset(i - 5, lineHeight + 5)); // Цифры написаны под длинной чертой
 
-        label += 100; // Санды ар бир узун сызыктын жанында бирден өстүрүү
+        label +=
+            100; // Увеличьте число на единицу рядом с каждой длинной линией
       } else if ((i / spacing) % 5 == 0) {
-        // Ар бир 5-чи интервалда бир аз кыскараак узун сызык
+        // Немного короче длинная линия каждый 5-й интервал
         canvas.drawLine(Offset(i, 0), Offset(i, midLineHeight), shortLinePaint);
       } else {
-        // Кыска сызыктар
+        // Короткие линии
         canvas.drawLine(
             Offset(i, 0), Offset(i, shortLineHeight), shortLinePaint);
       }

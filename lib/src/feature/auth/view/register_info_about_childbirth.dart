@@ -1,21 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/widgets/custom_toggle_button.dart';
 import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
 class RegisterInfoAboutChildbirth extends StatelessWidget {
+  final bool isNotRegister;
   const RegisterInfoAboutChildbirth({
     super.key,
+    required this.isNotRegister,
   });
 
   @override
   Widget build(BuildContext context) {
     final AuthViewStore store = context.watch();
+    final ChildStore childStore = context.watch();
+
+    void next() {
+      if (isNotRegister) {
+        childStore.add(model: store.child);
+        context.pushReplacementNamed(AppViews.profile);
+      } else {
+        context.pushNamed(
+          AppViews.citySearch,
+        );
+      }
+    }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: isNotRegister ? const CustomAppBar() : null,
       body: BodyDecoration(
         backgroundImage: DecorationImage(
           image: AssetImage(
@@ -30,22 +46,14 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
               const Spacer(),
               TitleWidget(text: t.register.howWasBirth),
               20.h,
-              FlutterToggleButton(
-                outerContainerMargin: 3,
-                buttonWidth: MediaQuery.of(context).size.width * .45,
-                buttonHeight: 38,
-                buttonColor: Colors.white,
-                enableTextColor: AppColors.primaryColor,
-                disableTextColor: AppColors.greyBrighterColor,
-                disableTextFontWeight: FontWeight.w700,
-                buttonTextFontSize: 17,
-                borderRadius: 6,
-                outerContainerColor: const Color(0xFFE1E6FF),
-                onTap: (index) {
-                  store.child.setChildbirth(Childbirth.values[index]);
-                },
-                items: [t.register.natural, t.register.caesarean],
-              ),
+              CustomToggleButton(
+                  fontSize: 17,
+                  items: [t.register.natural, t.register.caesarean],
+                  onTap: (index) {
+                    store.child.setChildbirth(Childbirth.values[index]);
+                  },
+                  btnWidth: 175,
+                  btnHeight: 38),
               20.h,
               Row(
                 children: [
@@ -73,11 +81,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                         type: CustomButtonType.outline,
                         title: t.register.skip,
                         maxLines: 1,
-                        onTap: () {
-                          context.pushNamed(
-                            AppViews.citySearch,
-                          );
-                        },
+                        onTap: next,
                       ),
                     ),
                     20.w,
@@ -89,11 +93,7 @@ class RegisterInfoAboutChildbirth extends StatelessWidget {
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 16),
                           title: t.register.next,
-                          onTap: () {
-                            context.pushNamed(
-                              AppViews.citySearch,
-                            );
-                          },
+                          onTap: next,
                         ))
                   ],
                 ),

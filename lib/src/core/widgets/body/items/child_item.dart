@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_toggle_button/flutter_toggle_button.dart';
+import 'package:mama/src/core/widgets/custom_toggle_button.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class ChildItem extends StatefulWidget {
+  final int index;
   final ChildModel model;
   const ChildItem({
     super.key,
+    required this.index,
     required this.model,
   });
 
@@ -89,7 +91,7 @@ class _ChildItemState extends State<ChildItem> {
       return Column(
         children: [
           BodyGroup(
-              title: t.profile.childTitle,
+              title: widget.index == 0 ? t.profile.childTitle : '',
               formGroup: formGroup,
               isDecorated: true,
               items: [
@@ -112,8 +114,10 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setGender(Gender.values[index]),
                     items: [
-                      Gender.female.name,
-                      Gender.male.name,
+                      Gender.female,
+                      Gender.male,
+                      // t.profile.sex(context: GenderContext.female),
+                      // t.profile.sex(context: GenderContext.male),
                     ],
                   ),
                 )),
@@ -206,8 +210,12 @@ class _ChildItemState extends State<ChildItem> {
                     onTap: (index) =>
                         widget.model.setChildbirth(Childbirth.values[index]),
                     items: [
-                      Childbirth.natural.name,
-                      Childbirth.cesarian.name,
+                      'd',
+                      's'
+                      // Childbirth.natural.name,
+                      // Childbirth.cesarian.name,
+                      // t.profile.birth(context: BirthContext.nature),
+                      // t.profile.birth(context: BirthContext.cesarean)
                     ],
                   ),
                 )),
@@ -221,7 +229,7 @@ class _ChildItemState extends State<ChildItem> {
                         })),
                 if (formGroup.controls.values.isNotEmpty)
                   ItemsNeedToFill(formGroup: formGroup),
-                DottedInput(),
+                const DottedInput(),
               ]),
         ],
       );
