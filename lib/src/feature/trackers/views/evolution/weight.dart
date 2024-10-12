@@ -12,9 +12,12 @@ class Weight extends StatelessWidget {
         child: Column(
           children: [
             /// To Know More Contaner
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: ToKnowMoreContainer(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ToKnowMoreContainer(
+                title1: t.trackers.knowMoreOne.title,
+                title2: t.trackers.knowMoreTwo.title,
+              ),
             ),
 
             /// Current and Dynamic Container

@@ -5,7 +5,12 @@ import 'package:mama/src/feature/trackers/widgets/widgets.dart';
 class ToKnowMoreContainer extends StatefulWidget {
   const ToKnowMoreContainer({
     super.key,
+    required this.title1,
+    required this.title2,
   });
+
+  final String title1;
+  final String title2;
 
   @override
   State<ToKnowMoreContainer> createState() => _ToKnowMoreContainerState();
@@ -18,7 +23,8 @@ class _ToKnowMoreContainerState extends State<ToKnowMoreContainer> {
   Widget build(BuildContext context) {
     return isClosed
         ? Container(
-            padding: const EdgeInsets.only(right: 0, left: 16, top: 0, bottom: 0),
+            padding:
+                const EdgeInsets.only(right: 0, left: 16, top: 0, bottom: 0),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.learnMoreColor,
@@ -40,14 +46,14 @@ class _ToKnowMoreContainerState extends State<ToKnowMoreContainer> {
                   child: Column(
                     children: [
                       Text(
-                        t.trackers.knowMoreOne.title,
+                        widget.title1,
                         style: AppTextStyles.f14w0.copyWith(
                           color: AppColors.greyBrighterColor,
                         ),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        t.trackers.knowMoreTwo.title,
+                        widget.title2,
                         style: AppTextStyles.f14w0.copyWith(
                           color: AppColors.greyBrighterColor,
                         ),
