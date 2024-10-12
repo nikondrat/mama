@@ -45,8 +45,15 @@ abstract class AppViews {
   static const feeding = 'feeding';
   static const addManually = 'addManually';
 
+
   static const diapersView = 'diapersView';
   static const addDiaper = 'addDiaper';
+
+  static const docs = 'docs';
+  static const doc = 'doc';
+
+  static const consultation = 'consultation';
+
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -54,8 +61,22 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
-  // initialLocation: _Paths.homeScreen,
   routes: [
+    GoRoute(
+        path: _Paths.docs,
+        name: AppViews.docs,
+        builder: (context, state) {
+          return const DocsView();
+        },
+        routes: [
+          GoRoute(
+            path: _Paths.doc,
+            name: AppViews.doc,
+            builder: (context, state) {
+              return const DocView();
+            },
+          ),
+        ]),
     GoRoute(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
@@ -137,6 +158,10 @@ final GoRouter router = GoRouter(
             appBar: CustomAppBar(),
           ),
           routes: [
+            GoRoute(
+                path: _Paths.consultation,
+                name: AppViews.consultation,
+                builder: (context, state) => const ConsultationView()),
             GoRoute(
               name: AppViews.servicesSleepMusicView,
               path: _Paths.servicesSleepMusicPath,
@@ -319,6 +344,12 @@ abstract class _Paths {
 
   static const addManually = AppViews.addManually;
 
+
   static const diapersView = AppViews.diapersView;
   static const addDiaper = AppViews.addDiaper;
+
+  static const docs = '/${AppViews.docs}';
+  static const doc = AppViews.doc;
+
+  static const consultation = AppViews.consultation;
 }

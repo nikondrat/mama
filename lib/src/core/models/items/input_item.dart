@@ -4,6 +4,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'body_item.dart';
 
 class InputItem extends BodyItem {
+  final bool autoFocus;
   final String? inputHint;
   final String controlName;
   final TextStyle? inputHintStyle;
@@ -25,6 +26,7 @@ class InputItem extends BodyItem {
 
   InputItem({
     required this.controlName,
+    this.autoFocus = false,
     super.hintText,
     this.errorBorder,
     this.inputHint,
