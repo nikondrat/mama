@@ -45,7 +45,9 @@ class ServicesUserView extends StatelessWidget {
                     buttons: [
                       ButtonModel(
                         title: t.services.myRecords.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.consultation);
+                        },
                       ),
                       ButtonModel(
                         title: t.services.specialists.title,

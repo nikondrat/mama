@@ -121,3 +121,34 @@ cm:
   title: см
 m: 
   title: м
+
+diaper:
+  diapers: Подгузники
+  add: Добавить подгузник
+
+wet:
+  wet: Мокрый
+  littleBit: Мало
+  average: Средне
+  many: Много
+
+mixed:
+  mixed: Смешанный
+  solid: Твердый
+  soft: Мягкий
+  liquid: Жидкий
+  dense: Плотный
+  sticky: Липкий
+  grainy: Зернистый
+  diarrhea: Диарея
+
+dirty: 
+  dirty: Грязный
+  mixed: Смешанный
+  solid: Твердый
+  soft: Мягкий
+  liquid: Жидкий
+  dense: Плотный
+  sticky: Липкий
+  grainy: Зернистый
+  diarrhea: Диарея

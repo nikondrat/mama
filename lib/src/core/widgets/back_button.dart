@@ -5,9 +5,11 @@ import 'package:mama/src/data.dart';
 
 class CustomBackButton extends StatelessWidget {
   final Function()? onTap;
+  final bool isShowTitle;
   const CustomBackButton({
     super.key,
     this.onTap,
+    this.isShowTitle = true,
   });
 
   @override
@@ -33,11 +35,13 @@ class CustomBackButton extends StatelessWidget {
               width: 12,
               height: 20,
             ),
-            const SizedBox(width: 12),
-            Text(
-              t.services.back.title,
-              style: textTheme.bodySmall,
-            ),
+            if (isShowTitle) ...[
+              const SizedBox(width: 12),
+              Text(
+                t.services.back.title,
+                style: textTheme.bodySmall,
+              ),
+            ]
           ],
         ),
       ),

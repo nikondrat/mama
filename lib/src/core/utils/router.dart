@@ -12,7 +12,6 @@ import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_screen.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../feature/feature.dart';
@@ -58,12 +57,16 @@ abstract class AppViews {
 
   static const feeding = 'feeding';
   static const addManually = 'addManually';
-  static const serviceKnowlegde = 'serviceKnowlegde';
-  static const serviceKnowledgeInfo = 'serviceKnowledgeInfo';
-  static const categories = 'categories';
-  static const ages = 'ages';
-  static const author = 'author';
-  static const savedFiles = 'savedFiles';
+
+
+  static const diapersView = 'diapersView';
+  static const addDiaper = 'addDiaper';
+
+  static const docs = 'docs';
+  static const doc = 'doc';
+
+  static const consultation = 'consultation';
+
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -71,8 +74,22 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
-  // initialLocation: _Paths.homeScreen,
   routes: [
+    GoRoute(
+        path: _Paths.docs,
+        name: AppViews.docs,
+        builder: (context, state) {
+          return const DocsView();
+        },
+        routes: [
+          GoRoute(
+            path: _Paths.doc,
+            name: AppViews.doc,
+            builder: (context, state) {
+              return const DocView();
+            },
+          ),
+        ]),
     GoRoute(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
@@ -153,6 +170,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) =>  ServicesUserView(appBar: CustomAppBar(),),
           routes: [
             GoRoute(
+                path: _Paths.consultation,
+                name: AppViews.consultation,
+                builder: (context, state) => const ConsultationView()),
+            GoRoute(
               name: AppViews.servicesSleepMusicView,
               path: _Paths.servicesSleepMusicPath,
               builder: (context, state) {
@@ -199,27 +220,28 @@ final GoRouter router = GoRouter(
           ],
         ),
         GoRoute(
-            path: _Paths.evolutionView,
-            name: AppViews.evolutionView,
-            builder: (context, state) => const EvolutionView(),
+            name: AppViews.diapersView,
+            path: _Paths.diapersView,
+            builder: (context, state) => const DiapersView(),
             routes: [
               GoRoute(
-                name: AppViews.addWeightView,
-                path: _Paths.addWeightView,
-                builder: (context, state) => AddWeight(),
-              )
-            ]),
-        GoRoute(
-            path: _Paths.feeding,
-            name: AppViews.feeding,
-            builder: (context, state) => const FeedingScreen(),
-            routes: [
-              GoRoute(
-                name: AppViews.addManually,
-                path: _Paths.addManually,
-                builder: (context, state) => const AddManuallyScreen(),
+                name: AppViews.addDiaper,
+                path: _Paths.addDiaper,
+                builder: (context, state) => const AddDiaper(),
               ),
             ]),
+        GoRoute(
+          path: _Paths.feeding,
+          name: AppViews.feeding,
+          builder: (context, state) => const FeedingScreen(),
+          routes: [
+            GoRoute(
+              name: AppViews.addManually,
+              path: _Paths.addManually,
+              builder: (context, state) => const AddManuallyScreen(),
+            ),
+          ],
+        ),
         GoRoute(
           name: AppViews.trackersHealthView,
           path: _Paths.trackersHealthPath,
@@ -338,11 +360,12 @@ abstract class _Paths {
 
   static const addManually = AppViews.addManually;
 
-  static const serviceKnowledge = AppViews.serviceKnowlegde;
 
-  static const serviceKnowledgeInfo = AppViews.serviceKnowledgeInfo;
-  static const categories = AppViews.categories;
-  static const ages = AppViews.ages;
-  static const author = AppViews.author;
-  static const savedFiles = AppViews.savedFiles;
+  static const diapersView = AppViews.diapersView;
+  static const addDiaper = AppViews.addDiaper;
+
+  static const docs = '/${AppViews.docs}';
+  static const doc = AppViews.doc;
+
+  static const consultation = AppViews.consultation;
 }

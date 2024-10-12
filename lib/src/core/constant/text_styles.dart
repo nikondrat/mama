@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
+  static TextStyle f10w400 = const TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle f10w700 = const TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w700,

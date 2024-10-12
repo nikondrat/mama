@@ -36,7 +36,33 @@ abstract class _UserStore with Store {
           gender: Gender.female, firstName: '', secondName: '', phone: '');
 
   @computed
-  List<ChildModel> get children => userData?.childs ?? [];
+  UserModel get user =>
+      userData?.user ??
+      UserModel(
+        accountId: '',
+        city: '',
+        createdId: '',
+        endPrime: '',
+        id: '',
+        roles: [],
+        startPrime: '',
+        typePrime: '',
+        updatedId: '',
+      );
+
+  @computed
+  bool get isChanged =>
+      account.isChanged || children.where((e) => e.isChanged).isNotEmpty;
+
+  @observable
+  ObservableList<ChildModel> children = ObservableList();
+
+  @observable
+  ChildModel? selectedChild;
+
+  @computed
+  List<ChildModel> get changedDataOfChild =>
+      children.where((element) => element.isChanged).toList();
 
   @computed
   bool get hasResults =>

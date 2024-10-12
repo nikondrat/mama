@@ -35,9 +35,8 @@ class _HomeViewState extends State<HomeView>
             avatarUrl: data.account?.avatarUrl ?? '',
             avatarUrl: userStore.account.avatarUrl ?? '',
           ),
-          action: ProfileWidget(
+          action: const ProfileWidget(
             isShowText: true,
-            children: userStore.children.toList(),
           ),
         );
 

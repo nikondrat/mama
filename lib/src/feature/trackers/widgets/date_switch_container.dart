@@ -50,7 +50,7 @@ class _DateSwitchContainerState extends State<DateSwitchContainer> {
         // SnackBar аркылуу тандалган күн жана убакытты көрсөтүү
         final snackBar = SnackBar(
           content: Text(
-            "Тандалган убакыт: ${selectedDate!.day}.${selectedDate!.month}.${selectedDate!.year} ${selectedTime!.format(context)}",
+            "Выбранная время: ${selectedDate!.day}.${selectedDate!.month}.${selectedDate!.year} ${selectedTime!.format(context)}",
           ),
           duration: const Duration(seconds: 3),
         );

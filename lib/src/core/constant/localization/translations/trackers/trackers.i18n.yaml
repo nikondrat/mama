@@ -121,3 +121,33 @@ cm:
   title: cm
 m: 
   title: m
+
+diaper:
+  diapers: Diapers
+  add: Add diaper
+
+wet:
+  wet: Wet
+  littleBit: Little Bit
+  average: Average
+  many: Many
+
+mixed:
+  mixed: Mixed
+  solid: Solid
+  soft: Soft
+  liquid: Liquid
+  dense: Dense
+  sticky: Sticky
+  grainy: Grainy
+  diarrhea: Diarrhea
+
+dirty: 
+  dirty: Dirty
+  solid: Solid
+  soft: Soft
+  liquid: Liquid
+  dense: Dense
+  sticky: Sticky
+  grainy: Grainy
+  diarrhea: Diarrhea
