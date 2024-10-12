@@ -15,12 +15,15 @@ class Growth extends StatelessWidget {
             /// To Know More Contaner
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ToKnowMoreContainer(),
+              child: ToKnowMoreContainer(
+                title1: t.trackers.knowMoreOne.title,
+                title2: t.trackers.knowMoreTwo.title,
+              ),
             ),
 
             /// Current and Dynamic Container
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: CurrentAndDymanicContainer(),
             ),
 
@@ -45,18 +48,18 @@ class Growth extends StatelessWidget {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 278,
-                child: FlProgressChart(),
+                child: const FlProgressChart(),
               ),
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 children: [
                   KnowMoreButton(
                     onTap: () {},
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   AddButton(
                     title: t.trackers.growth.add,
                     onTap: () {
@@ -66,20 +69,20 @@ class Growth extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             /// Stories
             Center(
               child: Text(
                 t.trackers.stories.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                 ),
               ),
             ),
 
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -98,7 +101,7 @@ class Growth extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RowStroriesData(
@@ -110,7 +113,7 @@ class Growth extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             SizedBox(
               height: 200,
               child: ListView.builder(
@@ -128,7 +131,7 @@ class Growth extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

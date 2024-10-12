@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-
 import 'package:provider/provider.dart';
 
 abstract class AppViews {
@@ -45,6 +44,9 @@ abstract class AppViews {
 
   static const feeding = 'feeding';
   static const addManually = 'addManually';
+
+  static const diapersView = 'diapersView';
+  static const addDiaper = 'addDiaper';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -171,6 +173,17 @@ final GoRouter router = GoRouter(
             ),
           ],
         ),
+        GoRoute(
+            name: AppViews.diapersView,
+            path: _Paths.diapersView,
+            builder: (context, state) => const DiapersView(),
+            routes: [
+              GoRoute(
+                name: AppViews.addDiaper,
+                path: _Paths.addDiaper,
+                builder: (context, state) => const AddDiaper(),
+              ),
+            ]),
         GoRoute(
           path: _Paths.feeding,
           name: AppViews.feeding,
@@ -305,4 +318,7 @@ abstract class _Paths {
   static const feeding = AppViews.feeding;
 
   static const addManually = AppViews.addManually;
+
+  static const diapersView = AppViews.diapersView;
+  static const addDiaper = AppViews.addDiaper;
 }

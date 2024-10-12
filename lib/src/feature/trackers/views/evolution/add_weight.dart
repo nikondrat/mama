@@ -16,7 +16,10 @@ class AddWeight extends StatelessWidget {
           FixedCenterIndicator(
               kgOrG: t.trackers.g.title, painter: CustomPointG()),
           const SizedBox(height: 8),
-          const CustomBlog(),
+          CustomBlog(
+            onPressedElevated: () {},
+            onPressedOutlined: () {},
+          ),
           const SizedBox(height: 8),
         ],
       ),
