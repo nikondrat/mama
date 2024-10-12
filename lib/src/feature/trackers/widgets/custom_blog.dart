@@ -134,44 +134,15 @@ class _CustomBlogState extends State<CustomBlog> {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: OutlinedButton.icon(
-                      icon:
-                          const Icon(Icons.edit, color: AppColors.primaryColor),
-                      label: Text(
-                        t.trackers.note.title,
-                        style: AppTextStyles.f17w600.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                      onPressed: widget.onPressedOutlined,
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(
-                          width: 2,
-                          color: AppColors.purpleLighterBackgroundColor,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                    child: OutlinButtonWidget(
+                      onPressedOutlined: widget.onPressedOutlined,
                     ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     flex: 3,
-                    child: ElevatedButton(
-                      onPressed: widget.onPressedElevated,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.purpleLighterBackgroundColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: Text(
-                        t.trackers.add.title,
-                        style: AppTextStyles.f17w600.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
+                    child: ElevateButtonWidget(
+                      onPressedElevated: widget.onPressedElevated,
                     ),
                   ),
                 ],
