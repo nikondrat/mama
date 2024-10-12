@@ -33,7 +33,7 @@ class AgeSelection extends StatelessWidget {
             count.toString(),
             style: TextStyle(color: Colors.grey),
           ),
-          CommonCheckBoxWidget()
+          const CommonCheckBoxWidget()
         ],
       ),
     );

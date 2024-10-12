@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 
@@ -160,8 +159,8 @@ abstract class _ChildModel with Store {
   @action
   setBirthDate(DateTime value) => birthDate = value;
 
-  static String _dateTimeToJson(DateTime date) {
-    return date.toIso8601String().split('T').first;
+  static String? _dateTimeToJson(DateTime? date) {
+    return date?.toIso8601String().split('T').first;
   }
 
   @observable
