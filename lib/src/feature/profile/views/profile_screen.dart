@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
     ];
 
     return PopScope(
-      onPopInvokedWithResult: (didPop, result) {
+      onPopInvoked: (didPop) {
         if (didPop) {
           // TODO save data if changed
         }

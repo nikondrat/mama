@@ -71,7 +71,8 @@ class _RegisterFillAnotherBabyInfoScreenState
               10.h,
               ReactiveForm(
                 formGroup: store.childData,
-                child: BodyGroup(title: '', items: [
+                child: BodyGroup(title: '',
+                    items: [
                   BodyItemWidget(
                     item: ItemWithInput(
                         inputItem: InputItem(
