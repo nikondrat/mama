@@ -40,10 +40,23 @@ class ProfileScreen extends StatelessWidget {
           onTap: () {})
     ];
 
-    return Provider(
-        dispose: (context, value) => value.dispose(),
-        create: (context) => ProfileViewStore(
-              model: userStore.account,
+    return PopScope(
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          // TODO save data if changed
+        }
+      },
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        body: DecoratedBox(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                AppColors.gradientPurpleBackgroundScaffold,
+                AppColors.gradientPurpleLighterBackgroundScaffold,
+              ],
             ),
         builder: (context, _) {
           final ProfileViewStore store = context.watch();
