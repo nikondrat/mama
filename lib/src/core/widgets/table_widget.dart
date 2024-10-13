@@ -60,12 +60,6 @@ class TableWidget extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
                             final detailInfo = item.detailColumnText[index];
-                            var rowList = [
-                              detailInfo.detailFirstColumnText,
-                              detailInfo.detailSecondColumnText,
-                              detailInfo.detailThirdColumnText,
-                              detailInfo.detailFourthColumnText,
-                            ];
                             return Table(
                               children: [
                                 TableRow(children: [

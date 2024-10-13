@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/feeding/feeding.dart';
+import 'package:mama/src/feature/feeding/views/bottle_screen.dart';
+import 'package:mama/src/feature/feeding/views/table_screen.dart';
 
 class FeedingScreen extends StatefulWidget {
   const FeedingScreen({super.key});
@@ -16,7 +18,7 @@ class _FeedingScreenState extends State<FeedingScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -38,6 +40,7 @@ class _FeedingScreenState extends State<FeedingScreen>
           t.feeding.pumping,
           t.feeding.bottle,
           t.feeding.lure,
+          t.feeding.table
         ],
         action: const CircleAvatar(
           radius: 20,
@@ -48,9 +51,9 @@ class _FeedingScreenState extends State<FeedingScreen>
         children: const [
           BreastScreen(),
           PumpingScreen(),
-          PumpingScreen(),
+          BottleScreen(),
           WeaningScreen(),
-
+          TableScreen()
         ],
       ),
     );

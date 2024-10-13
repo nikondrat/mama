@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/feature/feeding/data/repository/history_repository.dart';
+import '../../../core/core.dart';
 import '../widgets/widget.dart';
 
 class BreastScreen extends StatelessWidget {
@@ -6,10 +8,19 @@ class BreastScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FeedingBody(
+    final listOfData = historyOfFeedings;
+
+    return FeedingBody(
       children: [
-        AddFeedingWidget(),
-        HistoryWidget(),
+        const AddFeedingWidget(),
+        TableHistory(
+          listOfData: listOfData,
+          firstColumnName: t.feeding.feedingEndTime,
+          secondColumnName: t.feeding.l,
+          thirdColumnName: t.feeding.r,
+          fourthColumnName: t.feeding.general,
+          showTitle: true,
+        )
       ],
     );
   }

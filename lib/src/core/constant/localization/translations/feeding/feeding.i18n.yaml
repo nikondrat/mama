@@ -3,20 +3,14 @@ breast: Breast
 pumping: Pumping
 bottle: Bottle
 lure: Lure
-
 learnMoreText: Here you can track how your breastfeeding is going.\n\nFind out more about the breastfeeding process in our Knowledge Center
-
 learnMoreBtn: Learn\nmore
-
 left: Left
 right: Right
-
 addManually: Add manually
-
 pressForAddFeedingTime:
   first: Click on
   second: or add manually
-
 addFeeding: Add feeding
 story: Story
 newS: New
@@ -26,3 +20,10 @@ r: R
 general: General
 wholeStory: The whole story
 feedingEndTime: Feeding end\ntime
+endTimeOfPumping:  End time of pumping
+pumpingLeftSide: L, ml
+pumpingRightSide: R, ml
+totalMl: Total, ml
+breastMl: Breast,\nml
+bottleMl: Bottle,\nml
+table: Table
