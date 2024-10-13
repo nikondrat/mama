@@ -80,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
                           TextButton(
                               onPressed: () {
                                 //TODO добавить tap о компании
-                                context.pushNamed(AppViews.docs);
+                                // context.pushNamed(AppViews.docs);
                               },
                               child: Text(
                                 t.profile.aboutCompanyTitle,
@@ -94,7 +94,7 @@ class ProfileScreen extends StatelessWidget {
                           TextButton(
                               onPressed: () {
                                 //TODO добавить tap условия использования
-                                context.pushNamed(AppViews.docs);
+                                // context.pushNamed(AppViews.docs);
                               },
                               child: Text(
                                 t.profile.termOfUseTitle,

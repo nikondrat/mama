@@ -33,7 +33,6 @@ class _HomeViewState extends State<HomeView>
             },
             alignment: Alignment.centerLeft,
             avatarUrl: data.account?.avatarUrl ?? '',
-            avatarUrl: userStore.account.avatarUrl ?? '',
           ),
           action: const ProfileWidget(
             isShowText: true,

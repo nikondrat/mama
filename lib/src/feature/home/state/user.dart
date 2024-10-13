@@ -12,11 +12,6 @@ class UserStore extends _UserStore with _$UserStore {
     required super.restClient,
   });
 
-  get selectedChild => null;
-
-  get user => null;
-
-  get changedDataOfChild => null;
 }
 
 abstract class _UserStore with Store {
@@ -112,8 +107,8 @@ abstract class _UserStore with Store {
         restClient.get(Endpoint().userData).then((v) {
       if (v != null) {
         final data = UserData.fromJson(v);
-        var selectedChild = data.childs?.first;
-        final children = ObservableList.of(data.childs as Iterable);
+        selectedChild = data.childs?.first;
+        children = ObservableList.of(data.childs as Iterable<ChildModel>);
         return data;
       }
       return emptyResponse;
@@ -132,6 +127,6 @@ abstract class _UserStore with Store {
 
   @action
   void selectChild({required ChildModel child}) {
-    var selectedChild = child;
+    selectedChild = child;
   }
 }
