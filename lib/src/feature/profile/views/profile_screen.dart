@@ -163,46 +163,43 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
 
-                          Observer(builder: (context) {
-                            if (userStore.account.isChanged ||
-                                userStore.changedDataOfChild.isNotEmpty) {
-                              return Positioned(
-                                top: 50.0,
-                                right: 0.0,
-                                child: ButtonLeading(
-                                  icon: const SizedBox.shrink(),
-                                  title: t.profile.save,
-                                  labelStyle: titlesStyle.copyWith(
-                                      fontWeight: FontWeight.w400),
-                                  onTapButton: () {
-                                    userStore.updateData(
-                                        city: userStore.user.city,
-                                        firstName: userStore.account.firstName,
-                                        secondName:
-                                            userStore.account.secondName,
-                                        email: userStore.account.email,
-                                        info: userStore.account.info);
+                  Observer(builder: (context) {
+                    if (userStore.account.isChanged ||
+                        userStore.changedDataOfChild.isNotEmpty) {
+                      return Positioned(
+                        top: 50.0,
+                        right: 0.0,
+                        child: ButtonLeading(
+                          icon: const SizedBox.shrink(),
+                          title: t.profile.save,
+                          labelStyle:
+                              titlesStyle.copyWith(fontWeight: FontWeight.w400),
+                          onTapButton: () {
+                            userStore.updateData(
+                                city: userStore.user.city,
+                                firstName: userStore.account.firstName,
+                                secondName: userStore.account.secondName,
+                                email: userStore.account.email,
+                                info: userStore.account.info);
 
-                                    if (userStore
-                                        .changedDataOfChild.isNotEmpty) {
-                                      for (var e
-                                          in userStore.changedDataOfChild) {
-                                        childStore.update(model: e);
-                                      }
-                                    }
-                                  },
-                                  borderRadius: const BorderRadius.horizontal(
-                                    left: Radius.circular(20),
-                                  ),
-                                ),
-                              );
+                            if (userStore.changedDataOfChild.isNotEmpty) {
+                              for (var e in userStore.changedDataOfChild) {
+                                childStore.update(model: e);
+                              }
                             }
-                            return const SizedBox.shrink();
-                          }),
-                        ],
-                      ),
-                    ),
-                  );
-                })));
+                          },
+                          borderRadius: const BorderRadius.horizontal(
+                            left: Radius.circular(20),
+                          ),
+                        ),
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  }),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

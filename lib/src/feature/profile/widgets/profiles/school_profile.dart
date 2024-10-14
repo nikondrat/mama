@@ -179,27 +179,7 @@ class _SchoolProfileState extends State<SchoolProfile> {
               8.h,
 
               /// #articles
-              BodyItemDecoration(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                shadow: true,
-                child: SizedBox(
-                  height: 220,
-                  child: ListView.separated(
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemBuilder: (context, index) {
-                      return ArticleBox(
-                        imagePath: Assets.images.imgMomOne4x.path,
-                        articleCategory: t.home.sixMonths.title,
-                        articleTitle: t.home.articleTitleOne.title,
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(width: 8),
-                  ),
-                ),
-              ),
+
               20.h,
             ],
           ),
