@@ -127,6 +127,9 @@ class _ChildItemState extends State<ChildItem> {
                         contentPadding: inputPadding,
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         inputHint: t.profile.inputHint,
+                        onChanged: (value) {
+                          widget.model.setWeight(double.tryParse(value!));
+                        },
                         inputHintStyle: titlesStyle.copyWith(
                             color: AppColors.greyBrighterColor),
                       ),
@@ -147,6 +150,9 @@ class _ChildItemState extends State<ChildItem> {
                         contentPadding: inputPadding,
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         inputHint: t.profile.inputHint,
+                        onChanged: (value) {
+                          widget.model.setHeight(double.tryParse(value!));
+                        },
                         inputHintStyle: titlesStyle.copyWith(
                             color: AppColors.greyBrighterColor),
                       ),
@@ -167,6 +173,10 @@ class _ChildItemState extends State<ChildItem> {
                         contentPadding: inputPadding,
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         inputHint: t.profile.inputHint,
+                        onChanged: (value) {
+                          widget.model
+                              .setHeadCircumference(double.tryParse(value!));
+                        },
                         inputHintStyle: titlesStyle.copyWith(
                             color: AppColors.greyBrighterColor),
                       ),
@@ -208,7 +218,9 @@ class _ChildItemState extends State<ChildItem> {
                         })),
                 if (formGroup.controls.values.isNotEmpty)
                   ItemsNeedToFill(formGroup: formGroup),
-                const DottedInput(),
+                DottedInput(
+                  model: widget.model,
+                ),
               ]),
         ],
       );
