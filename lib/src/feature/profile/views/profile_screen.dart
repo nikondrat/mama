@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -72,10 +73,12 @@ class ProfileScreen extends StatelessWidget {
                               Observer(builder: (_) {
                                 return MomsProfile(
                                   titlesStyle: titlesStyle,
-                                  helpersStyle: helpersStyle,
                                   titlesColoredStyle: titlesColoredStyle,
                                   accountModel: userStore.account,
                                   store: store,
+                                  formatter: MaskTextInputFormatter(
+                                      mask: '### ###-##-##',
+                                      filter: {'#': RegExp(r'[0-9]')}),
                                 );
                               }),
                               Row(
