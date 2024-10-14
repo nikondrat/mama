@@ -144,7 +144,6 @@ mixed:
 
 dirty: 
   dirty: Грязный
-  mixed: Смешанный
   solid: Твердый
   soft: Мягкий
   liquid: Жидкий
@@ -152,3 +151,5 @@ dirty:
   sticky: Липкий
   grainy: Зернистый
   diarrhea: Диарея
+
+diaperforday: 6 подгузников в день в среднем
