@@ -18,7 +18,7 @@ class DiapersView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.diapersBackroundColor,
-      appBar: const CustomAppBar(title: 'Подгузники'),
+      appBar: CustomAppBar(title: t.trackers.diapers),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -52,7 +52,7 @@ class DiapersView extends StatelessWidget {
                               style: AppTextStyles.f14w400,
                             ),
                             Text(
-                              '6 подгузников в день в среднем',
+                              t.trackers.diaperforday,
                               style: AppTextStyles.f10w400,
                             ),
                           ],
@@ -67,46 +67,46 @@ class DiapersView extends StatelessWidget {
                     10.h,
                     // Основное содержимое календаря
 
-                    buildDaySection('17\nсентября', [
-                      buildGridItem(
+                    BuildDaySection('17\nсентября', [
+                      BuilldGridItem(
                         '09:56',
-                        'Мокрый',
-                        'Много',
+                        t.trackers.wet.wet,
+                        t.trackers.wet.many,
                         AppColors.purpleLighterBackgroundColor,
                         AppColors.primaryColor,
                       ),
-                      buildGridItem(
+                      BuilldGridItem(
                         '11:25',
-                        'Грязный',
-                        'Твердый',
+                        t.trackers.dirty.dirty,
+                        t.trackers.dirty.solid,
                         AppColors.yellowBackgroundColor,
                         AppColors.orangeTextColor,
                       ),
-                      buildGridItem(
+                      BuilldGridItem(
                         '13:30',
-                        'Смешанный',
-                        'Мягкий',
+                        t.trackers.mixed.mixed,
+                        t.trackers.mixed.soft,
                         AppColors.greenLighterBackgroundColor,
                         AppColors.greenTextColor,
                       ),
-                      buildGridItem(
+                      BuilldGridItem(
                         '15:00',
-                        'Мокрый',
-                        'Средне',
+                        t.trackers.wet.wet,
+                        t.trackers.wet.average,
                         AppColors.purpleLighterBackgroundColor,
                         AppColors.primaryColor,
                       ),
-                      buildGridItem(
+                      BuilldGridItem(
                         '18:00',
-                        'Смешанный',
-                        'Мягкий',
+                        t.trackers.mixed.mixed,
+                        t.trackers.mixed.soft,
                         AppColors.greenLighterBackgroundColor,
                         AppColors.greenTextColor,
                       ),
-                      buildGridItem(
+                      BuilldGridItem(
                         '20:00',
-                        'Мокрый',
-                        'Мало',
+                        t.trackers.wet.wet,
+                        t.trackers.wet.littleBit,
                         AppColors.purpleLighterBackgroundColor,
                         AppColors.primaryColor,
                       ),
@@ -173,64 +173,6 @@ class DiapersView extends StatelessWidget {
                   )
                 ],
               ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Метод для создания отдельного элемента календаря
-  Widget buildGridItem(String time, String type, String description,
-      Color color, Color textColor) {
-    return Container(
-      margin: const EdgeInsets.all(4.0),
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            time,
-            style: AppTextStyles.f10w400,
-          ),
-          Text(
-            type,
-            style: AppTextStyles.f14w700.copyWith(color: textColor),
-          ),
-          Text(
-            description,
-            style: AppTextStyles.f10w400,
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Метод для создания секции на день
-  Widget buildDaySection(String date, List<Widget> items) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            date,
-            style: AppTextStyles.f14w400,
-          ),
-          10.w,
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Wrap(
-                  children: items,
-                ),
-              ],
             ),
           ),
         ],
