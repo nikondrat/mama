@@ -4,7 +4,8 @@ import 'package:mama/src/core/core.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class DottedInput extends StatelessWidget {
-  const DottedInput({super.key});
+  final ChildModel model;
+  const DottedInput({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class DottedInput extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
     final TextStyle titlesStyle =
         textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w400);
+
     return DottedBorder(
       strokeWidth: 1.5,
       color: AppColors.greyLighterColor,
@@ -27,6 +29,12 @@ class DottedInput extends StatelessWidget {
             style: titlesStyle.copyWith(
               color: AppColors.greyBrighterColor,
             ),
+            onChanged: (control) {
+              if (control.value is String &&
+                  (control.value as String).isNotEmpty) {
+                model.setAbout(control.value as String?);
+              }
+            },
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: t.profile.childNotesHint,

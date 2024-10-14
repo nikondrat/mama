@@ -5,7 +5,10 @@ import 'package:collection/collection.dart';
 
 class ItemsNeedToFill extends StatelessWidget {
   final FormGroup formGroup;
-  const ItemsNeedToFill({super.key, required this.formGroup});
+  const ItemsNeedToFill({
+    super.key,
+    required this.formGroup,
+  });
 
   @override
   Widget build(BuildContext context) {
