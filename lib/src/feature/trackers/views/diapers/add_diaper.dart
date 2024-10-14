@@ -29,7 +29,7 @@ class _AddDiaperState extends State<AddDiaper> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.diapersBackroundColor,
-      appBar: const CustomAppBar(title: 'Добавить подгузник'),
+      appBar: CustomAppBar(title: t.trackers.diaper.add),
       body: DecoratedBox(
         decoration: const BoxDecoration(color: AppColors.whiteColor),
         child: Padding(
@@ -79,22 +79,4 @@ class _AddDiaperState extends State<AddDiaper> {
       ),
     );
   }
-
-  // // Вызов диалогового окна, когда нужно показать виджет
-  // void _showCustomPopup(BuildContext context, int selectedIndex) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return Dialog(
-  //         backgroundColor: Colors.transparent, // Прозрачный фон
-  //         child: CustomPopupWidget(
-  //           selectedIndex: selectedIndex,
-  //           closeButton: () {
-  //             Navigator.pop(context); // Закрываем диалог при нажатии "Закрыть"
-  //           },
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
 }
