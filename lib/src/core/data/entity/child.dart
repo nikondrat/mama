@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 
@@ -154,7 +153,7 @@ abstract class _ChildModel with Store {
   }
 
   @observable
-  @JsonKey(name: 'birth_date', toJson: _dateTimeToJson)
+  @JsonKey(name: 'birth_date')
   DateTime? birthDate;
 
   @action
@@ -180,15 +179,6 @@ abstract class _ChildModel with Store {
     String formattedWeeks = '$weeks недель';
 
     return '$formattedDifference или $formattedWeeks';
-  }
-
-  static String? _dateTimeToJson(DateTime? date) {
-    if (date != null) {
-      String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(date);
-      return formattedDate;
-    }
-
-    return null;
   }
 
   @observable

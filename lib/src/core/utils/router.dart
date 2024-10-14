@@ -45,7 +45,6 @@ abstract class AppViews {
   static const feeding = 'feeding';
   static const addManually = 'addManually';
 
-
   static const diapersView = 'diapersView';
   static const addDiaper = 'addDiaper';
 
@@ -53,7 +52,6 @@ abstract class AppViews {
   static const doc = 'doc';
 
   static const consultation = 'consultation';
-
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -343,7 +341,6 @@ abstract class _Paths {
   static const feeding = AppViews.feeding;
 
   static const addManually = AppViews.addManually;
-
 
   static const diapersView = AppViews.diapersView;
   static const addDiaper = AppViews.addDiaper;

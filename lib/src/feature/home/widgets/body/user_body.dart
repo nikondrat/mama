@@ -11,6 +11,7 @@ class HomeUserBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserStore userStore = context.watch();
+    final ArticleStore articleStore = context.watch<ArticleStore>();
     final String locale =
         TranslationProvider.of(context).flutterLocale.languageCode;
 
@@ -37,8 +38,11 @@ class HomeUserBody extends StatelessWidget {
 
                 // t.home.todayIsFridaySeptemberTwentySecond.title,
               )),
-          if (userStore.children.isNotEmpty) 24.h,
-          if (userStore.children.isNotEmpty) const ChildInfo(),
+
+          if (userStore.children.isNotEmpty) ...[
+            24.h,
+            const ChildInfo(),
+          ],
           26.h,
 
           /// #services
@@ -99,51 +103,38 @@ class HomeUserBody extends StatelessWidget {
           ),
           16.h,
 
-          /// #current
-          CustomBackground(
-            height: null,
-            padding: 0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 16),
+          if (articleStore.hasResults)
 
-                /// #article category text
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    t.home.current.title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+            /// #current
+            CustomBackground(
+              height: null,
+              padding: 0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  16.h,
+
+                  /// #article category text
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      t.home.current.title,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
+                  16.h,
 
-                /// #articles
-                SizedBox(
-                  height: 220,
-                  child: ListView.separated(
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemBuilder: (context, index) {
-                      return ArticleBox(
-                        imagePath: Assets.images.imgMomOne4x.path,
-                        articleCategory: t.home.sixMonths.title,
-                        articleTitle: t.home.articleTitleOne.title,
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(width: 8),
-                  ),
-                ),
+                  /// #articles
 
-                const SizedBox(height: 24),
-              ],
+                  const ArticlesListView(),
+
+                  24.h,
+                ],
+              ),
             ),
-          ),
           16.h,
 
           // /// #for you
