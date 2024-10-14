@@ -19,7 +19,7 @@ class ProfilePhoto extends StatelessWidget {
               bottomRight: Radius.circular(32),
             ),
             image: DecorationImage(
-                image: AssetImage(
+                image: NetworkImage(
                   img,
                 ),
                 fit: BoxFit.cover),
