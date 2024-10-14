@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import '../../../data.dart';
 
 class RegisterBabyNameScreen extends StatelessWidget {
   final bool isNotRegister;
