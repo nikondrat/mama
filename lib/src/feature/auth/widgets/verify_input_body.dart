@@ -46,7 +46,7 @@ class _VerifyInputBodyState extends State<VerifyInputBody> {
           ),
           20.h,
           AutoSizeText(
-            '${t.auth.sendSmsCode} +7 ${widget.store.phoneNumber}',
+            '${t.auth.sendSmsCode} ${widget.store.phoneNumber}',
             style: textTheme.bodySmall!.copyWith(
               fontWeight: FontWeight.w600,
             ),

@@ -63,6 +63,7 @@ class RegisterBabyNameScreen extends StatelessWidget {
                     buttonTextFontSize: 17,
                     borderRadius: 6,
                     outerContainerColor: const Color(0xFFE1E6FF),
+                    initialIndex: 0,
                     onTap: (index) {
                       store.child.setGender(Gender.values[index]);
                       // registerBabyName.setGender(index);

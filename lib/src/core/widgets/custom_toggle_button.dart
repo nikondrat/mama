@@ -159,6 +159,8 @@ class FlutterToggleButton extends StatefulWidget {
 }
 
 class FlutterToggleButtonState extends State<FlutterToggleButton> {
+  int selectedOptionIndex = 0;
+
   double get outerContainerHeight =>
       widget.buttonHeight + 2 * widget.outerContainerMargin;
 
@@ -168,9 +170,14 @@ class FlutterToggleButtonState extends State<FlutterToggleButton> {
       ((widget.items.length - 1) * widget.outerContainerMargin);
 
   @override
+  void initState() {
+    selectedOptionIndex = 1;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    int selectedOptionIndex =
-        widget.initialIndex; // Default selected option index
+    // Default selected option index
     // Default colors if none are provided
     const Color defaultOuterContainerColor =
         Colors.grey; // Set a default color for the outer container
