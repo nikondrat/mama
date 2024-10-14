@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/feeding/state/add_feeding.dart';
 import 'package:mama/src/feature/feeding/widgets/add_feeding_buttons.dart';
@@ -57,19 +56,16 @@ class AddFeedingWidget extends StatelessWidget {
                   : const AddFeedingButtons(),
               confirmButtonPressed
                   ? FeedingStateContainer(
-                addFeeding: addFeeding,
-                type: ContainerType.feedingSaved,
-              )
+                      addFeeding: addFeeding,
+                      type: ContainerType.feedingSaved,
+                    )
                   : const SizedBox(),
-
               isFeedingCanceled
                   ? FeedingStateContainer(
-                addFeeding: addFeeding,
-                type: ContainerType.feedingCanceled,
-              )
+                      addFeeding: addFeeding,
+                      type: ContainerType.feedingCanceled,
+                    )
                   : const SizedBox(),
-
-
             ],
           );
         }),

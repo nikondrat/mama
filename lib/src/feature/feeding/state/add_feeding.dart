@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:mobx/mobx.dart';
 
 part 'add_feeding.g.dart';
@@ -9,10 +7,9 @@ class AddFeeding extends _AddFeeding with _$AddFeeding {
 }
 
 abstract class _AddFeeding with Store {
-  
   @observable
   bool isRightSideStart = false;
-  
+
   @observable
   bool isLeftSideStart = false;
 
@@ -21,46 +18,43 @@ abstract class _AddFeeding with Store {
 
   @observable
   bool isFeedingCanceled = false;
-  
+
   @action
-  changeStatusOfRightSide(){
+  changeStatusOfRightSide() {
     confirmFeedingTimer = false;
     isRightSideStart = !isRightSideStart;
     isLeftSideStart = false;
   }
 
   @action
-  changeStatusOfLeftSide(){
+  changeStatusOfLeftSide() {
     confirmFeedingTimer = false;
     isLeftSideStart = !isLeftSideStart;
     isRightSideStart = false;
   }
 
   @action
-  confirmButtonPressed () {
+  confirmButtonPressed() {
     isRightSideStart = false;
     isLeftSideStart = false;
     confirmFeedingTimer = true;
   }
 
   @action
-  goBackAndContinue(){
+  goBackAndContinue() {
     confirmFeedingTimer = false;
     isFeedingCanceled = false;
   }
 
   @action
-  cancelFeeding(){
+  cancelFeeding() {
     isRightSideStart = false;
     isLeftSideStart = false;
     isFeedingCanceled = true;
   }
 
   @action
-  cancelFeedingClose(){
+  cancelFeedingClose() {
     isFeedingCanceled = false;
   }
-
-
-  
 }

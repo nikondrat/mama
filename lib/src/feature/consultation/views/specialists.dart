@@ -11,7 +11,7 @@ class SpecialistsView extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
 
     return ListView.builder(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         itemBuilder: (context, index) {
           return ConsultationItem(
               child: Column(

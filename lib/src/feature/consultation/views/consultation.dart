@@ -44,8 +44,8 @@ class _ConsultationViewState extends State<ConsultationView>
             ConsultationRecords(
               store: context.watch(),
             ),
-            SpecialistsView(),
-            SchoolsView(),
+            const SpecialistsView(),
+            const SchoolsView(),
           ])),
     );
   }
