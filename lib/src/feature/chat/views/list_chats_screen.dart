@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
-import '../../../core/widgets/custom_toggle_button.dart';
-
 class ChatsListScreen extends StatefulWidget {
   final CustomAppBar appBar;
   const ChatsListScreen({

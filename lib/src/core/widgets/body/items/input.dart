@@ -48,6 +48,7 @@ class _InputItemWidgetState extends State<InputItemWidget> {
     final TextTheme textTheme = themeData.textTheme;
 
     return ReactiveTextField(
+      autofocus: widget.item.autoFocus,
       focusNode: focusNode,
       style: widget.item.titleStyle ??
           textTheme.bodyLarge?.copyWith(color: hintColor),
