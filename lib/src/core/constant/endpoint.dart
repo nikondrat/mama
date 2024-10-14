@@ -36,4 +36,8 @@ class Endpoint {
   static const String consultation = 'consultation';
 
   String get userConsultations => '$consultation/user';
+
+  static const String article = 'article';
+
+  String get articles => '$article/all';
 }

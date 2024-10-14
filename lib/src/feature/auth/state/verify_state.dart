@@ -72,7 +72,7 @@ abstract class _VerifyStore with Store {
     String code, {
     RegisterData? data,
   }) {
-    restClient.patch(Endpoint().login, body: {
+    restClient.post(Endpoint().login, body: {
       'code': code,
       'phone': phoneNumber,
       'fcm_token': '' // TODO: add fcm token
@@ -103,7 +103,7 @@ abstract class _VerifyStore with Store {
   }) async {
     final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
 
-    restClient.patch(Endpoint().register, headers: {
+    restClient.post(Endpoint().register, headers: {
       'Refresh-Token': 'Bearer $token',
     }, body: {
       'account': data.user.toJson(),

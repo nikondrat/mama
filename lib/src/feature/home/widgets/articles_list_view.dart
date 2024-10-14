@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 class ArticlesListView extends StatelessWidget {
   const ArticlesListView({
@@ -8,21 +10,25 @@ class ArticlesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 220,
-      child: ListView.separated(
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemBuilder: (context, index) {
-          return ArticleBox(
-            imagePath: Assets.images.imgMomOne4x.path,
-            articleCategory: t.home.sixMonths.title,
-            articleTitle: t.home.articleTitleOne.title,
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
-      ),
-    );
+    final ArticleStore articleStore = context.watch<ArticleStore>();
+
+    return Observer(builder: (context) {
+      return SizedBox(
+        height: 220,
+        child: ListView.separated(
+          itemCount: articleStore.articles.length,
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          itemBuilder: (context, index) {
+            final article = articleStore.articles[index];
+
+            return ArticleBox(
+              model: article,
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(width: 8),
+        ),
+      );
+    });
   }
 }
