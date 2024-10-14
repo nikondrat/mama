@@ -31,7 +31,8 @@ class BodyGroup extends StatelessWidget {
     final List<Widget> items = [
       ...this.items.map((e) {
         return Padding(
-            padding: padding ?? const EdgeInsets.symmetric(vertical: 8), child: e);
+            padding: padding ?? const EdgeInsets.symmetric(vertical: 4),
+            child: e);
       })
     ];
 
@@ -45,7 +46,7 @@ class BodyGroup extends StatelessWidget {
             style: titleStyle,
           ),
         ),
-        8.h,
+        4.h,
         if (isDecorated)
           BodyItemDecoration(child: Column(children: items))
         else

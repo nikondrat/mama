@@ -21,11 +21,6 @@ class ProfileScreen extends StatelessWidget {
       fontWeight: FontWeight.w600,
     );
 
-    final TextStyle helpersStyle = textTheme.bodySmall!.copyWith(
-      fontSize: 10,
-      fontWeight: FontWeight.w700,
-    );
-
     List<DialogItem> alertDialog = [
       DialogItem(
           title: 'Сбросить настройки?',

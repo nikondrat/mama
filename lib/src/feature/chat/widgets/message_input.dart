@@ -3,8 +3,16 @@ import 'package:mama/src/core/core.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class MessageInput extends StatelessWidget {
+  final TextEditingController controller;
   final String formControllName;
-  const MessageInput({super.key, required this.formControllName});
+  final VoidCallback onTapSmile;
+  final VoidCallback onTapAttach;
+  const MessageInput(
+      {super.key,
+      required this.formControllName,
+      required this.onTapSmile,
+      required this.controller,
+      required this.onTapAttach});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +20,7 @@ class MessageInput extends StatelessWidget {
     final TextTheme textTheme = theme.textTheme;
     return ReactiveTextField(
       textAlignVertical: TextAlignVertical.center,
+      controller: controller,
       formControlName: formControllName,
       keyboardType: TextInputType.multiline,
       minLines: 1,
@@ -25,7 +34,7 @@ class MessageInput extends StatelessWidget {
 
         //TODO! сделать кнопки внизу
         prefixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () => onTapSmile(),
           icon: Image.asset(
             Assets.icons.smile.path,
             height: 28,
@@ -48,7 +57,7 @@ class MessageInput extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => onTapAttach(),
                   icon: Image.asset(
                     Assets.icons.attach.path,
                     height: 24,

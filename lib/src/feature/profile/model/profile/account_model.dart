@@ -116,5 +116,8 @@ enum Status {
   subscribed,
 
   @JsonValue('NO_SUBSCRIBED')
-  noSubscribe
+  noSubscribe,
+
+  @JsonValue('TRIAL')
+  trial
 }

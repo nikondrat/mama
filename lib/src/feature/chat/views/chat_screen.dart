@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mama/src/feature/chat/chat.dart';
@@ -25,6 +26,11 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   late FormGroup formGroup;
   bool _isSearching = false;
+  List<MessageModel> sortedlistMessages = [];
+  bool _emojiShowing = false;
+  final _controller = TextEditingController();
+  List<PlatformFile> files = [];
+  FilePickerResult? result;
 
   @override
   void initState() {
@@ -36,6 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
           // value: widget.model.firstName,
           ),
     });
+    sortedlistMessages = List.from(widget.listMessages);
     super.initState();
   }
 
@@ -46,8 +53,32 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void saveItem(ReplyItemWidget item) {
-    ReplyItemWidget _replyItem = item;
-    replyItem.add(_replyItem);
+    ReplyItemWidget reply = item;
+    replyItem.add(reply);
+  }
+
+  void filterMessage() {
+    sortedlistMessages = formGroup.control('search').isNotNull
+        ? widget.listMessages.where((item) {
+            return item.text
+                .toLowerCase()
+                .contains(formGroup.control('search').value.toLowerCase());
+          }).toList()
+        : widget.listMessages;
+  }
+
+  Future getAttach() async {
+    result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+    );
+
+    if (result != null) {
+      files = result!.files;
+    } else {
+      // User canceled the picker
+    }
+
+    setState(() {});
   }
 
   void clearList() {
@@ -97,34 +128,26 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: const BoxDecoration(
                   color: AppColors.purpleLighterBackgroundColor),
               child: ListView.builder(
-                itemCount: widget.listMessages.length,
+                itemCount: sortedlistMessages.length,
                 shrinkWrap: true,
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Expanded(
                     child: MessageItemWidget(
+                      onTapReply: () {
+                        setState(() {
+                          saveItem(ReplyItemWidget(
+                            replyItem: ReplyItem(
+                                sortedlistMessages[index]
+                                    .nameReciever
+                                    .toString(),
+                                sortedlistMessages[index].text),
+                          ));
+                        });
+                      },
                       chatEntity: widget.chatEntity,
-                      message: MessageModel(
-                        isSender: widget.listMessages[index].isSender,
-                        text: widget.listMessages[index].text,
-                        nameReciever: widget.listMessages[index].nameReciever,
-                        profession: widget.listMessages[index].profession,
-                        time: widget.listMessages[index].time,
-                        avatarParticipant:
-                            widget.listMessages[index].avatarParticipant,
-                        replyItem: widget.listMessages[index].replyItem,
-                        onTapReply: () {
-                          setState(() {
-                            saveItem(ReplyItemWidget(
-                              replyItem: ReplyItem(
-                                  widget.listMessages[index].nameReciever
-                                      .toString(),
-                                  widget.listMessages[index].text),
-                            ));
-                          });
-                        },
-                      ),
+                      message: sortedlistMessages[index],
                     ),
                   );
                 },
@@ -143,14 +166,36 @@ class _ChatScreenState extends State<ChatScreen> {
                           });
                         },
                         replyItem: replyItem[0].replyItem),
+                  Offstage(
+                    offstage: !files.isNotEmpty,
+                    child: AssetsWidget(
+                      files: files,
+                      onTapDelete: () {
+                        setState(() {});
+                      },
+                    ),
+                  ),
                   Container(
                     decoration:
                         const BoxDecoration(color: AppColors.lightPirple),
                     child: SafeArea(
                         child: ReactiveForm(
                             formGroup: formGroup,
-                            child: const MessageInput(
+                            child: MessageInput(
+                                controller: _controller,
+                                onTapAttach: getAttach,
+                                onTapSmile: () {
+                                  setState(() {
+                                    _emojiShowing = !_emojiShowing;
+                                  });
+                                },
                                 formControllName: 'message'))),
+                  ),
+                  Offstage(
+                    offstage: !_emojiShowing,
+                    child: EmojiWidget(
+                      controller: _controller,
+                    ),
                   ),
                 ],
               ),
@@ -170,21 +215,27 @@ class _ChatScreenState extends State<ChatScreen> {
         onPressedClear: () {
           _stopSearching();
         },
-        onChange: () {},
+        onChange: () {
+          setState(() {
+            filterMessage();
+          });
+        },
       ),
     );
   }
 
   void _startSearch() {
-//!ToDo поиск
+//!ToDo подсветить искомые слова
     setState(() {
       _isSearching = true;
     });
+    filterMessage();
   }
 
   void _stopSearching() {
     setState(() {
       _isSearching = false;
+      formGroup.control('search').updateValue(null);
     });
   }
 }

@@ -85,6 +85,8 @@ dependencies:
   # -- image -- #
   flutter_svg: ^2.0.10+1
   table_calendar: ^3.1.2
+  emoji_picker_flutter: ^3.1.0
+  file_picker: ^8.1.2
 
 dev_dependencies:
   # -- testing -- #

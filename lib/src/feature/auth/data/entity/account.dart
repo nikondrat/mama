@@ -12,9 +12,6 @@ class AccountModel extends _AccountModel with _$AccountModel {
   @JsonKey(name: 'fcm_token')
   String fcmToken;
 
-  @JsonKey(includeToJson: false)
-  final String? profession;
-
   Gender gender;
 
   @JsonKey(includeToJson: false)
@@ -33,7 +30,7 @@ class AccountModel extends _AccountModel with _$AccountModel {
     super.email,
     super.info,
     this.id,
-    this.profession,
+    super.profession,
     this.role,
     this.status,
   });
@@ -51,6 +48,7 @@ abstract class _AccountModel with Store {
     required this.phone,
     this.avatarUrl,
     this.email,
+    this.profession,
     this.info,
   });
 
@@ -71,6 +69,16 @@ abstract class _AccountModel with Store {
   @action
   void setSecondName(String value) {
     secondName = value;
+    isChanged = true;
+  }
+
+  @observable
+  @JsonKey(name: 'profession')
+  String? profession = '';
+
+  @action
+  void setProfession(String value) {
+    profession = value;
     isChanged = true;
   }
 
@@ -132,5 +140,8 @@ enum Status {
   subscribed,
 
   @JsonValue('NO_SUBSCRIBED')
-  noSubscribe
+  noSubscribe,
+
+  @JsonValue('TRIAL')
+  trial
 }

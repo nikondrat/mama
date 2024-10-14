@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
 
-class MomsProfile extends StatefulWidget {
+class SpecialistProfile extends StatefulWidget {
   final ProfileViewStore store;
-
+  final MaskTextInputFormatter formatter;
   final AccountModel accountModel;
 
   final TextStyle? titlesStyle;
   final TextStyle? helpersStyle;
   final TextStyle? titlesColoredStyle;
 
-  const MomsProfile({
+  const SpecialistProfile({
     super.key,
     required this.store,
     this.titlesStyle,
     this.helpersStyle,
     this.titlesColoredStyle,
     required this.accountModel,
+    required this.formatter,
   });
 
   @override
-  State<MomsProfile> createState() => _MomsProfileState();
+  State<SpecialistProfile> createState() => _SpecialistProfileState();
 }
 
-class _MomsProfileState extends State<MomsProfile> {
+class _SpecialistProfileState extends State<SpecialistProfile> {
   bool subscribed = true;
 
   @override
@@ -46,13 +45,9 @@ class _MomsProfileState extends State<MomsProfile> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
-    final UserStore userStore = context.watch();
 
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
-
-    final MaskTextInputFormatter formatter = MaskTextInputFormatter(
-        mask: '+7 ### ###-##-##', filter: {'#': RegExp(r'[0-9]')});
 
     return Column(
       children: [
@@ -66,8 +61,9 @@ class _MomsProfileState extends State<MomsProfile> {
             children: [
               20.h,
               BodyGroup(
+                padding: const EdgeInsets.symmetric(vertical: 4),
                 formGroup: widget.store.formGroup,
-                title: t.profile.accountTitle,
+                title: t.profile.accountTitleSpecialist,
                 items: [
                   BodyItemWidget(
                     item: InputItem(
@@ -82,8 +78,63 @@ class _MomsProfileState extends State<MomsProfile> {
                   ),
                   BodyItemWidget(
                     item: InputItem(
+                      controlName: 'profession',
+                      hintText: t.profile.helperProfession,
+                      titleStyle:
+                          titlesStyle.copyWith(color: AppColors.blackColor),
+                      inputHintStyle: textTheme.bodySmall!,
+                      inputHint: t.profile.hintProfession,
+                      maxLines: 1,
+                      onChanged: (value) {
+                        widget.store.updateData();
+                      },
+                    ),
+                  ),
+                  8.h,
+                  Center(
+                    child: RichText(
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '${t.profile.titleNameProffession}\n',
+                            style: textTheme.labelLarge!,
+                          ),
+                          const WidgetSpan(
+                            child: Padding(
+                              padding: EdgeInsets.all(20.0),
+                            ),
+                          ),
+                          TextSpan(
+                            text: widget.store.formGroup
+                                .control('name')
+                                .value
+                                .toString(),
+                            style: textTheme.bodyMedium,
+                          ),
+                          if (widget.store.formGroup
+                              .control('profession')
+                              .value
+                              .toString()
+                              .isNotEmpty)
+                            WidgetSpan(
+                              child: ProfessionBox(
+                                profession: widget.store.formGroup
+                                    .control('profession')
+                                    .value
+                                    .toString(),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  8.h,
+                  BodyItemWidget(
+                    item: InputItem(
                       controlName: 'phone',
-                      hintText: t.profile.hintChangePhone,
+                      hintText: t.profile.hintChangePhoneSchool,
                       titleStyle:
                           titlesStyle.copyWith(color: AppColors.blackColor),
                       inputHintStyle: textTheme.bodySmall!.copyWith(
@@ -91,7 +142,7 @@ class _MomsProfileState extends State<MomsProfile> {
                       ),
                       inputHint: '+7 996 997-06-24',
                       maxLines: 1,
-                      maskFormatter: formatter,
+                      maskFormatter: widget.formatter,
                       onChanged: (value) {
                         widget.store.updateData();
                       },
@@ -101,7 +152,7 @@ class _MomsProfileState extends State<MomsProfile> {
                     item: InputItem(
                       controlName: 'email',
                       maxLines: 1,
-                      hintText: t.profile.hintChangeEmail,
+                      hintText: t.profile.hintChangeEmailSchool,
                       keyboardType: TextInputType.emailAddress,
                       titleStyle: titlesStyle,
                       inputHintStyle: titlesStyle,
@@ -111,11 +162,16 @@ class _MomsProfileState extends State<MomsProfile> {
                       },
                     ),
                   ),
+                  8.h,
+                  Text(
+                    t.profile.titleInfo,
+                    style: textTheme.labelLarge!,
+                  ),
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'about',
                       maxLines: 1,
-                      hintText: t.profile.hintChangeNote,
+                      hintText: t.profile.hintChangeNoteSpecialist,
                       titleStyle: titlesStyle,
                       inputHint: t.profile.labelChangeNote,
                       inputHintStyle: textTheme.bodySmall!
@@ -127,15 +183,7 @@ class _MomsProfileState extends State<MomsProfile> {
                   ),
                 ],
               ),
-              32.h,
-              CustomButton(
-                isSmall: false,
-                onTap: () {
-                  context.pushNamed(AppViews.promoView);
-                },
-                title: t.profile.addGiftCodeButtonTitle,
-              ),
-              8.h,
+              16.h,
               CustomButton(
                 onTap: () {},
                 isSmall: false,
@@ -143,50 +191,6 @@ class _MomsProfileState extends State<MomsProfile> {
                   icon: Icons.language,
                 ),
                 title: t.profile.settingsAccountButtonTitle,
-              ),
-              30.h,
-              IgnorePointer(
-                ignoring: !subscribed,
-                child: Stack(
-                  children: [
-                    Opacity(
-                      opacity: !subscribed ? 0.25 : 1,
-                      child: Observer(builder: (_) {
-                        return ChildItems(
-                          childs: userStore.children.toList(),
-                        );
-                      }),
-                    ),
-                    if (!subscribed) const SubscribeBlockItem(),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: InkWell(
-                  onTap: () {
-                    context.pushNamed(AppViews.registerFillBabyName, extra: {
-                      'isNotRegister': true,
-                    });
-                    //! добавить ребенка
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        height: 17,
-                        image: AssetImage(
-                          Assets.icons.icAddChild.path,
-                        ),
-                      ),
-                      16.w,
-                      Text(
-                        t.profile.addChildButtonTitle,
-                        style: widget.titlesColoredStyle,
-                      ),
-                    ],
-                  ),
-                ),
               ),
             ],
           ),
