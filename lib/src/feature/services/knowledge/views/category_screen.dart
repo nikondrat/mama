@@ -10,7 +10,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilterView(
       title: t.services.categoriesBtn.title,
-      builder: (index) => BuildCategory(
+      builder: (index) => const BuildCategory(
         title: 'Здоровье ребенка',
         count: 30,
         subCategories: [

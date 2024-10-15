@@ -11,7 +11,7 @@ class AuthorsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilterView(
       title: t.services.authorBtn.title,
-      builder: (index) => Column(
+      builder: (index) => const Column(
         children: [
           Authors(
             count: 30,

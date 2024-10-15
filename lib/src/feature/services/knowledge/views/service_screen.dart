@@ -60,27 +60,29 @@ class ServiceKnowledgeScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return ArticleCard(
-                  author: 'Жанна Коршунова',
-                  role: t.services.obstetrician.title,
-                  title: t.services.childDevelopment.title,
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: Column(
-                    children: [
-                      Divider(),
-                    ],
-                  ),
-                );
-              },
+            child: Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ArticleCard(
+                    author: 'Жанна Коршунова',
+                    role: t.services.obstetrician.title,
+                    title: t.services.childDevelopment.title,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Column(
+                      children: [
+                        Divider(),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],

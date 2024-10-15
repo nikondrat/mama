@@ -60,7 +60,7 @@ class ArticleCard extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.greyButton,
+                      backgroundColor: AppColors.greyColorMedicard,
                       foregroundColor: AppColors.greyBrighterColor,
                       minimumSize: Size(122, 26),
                     ),
@@ -70,7 +70,7 @@ class ArticleCard extends StatelessWidget {
                   const SizedBox(width: 8),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.greyButton,
+                      backgroundColor: AppColors.greyColorMedicard,
                       foregroundColor: AppColors.greyBrighterColor,
                       minimumSize: Size(122, 26),
                     ),
@@ -143,7 +143,7 @@ class CommonMedicBox extends StatelessWidget {
                         ),
                         child: Text(
                           role,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.blueBrightTextColor,
                             // blue text color
                             fontSize: 12,
