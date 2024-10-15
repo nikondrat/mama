@@ -39,7 +39,7 @@ abstract class _ChatsViewStore with Store {
   Future<ChatsData> fetchChats() async {
     final Future<ChatsData> future =
         restClient.get(Endpoint().chats, queryParams: {
-      // 'child_id': userStore.selectedChild?.id,
+      'child_id': userStore.selectedChild?.id,
     }).then((v) {
       if (v != null) {
         final data = ChatsData.fromJson(v);
