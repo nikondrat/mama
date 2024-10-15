@@ -15,11 +15,11 @@ class LastMessage extends _LastMessage with _$LastMessage {
     required this.chatId,
     this.createdAt,
     required super.id,
-    required super.nikName,
+    required super.nickname,
     required super.senderId,
     required super.text,
     super.filePath,
-    super.filenName,
+    super.fileName,
     super.readAt,
     super.reply,
     super.typeFile,
@@ -34,9 +34,9 @@ class LastMessage extends _LastMessage with _$LastMessage {
 abstract class _LastMessage with Store {
   _LastMessage({
     this.filePath,
-    this.filenName,
+    this.fileName,
     required this.id,
-    required this.nikName,
+    required this.nickname,
     this.readAt,
     this.reply,
     required this.senderId,
@@ -50,7 +50,7 @@ abstract class _LastMessage with Store {
 
   @observable
   @JsonKey(name: 'filename')
-  String? filenName;
+  String? fileName;
 
   @observable
   @JsonKey(name: 'id')
@@ -60,11 +60,11 @@ abstract class _LastMessage with Store {
   setId(String value) => id = value;
 
   @observable
-  @JsonKey(name: 'nik_name')
-  String nikName;
+  @JsonKey(name: 'nick_name')
+  String? nickname;
 
   @action
-  setNikName(String value) => nikName = value;
+  setNickname(String value) => nickname = value;
 
   @observable
   @JsonKey(name: 'read_at')

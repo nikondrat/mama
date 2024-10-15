@@ -97,7 +97,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ? finder()
             : ChatsAppBar(
                 title: widget.groupChat != null
-                    ? widget.groupChat!.groupChatInfo.name
+                    ? widget.groupChat!.groupChatInfo.name ?? ''
                     : '${widget.singleChat!.participant1.firstName} ${widget.singleChat!.participant1.secondName}',
                 // тут для групп чата нужно сколько специалистов, этой инфо в модели нет
                 subTitle: widget.groupChat != null

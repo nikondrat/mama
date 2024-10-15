@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 class ChatsListScreen extends StatefulWidget {
   final CustomAppBar appBar;
@@ -32,113 +33,19 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
+    return Provider(
+      create: (context) => ChatsViewStore(
+          restClient: context.read<Dependencies>().restClient,
+          userStore: context.read<UserStore>()),
+      builder: (context, _) {
+        final store = context.watch<ChatsViewStore>();
 
-    return Scaffold(
-      backgroundColor: AppColors.purpleLighterBackgroundColor,
-      appBar: widget.appBar,
-      body: ListView(
-        children: [
-          CardWithoutMargin(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  t.chat.groupChatsListTitle,
-                  textAlign: TextAlign.center,
-                  style: textTheme.labelLarge!
-                      .copyWith(color: AppColors.greyBrighterColor),
-                ),
-                8.h,
-                Flexible(
-                  child: ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: 4,
-                    separatorBuilder: (BuildContext context, int index) =>
-                        Divider(
-                      indent: MediaQuery.of(context).size.width * 0.15,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ChatScreen(
-                                  groupChat: listChatGroup[0],
-                                  listMessages: listGroup,
-                                  chatEntity: ChatEntity.groupChat,
-                                ),
-                              ));
-                        },
-                        child: ChatItemGroup(
-                          chat: listChatGroup[0],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          CardWithoutMargin(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: CustomToggleButton(
-                    items: [
-                      t.chat.buttonToogleAll,
-                      t.chat.buttonToogleSpecialist,
-                    ],
-                    onTap: (index) {
-                      setState(() {
-                        toogleSelected = index;
-                        filterSingle();
-                      });
-                    },
-                    btnWidth: MediaQuery.of(context).size.width / 2.3,
-                    btnHeight: 38,
-                  ),
-                ),
-                ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: sortdlistSingle.length,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      Divider(
-                    indent: MediaQuery.of(context).size.width * 0.15,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    ChatModelSingle itemChat = sortdlistSingle[index];
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ChatScreen(
-                                listMessages: list,
-                                chatEntity: ChatEntity.singleChat,
-                                singleChat: sortdlistSingle[index],
-                              ),
-                            ));
-                      },
-                      child: ChatItemSingle(
-                        chat: itemChat,
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        return Scaffold(
+          backgroundColor: AppColors.purpleLighterBackgroundColor,
+          appBar: widget.appBar,
+          body: ChatsBodyWidget(store: store),
+        );
+      },
     );
   }
 }
@@ -190,7 +97,7 @@ List<ChatModelSingle> listChatSingle = [
         filePath: 'kjhg',
         chatId: '0',
         id: '0',
-        nikName: 'Марина',
+        nickname: 'Марина',
         senderId: '234',
         text: 'В прошлый раз я успела на вопросики, а тут совсем некогда'),
     createdAt: DateTime.now(),
@@ -241,12 +148,15 @@ List<ChatModelGroup> listChatGroup = [
     idGroupChat: 'idGroupChat',
     idParticipant: 'idParticipant',
     groupChatInfo: GroupChatInfo(
-        Assets.images.imgPerson2.path, 'groupChat', 'id', 'Sos Поддержка'),
+        avatar: Assets.images.imgPerson2.path,
+        groupChat: 'groupChat',
+        id: 'id',
+        name: 'Sos Поддержка'),
     id: 'id',
     lastMessage: LastMessage(
         chatId: '0',
         id: '0',
-        nikName: 'Марина',
+        nickname: 'Марина',
         senderId: '234',
         text: 'В прошлый раз я успела на вопросики, а тут совсем некогда'),
     participant: PartisipantModel(

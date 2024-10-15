@@ -13,10 +13,10 @@ class ChatModelGroup extends _ChatModelGroup with _$ChatModelGroup {
   final String id;
 
   @JsonKey(name: 'can_delete')
-  bool canDelete = true;
+  final bool canDelete;
 
   @JsonKey(name: 'is_deleted')
-  bool isDeleted = true;
+  final bool isDeleted;
 
   @JsonKey(name: 'group_chat')
   final GroupChatInfo groupChatInfo;
@@ -28,7 +28,7 @@ class ChatModelGroup extends _ChatModelGroup with _$ChatModelGroup {
   final String idParticipant;
 
   @JsonKey(name: 'is_write')
-  final bool isWrite = true;
+  final bool isWrite;
 
   @JsonKey(name: 'participant')
   final PartisipantModel participant;
@@ -44,6 +44,8 @@ class ChatModelGroup extends _ChatModelGroup with _$ChatModelGroup {
     required this.participant,
     required this.groupChatInfo,
     required this.id,
+    this.canDelete = true,
+    this.isWrite = true,
     this.isDeleted = true,
   });
 
@@ -92,18 +94,18 @@ abstract class _ChatModelGroup with Store {
 
 @JsonSerializable()
 class GroupChatInfo extends _GroupChatInfo with _$GroupChatInfo {
-  GroupChatInfo(this.avatar, this.groupChat, this.id, this.name);
+  GroupChatInfo({this.avatar, this.groupChat, this.id, this.name});
   @JsonKey(name: 'avatar')
-  final String avatar;
+  final String? avatar;
 
   @JsonKey(name: 'group_chat')
-  final String groupChat;
+  final String? groupChat;
 
   @JsonKey(name: 'id')
-  final String id;
+  final String? id;
 
   @JsonKey(name: 'name')
-  final String name;
+  final String? name;
 
   factory GroupChatInfo.fromJson(Map<String, dynamic> json) =>
       _$GroupChatInfoFromJson(json);

@@ -77,16 +77,20 @@ abstract class _ChatModelSingle with Store {
   setLlastMessageAt(DateTime value) => lastMessageAt = value;
 
   @observable
-  @JsonKey(name: 'participant1_unread')
+  @JsonKey(name: 'participant1_unread', fromJson: _countFromJson)
   int? participant1Unread;
 
   @action
   setParticipant1Unread(int value) => participant1Unread = value;
 
   @observable
-  @JsonKey(name: 'participant2_unread')
+  @JsonKey(name: 'participant2_unread', fromJson: _countFromJson)
   int? participant2Unread;
 
   @action
   setParticipant2Unread(int value) => participant2Unread = value;
+
+  static int? _countFromJson(String value) {
+    return int.tryParse(value);
+  }
 }

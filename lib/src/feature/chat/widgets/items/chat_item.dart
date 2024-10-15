@@ -11,13 +11,14 @@ class ChatItemSingle extends StatelessWidget {
     return ChatItem(
       chatEntity: ChatEntity.singleChat,
       chatItem: ChatItemModel(
-        avatarUrl: chat.participant1.avatarUrl!,
+        avatarUrl: chat.participant1.avatarUrl,
         name: '${chat.participant1.firstName} ${chat.participant1.secondName} ',
-        isAttach: chat.lastMessage!.filePath != null,
+        isAttach: chat.lastMessage?.filePath != null &&
+            chat.lastMessage!.filePath!.isNotEmpty,
         profession: chat.participant1.profession,
         unreadMessages: chat.participant1Unread,
-        lastMessageName: chat.lastMessage!.nikName,
-        lastMessageText: chat.lastMessage!.text,
+        lastMessageName: chat.lastMessage?.nickname,
+        lastMessageText: chat.lastMessage?.text,
       ),
     );
   }
@@ -32,13 +33,14 @@ class ChatItemGroup extends StatelessWidget {
     return ChatItem(
       chatEntity: ChatEntity.groupChat,
       chatItem: ChatItemModel(
-        avatarUrl: chat.groupChatInfo.avatar,
-        name: chat.groupChatInfo.name,
-        isAttach: chat.lastMessage!.filePath != null,
+        avatarUrl: chat.groupChatInfo.avatar ?? '',
+        name: chat.groupChatInfo.name ?? '',
+        isAttach: chat.lastMessage!.filePath != null &&
+            chat.lastMessage!.filePath!.isNotEmpty,
         profession:
             chat.participant.profession!, //sender last message profession
         unreadMessages: chat.unreadMessages,
-        lastMessageName: chat.lastMessage!.nikName,
+        lastMessageName: chat.lastMessage!.nickname,
         lastMessageText: chat.lastMessage!.text,
       ),
     );
@@ -59,11 +61,22 @@ class ChatItem extends StatelessWidget {
       children: [
         Flexible(
           flex: 1,
-          child: CircleAvatar(
-              radius: 28,
-              backgroundImage: AssetImage(
-                chatItem.avatarUrl,
-              )),
+          child: chatItem.avatarUrl != null
+              ? CircleAvatar(
+                  radius: 28,
+                  backgroundImage: NetworkImage(
+                    chatItem.avatarUrl!,
+                  ))
+              : const SizedBox(
+                  height: 56,
+                  width: 56,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.purpleLighterBackgroundColor,
+                    ),
+                  ),
+                ),
         ),
         8.w,
         Flexible(
@@ -86,7 +99,8 @@ class ChatItem extends StatelessWidget {
                           style: textTheme.bodyMedium,
                         ),
                         if (chatEntity == ChatEntity.singleChat)
-                          if (chatItem.profession != null)
+                          if (chatItem.profession != null &&
+                              chatItem.profession!.isNotEmpty)
                             WidgetSpan(
                               child: ProfessionBox(
                                 profession: chatItem.profession!,
@@ -97,11 +111,12 @@ class ChatItem extends StatelessWidget {
                   ),
                   if (chatItem.unreadMessages != null)
                     UnreadBox(
-                      unread: chatItem.unreadMessages!,
+                      unread: chatItem.unreadMessages,
                     ),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
                     flex: 7,
@@ -116,7 +131,8 @@ class ChatItem extends StatelessWidget {
                             style: textTheme.labelMedium,
                           ),
                           if (chatEntity == ChatEntity.groupChat)
-                            if (chatItem.profession != null)
+                            if (chatItem.profession != null &&
+                                chatItem.profession!.isNotEmpty)
                               WidgetSpan(
                                 child: ProfessionBox(
                                   profession: chatItem.profession!,
@@ -136,12 +152,9 @@ class ChatItem extends StatelessWidget {
                     ),
                   ),
                   if (chatItem.isAttach)
-                    Flexible(
-                      flex: 1,
-                      child: Image.asset(
-                        Assets.icons.clip.path,
-                        height: 33,
-                      ),
+                    Image.asset(
+                      Assets.icons.clip.path,
+                      height: 33,
                     ),
                 ],
               ),

@@ -4,13 +4,13 @@ import 'package:mama/src/data.dart';
 part 'articles.g.dart';
 
 @JsonSerializable()
-class Articles {
+class ArticlesData {
   final List<ArticleModel>? articles;
 
-  Articles({this.articles});
+  ArticlesData({this.articles});
 
-  factory Articles.fromJson(Map<String, dynamic> json) =>
-      _$ArticlesFromJson(json);
+  factory ArticlesData.fromJson(Map<String, dynamic> json) =>
+      _$ArticlesDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ArticlesToJson(this);
+  Map<String, dynamic> toJson() => _$ArticlesDataToJson(this);
 }

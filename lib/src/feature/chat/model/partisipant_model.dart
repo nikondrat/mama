@@ -18,7 +18,7 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
       required this.gender,
       required this.id,
       this.info,
-      this.isDeleted,
+      this.isDeleted = false,
       this.lastName,
       required this.phone,
       this.profession,
@@ -50,7 +50,7 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
   final String? info;
 
   @JsonKey(name: 'is_deleted')
-  final String? isDeleted;
+  final bool isDeleted;
 
   @JsonKey(name: 'last_name')
   final String? lastName;
@@ -65,7 +65,7 @@ class PartisipantModel extends _PartisipantModel with _$PartisipantModel {
   final String? role;
 
   @JsonKey(name: 'second_name')
-  final String secondName;
+  final String? secondName;
 
   factory PartisipantModel.fromJson(Map<String, dynamic> json) =>
       _$PartisipantModelFromJson(json);

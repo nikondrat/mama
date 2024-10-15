@@ -60,19 +60,21 @@ class _GroupScreenState extends State<GroupScreen> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CircleAvatar(
-              radius: 43,
-              backgroundImage: AssetImage(
-                widget.groupChatInfo.avatar,
+            if (widget.groupChatInfo.avatar != null)
+              CircleAvatar(
+                radius: 43,
+                backgroundImage: AssetImage(
+                  widget.groupChatInfo.avatar!,
+                ),
               ),
-            ),
             8.h,
-            Text(
-              widget.groupChatInfo.name,
-              style: textTheme.headlineSmall!.copyWith(
-                fontSize: 24,
+            if (widget.groupChatInfo.name != null)
+              Text(
+                widget.groupChatInfo.name!,
+                style: textTheme.headlineSmall!.copyWith(
+                  fontSize: 24,
+                ),
               ),
-            ),
           ],
         ),
       ),

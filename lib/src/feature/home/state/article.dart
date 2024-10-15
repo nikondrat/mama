@@ -14,10 +14,10 @@ abstract class _ArticleStore with Store {
 
   _ArticleStore({required this.restClient});
   @observable
-  ObservableFuture<Articles> fetchArticlesFuture = emptyResponse;
+  ObservableFuture<ArticlesData> fetchArticlesFuture = emptyResponse;
 
   @observable
-  Articles? articlesData;
+  ArticlesData? articlesData;
 
   @observable
   ObservableList<ArticleModel> articles = ObservableList();
@@ -27,14 +27,14 @@ abstract class _ArticleStore with Store {
       fetchArticlesFuture != emptyResponse &&
       fetchArticlesFuture.status == FutureStatus.fulfilled;
 
-  static ObservableFuture<Articles> emptyResponse =
-      ObservableFuture.value(Articles(articles: []));
+  static ObservableFuture<ArticlesData> emptyResponse =
+      ObservableFuture.value(ArticlesData(articles: []));
 
-  Future<Articles> fetchArticles() async {
-    final Future<Articles> future =
+  Future<ArticlesData> fetchArticles() async {
+    final Future<ArticlesData> future =
         restClient.get(Endpoint().articles).then((v) {
       if (v != null) {
-        final data = Articles.fromJson(v);
+        final data = ArticlesData.fromJson(v);
         articles = ObservableList.of(data.articles ?? []);
         return data;
       }

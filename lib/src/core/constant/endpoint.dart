@@ -40,4 +40,8 @@ class Endpoint {
   static const String article = 'article';
 
   String get articles => '$article/all';
+
+  static const String chat = 'chat';
+
+  String get chats => '$chat/all';
 }

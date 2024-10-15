@@ -1,5 +1,5 @@
 class ChatItemModel {
-  final String avatarUrl;
+  final String? avatarUrl;
   final String name;
   final String? profession;
   final int? unreadMessages;

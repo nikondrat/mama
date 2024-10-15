@@ -13,12 +13,13 @@ class PersonItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 23,
-            backgroundImage: AssetImage(
-              person.avatarUrl,
+          if (person.avatarUrl != null)
+            CircleAvatar(
+              radius: 23,
+              backgroundImage: AssetImage(
+                person.avatarUrl!,
+              ),
             ),
-          ),
           8.w,
           RichText(
             maxLines: 2,
