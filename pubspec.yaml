@@ -35,6 +35,9 @@ dependencies:
 
   # -- networking -- #
   dio: ^5.3.3
+  pretty_dio_logger: ^1.4.0
+  fresh_dio: ^0.4.2
+  fresh: ^0.4.3
 
   # Persisting
   # drift: ^2.13.1

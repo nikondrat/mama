@@ -35,13 +35,14 @@ class ChatItemGroup extends StatelessWidget {
       chatItem: ChatItemModel(
         avatarUrl: chat.groupChatInfo.avatar ?? '',
         name: chat.groupChatInfo.name ?? '',
-        isAttach: chat.lastMessage!.filePath != null &&
+        isAttach: chat.lastMessage != null &&
+            chat.lastMessage?.filePath != null &&
             chat.lastMessage!.filePath!.isNotEmpty,
         profession:
             chat.participant.profession!, //sender last message profession
         unreadMessages: chat.unreadMessages,
-        lastMessageName: chat.lastMessage!.nickname,
-        lastMessageText: chat.lastMessage!.text,
+        lastMessageName: chat.lastMessage?.nickname,
+        lastMessageText: chat.lastMessage?.text,
       ),
     );
   }

@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fresh_dio/fresh_dio.dart';
 import 'package:intl/intl.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mama/src/data.dart';
 
@@ -13,9 +14,27 @@ final class InitializationProcessor {
 
   Future<Dependencies> _initDependencies() async {
     final sharedPreferences = await SharedPreferences.getInstance();
-    const secureStorage = FlutterSecureStorage();
-    final tokenStorage = TokenStorageImpl(storage: secureStorage);
-    final restClient = await _initRestClient(secureStorage, tokenStorage);
+
+    final tokenStorage = Fresh.oAuth2(
+        tokenStorage: TokenStorageImpl(),
+        refreshToken: (token, client) async {
+          return await client
+              .get(
+            '${const Config().apiUrl}${Endpoint().accessToken}',
+            options: Options(
+              headers: {'Refresh-Token': 'Bearer ${token?.refreshToken}'},
+              followRedirects: true,
+              contentType: 'application/json',
+              responseType: ResponseType.json,
+            ),
+          )
+              .then((v) {
+            return OAuth2Token(
+                accessToken: v.data['access_token'],
+                refreshToken: v.data['refresh_token']);
+          });
+        });
+    final restClient = await _initRestClient(tokenStorage);
     final errorTrackingManager = await _initErrorTrackingManager();
     final settingsStore = await _initSettingsStore(sharedPreferences);
 
@@ -68,34 +87,14 @@ final class InitializationProcessor {
   }
 
   // Initializes the REST client with the provided FlutterSecureStorage.
-  Future<RestClient> _initRestClient(
-      FlutterSecureStorage storage, TokenStorageImpl tokenStorage) async {
+
+  Future<RestClient> _initRestClient(Fresh storage) async {
     final dio = Dio(BaseOptions(
+      baseUrl: const Config().apiUrl,
       followRedirects: true,
     ));
-    final refreshClient =
-        RefreshClientImpl(restClient: dio, tokenStorage: tokenStorage);
-
-    // Configure AuthInterceptor with tokenStorage and refreshClient
-    final authInterceptor = AuthInterceptor(
-      storage: tokenStorage,
-      refreshClient: refreshClient,
-      buildHeaders: (tokens) async {
-        if (tokens != null) {
-          return {'Authorization': 'Bearer ${tokens['access']}'};
-        }
-        return {};
-      },
-    );
-
-    // Add AuthInterceptor to Dio’s interceptors
-    dio.interceptors.add(authInterceptor);
-    dio.interceptors.add(LogInterceptor(
-        requestBody: true,
-        request: true,
-        requestHeader: false,
-        responseHeader: false,
-        responseBody: true));
+    dio.interceptors.add(PrettyDioLogger(requestBody: true));
+    dio.interceptors.add(storage);
 
     return RestClientDio(baseUrl: config.apiUrl, dio: dio);
   }

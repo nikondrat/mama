@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:fresh_dio/fresh_dio.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -13,7 +15,7 @@ class VerifyStore extends _VerifyStore with _$VerifyStore {
 
 abstract class _VerifyStore with Store {
   final RestClient restClient;
-  final TokenStorage tokenStorage;
+  final Fresh tokenStorage;
 
   _VerifyStore({
     required this.restClient,
@@ -84,7 +86,10 @@ abstract class _VerifyStore with Store {
       final String? state = v?['state'] as String?;
 
       if (refreshToken != null) {
-        await tokenStorage.saveTokenPair({'refresh': refreshToken});
+        // await tokenStorage.saveTokenPair({'refresh': refreshToken});
+
+        await tokenStorage
+            .setToken(OAuth2Token(accessToken: '', refreshToken: refreshToken));
 
         logger.info('Status: $state');
 
@@ -92,6 +97,10 @@ abstract class _VerifyStore with Store {
           isRegistered = true;
         }
         logger.info('isRegistered: $isRegistered');
+      } else {
+        ScaffoldMessenger.of(navKey.currentContext!).showSnackBar(
+            SnackBar(content: Text('Ключ авторизации недействителен')));
+        router.pushReplacementNamed(AppViews.startScreen);
       }
     }).catchError((e) {
       error = t.auth.invalidPassword;
@@ -101,10 +110,12 @@ abstract class _VerifyStore with Store {
   void register({
     required RegisterData data,
   }) async {
-    final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
+    // final String? token = (await tokenStorage.loadTokenPair())?['refresh'];
+
+    final OAuth2Token? token = await tokenStorage.token;
 
     restClient.post(Endpoint().register, headers: {
-      'Refresh-Token': 'Bearer $token',
+      'Refresh-Token': 'Bearer ${token?.refreshToken}',
     }, body: {
       'account': data.user.toJson(),
       'child': data.child.toJson(),
@@ -115,10 +126,11 @@ abstract class _VerifyStore with Store {
   }
 
   void logout() async {
-    await tokenStorage.clearTokenPair();
+    await tokenStorage.setToken(null);
+    // await tokenStorage.clearTokenPair();
 
     restClient.get(Endpoint().logout).then((_) {
-      router.replaceNamed(AppViews.startScreen);
+      router.pushReplacementNamed(AppViews.startScreen);
     });
   }
 }

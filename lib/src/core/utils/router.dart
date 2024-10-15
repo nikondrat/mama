@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-import 'package:provider/provider.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
@@ -79,68 +78,51 @@ final GoRouter router = GoRouter(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
       builder: (context, state) => const StartScreen(),
-      redirect: (context, state) async {
-        final TokenStorage tokenStorage =
-            Provider.of<Dependencies>(context, listen: false).tokenStorage;
-
-        // tokenStorage.clearTokenPair();
-
-        final String? token = (await tokenStorage.loadTokenPair())?['access'];
-
-        if (token != null) {
-          return _Paths.homeScreen;
-        }
-        return null;
-      },
+    ),
+    GoRoute(
+      path: _Paths.register,
+      name: AppViews.register,
+      builder: (context, state) => const AuthView(),
       routes: [
         GoRoute(
-          path: _Paths.register,
-          name: AppViews.register,
-          builder: (context, state) {
-            return const AuthView();
-          },
+          path: _Paths.auth,
+          name: AppViews.auth,
+          builder: (context, state) => const AuthView(isLogin: true),
+        ),
+        GoRoute(
+          path: _Paths.registerVerify,
+          name: AppViews.registerVerify,
           routes: [
             GoRoute(
-              path: _Paths.auth,
-              name: AppViews.auth,
-              builder: (context, state) => const AuthView(isLogin: true),
-            ),
-            GoRoute(
-              path: _Paths.registerVerify,
-              name: AppViews.registerVerify,
-              routes: [
-                GoRoute(
-                    path: _Paths.authVerify,
-                    name: AppViews.authVerify,
-                    builder: (context, state) {
-                      return const PhoneVerify(
-                        isLogin: true,
-                      );
-                    }),
-              ],
-              builder: (context, state) {
-                return const PhoneVerify();
-              },
-            ),
-            GoRoute(
-                path: _Paths.welcomeScreen,
-                name: AppViews.welcomeScreen,
-                routes: [
-                  GoRoute(
-                    path: _Paths.registerFillName,
-                    name: AppViews.registerFillName,
-                    builder: (context, state) {
-                      return const RegisterFillName();
-                    },
-                  ),
-                ],
-                builder: (context, state) => const WelcomeScreen()),
-            GoRoute(
-              path: _Paths.congratsScreen,
-              name: AppViews.congratsScreen,
-              builder: (context, state) => const CongratsScreen(),
-            ),
+                path: _Paths.authVerify,
+                name: AppViews.authVerify,
+                builder: (context, state) {
+                  return const PhoneVerify(
+                    isLogin: true,
+                  );
+                }),
           ],
+          builder: (context, state) {
+            return const PhoneVerify();
+          },
+        ),
+        GoRoute(
+            path: _Paths.welcomeScreen,
+            name: AppViews.welcomeScreen,
+            routes: [
+              GoRoute(
+                path: _Paths.registerFillName,
+                name: AppViews.registerFillName,
+                builder: (context, state) {
+                  return const RegisterFillName();
+                },
+              ),
+            ],
+            builder: (context, state) => const WelcomeScreen()),
+        GoRoute(
+          path: _Paths.congratsScreen,
+          name: AppViews.congratsScreen,
+          builder: (context, state) => const CongratsScreen(),
         ),
       ],
     ),
@@ -307,7 +289,7 @@ abstract class _Paths {
   static const String auth = AppViews.auth;
   static const String authVerify = AppViews.authVerify;
   static const String registerVerify = AppViews.registerVerify;
-  static const String register = AppViews.register;
+  static const String register = '/${AppViews.register}';
   static const String congratsScreen = AppViews.congratsScreen;
   static const String registerFillName = AppViews.registerFillName;
   static const String registerFillBabyName =

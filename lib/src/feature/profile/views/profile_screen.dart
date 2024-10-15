@@ -100,7 +100,6 @@ class ProfileScreen extends StatelessWidget {
                                 children: [
                                   TextButton(
                                       onPressed: () {
-                                        //TODO добавить tap условия использования
                                         context.pushNamed(AppViews.docs);
                                       },
                                       child: Text(
