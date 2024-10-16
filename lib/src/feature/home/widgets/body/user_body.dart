@@ -5,8 +5,26 @@ import 'package:intl/intl.dart';
 import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
-class HomeUserBody extends StatelessWidget {
-  const HomeUserBody({super.key});
+class HomeUserBody extends StatefulWidget {
+  final ArticleStore articleStore;
+  final UserStore userStore;
+  const HomeUserBody({
+    super.key,
+    required this.userStore,
+    required this.articleStore,
+  });
+
+  @override
+  State<HomeUserBody> createState() => _HomeUserBodyState();
+}
+
+class _HomeUserBodyState extends State<HomeUserBody> {
+  @override
+  initState() {
+    super.initState();
+    widget.articleStore.fetchAll();
+    widget.articleStore.fetchForMe(widget.userStore.account.id ?? '');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +147,9 @@ class HomeUserBody extends StatelessWidget {
 
                   /// #articles
 
-                  const ArticlesListView(),
+                  ArticlesListView(
+                    listData: articleStore.listData.toList(),
+                  ),
 
                   24.h,
                 ],
@@ -137,47 +157,35 @@ class HomeUserBody extends StatelessWidget {
             ),
           16.h,
 
-          // /// #for you
-          // CustomBackground(
-          //     height: null,
-          //     padding: 0,
-          //     child: Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: [
-          //           SizedBox(height: 16),
+          /// #for you
+          if (articleStore.listForMe.isNotEmpty)
+            CustomBackground(
+                height: null,
+                padding: 0,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 16),
 
-          //           /// #article category text
-          //           Padding(
-          //             padding: const EdgeInsets.symmetric(horizontal: 16),
-          //             child: Text(
-          //               t.home.forYou.title,
-          //               style: TextStyle(
-          //                 fontSize: 24,
-          //                 fontWeight: FontWeight.w700,
-          //               ),
-          //             ),
-          //           ),
-          //           SizedBox(height: 16),
+                      /// #article category text
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          t.home.forYou.title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16),
 
-          //           /// #articles
-          //           SizedBox(
-          //             height: 220,
-          //             child: ListView.separated(
-          //               itemCount: 10,
-          //               scrollDirection: Axis.horizontal,
-          //               padding: EdgeInsets.symmetric(horizontal: 16),
-          //               itemBuilder: (context, index) {
-          //                 return ArticleBox(
-          //                   imagePath: Assets.images.imgKidOne4x.path,
-          //                   articleCategory: t.home.cesarean.title,
-          //                   articleTitle: t.home.articleTitleTwo.title,
-          //                 );
-          //               },
-          //               separatorBuilder: (context, index) =>
-          //                   SizedBox(width: 8),
-          //             ),
-          //           ),
-          //         ])),
+                      /// #articles
+                      ArticlesListView(
+                        listData: articleStore.listForMe.toList(),
+                      ),
+                    ])),
+
           16.h
           //       SizedBox(height: 24),
         ],

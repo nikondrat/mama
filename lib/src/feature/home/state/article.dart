@@ -9,40 +9,35 @@ class ArticleStore extends _ArticleStore with _$ArticleStore {
   });
 }
 
-abstract class _ArticleStore with Store {
+abstract class _ArticleStore with Store, BaseStore<ArticlesData> {
   final RestClient restClient;
 
   _ArticleStore({required this.restClient});
-  @observable
-  ObservableFuture<ArticlesData> fetchArticlesFuture = emptyResponse;
 
-  @observable
-  ArticlesData? articlesData;
-
-  @observable
-  ObservableList<ArticleModel> articles = ObservableList();
-
-  @computed
-  bool get hasResults =>
-      fetchArticlesFuture != emptyResponse &&
-      fetchArticlesFuture.status == FutureStatus.fulfilled;
-
-  static ObservableFuture<ArticlesData> emptyResponse =
-      ObservableFuture.value(ArticlesData(articles: []));
-
-  Future<ArticlesData> fetchArticles() async {
-    final Future<ArticlesData> future =
-        restClient.get(Endpoint().articles).then((v) {
-      if (v != null) {
-        final data = ArticlesData.fromJson(v);
-        articles = ObservableList.of(data.articles ?? []);
-        return data;
-      }
-      return emptyResponse;
+  Future fetchAll() async {
+    return await fetchData(
+        () => restClient.get(Endpoint().articles, queryParams: {
+              'limit': '10',
+            }), (v) {
+      final data = ArticlesData.fromJson(v);
+      listData = ObservableList.of(data.articles ?? []);
+      return data;
     });
+  }
 
-    fetchArticlesFuture = ObservableFuture(future);
+  @observable
+  ObservableList<ArticleModel> listForMe = ObservableList<ArticleModel>();
 
-    return articlesData = await future;
+  @action
+  Future fetchForMe(String accountId) async {
+    return await fetchData(
+        () => restClient.get(Endpoint().articles, queryParams: {
+              'account_id': accountId,
+              'limit': '10',
+            }), (v) {
+      final data = ArticlesData.fromJson(v);
+      listForMe = ObservableList.of(data.articles ?? []);
+      return data;
+    });
   }
 }

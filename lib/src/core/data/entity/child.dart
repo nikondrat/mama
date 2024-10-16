@@ -153,7 +153,7 @@ abstract class _ChildModel with Store {
   }
 
   @observable
-  @JsonKey(name: 'birth_date')
+  @JsonKey(name: 'birth_date', toJson: _birthDateToJson)
   DateTime? birthDate;
 
   @action
@@ -161,6 +161,10 @@ abstract class _ChildModel with Store {
     birthDate = value;
 
     isChanged = true;
+  }
+
+  static String? _birthDateToJson(DateTime? date) {
+    return date?.toUtc().toIso8601String();
   }
 
   @computed

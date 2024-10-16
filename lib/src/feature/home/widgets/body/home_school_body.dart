@@ -48,7 +48,7 @@ class HomeSchoolBody extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   /// #articles
-                  ArticlesListView(),
+                  // ArticlesListView(),
 
                   const SizedBox(height: 24),
                 ],

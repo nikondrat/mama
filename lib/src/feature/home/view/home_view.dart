@@ -27,8 +27,6 @@ class _HomeViewState extends State<HomeView>
       create: (context) =>
           ArticleStore(restClient: context.read<Dependencies>().restClient),
       builder: (context, _) {
-        final ArticleStore articleStore = context.watch<ArticleStore>();
-
         CustomAppBar appBar = CustomAppBar(
           leading: ProfileWidget(
             onTap: () {
@@ -44,7 +42,6 @@ class _HomeViewState extends State<HomeView>
 
         return LoadHomeData(
             userStore: userStore,
-            articleStore: articleStore,
             child: Scaffold(
               body: TabBarView(
                 controller: _tabController,

@@ -4,8 +4,10 @@ import 'package:mama/src/data.dart';
 
 class DocWidget extends StatelessWidget {
   final String title;
+  final Function() onTap;
   const DocWidget({
     super.key,
+    required this.onTap,
     required this.title,
   });
 
@@ -31,7 +33,7 @@ class DocWidget extends StatelessWidget {
                 width: 50,
                 height: 50,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: onTap,
                   child: DecoratedBox(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),

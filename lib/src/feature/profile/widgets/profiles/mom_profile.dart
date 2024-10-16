@@ -29,8 +29,6 @@ class MomsProfile extends StatefulWidget {
 }
 
 class _MomsProfileState extends State<MomsProfile> {
-  bool subscribed = true;
-
   @override
   void initState() {
     widget.store.init();
@@ -95,11 +93,12 @@ class _MomsProfileState extends State<MomsProfile> {
                   BodyItemWidget(
                     item: InputItem(
                       controlName: 'email',
-                      maxLines: 1,
+                      maxLines: 2,
                       hintText: t.profile.hintChangeEmail,
                       keyboardType: TextInputType.emailAddress,
-                      titleStyle: widget.titlesStyle!,
-                      inputHintStyle: widget.titlesStyle!,
+                      inputHintStyle: textTheme.bodyLarge!.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
                       inputHint: t.profile.labelChangeEmail,
                       onChanged: (value) {
                         widget.store.updateData();
@@ -132,7 +131,11 @@ class _MomsProfileState extends State<MomsProfile> {
               ),
               8.h,
               CustomButton(
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(AppViews.webView, extra: {
+                    'url': 'https://google.com',
+                  });
+                },
                 isSmall: false,
                 icon: IconModel(
                   icon: Icons.language,
@@ -140,22 +143,24 @@ class _MomsProfileState extends State<MomsProfile> {
                 title: t.profile.settingsAccountButtonTitle,
               ),
               30.h,
-              IgnorePointer(
-                ignoring: !subscribed,
-                child: Stack(
-                  children: [
-                    Opacity(
-                      opacity: !subscribed ? 0.25 : 1,
-                      child: Observer(builder: (_) {
-                        return ChildItems(
-                          childs: userStore.children.toList(),
-                        );
-                      }),
-                    ),
-                    if (!subscribed) const SubscribeBlockItem(),
-                  ],
-                ),
-              ),
+              Observer(builder: (_) {
+                return IgnorePointer(
+                  ignoring: !userStore.isPro,
+                  child: Stack(
+                    children: [
+                      Opacity(
+                        opacity: !userStore.isPro ? 0.25 : 1,
+                        child: Observer(builder: (_) {
+                          return ChildItems(
+                            childs: userStore.children.toList(),
+                          );
+                        }),
+                      ),
+                      if (!userStore.isPro) const SubscribeBlockItem(),
+                    ],
+                  ),
+                );
+              }),
               Padding(
                 padding: const EdgeInsets.all(28.0),
                 child: InkWell(

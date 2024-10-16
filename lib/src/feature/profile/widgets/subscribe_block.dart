@@ -11,6 +11,7 @@ class SubscribeBlockItem extends StatelessWidget {
 
     final TextStyle titlesStyle =
         textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

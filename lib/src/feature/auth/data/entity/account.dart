@@ -132,7 +132,15 @@ enum Role {
   admin,
 
   @JsonValue('USER')
-  user
+  user,
+  @JsonValue('MODERATOR')
+  moderator,
+
+  @JsonValue('DOCTOR')
+  doctor,
+
+  @JsonValue('ONLINE_SCHOOL')
+  onlineSchool
 }
 
 enum Status {

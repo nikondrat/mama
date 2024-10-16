@@ -105,7 +105,7 @@ class HomeSpecialistBody extends StatelessWidget {
               const SizedBox(height: 16),
 
               /// #articles
-              const ArticlesListView(),
+              // const ArticlesListView(),
 
               const SizedBox(height: 24),
             ],

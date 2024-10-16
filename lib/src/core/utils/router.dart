@@ -51,6 +51,9 @@ abstract class AppViews {
   static const doc = 'doc';
 
   static const consultation = 'consultation';
+
+  static const webView = 'webView';
+  static const pdfView = 'pdfView';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -59,6 +62,28 @@ final GoRouter router = GoRouter(
   navigatorKey: navKey,
   initialLocation: '/',
   routes: [
+    GoRoute(
+        path: _Paths.webView,
+        name: AppViews.webView,
+        builder: (context, state) {
+          final Map? extra = state.extra as Map?;
+          final String url = extra?['url'] as String;
+
+          return WebView(
+            url: url,
+          );
+        }),
+    GoRoute(
+        path: _Paths.pdfView,
+        name: AppViews.pdfView,
+        builder: (context, state) {
+          final Map? extra = state.extra as Map?;
+          final String path = extra?['path'] as String;
+
+          return PdfView(
+            path: path,
+          );
+        }),
     GoRoute(
         path: _Paths.docs,
         name: AppViews.docs,
@@ -331,4 +356,7 @@ abstract class _Paths {
   static const doc = AppViews.doc;
 
   static const consultation = AppViews.consultation;
+
+  static const webView = '/${AppViews.webView}';
+  static const pdfView = '/${AppViews.pdfView}';
 }

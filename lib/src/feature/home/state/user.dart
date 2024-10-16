@@ -28,6 +28,13 @@ abstract class _UserStore with Store {
           gender: Gender.female, firstName: '', secondName: '', phone: '');
 
   @computed
+  bool get isPro =>
+      account.status == Status.trial || account.status == Status.subscribed;
+
+  @computed
+  Role get role => account.role ?? Role.user;
+
+  @computed
   UserModel get user =>
       userData?.user ??
       UserModel(

@@ -86,8 +86,11 @@ class ProfileScreen extends StatelessWidget {
                                 children: [
                                   TextButton(
                                       onPressed: () {
-                                        //TODO добавить tap о компании
-                                        context.pushNamed(AppViews.docs);
+                                        context.pushNamed(AppViews.pdfView,
+                                            extra: {
+                                              'path': Assets.docs
+                                                  .consentToProcessPersonalDataMP,
+                                            });
                                       },
                                       child: Text(
                                         t.profile.aboutCompanyTitle,

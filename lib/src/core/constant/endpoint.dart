@@ -41,6 +41,8 @@ class Endpoint {
 
   String get articles => '$article/all';
 
+  String get articleOwn => '$article/own';
+
   static const String chat = 'chat';
 
   String get chats => '$chat/all';

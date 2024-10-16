@@ -11,29 +11,35 @@ class ChildStatus extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        ShaderMask(
-          shaderCallback: (bounds) {
-            return const LinearGradient(
-              begin: Alignment.center,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.whiteColor,
-                AppColors.yellowColor,
-              ],
-            ).createShader(bounds);
-          },
-          child: DecoratedBox(
-            decoration: const BoxDecoration(
-              color: AppColors.yellowColor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(16),
+        Row(
+          children: [
+            Expanded(
+              child: ShaderMask(
+                shaderCallback: (bounds) {
+                  return const LinearGradient(
+                    begin: Alignment.center,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppColors.whiteColor,
+                      AppColors.yellowColor,
+                    ],
+                  ).createShader(bounds);
+                },
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    color: AppColors.yellowColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(16),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0).copyWith(top: 24),
+                    child: const _Title(),
+                  ),
+                ),
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0).copyWith(top: 24),
-              child: const _Title(),
-            ),
-          ),
+          ],
         ),
 
         /// #icon
