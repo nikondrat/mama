@@ -44,7 +44,7 @@ class ArticleCard extends StatelessWidget {
                 children: [
                   SizedBox(height: 8),
                   SizedBox(
-                    width: 222,
+                    width: MediaQuery.sizeOf(context).width * 0.6,
                     height: 52,
                     child: Text(
                       title,
