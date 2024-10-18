@@ -11,10 +11,14 @@ class City {
   @JsonKey(name: 'country_id')
   final int country;
 
+  @JsonKey(name: 'country_name')
+  final String countryName;
+
   City({
     required this.id,
     required this.name,
     required this.country,
+    required this.countryName,
   });
 
   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);

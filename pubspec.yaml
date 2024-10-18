@@ -5,7 +5,7 @@ description: >
 # Prevent accidental publishing to pub.dev.
 publish_to: "none"
 
-version: 0.2.1+36
+version: 0.2.1+38
 
 environment:
   sdk: ">=3.0.5 <4.0.0"

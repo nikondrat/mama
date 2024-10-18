@@ -138,7 +138,7 @@ class CityContainer extends StatelessWidget {
                       ?.copyWith(fontWeight: FontWeight.w400),
                 ),
                 Text(
-                  '${city.country}',
+                  city.countryName,
                   style: textTheme.bodySmall
                       ?.copyWith(fontWeight: FontWeight.w400),
                 )
