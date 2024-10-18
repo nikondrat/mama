@@ -1,6 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:mama/src/core/core.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:mama/src/data.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePhoto extends StatelessWidget {
   final String img;
@@ -49,17 +51,17 @@ class DashedPhotoProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserStore userStore = context.watch();
+
     return GestureDetector(
-      onTap: () {
-        // TODO: need add function
-        // final ImagePicker picker = ImagePicker();
+      onTap: () async {
+        final ImagePicker picker = ImagePicker();
 
-        // picker.pickImage(source: ImageSource.gallery).then((value) {
-        //   if (value != null) {}
-        // });
-
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Нужно обсудить')));
+        picker.pickImage(source: ImageSource.gallery).then((value) {
+          if (value != null) {
+            userStore.updateAvatar(value);
+          }
+        });
       },
       child: Container(
         height: 390,

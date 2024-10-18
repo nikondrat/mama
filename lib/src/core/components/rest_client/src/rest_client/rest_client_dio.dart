@@ -145,7 +145,7 @@ final class RestClientDio extends RestClientBase {
   @override
   Future<Map<String, Object?>?> put(
     String path, {
-    required Map<String, Object?> body,
+    required Object? body,
     Map<String, Object?>? headers,
     Map<String, Object?>? queryParams,
   }) =>
