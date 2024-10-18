@@ -19,11 +19,12 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
   late final FocusNode focusNode;
 
   bool isFocused = false;
-  final controller = TextEditingController();
+  late final TextEditingController controller;
 
   @override
   void initState() {
     super.initState();
+    controller = TextEditingController();
     focusNode = FocusNode();
     focusNode.addListener(() {
       isFocused = focusNode.hasFocus;
@@ -32,6 +33,7 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
 
   @override
   void dispose() {
+    controller.dispose();
     focusNode.dispose();
     super.dispose();
   }

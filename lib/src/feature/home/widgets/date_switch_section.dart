@@ -45,7 +45,7 @@ class DateSwitchSection extends StatelessWidget {
 
                 /// #word date
                 Text(
-                  t.home.today.title,
+                  t.home.today,
                   style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w400,

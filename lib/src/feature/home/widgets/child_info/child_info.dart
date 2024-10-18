@@ -22,6 +22,7 @@ class ChildInfo extends StatelessWidget {
       padding: 16,
       child: Observer(builder: (context) {
         return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             /// #left side
             Expanded(
@@ -34,7 +35,6 @@ class ChildInfo extends StatelessWidget {
                 ],
               ),
             ),
-            8.w,
 
             /// #baby image, edit button
             Flexible(

@@ -29,9 +29,7 @@ class _HomeSchoolBodyState extends State<HomeSchoolBody> {
           GreetingTitle(title: t.home.goodAfternoon.title),
 
           /// #today's date subtitle
-          DateSubtitle(
-            subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
-          ),
+          DateSubtitle(),
           24.h,
 
           if (widget.articleStore.ownListData.isNotEmpty)

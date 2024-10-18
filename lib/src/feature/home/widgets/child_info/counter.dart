@@ -12,7 +12,9 @@ class ChildCounter extends StatelessWidget {
     final UserStore userStore = context.watch();
 
     return Observer(builder: (_) {
-      return AutoSizeText(userStore.selectedChild?.birthDateCounter ?? '');
+      return AutoSizeText(
+        userStore.selectedChild?.birthDateCounter ?? '',
+      );
     });
   }
 }

@@ -11,12 +11,14 @@ class ProfileWidget extends StatelessWidget {
   final bool isShowText;
 
   final Function()? onTap;
+  final Function()? onTapSwitch;
 
   const ProfileWidget({
     super.key,
     this.alignment = Alignment.centerRight,
     this.avatarUrl,
     this.onTap,
+    this.onTapSwitch,
     this.isShowText = false,
   });
 
@@ -36,6 +38,7 @@ class ProfileWidget extends StatelessWidget {
               children: userStore.children,
               alignment: alignment,
               isShowText: isShowText,
+              onTap: onTapSwitch,
             );
           } else if (userStore.children.length == 1) {
             final ChildModel child = userStore.children.first;

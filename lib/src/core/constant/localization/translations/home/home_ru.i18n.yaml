@@ -61,15 +61,6 @@ everythingFine:
 goodAfternoon:
   title: "Добрый день!"
 
-todayIsFridaySeptemberTwentySecond:
-  title: "Сегодня пятница 22 сентября"
-
-FiveMonthsEighteenDays:
-  title: "5 месяцев 18 дней"
-
-orTwentyFourWeeks:
-  title: "или 24 недели"
-
 supportChats:
   title: "Чаты поддержки"
 
@@ -132,9 +123,6 @@ switch_hint: "Переключить"
 septemberTwentySecond:
   title: "22 сентября"
 
-today:
-  title: "Сегодня"
-
 timeScheduleOne:
   title: "9:00-9:15"
 
@@ -151,3 +139,31 @@ tutorFullNameOne:
   title: "Марина Алексеева"
 
 yourArticles: Ваши статьи
+
+or: или
+
+months:
+  one: "1 месяц"
+  two: "$n месяца"
+  few: "$n месяца"
+  many: "$n месяцев"
+  other: "$n месяцев"
+
+days:
+  one: $n день
+  two: $n дня
+  few: $n дня
+  many: $n дней
+  other: $n дней
+
+weeks:
+  one: $n неделя
+  two: $n недели
+  few: $n недели
+  many: $n недель
+  other: $n недель
+
+
+today: Сегодня
+
+monthsData: [января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]

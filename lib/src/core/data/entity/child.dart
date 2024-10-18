@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
 part 'child.g.dart';
@@ -178,11 +179,11 @@ abstract class _ChildModel with Store {
 
     int weeks = difference.inDays ~/ 7;
 
-    // TODO: use localization
-    String formattedDifference = '$months месяцев $days дней';
-    String formattedWeeks = '$weeks недель';
+    String formattedDifference =
+        '${t.home.months(n: months)} ${t.home.days(n: days)}';
+    String formattedWeeks = t.home.weeks(n: weeks);
 
-    return '$formattedDifference или $formattedWeeks';
+    return '$formattedDifference ${t.home.or} $formattedWeeks';
   }
 
   @observable
