@@ -17,6 +17,7 @@ class FilterView extends StatefulWidget {
 
 class _FilterViewState extends State<FilterView> {
   bool isCleared = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +40,8 @@ class _FilterViewState extends State<FilterView> {
                     title: 'Очистить',
                     onTap: () {
                       setState(() {
-                        isCleared != isCleared;
+                        isCleared = !isCleared;
+                        
                       });
                     },
                     backgroundColor: isCleared

@@ -3,7 +3,7 @@ import 'package:mama/src/core/constant/colors.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/services/knowledge/widgets/common_checkbox.dart';
 
-class BuildCategory extends StatelessWidget {
+class BuildCategory extends StatefulWidget {
   final String title;
   final int count;
   final List<Widget> subCategories;
@@ -15,6 +15,11 @@ class BuildCategory extends StatelessWidget {
     required this.subCategories,
   });
 
+  @override
+  State<BuildCategory> createState() => _BuildCategoryState();
+}
+
+class _BuildCategoryState extends State<BuildCategory> {
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -29,7 +34,7 @@ class BuildCategory extends StatelessWidget {
             Expanded(
               flex: 10,
               child: Text(
-                title,
+                widget.title,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 17,
@@ -40,8 +45,7 @@ class BuildCategory extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                count.toString(),
-                style: TextStyle(),
+                widget.count.toString(),
               ),
             ),
             Expanded(
@@ -49,7 +53,7 @@ class BuildCategory extends StatelessWidget {
             )
           ],
         ),
-        children: subCategories,
+        children: widget.subCategories,
       ),
     );
   }

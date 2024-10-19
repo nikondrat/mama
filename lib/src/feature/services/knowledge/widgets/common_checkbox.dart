@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:mama/src/core/core.dart';
 
 class CommonCheckBoxWidget extends StatefulWidget {
   const CommonCheckBoxWidget({
@@ -14,9 +14,12 @@ class _CommonCheckBoxWidgetState extends State<CommonCheckBoxWidget> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+    
+
     return Checkbox(
       value: isChecked,
-      activeColor: Color(0xff4D4DE8),
+      
+      activeColor: AppColors.blue,
       onChanged: (bool? value) {
         setState(() {
           isChecked = value!;
