@@ -41,28 +41,65 @@ class ProfileScreen extends StatelessWidget {
         body: DecoratedBox(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.gradientPurpleBackgroundScaffold,
-                AppColors.gradientPurpleLighterBackgroundScaffold,
-              ],
-            )),
-            child: Provider(
-                create: (context) => ProfileViewStore(model: userStore.account),
-                builder: (context, _) {
-                  final ProfileViewStore store = context.watch();
-                  return Scaffold(
-                    extendBodyBehindAppBar: true,
-                    body: DecoratedBox(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            AppColors.gradientPurpleBackgroundScaffold,
-                            AppColors.gradientPurpleLighterBackgroundScaffold,
-                          ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppColors.gradientPurpleBackgroundScaffold,
+                    AppColors.gradientPurpleLighterBackgroundScaffold,
+                  ],
+                ),
+              ),
+              child: Stack(
+                children: [
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    children: <Widget>[
+                      Observer(builder: (_) {
+                        return MomsProfile(
+                          titlesStyle: titlesStyle,
+                          helpersStyle: helpersStyle,
+                          titlesColoredStyle: titlesColoredStyle,
+                          accountModel: userStore.account,
+                          store: store,
+                        );
+                      }),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                //TODO добавить tap о компании
+                                // context.pushNamed(AppViews.docs);
+                              },
+                              child: Text(
+                                t.profile.aboutCompanyTitle,
+                                style: titlesColoredStyle,
+                              )),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                //TODO добавить tap условия использования
+                                // context.pushNamed(AppViews.docs);
+                              },
+                              child: Text(
+                                t.profile.termOfUseTitle,
+                                style: titlesColoredStyle,
+                              )),
+                        ],
+                      ),
+                      16.h,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: CustomButton(
+                          title: t.profile.feedbackButtonTitle,
+                          onTap: () {},
+                          icon: IconModel(
+                            icon: Icons.language,
+                          ),
                         ),
                       ),
                       child: Stack(

@@ -31,153 +31,251 @@ class _HomeUserBodyState extends State<HomeUserBody> {
     final ArticleStore articleStore = context.watch<ArticleStore>();
 
     return Observer(builder: (context) {
-      return ListView(
-        children: [
-          /// #good afternoon title
-          Padding(
+      return ListView(children: [
+        /// #good afternoon title
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: GreetingTitle(title: t.home.goodAfternoon.title),
+        ),
+
+        /// #today's date subtitle
+        Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: GreetingTitle(title: t.home.goodAfternoon.title),
-          ),
+            child: DateSubtitle(
+              subtitle: 'Сегодня $dayOfWeek $day $month',
 
-          /// #today's date subtitle
-          const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: DateSubtitle()),
+              // t.home.todayIsFridaySeptemberTwentySecond.title,
+            )),
+        if (userStore.children.isNotEmpty) 24.h,
+        if (userStore.children.isNotEmpty) const ChildInfo(),
+        26.h,
 
-          if (userStore.children.isNotEmpty) ...[
-            24.h,
-            const ChildInfo(),
-          ],
-          26.h,
+        /// #services
+        CustomBackground(
+          height: 515,
+          padding: 16,
+          child: Column(
+            children: [
+              /// #custom service box
+              Row(
+                children: [
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgChat4x.path,
+                    text: t.home.supportChats.title,
+                  ),
+                  8.w,
 
-          /// #services
-          CustomBackground(
-            height: 515,
-            padding: 16,
-            child: Column(
-              children: [
-                /// #custom service box
-                Row(
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgChatVideo4x.path,
+                    text: t.home.onlineConsultation.title,
+                  ),
+                ],
+              ),
+              8.h,
+
+              /// #custom service box
+              Row(
+                children: [
+                  /// #
+                  CustomServiceBox(
+                    imagePath: Assets.images.imgProgress4x.path,
+                    text: t.home.progressDiary.title,
+                  ),
+                  const SizedBox(width: 8),
+                ],
+              ),
+
+              /// #services
+              CustomBackground(
+                height: 515,
+                padding: 16,
+                child: Column(
                   children: [
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgChat4x.path,
-                      text: t.home.supportChats.title,
-                    ),
-                    8.w,
+                    /// #custom service box
+                    Row(
+                      children: [
+                        /// #
+                        CustomServiceBox(
+                          imagePath: Assets.images.imgChat4x.path,
+                          text: t.home.supportChats.title,
+                        ),
+                        8.w,
 
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgChatVideo4x.path,
-                      text: t.home.onlineConsultation.title,
+                        /// #
+                        CustomServiceBox(
+                          imagePath: Assets.images.imgChatVideo4x.path,
+                          text: t.home.supportChats.title,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                8.h,
+                    8.h,
 
-                /// #custom service box
-                Row(
-                  children: [
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgProgress4x.path,
-                      text: t.home.progressDiary.title,
+                    /// #custom service box
+                    Row(
+                      children: [
+                        /// #
+                        CustomServiceBox(
+                          imagePath: Assets.images.imgProgress4x.path,
+                          text: t.home.progressDiary.title,
+                        ),
+                        const SizedBox(width: 8),
+
+                        /// #
+                        CustomServiceBox(
+                          imagePath: Assets.images.imgMoonMusic4x.path,
+                          text: t.home.musicForSleep.title,
+                          onTap: () {
+                            context.pushNamed(AppViews.servicesSleepMusicView);
+                          },
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(height: 8),
 
-                    /// #
-                    CustomServiceBox(
-                      imagePath: Assets.images.imgMoonMusic4x.path,
-                      text: t.home.musicForSleep.title,
+                    /// #long box
+                    CustomServiceBoxTwo(
+                      imagePath: Assets.images.imgHat4x.path,
+                      text: t.home.knowledgeCenter.title,
                       onTap: () {
-                        context.pushNamed(AppViews.servicesSleepMusicView);
+                        context.pushNamed(AppViews.serviceKnowlegde);
                       },
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
-
-                /// #long box
-                CustomServiceBoxTwo(
-                  imagePath: Assets.images.imgHat4x.path,
-                  text: t.home.knowledgeCenter.title,
-                  onTap: () {},
-                ),
-              ],
-            ),
-          ),
-          16.h,
-
-          if (articleStore.hasResults)
-
-            /// #current
-            CustomBackground(
-              height: null,
-              padding: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  16.h,
-
-                  /// #article category text
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(
-                      t.home.current.title,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  16.h,
-
-                  /// #articles
-
-                  ArticlesListView(
-                    listData: articleStore.listData.toList(),
-                  ),
-
-                  24.h,
-                ],
               ),
-            ),
-          16.h,
+              16.h,
 
-          /// #for you
-          if (articleStore.listForMe.isNotEmpty)
-            CustomBackground(
+              /// #current
+              CustomBackground(
                 height: null,
                 padding: 0,
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      16.h,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 16),
 
-                      /// #article category text
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          t.home.forYou.title,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                          ),
+                    /// #article category text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        t.home.current.title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                      16.h,
+                     
 
-                      /// #articles
-                      ArticlesListView(
-                        listData: articleStore.listForMe.toList(),
+                      /// #long box
+                      
+                    ),
+                     SizedBox(height: 8),
+                     CustomServiceBoxTwo(
+                        imagePath: Assets.images.imgHat4x.path,
+                        text: t.home.knowledgeCenter.title,
+                        onTap: () {},
                       ),
-                      24.h,
-                    ])),
+                  ],
+                ),
+              ),
+              16.h,
 
-          16.h
-          //       SizedBox(height: 24),
-        ],
-      );
+              /// #current
+              CustomBackground(
+                height: null,
+                padding: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 16),
+
+                    /// #article category text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        t.home.current.title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    /// #articles
+                    SizedBox(
+                      height: 220,
+                      child: ListView.separated(
+                        itemCount: 10,
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        itemBuilder: (context, index) {
+                          return ArticleBox(
+                            imagePath: Assets.images.imgMomOne4x.path,
+                            articleCategory: t.home.sixMonths.title,
+                            articleTitle: t.home.articleTitleOne.title,
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 8),
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
+                  ],
+                ),
+              ),
+              16.h,
+
+              // /// #for you
+              // CustomBackground(
+              //     height: null,
+              //     padding: 0,
+              //     child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           SizedBox(height: 16),
+
+              //           /// #article category text
+              //           Padding(
+              //             padding: const EdgeInsets.symmetric(horizontal: 16),
+              //             child: Text(
+              //               t.home.forYou.title,
+              //               style: TextStyle(
+              //                 fontSize: 24,
+              //                 fontWeight: FontWeight.w700,
+              //               ),
+              //             ),
+              //           ),
+              //           SizedBox(height: 16),
+
+              //           /// #articles
+              //           SizedBox(
+              //             height: 220,
+              //             child: ListView.separated(
+              //               itemCount: 10,
+              //               scrollDirection: Axis.horizontal,
+              //               padding: EdgeInsets.symmetric(horizontal: 16),
+              //               itemBuilder: (context, index) {
+              //                 return ArticleBox(
+              //                   imagePath: Assets.images.imgKidOne4x.path,
+              //                   articleCategory: t.home.cesarean.title,
+              //                   articleTitle: t.home.articleTitleTwo.title,
+              //                 );
+              //               },
+              //               separatorBuilder: (context, index) =>
+              //                   SizedBox(width: 8),
+              //             ),
+              //           ),
+              //         ])),
+
+              //       SizedBox(height: 24),
+            ],
+          ),
+        ),
+      ]);
     });
   }
 }

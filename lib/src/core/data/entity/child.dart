@@ -158,32 +158,10 @@ abstract class _ChildModel with Store {
   DateTime? birthDate;
 
   @action
-  setBirthDate(DateTime value) {
-    birthDate = value;
+  setBirthDate(DateTime value) => birthDate = value;
 
-    isChanged = true;
-  }
-
-  static String? _birthDateToJson(DateTime? date) {
-    return date?.toUtc().toIso8601String();
-  }
-
-  @computed
-  String get birthDateCounter {
-    DateTime currentDate = DateTime.now();
-
-    Duration difference = currentDate.difference(birthDate ?? DateTime.now());
-
-    int months = (difference.inDays / 30).floor();
-    int days = difference.inDays - (months * 30);
-
-    int weeks = difference.inDays ~/ 7;
-
-    String formattedDifference =
-        '${t.home.months(n: months)} ${t.home.days(n: days)}';
-    String formattedWeeks = t.home.weeks(n: weeks);
-
-    return '$formattedDifference ${t.home.or} $formattedWeeks';
+  static String? _dateTimeToJson(DateTime? date) {
+    return date?.toIso8601String().split('T').first;
   }
 
   @observable

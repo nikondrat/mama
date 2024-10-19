@@ -9,12 +9,44 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserStore userStore = context.watch<UserStore>();
 
-    return Provider(
-      create: (context) =>
-          ArticleStore(restClient: context.read<Dependencies>().restClient),
-      builder: (context, _) {
-        return LoadHomeData(
-            userStore: userStore, child: _Body(userStore: userStore));
+    return LoadHomeData(
+      userStore: userStore,
+      builder: (data) {
+        CustomAppBar appBar = CustomAppBar(
+          leading: ProfileWidget(
+            onTap: () {
+              router.pushNamed(AppViews.profile);
+            },
+            alignment: Alignment.centerLeft,
+            avatarUrl: data.account?.avatarUrl ?? '',
+          ),
+          action: const ProfileWidget(
+            isShowText: true,
+          ),
+        );
+
+        return Scaffold(
+          body: TabBarView(
+            controller: _tabController,
+            children: [
+              HomeBodyWidget(
+                appBar: appBar,
+              ),
+              TrackersView(
+                appBar: appBar,
+              ),
+              ChatsListScreen(
+                appBar: appBar,
+              ),
+              ServicesUserView(
+                appBar: appBar,
+              ),
+            ],
+          ),
+          bottomNavigationBar: BottomBar(
+            tabController: _tabController,
+          ),
+        );
       },
     );
   }
