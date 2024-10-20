@@ -62,4 +62,6 @@ abstract class AppColors {
   static const Color deepBlue = Color(0xFF0834A6);
 
   static const Color diapersBackroundColor = Color(0xFFE8F8F3);
+
+  static const Color trackerColor = Color(0xFF11424B);
 }

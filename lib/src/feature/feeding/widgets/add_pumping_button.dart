@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mama/src/core/utils/router.dart';
 import '../../../core/core.dart';
 
 class AddPumpingButton extends StatelessWidget {
@@ -27,8 +29,10 @@ class AddPumpingButton extends StatelessWidget {
           flex: 2,
           child: CustomButton(
             backgroundColor: AppColors.purpleLighterBackgroundColor,
-            onTap: () {},
-            title: "Добавить сцеживание",
+            onTap: () {
+              context.pushNamed(AppViews.addPumping);
+            },
+            title: 'Добавить сцеживание',
             icon: IconModel(iconPath: Assets.icons.icCalendar),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 5, vertical: 12),
