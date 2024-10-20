@@ -10,6 +10,8 @@ class DoctorModel extends BaseModel {
   @JsonKey(name: 'account_id')
   final String? accountId;
 
+  final AccountModel? account;
+
   @JsonKey(name: 'is_consultation')
   final bool isConsultation;
 
@@ -18,6 +20,7 @@ class DoctorModel extends BaseModel {
 
   DoctorModel({
     this.id,
+    this.account,
     this.accountId,
     this.isConsultation = false,
     this.profession,

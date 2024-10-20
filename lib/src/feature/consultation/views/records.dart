@@ -15,34 +15,37 @@ class ConsultationRecords extends StatefulWidget {
 class _ConsultationRecordsState extends State<ConsultationRecords> {
   @override
   void initState() {
-    widget.store.getData();
+    widget.store.fetchUserConsultations();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return LoadingWidget(
-      future: widget.store.fetchConsultationsFuture,
-      builder: (v) => ListView.builder(
-          itemCount: v.data?.length,
-          padding: const EdgeInsets.all(8),
-          itemBuilder: (context, index) {
-            final Consultation? consultation = v.data?[index];
+        future: widget.store.fetchFuture,
+        builder: (v) => ListView.builder(
+            itemCount: widget.store.listData.length,
+            padding: const EdgeInsets.all(8),
+            itemBuilder: (context, index) {
+              final Consultation? consultation = widget.store.listData[index];
 
-            if (consultation != null) {
               return ConsultationItem(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ConsultationTime(startDate: DateTime.now()),
+                  ConsultationTime(
+                    startDate: consultation?.startedAt ?? DateTime.now(),
+                    endDate: consultation?.endedAt ?? DateTime.now(),
+                  ),
                   ConsultationItemTitle(
-                      name: 'FirstName SecondName', badgeTitle: 'Dfsfdsfd'),
+                      name: 'FirstName SecondName',
+                      badgeTitle: consultation?.doctor?.profession),
+                  ConsultationTypeWidget(
+                    type: consultation?.type ?? ConsultationType.chat,
+                  ),
                 ],
               ));
-            }
-
-            return const SizedBox.shrink();
-          }),
-    );
+            }));
+    // );
   }
 }
