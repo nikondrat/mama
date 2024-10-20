@@ -24,9 +24,9 @@ class RowStroriesData extends StatelessWidget {
         Row(
           children: [
             Text(week, style: style),
-            SizedBox(width: 40),
+            const SizedBox(width: 40),
             Text(weight, style: style),
-            SizedBox(width: 30),
+            const SizedBox(width: 30),
           ],
         ),
       ],

@@ -4,6 +4,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'body_item.dart';
 
 class InputItem extends BodyItem {
+  final bool autoFocus;
   final String? inputHint;
   final String controlName;
   final TextStyle? inputHintStyle;
@@ -19,11 +20,13 @@ class InputItem extends BodyItem {
   final MaskTextInputFormatter? maskFormatter;
 
   final Color? backgroundColor;
+  final bool needBackgroundOnFocus;
 
   final Function(String? value)? onChanged;
 
   InputItem({
     required this.controlName,
+    this.autoFocus = false,
     super.hintText,
     this.errorBorder,
     this.inputHint,
@@ -40,5 +43,6 @@ class InputItem extends BodyItem {
     this.isCollapsed = false,
     this.backgroundColor,
     this.contentPadding,
+    this.needBackgroundOnFocus = false,
   });
 }

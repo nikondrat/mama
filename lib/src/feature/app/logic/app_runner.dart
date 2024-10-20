@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
@@ -27,6 +26,7 @@ final class AppRunner {
     Future<void> initializeAndRun() async {
       try {
         final result = await initializationProcessor.initialize();
+
         // Attach this widget to the root of the tree.
         runApp(App(result: result));
       } catch (e, stackTrace) {

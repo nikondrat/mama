@@ -4,10 +4,16 @@ import 'package:mama/src/core/core.dart';
 class ButtonLeading extends StatelessWidget {
   final VoidCallback onTapButton;
   final TextStyle? labelStyle;
+  final BorderRadius borderRadius;
+  final String title;
+  final Widget icon;
   const ButtonLeading({
     super.key,
+    required this.title,
     required this.onTapButton,
     this.labelStyle,
+    required this.borderRadius,
+    required this.icon,
   });
 
   @override
@@ -16,26 +22,17 @@ class ButtonLeading extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-          fixedSize: Size(100, 46),
+          fixedSize: const Size(100, 46),
           padding: EdgeInsets.zero,
           backgroundColor: AppColors.greyButton,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: borderRadius),
         ),
         onPressed: () {
           onTapButton();
         },
-        icon: const Icon(
-          Icons.arrow_back_ios,
-          size: 20.0,
-          color: AppColors.blackColor,
-        ),
+        icon: icon,
         label: Text(
-          t.profile.backLeadingButton,
+          title,
           style: labelStyle,
         ),
       ),

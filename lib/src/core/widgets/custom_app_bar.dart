@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final Alignment? alignment;
+  final EdgeInsets? padding;
   final Widget? leading;
+  final Widget? titleWidget;
   final double? height;
   final String? title;
   final Widget? action;
@@ -17,7 +20,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.height,
       this.tabs,
       this.tabController,
-      this.action});
+      this.action,
+      this.alignment,
+      this.titleWidget,
+      this.padding});
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +34,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: padding ?? const EdgeInsets.symmetric(horizontal: 12),
               child: Stack(
-                alignment: Alignment.center,
+                alignment: alignment ?? Alignment.center,
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
                     child: leading ??
-                        Row(
+                        const Row(
                           children: [
                             CustomBackButton(),
                           ],
                         ),
                   ),
+                  if (titleWidget != null)
+                    Align(alignment: Alignment.center, child: titleWidget),
                   if (title != null)
                     Align(
                       alignment: Alignment.center,
@@ -62,8 +70,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           if (tabs != null && tabController != null) ...[
             10.h,
             TabBar(
-                controller: tabController,
-                tabs: tabs!.map((e) => Tab(text: e)).toList())
+              isScrollable: true,
+              controller: tabController,
+              tabs: tabs!.map((e) => Tab(text: e)).toList(),
+            )
           ]
         ],
       ),

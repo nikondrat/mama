@@ -1,6 +1,10 @@
 class Endpoint {
   static const String auth = 'auth';
 
+  String get accessToken => '$auth/access-token';
+
+  String get logout => '$auth/log-out';
+
   String get login => '$auth/sign-in';
 
   String get register => '$auth/sign-up';
@@ -12,4 +16,36 @@ class Endpoint {
   String get cities => '$geo/city';
 
   String get countries => '$geo/country';
+
+  static const String user = 'user';
+
+  String get userData => '$user/me';
+
+  static const String account = 'account';
+
+  String get accountAvatar => '$account/avatar';
+
+  static const String child = 'child';
+
+  String get childAvatar => '$child/avatar';
+
+  static const String payment = 'payment';
+
+  String get promocode => '$payment/promocode';
+
+  static const String consultation = 'consultation';
+
+  String get userConsultations => '$consultation/user';
+
+  static const String article = 'article';
+
+  String get articles => '$article/all';
+
+  String get articleOwn => '$article/file/own';
+
+  static const String chat = 'chat';
+
+  String get chats => '$chat/all';
+
+  static const String doctor = 'doctor';
 }

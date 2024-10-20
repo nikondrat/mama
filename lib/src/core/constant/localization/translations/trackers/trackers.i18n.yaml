@@ -1,12 +1,19 @@
 evolution: Evolution
+sleepAndCrying: Sleep and crying
+feeding: Feeding
+diapers: Diapers
 
 weight:
   title: Weight
   add: Add weight
 
-growth: Growth
+growth: 
+  title: Growth
+  add: Add growth
 
-head: Head
+head: 
+  title: Head
+  add: Add head
 
 table: Table
 
@@ -37,6 +44,9 @@ findOutMoreTextTwo:
 date:
   title: Date
 
+weeks:
+  title: Weeks
+
 time:
   title: Time
 
@@ -60,3 +70,86 @@ fourteensOfSeptember:
 
 note:
   title: Note
+
+knowMoreOne:
+  title: Here you can monitor your child's weight and control its development, comparing it with the standards of the World Health Organization.
+
+knowMoreTwo:
+  title: Find out more about these standards and learn how to measure weight correctly in our Knowledge Center;
+
+knowMoreText:
+  title: Know More
+
+current:
+  title: Current
+
+dynamics:
+  title: Dynamics
+
+kg:
+  title: KG
+
+g:
+  title: G
+
+stories:
+  title: Stories
+
+news:
+  title: News
+
+old:
+  title: Old
+
+showCompleted:
+  title: Show completed
+
+pillTitleOne:
+  title: Сироп Нурофен детский
+
+pillDescriptionOne:
+  title: 1 spoon after a meal
+
+pillExactTimeOne:
+  title: В 20:00
+
+pillRemainingTimeOne:
+  title: In 2 hours 12 minutes
+
+
+cm:  
+  title: cm
+m: 
+  title: m
+
+diaper:
+  diapers: Diapers
+  add: Add diaper
+
+wet:
+  wet: Wet
+  littleBit: Little Bit
+  average: Average
+  many: Many
+
+mixed:
+  mixed: Mixed
+  solid: Solid
+  soft: Soft
+  liquid: Liquid
+  dense: Dense
+  sticky: Sticky
+  grainy: Grainy
+  diarrhea: Diarrhea
+
+dirty: 
+  dirty: Dirty
+  solid: Solid
+  soft: Soft
+  liquid: Liquid
+  dense: Dense
+  sticky: Sticky
+  grainy: Grainy
+  diarrhea: Diarrhea
+
+diaperforday: 6 diapers a day on average

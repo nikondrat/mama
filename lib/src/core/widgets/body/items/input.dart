@@ -24,7 +24,7 @@ class _InputItemWidgetState extends State<InputItemWidget> {
   void initState() {
     focusNode.addListener(() {
       setState(() {
-        if (focusNode.hasFocus) {
+        if (focusNode.hasFocus && widget.item.needBackgroundOnFocus) {
           backgroundColor = AppColors.primaryColor;
           hintColor = AppColors.softPeach;
         } else {
@@ -48,6 +48,7 @@ class _InputItemWidgetState extends State<InputItemWidget> {
     final TextTheme textTheme = themeData.textTheme;
 
     return ReactiveTextField(
+      autofocus: widget.item.autoFocus,
       focusNode: focusNode,
       style: widget.item.titleStyle ??
           textTheme.bodyLarge?.copyWith(color: hintColor),
@@ -75,7 +76,7 @@ class _InputItemWidgetState extends State<InputItemWidget> {
         errorBorder: widget.item.errorBorder ??
             OutlineInputBorder(
                 borderRadius: 6.r,
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: AppColors.redColor,
                   width: 2,
                 )),

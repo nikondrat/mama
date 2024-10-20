@@ -1,0 +1,9 @@
+title: Консультации
+records: Записи
+professionals: Специалисты 
+schools: Школы
+
+type:
+  chat: Консультация в чате
+  video: Видео-консультация
+  express: Экспресс-консультация

@@ -1,21 +1,37 @@
 accountTitle: Аккаунт
+accountTitleSpecialist: Аккаунт специалиста
+accountTitleSchool: Аккаунт онлайн-школы
 
 addPhotoTitle: Нажмите, чтобы добавить фото
 
 backLeadingButton: Назад
 
 hintChangeName: Нажмите, чтобы изменить имя
+hintChangeNameSchool: Нажмите, чтобы изменить название школы
+
+hintProfession: Акушер
+helperProfession: Нажмите, чтобы изменить профессиональный бейджик (выводится рядом с именем, в одно слово)
+
+titleNameProffession: Вас будут видеть вот так
 
 hintChangePhone: Нажмите, чтобы изменить номер телефона
+hintChangePhoneSchool: Нажмите, чтобы изменить номер телефона (не виден пользователям)
 
 hintChangeEmail: Нажмите, чтобы ввести адрес электронной почты
+hintChangeEmailSchool: Нажмите, чтобы изменить адрес электронной почты (не видна пользователям)
 
 labelChangeEmail: Нам нужна ваша почта для активации приложения
 
 hintChangeNote: Нажмите, чтобы поделиться с другими пользователями информацией о себе
+hintChangeNoteSpecialist: Нажмите, чтобы изменить информацию о себе
+hintChangeNoteSchool: Нажмите, чтобы изменить информацию о школе
 
 labelChangeNote: Обо мне
+labelChangeNoteSchool: О школе
 
+titleInfo: Информация
+titleCourses: Курсы и мастерклассы
+titleArticle: Статьи автора
 addGiftCodeButtonTitle: Ввести код на подарок
 
 settingsAccountButtonTitle: Настройки аккаунта
@@ -67,31 +83,36 @@ inputHint: Ввести
 unitMeasureWeight: кг
 
 unitMeasureHeight: см
-
 cancel: Отмена
-
 apply: Применить
-
 promoScreenTitle: Подарочные коды
-
 promoItemButtonTitle: Нажмите, чтобы применить
-
 promoScreenHelper: Нажмите, чтобы ввести новый подарочный код
-
 promoScreenHintAddCode: Новый подарочный код
-
 promoScreenErrorCode: Подарочный код не действителен. Нажмите, чтобы изменить
-
 promoDialogBackButton: Вернуться
-
 promoErrorDialogBackButton: Выйти
-
 promoErrorDialogContinueButton: Продолжить
+and: и
+name: имя
+dateBirth: дату рождения
+weight: вес
+height: рост
+headCirc: окружность головы
+needToFill: Осталось заполнить
+subscribeBlockTitle: Пробный период кончился
+subscribeBlockSubitle: Оформите подписку в личном кабинете, чтобы мы могли и дальше предоставлять вам качественный сервис и услуги специалистов
+subscribeBlocButtonTitle: В личный кабинет
+bottomBarHome: Главная
+bottomBarDiaries: Дневники
+bottomBarChats: Чаты
+bottomBarServices: Сервисы
 
-sex(context=GenderContext):
-  male: Мальчик
-  female: Девочка
 
-birth(context=BirthContext):
-  nature: Естественные
-  cesarean: Кесарево
+
+male: Мальчик
+female: Девочка
+
+nature: Естественные
+cesarean: Кесарево
+save: Сохранить

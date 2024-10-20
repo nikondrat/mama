@@ -36,7 +36,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: BodyDecoration(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               Expanded(
@@ -97,7 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ],
               ),
-              20.h
+              60.h
             ],
           ),
         ),

@@ -39,7 +39,7 @@ abstract base class RestClientBase implements RestClient {
         baseUri.path.endsWith('/') ? baseUri.path : '${baseUri.path}/';
 
     // Ensure the path provided ends with a slash
-    final finalPath = p.join(basePath, path.endsWith('/') ? path : '$path/');
+    final finalPath = p.join(basePath, path);
 
     // Ensure query parameters are handled correctly
     final completeQueryParams = (queryParams != null && queryParams.isNotEmpty)

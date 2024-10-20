@@ -6,7 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterFillAnotherBabyInfoScreen extends StatefulWidget {
-  const RegisterFillAnotherBabyInfoScreen({super.key});
+  final bool isNotRegister;
+  const RegisterFillAnotherBabyInfoScreen({
+    super.key,
+    required this.isNotRegister,
+  });
 
   @override
   State<RegisterFillAnotherBabyInfoScreen> createState() =>
@@ -28,7 +32,7 @@ class _RegisterFillAnotherBabyInfoScreenState
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(6),
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
@@ -47,6 +51,8 @@ class _RegisterFillAnotherBabyInfoScreenState
         color: AppColors.greyBrighterColor, fontWeight: FontWeight.w400);
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: widget.isNotRegister ? const CustomAppBar() : null,
       body: BodyDecoration(
         backgroundImage: DecorationImage(
           image: AssetImage(
@@ -55,7 +61,7 @@ class _RegisterFillAnotherBabyInfoScreenState
           alignment: Alignment.topLeft,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               const Spacer(),
@@ -68,14 +74,16 @@ class _RegisterFillAnotherBabyInfoScreenState
                       context: GenderContext.values[store.child.gender.index])),
               10.h,
               ReactiveForm(
-                formGroup: store.formGroup.control('child') as FormGroup,
-                child: BodyGroup(title: '', items: [
+                formGroup: store.childData,
+                child: BodyGroup(title: '',
+                    items: [
                   BodyItemWidget(
                     item: ItemWithInput(
                         inputItem: InputItem(
                           inputHint: t.profile.inputHint,
                           inputHintStyle: inputHintStyle,
                           controlName: 'weight',
+                          needBackgroundOnFocus: true,
                           isCollapsed: true,
                           textAlign: inputTextAlign,
                           textInputAction: TextInputAction.next,
@@ -96,6 +104,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                           inputHintStyle: inputHintStyle,
                           controlName: 'height',
                           isCollapsed: true,
+                          needBackgroundOnFocus: true,
                           textAlign: inputTextAlign,
                           textInputAction: TextInputAction.next,
                           maskFormatter: sizeFormatter,
@@ -115,6 +124,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                           inputHint: t.register.enter,
                           controlName: 'headCircumference',
                           isCollapsed: true,
+                          needBackgroundOnFocus: true,
                           textAlign: inputTextAlign,
                           textInputAction: TextInputAction.next,
                           maskFormatter: sizeFormatter,
@@ -149,11 +159,18 @@ class _RegisterFillAnotherBabyInfoScreenState
                   isSmall: false,
                   title: t.register.next,
                   onTap: () {
-                    store.child.setWeight(double.tryParse(store.weight.value));
-                    store.child.setHeight(double.tryParse(store.height.value));
+                    store.child.setWeight(
+                        (store.weight.value as String).extractNumber());
+                    store.child.setHeight(
+                        (store.height.value as String).extractNumber());
                     store.child.setHeadCircumference(
-                        double.tryParse(store.headCircumference.value));
-                    context.pushNamed(AppViews.registerInfoAboutChildbirth);
+                        (store.headCircumference.value as String)
+                            .extractNumber());
+
+                    context.pushNamed(AppViews.registerInfoAboutChildbirth,
+                        extra: {
+                          'isNotRegister': widget.isNotRegister,
+                        });
                   }),
               40.h
             ],

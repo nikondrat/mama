@@ -30,7 +30,7 @@ class BodyItemWidget extends StatelessWidget {
       case InputItem _:
         return Padding(
           padding: const EdgeInsets.only(
-            bottom: 8,
+            bottom: 4,
           ),
           child: BodyItemDecoration(
               backgroundBorder: backgroundBorder,
@@ -51,7 +51,7 @@ class BodyItemWidget extends StatelessWidget {
       case ItemWithSwitch _:
         return ItemWithSwitchWidget(item: item as ItemWithSwitch);
       default:
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
     }
   }
 }

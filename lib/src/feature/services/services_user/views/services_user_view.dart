@@ -3,15 +3,17 @@ import 'package:mama/src/data.dart';
 import 'package:go_router/go_router.dart';
 
 class ServicesUserView extends StatelessWidget {
-  const ServicesUserView({super.key});
+  final CustomAppBar appBar;
+
+  const ServicesUserView({
+    super.key,
+    required this.appBar,
+  });
 
   @override
   Widget build(BuildContext context) {
-    void navigateToMyRecordsView() {
-      context.pushNamed(AppViews.servicesSleepMusicView);
-    }
-
     return Scaffold(
+      appBar: appBar,
       body: SafeArea(
         child: AppBody(
           builder: (width, size) {
@@ -36,7 +38,9 @@ class ServicesUserView extends StatelessWidget {
                     buttons: [
                       ButtonModel(
                         title: t.services.myRecords.title,
-                        onTap: navigateToMyRecordsView,
+                        onTap: () {
+                          context.pushNamed(AppViews.consultation);
+                        },
                       ),
                       ButtonModel(
                         title: t.services.specialists.title,
@@ -54,18 +58,32 @@ class ServicesUserView extends StatelessWidget {
                   MainBoxWithButtons(
                     image: Assets.images.imgMoonMusic4x.path,
                     mainText: t.services.sleepMusic.title,
+                    onTap: () =>
+                        context.pushNamed(AppViews.servicesSleepMusicView),
                     buttons: [
                       ButtonModel(
                         title: t.services.music.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView);
+                        },
                       ),
                       ButtonModel(
                         title: t.services.whiteNoise.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView,
+                              extra: {
+                                'selectedTab': 1,
+                              });
+                        },
                       ),
                       ButtonModel(
                         title: t.services.fairyTales.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.servicesSleepMusicView,
+                              extra: {
+                                'selectedTab': 2,
+                              });
+                        },
                       )
                     ],
                   ),

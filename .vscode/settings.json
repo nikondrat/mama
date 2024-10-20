@@ -4,5 +4,6 @@
   ],
   "dart.lineLength": 80,
   "dart.flutterSdkPath": ".fvm/versions/stable",
-  "cmake.ignoreCMakeListsMissing": true
+  "cmake.ignoreCMakeListsMissing": true,
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

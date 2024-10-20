@@ -18,6 +18,7 @@ class AuthInputBodyWidget extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
     final AuthViewStore store = context.watch();
+    final VerifyStore verifyStore = context.watch();
 
     return InputPlace(
         child: Padding(
@@ -33,7 +34,7 @@ class AuthInputBodyWidget extends StatelessWidget {
                 ),
               ),
               20.h,
-              InputWidget(),
+              const InputWidget(),
               if (!isLogin)
                 Observer(
                     builder: (context) => Row(
@@ -53,8 +54,12 @@ class AuthInputBodyWidget extends StatelessWidget {
                                           ),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
-                                              // TODO navigate to term of use screen
-                                              print('tap');
+                                              context.pushNamed(
+                                                  AppViews.pdfView,
+                                                  extra: {
+                                                    'path': Assets.docs
+                                                        .consentToProcessPersonalDataMP,
+                                                  });
                                             },
                                         )),
                                 style: textTheme.bodySmall,
@@ -68,27 +73,31 @@ class AuthInputBodyWidget extends StatelessWidget {
                 builder: (context, control, child) {
                   final bool isValid = control.valid;
 
-                  return CustomButton(
-                    title: t.auth.confirm,
-                    height: 48,
-                    isSmall: false,
-                    onTap: isValid
-                        ? () {
-                            context.pushNamed(
+                  return Observer(builder: (_) {
+                    final bool isAgree = !isLogin && store.isAgree;
+
+                    return CustomButton(
+                      title: t.auth.confirm,
+                      height: 48,
+                      isSmall: false,
+                      onTap: isValid && isAgree
+                          ? () {
+                              verifyStore.setPhoneNumber(
+                                  control.value as String? ?? '');
+                              context.pushNamed(
                                 isLogin
                                     ? AppViews.authVerify
                                     : AppViews.registerVerify,
-                                extra: {
-                                  'phone': control.value,
-                                });
-                          }
-                        : null,
-                    textStyle: textTheme.titleMedium!.copyWith(
-                      color: isValid
-                          ? AppColors.primaryColor
-                          : AppColors.greyBrighterColor,
-                    ),
-                  );
+                              );
+                            }
+                          : null,
+                      textStyle: textTheme.titleMedium!.copyWith(
+                        color: isValid && isAgree
+                            ? AppColors.primaryColor
+                            : AppColors.greyBrighterColor,
+                      ),
+                    );
+                  });
                 },
               ),
             ],

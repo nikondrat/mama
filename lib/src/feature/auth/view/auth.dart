@@ -26,7 +26,7 @@ class AuthView extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Spacer(),
+            const Spacer(),
             SvgPicture.asset(
               Assets.images.mamaCo,
             ),
@@ -50,13 +50,14 @@ class AuthView extends StatelessWidget {
             ),
             20.h,
             AuthInputBodyWidget(isLogin: isLogin),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () => context
-                      .pushNamed(isLogin ? AppViews.register : AppViews.auth),
+                  onPressed: () => context.pushNamed(
+                    isLogin ? AppViews.register : AppViews.auth,
+                  ),
                   child: AutoSizeText(
                     isLogin ? t.auth.noAccount : t.auth.alreadyHaveAccount,
                     style: textTheme.titleMedium,

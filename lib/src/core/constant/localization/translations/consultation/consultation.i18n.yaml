@@ -1,0 +1,9 @@
+title: Consultation
+records: Records
+professionals: Professionals 
+schools: Schools
+
+type:
+  chat: Consultation in chat
+  video: Video-consultation
+  express: Express-consultation

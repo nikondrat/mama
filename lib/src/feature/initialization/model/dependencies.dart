@@ -1,3 +1,5 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fresh_dio/fresh_dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:mama/src/data.dart';
@@ -9,6 +11,7 @@ base class Dependencies {
     required this.settingsStore,
     required this.errorTrackingManager,
     required this.restClient,
+    required this.tokenStorage,
   });
 
   /// [SharedPreferences] instance, used to store Key-Value pairs.
@@ -16,6 +19,9 @@ base class Dependencies {
 
   /// [SettingsStore] instance, used to manage theme and locale.
   final SettingsStore settingsStore;
+
+  /// [FlutterSecureStorage] instance, used to store tokens.
+  final Fresh<OAuth2Token> tokenStorage;
 
   /// [ErrorTrackingManager] instance, used to report errors.
   final ErrorTrackingManager errorTrackingManager;

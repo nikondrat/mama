@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_toggle_button/flutter_toggle_button.dart';
 import 'package:mama/src/data.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class ChildItem extends StatefulWidget {
+  final int index;
   final ChildModel model;
   const ChildItem({
     super.key,
+    required this.index,
     required this.model,
   });
 
@@ -70,7 +71,7 @@ class _ChildItemState extends State<ChildItem> {
       borderSide: BorderSide.none,
       borderRadius: 6.r,
     );
-    final EdgeInsets inputPadding =
+    const EdgeInsets inputPadding =
         EdgeInsets.symmetric(horizontal: 12, vertical: 4);
 
     final MaskTextInputFormatter weightFormatter = MaskTextInputFormatter(
@@ -89,7 +90,7 @@ class _ChildItemState extends State<ChildItem> {
       return Column(
         children: [
           BodyGroup(
-              title: t.profile.childTitle,
+              title: widget.index == 0 ? t.profile.childTitle : '',
               formGroup: formGroup,
               isDecorated: true,
               items: [
@@ -98,25 +99,15 @@ class _ChildItemState extends State<ChildItem> {
                 ),
                 BodyItemWidget(
                     item: CustomBodyItem(
-                  titleStyle: titlesStyle,
-                  title: t.profile.genderTitle,
-                  body: FlutterToggleButton(
-                    outerContainerMargin: 3,
-                    buttonWidth: 128,
-                    buttonHeight: 38,
-                    buttonColor: Colors.white,
-                    enableTextColor: AppColors.primaryColor,
-                    buttonTextFontSize: 14,
-                    borderRadius: 6,
-                    outerContainerColor: AppColors.purpleLighterBackgroundColor,
-                    onTap: (index) =>
-                        widget.model.setGender(ChildGender.values[index]),
-                    items: [
-                      t.profile.sex(context: GenderContext.female),
-                      t.profile.sex(context: GenderContext.male),
-                    ],
-                  ),
-                )),
+                        titleStyle: titlesStyle,
+                        title: t.profile.genderTitle,
+                        body: CustomToggleButton(
+                            initialIndex: widget.model.gender.index,
+                            items: [Gender.female.name, Gender.male.name],
+                            onTap: (index) =>
+                                widget.model.setGender(Gender.values[index]),
+                            btnWidth: 128,
+                            btnHeight: 38))),
                 BodyItemWidget(
                     item: ItemWithSwitch(
                         title: t.profile.twinsTitle,
@@ -136,6 +127,9 @@ class _ChildItemState extends State<ChildItem> {
                         contentPadding: inputPadding,
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         inputHint: t.profile.inputHint,
+                        onChanged: (value) {
+                          widget.model.setWeight(double.tryParse(value!));
+                        },
                         inputHintStyle: titlesStyle.copyWith(
                             color: AppColors.greyBrighterColor),
                       ),
@@ -156,6 +150,9 @@ class _ChildItemState extends State<ChildItem> {
                         contentPadding: inputPadding,
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         inputHint: t.profile.inputHint,
+                        onChanged: (value) {
+                          widget.model.setHeight(double.tryParse(value!));
+                        },
                         inputHintStyle: titlesStyle.copyWith(
                             color: AppColors.greyBrighterColor),
                       ),
@@ -176,6 +173,10 @@ class _ChildItemState extends State<ChildItem> {
                         contentPadding: inputPadding,
                         backgroundColor: AppColors.purpleLighterBackgroundColor,
                         inputHint: t.profile.inputHint,
+                        onChanged: (value) {
+                          widget.model
+                              .setHeadCircumference(double.tryParse(value!));
+                        },
                         inputHintStyle: titlesStyle.copyWith(
                             color: AppColors.greyBrighterColor),
                       ),
@@ -186,31 +187,27 @@ class _ChildItemState extends State<ChildItem> {
                 ),
                 BodyItemWidget(
                     item: CustomBodyItem(
-                  title: t.profile.birthTitle,
-                  subTitle:
-                      widget.model.childbirth == null ? 'не указано' : null,
-                  titleStyle: titlesStyle,
-                  hintStyle: textTheme.bodySmall!.copyWith(
-                      fontSize: 10,
-                      letterSpacing: 0,
-                      color: AppColors.redColor),
-                  body: MyFlutterToggleButton(
-                    outerContainerMargin: 3,
-                    buttonWidth: 128,
-                    buttonHeight: 38,
-                    buttonColor: Colors.white,
-                    enableTextColor: AppColors.primaryColor,
-                    buttonTextFontSize: 14,
-                    borderRadius: 6,
-                    outerContainerColor: AppColors.purpleLighterBackgroundColor,
-                    onTap: (index) =>
-                        widget.model.setChildbirth(Childbirth.values[index]),
-                    items: [
-                      t.profile.birth(context: BirthContext.nature),
-                      t.profile.birth(context: BirthContext.cesarean)
-                    ],
-                  ),
-                )),
+                        title: t.profile.birthTitle,
+                        subTitle: widget.model.childbirth.name
+                        // == null
+                        //     ? 'не указано'
+                        //     : null
+                        ,
+                        titleStyle: titlesStyle,
+                        hintStyle: textTheme.bodySmall!.copyWith(
+                            fontSize: 10,
+                            letterSpacing: 0,
+                            color: AppColors.redColor),
+                        body: CustomToggleButton(
+                            initialIndex: widget.model.childbirth.index,
+                            items: [
+                              Childbirth.natural.name,
+                              Childbirth.cesarian.name,
+                            ],
+                            onTap: (index) => widget.model
+                                .setChildbirth(Childbirth.values[index]),
+                            btnWidth: 128,
+                            btnHeight: 38))),
                 BodyItemWidget(
                     item: ItemWithSwitch(
                         title: t.profile.birthComplicationsTitle,
@@ -219,7 +216,11 @@ class _ChildItemState extends State<ChildItem> {
                         onChanged: (value) {
                           widget.model.setChildbirthWithComplications(value);
                         })),
-                DottedInput(),
+                if (formGroup.controls.values.isNotEmpty)
+                  ItemsNeedToFill(formGroup: formGroup),
+                DottedInput(
+                  model: widget.model,
+                ),
               ]),
         ],
       );

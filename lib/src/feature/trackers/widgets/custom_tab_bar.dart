@@ -8,7 +8,7 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabBar(
+    return const TabBar(
       tabs: [
         Tab(text: 'Вес'),
         Tab(text: 'Рост'),
@@ -24,5 +24,5 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(100, 100);
+  Size get preferredSize => const Size(100, 100);
 }
