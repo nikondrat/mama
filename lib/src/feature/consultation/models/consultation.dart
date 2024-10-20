@@ -34,6 +34,9 @@ class Consultation extends BaseModel {
   @JsonKey(name: 'time_begin')
   final DateTime? startedAt;
 
+  @JsonKey(name: 'time_end')
+  final DateTime? endedAt;
+
   Consultation({
     this.id,
     this.doctor,
@@ -42,6 +45,7 @@ class Consultation extends BaseModel {
     this.startedAt,
     super.updatedAt,
     super.createdAt,
+    this.endedAt,
   });
 
   factory Consultation.fromJson(Map<String, dynamic> json) =>

@@ -2,7 +2,7 @@ import 'package:mobx/mobx.dart';
 
 mixin BaseStore<T> {
   @observable
-  ObservableFuture fetchArticlesFuture = emptyResponse;
+  ObservableFuture fetchFuture = emptyResponse;
 
   @observable
   T? data;
@@ -14,19 +14,20 @@ mixin BaseStore<T> {
 
   @computed
   bool get hasResults =>
-      fetchArticlesFuture != emptyResponse &&
-      fetchArticlesFuture.status == FutureStatus.fulfilled;
+      fetchFuture != emptyResponse &&
+      fetchFuture.status == FutureStatus.fulfilled;
 
+  @action
   Future<T?> fetchData(
-      Future Function() fetchFunction, Function(dynamic data) thenData) async {
-    final future = fetchFunction().then((v) {
+      Future fetchFunction, Function(dynamic data) thenData) async {
+    final future = fetchFunction.then((v) {
       if (v != null) {
-        thenData(v);
+        return thenData(v);
       }
       return emptyResponse;
     });
 
-    fetchArticlesFuture = ObservableFuture(future);
+    fetchFuture = ObservableFuture(future);
     return await future;
   }
 }

@@ -18,9 +18,14 @@ class ConsultationTags extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: tags.length,
             itemBuilder: (context, index) {
-              return Chip(
+              return RawChip(
+                color: const WidgetStatePropertyAll(
+                    AppColors.whiteDarkerButtonColor),
                 label: Text(tags[index]),
-                backgroundColor: Colors.transparent,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               );
             }));
   }

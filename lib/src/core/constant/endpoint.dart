@@ -46,4 +46,6 @@ class Endpoint {
   static const String chat = 'chat';
 
   String get chats => '$chat/all';
+
+  static const String doctor = 'doctor';
 }

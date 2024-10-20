@@ -13,20 +13,22 @@ class WelcomeContainer extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.06,
         ),
-        Image.asset(content.assetImage),
+        Expanded(child: Center(child: Image.asset(content.assetImage))),
         Text(content.title,
-            style: textTheme.labelLarge
+            style: textTheme.headlineSmall
                 ?.copyWith(fontSize: 24, color: AppColors.primaryColor)),
         15.h,
         Text(
           content.text,
           style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w400),
-        )
+        ),
+        50.h,
       ],
     );
   }
