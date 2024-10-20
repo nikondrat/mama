@@ -75,7 +75,6 @@ class _VerifyInputWidgetState extends State<VerifyInputWidget> {
                               );
                             },
                             autoFocus: true,
-                            hintCharacter: '0',
                             hintStyle: const TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w400,

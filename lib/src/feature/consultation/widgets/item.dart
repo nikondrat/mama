@@ -24,11 +24,14 @@ class ConsultationItem extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(
-                height: 80,
-                width: 80,
+                height: 100,
+                width: 100,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.network('')),
+                    child: Image.network(
+                      'https://i.pinimg.com/564x/0f/61/17/0f6117019e51973be9f18391a5042de9.jpg',
+                      fit: BoxFit.cover,
+                    )),
               ),
               10.w,
               Expanded(

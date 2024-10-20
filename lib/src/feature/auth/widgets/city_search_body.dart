@@ -95,16 +95,15 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                       itemCount: widget.store.cities.length),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: SizedBox(
                     height: 100,
                     child: Row(
                       children: [
                         Expanded(
                           child: CustomButton(
-                            textStyle: textTheme.labelLarge?.copyWith(
-                              fontSize: 15
-                            ),
+                            textStyle:
+                                textTheme.labelLarge?.copyWith(fontSize: 15),
                             type: CustomButtonType.outline,
                             title: t.register.skip,
                             onTap: () {
@@ -126,6 +125,7 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                               icon: selectedCity != null
                                   ? IconModel(
                                       icon: Icons.check,
+                                      color: AppColors.greenTextColor,
                                     )
                                   : null,
                               title: t.register.complete,
