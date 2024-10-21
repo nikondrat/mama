@@ -151,5 +151,11 @@ enum Status {
   noSubscribe,
 
   @JsonValue('TRIAL')
-  trial
+  trial,
+
+  @JsonValue('DELETED')
+  deleted,
+
+  @JsonValue('PROMO_CODE')
+  promoCode,
 }

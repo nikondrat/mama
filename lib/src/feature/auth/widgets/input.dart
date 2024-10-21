@@ -46,7 +46,7 @@ class _InputWidgetState extends State<InputWidget> {
         child: ReactiveValueListenableBuilder(
           formControlName: 'phone',
           builder: (context, status, child) {
-            final bool isValid = !status.hasErrors;
+            // final bool isValid = !status.hasErrors;
 
             return SizedBox(
                 height: 80,
@@ -57,9 +57,11 @@ class _InputWidgetState extends State<InputWidget> {
                       decoration: BoxDecoration(
                           borderRadius: 8.r,
                           border: Border.all(
-                            color: !isValid
-                                ? AppColors.redColor
-                                : isFocused
+                            color:
+                                // !isValid
+                                //     ? AppColors.redColor
+                                //     :
+                                isFocused
                                     ? AppColors.primaryColor
                                     : AppColors.greyColor,
                             width: isFocused ? 2 : 1,
@@ -86,6 +88,7 @@ class _InputWidgetState extends State<InputWidget> {
                             child: ReactiveTextField(
                               formControlName: 'phone',
                               focusNode: focusNode,
+                              autofocus: true,
                               showErrors: (control) => false,
                               keyboardType: TextInputType.number,
                               style: textTheme.bodyMedium!.copyWith(

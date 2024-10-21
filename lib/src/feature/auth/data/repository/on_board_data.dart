@@ -3,7 +3,7 @@ import 'package:mama/src/feature/auth/data/entity/content.dart';
 List<Content> onBoardData = [
   Content(
       assetImage: 'assets/images/on_boarding_1.png',
-      title: 'Добро и пожаловать в Mama&Co',
+      title: 'Добро пожаловать в Mama&Co',
       text:
           'Больше не нужно искать блоги, каналы и хороших специалистов.\nМы всё собрали здесь.'),
   Content(

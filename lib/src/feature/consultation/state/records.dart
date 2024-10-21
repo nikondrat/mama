@@ -10,37 +10,18 @@ class ConsultationRecordsStore extends _ConsultationRecordsStore
   });
 }
 
-abstract class _ConsultationRecordsStore with Store {
+abstract class _ConsultationRecordsStore with Store, BaseStore<Consultations> {
   final RestClient restClient;
 
   _ConsultationRecordsStore({
     required this.restClient,
   });
 
-  @observable
-  ObservableFuture<Consultations> fetchConsultationsFuture = emptyResponse;
-
-  @action
-  Future<Consultations> getData() async {
-    final Future<Consultations> future =
-        restClient.get(Endpoint.consultation).then((v) {
-      if (v != null) {
-        final data = Consultations.fromJson(v);
-
-        return data;
-      }
-      return emptyResponse;
+  Future fetchUserConsultations() async {
+    return await fetchData(restClient.get(Endpoint().userConsultations), (v) {
+      final data = Consultations.fromJson(v);
+      listData = ObservableList.of(data.data ?? []);
+      return data;
     });
-    fetchConsultationsFuture = ObservableFuture(future);
-    return await future;
   }
-
-  @computed
-  bool get hasResults =>
-      fetchConsultationsFuture != emptyResponse &&
-      fetchConsultationsFuture.status == FutureStatus.fulfilled;
-
-  static ObservableFuture<Consultations> emptyResponse = ObservableFuture.value(
-    Consultations(data: []),
-  );
 }

@@ -4,9 +4,8 @@ import 'package:mama/src/data.dart';
 
 class ConsultationItemTitle extends StatelessWidget {
   final String name;
-  final String badgeTitle;
-  const ConsultationItemTitle(
-      {super.key, required this.name, required this.badgeTitle});
+  final String? badgeTitle;
+  const ConsultationItemTitle({super.key, required this.name, this.badgeTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +14,10 @@ class ConsultationItemTitle extends StatelessWidget {
       children: [
         AutoSizeText(name),
         2.w,
-        ConsultationBadge(
-          title: badgeTitle,
-        )
+        if (badgeTitle != null)
+          ConsultationBadge(
+            title: badgeTitle!,
+          )
       ],
     );
   }

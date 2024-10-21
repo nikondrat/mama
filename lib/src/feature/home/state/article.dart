@@ -16,9 +16,9 @@ abstract class _ArticleStore with Store, BaseStore<ArticlesData> {
 
   Future fetchAll() async {
     return await fetchData(
-        () => restClient.get(Endpoint().articles, queryParams: {
-              'limit': '10',
-            }), (v) {
+        restClient.get(Endpoint().articles, queryParams: {
+          'limit': '10',
+        }), (v) {
       final data = ArticlesData.fromJson(v);
       listData = ObservableList.of(data.articles ?? []);
       return data;
@@ -31,10 +31,10 @@ abstract class _ArticleStore with Store, BaseStore<ArticlesData> {
   @action
   Future fetchForMe(String accountId) async {
     return await fetchData(
-        () => restClient.get(Endpoint().articles, queryParams: {
-              'account_id': accountId,
-              'limit': '10',
-            }), (v) {
+        restClient.get(Endpoint().articles, queryParams: {
+          'account_id': accountId,
+          'limit': '10',
+        }), (v) {
       final data = ArticlesData.fromJson(v);
       listForMe = ObservableList.of(data.articles ?? []);
       return data;
@@ -47,10 +47,10 @@ abstract class _ArticleStore with Store, BaseStore<ArticlesData> {
   @action
   Future fetchOwnList(String accountId) async {
     return await fetchData(
-        () => restClient.get(Endpoint().articleOwn, queryParams: {
-              'account_id': accountId,
-              'limit': '10',
-            }), (v) {
+        restClient.get(Endpoint().articleOwn, queryParams: {
+          'account_id': accountId,
+          'limit': '10',
+        }), (v) {
       final data = ArticlesData.fromJson(v);
       ownListData = ObservableList.of(data.articles ?? []);
       return data;
