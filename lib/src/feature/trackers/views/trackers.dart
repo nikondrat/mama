@@ -82,7 +82,7 @@ class TrackersView extends StatelessWidget {
                 Expanded(
                   child: CategoryCard(
                     onTap: () {
-                      context.pushNamed(AppViews.diapersView);
+                      // context.pushNamed(AppViews.diapersView);
                     },
                     title: 'Подгузники',
                     icon: IconModel(

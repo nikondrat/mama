@@ -48,3 +48,24 @@ placeholderSix:
 
 placeholderSeven:
   title: Fairy tales
+
+categoriesBtn:
+  title: Categories
+
+ageBtn:
+  title: Age
+
+authorBtn:
+  title: Author
+
+obstetrician:
+  title: Obstetrician
+
+childDevelopment:
+  title: Child development at 6 months of age
+
+sixMonth:
+  title: 6 months of age
+
+toSave: 
+  title: Favorites  

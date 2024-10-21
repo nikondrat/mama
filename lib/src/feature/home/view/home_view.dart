@@ -72,9 +72,9 @@ class __BodyState extends State<_Body> with SingleTickerProviderStateMixin {
                 leading: leadingWidget,
                 action: switch (widget.userStore.role) {
                   Role.user => ProfileWidget(
-                      isShowText: true,
-                      onTapSwitch: () {},
-                    ),
+                    isShowText: true,
+                    onTapSwitch: () {},
+                  ),
                   Role.doctor => null,
                   _ => null,
                 },

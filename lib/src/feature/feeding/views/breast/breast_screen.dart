@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/feature/feeding/data/repository/history_repository.dart';
-import '../../../core/core.dart';
-import '../widgets/widget.dart';
+import '../../../../core/core.dart';
+import '../../widgets/widget.dart';
 
 class BreastScreen extends StatelessWidget {
   const BreastScreen({super.key});

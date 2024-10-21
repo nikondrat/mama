@@ -6,6 +6,7 @@ abstract class AppColors {
   static const Color whiteColor = Colors.white;
 
   static const Color greyColor = Color(0xFFCED1D9);
+  static const Color greyColorMedicard = Color(0xffF0F2F7); 
   static const Color textGreyColor = Color(0xFFD9D9D9);
 
   static const Color redColor = Color(0xFFCE6A6A);
@@ -27,6 +28,7 @@ abstract class AppColors {
 
   static const Color lightBlue = Color(0xFFF8FAFF);
   static const Color lightPirple = Color(0xFFF5F7FF);
+  static const Color lightBlueBackgroundStatus = Color(0xffE1E6FF);
   static const Color whiteDarkerButtonColor = Color(0xFFF0F2F7);
   static const Color gradientPurpleBackgroundScaffold = Color(0xFFE7EEFF);
   static const Color gradientPurpleLighterBackgroundScaffold =
@@ -62,4 +64,6 @@ abstract class AppColors {
   static const Color deepBlue = Color(0xFF0834A6);
 
   static const Color diapersBackroundColor = Color(0xFFE8F8F3);
+
+  static const Color trackerColor = Color(0xFF11424B);
 }

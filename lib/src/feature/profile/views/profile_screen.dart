@@ -26,12 +26,12 @@ class ProfileScreen extends StatelessWidget {
       DialogItem(
           title: 'Сбросить настройки?',
           subtitle:
-              'Если сейчас выйти из аккаунта, не сохраненные данные потеряются',
+          'Если сейчас выйти из аккаунта, не сохраненные данные потеряются',
           onTap: () {}),
       DialogItem(
           title: 'Сбросить настройки?',
           subtitle:
-              'Если сейчас выйти из аккаунта, не сохраненные данные потеряются',
+          'Если сейчас выйти из аккаунта, не сохраненные данные потеряются',
           text: 'Заполните обязательные поля, чтобы сохранить данные ребенка',
           onTap: () {})
     ];
@@ -41,13 +41,13 @@ class ProfileScreen extends StatelessWidget {
         body: DecoratedBox(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.gradientPurpleBackgroundScaffold,
-                AppColors.gradientPurpleLighterBackgroundScaffold,
-              ],
-            )),
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppColors.gradientPurpleBackgroundScaffold,
+                    AppColors.gradientPurpleLighterBackgroundScaffold,
+                  ],
+                )),
             child: Provider(
                 create: (context) => ProfileViewStore(model: userStore.account),
                 builder: (context, _) {
@@ -114,7 +114,7 @@ class ProfileScreen extends StatelessWidget {
                               16.h,
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
+                                const EdgeInsets.symmetric(horizontal: 8),
                                 child: CustomButton(
                                   title: t.profile.feedbackButtonTitle,
                                   onTap: () {},
@@ -126,7 +126,7 @@ class ProfileScreen extends StatelessWidget {
                               8.h,
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
+                                const EdgeInsets.symmetric(horizontal: 8),
                                 child: CustomButton(
                                   onTap: () async {
                                     await showDialog(
@@ -148,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
                                     );
                                   },
                                   backgroundColor:
-                                      AppColors.redLighterBackgroundColor,
+                                  AppColors.redLighterBackgroundColor,
                                   title: t.profile.leaveAccountButtonTitle,
                                   textStyle: textTheme.titleMedium!.copyWith(
                                     color: AppColors.redColor,
@@ -198,14 +198,14 @@ class ProfileScreen extends StatelessWidget {
                                         city: userStore.user.city,
                                         firstName: userStore.account.firstName,
                                         secondName:
-                                            userStore.account.secondName,
+                                        userStore.account.secondName,
                                         email: userStore.account.email,
                                         info: userStore.account.info);
 
                                     if (userStore
                                         .changedDataOfChild.isNotEmpty) {
                                       for (var e
-                                          in userStore.changedDataOfChild) {
+                                      in userStore.changedDataOfChild) {
                                         childStore.update(model: e);
                                       }
                                     }

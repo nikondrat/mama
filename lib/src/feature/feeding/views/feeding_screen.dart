@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/feeding/feeding.dart';
-import 'package:mama/src/feature/feeding/views/bottle_screen.dart';
-import 'package:mama/src/feature/feeding/views/table_screen.dart';
+import 'package:mama/src/feature/feeding/views/bottle/bottle_screen.dart';
+import 'package:mama/src/feature/feeding/views/table/table_screen.dart';
 
 class FeedingScreen extends StatefulWidget {
   const FeedingScreen({super.key});

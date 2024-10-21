@@ -164,7 +164,7 @@ class DiapersView extends StatelessWidget {
                     child: CustomButton(
                       title: t.trackers.add.title,
                       onTap: () {
-                        context.pushNamed(AppViews.addDiaper);
+                        // context.pushNamed(AppViews.addDiaper);
                       },
                       icon: IconModel(
                         iconPath: Assets.icons.icThermometer,

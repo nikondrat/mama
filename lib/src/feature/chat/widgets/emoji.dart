@@ -31,7 +31,7 @@ class EmojiWidget extends StatelessWidget {
           backgroundColor: AppColors.lightPirple,
         ),
         bottomActionBarConfig:
-            const emoji.BottomActionBarConfig(enabled: false),
+        const emoji.BottomActionBarConfig(enabled: false),
         searchViewConfig: const emoji.SearchViewConfig(),
       ),
     );
