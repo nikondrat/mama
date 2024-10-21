@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 import 'package:mama/src/feature/home/home.dart';
-import 'package:provider/provider.dart';
 
-class HomeSchoolBody extends StatelessWidget {
-  const HomeSchoolBody({super.key});
+class HomeSchoolBody extends StatefulWidget {
+  final UserStore userStore;
+  final ArticleStore articleStore;
+  const HomeSchoolBody(
+      {super.key, required this.articleStore, required this.userStore});
+
+  @override
+  State<HomeSchoolBody> createState() => _HomeSchoolBodyState();
+}
+
+class _HomeSchoolBodyState extends State<HomeSchoolBody> {
+  @override
+  void initState() {
+    widget.articleStore.fetchOwnList(widget.userStore.account.id!);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final ArticleStore articleStore = context.watch<ArticleStore>();
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: ListView(
@@ -18,12 +29,10 @@ class HomeSchoolBody extends StatelessWidget {
           GreetingTitle(title: t.home.goodAfternoon.title),
 
           /// #today's date subtitle
-          DateSubtitle(
-            subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
-          ),
+          DateSubtitle(),
           24.h,
 
-          if (articleStore.hasResults)
+          if (widget.articleStore.ownListData.isNotEmpty)
 
             /// #my articles
             CustomBackground(
@@ -38,7 +47,7 @@ class HomeSchoolBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      t.home.current.title,
+                      t.home.yourArticles,
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -48,7 +57,9 @@ class HomeSchoolBody extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   /// #articles
-                  // ArticlesListView(),
+                  ArticlesListView(
+                    listData: widget.articleStore.ownListData.toList(),
+                  ),
 
                   const SizedBox(height: 24),
                 ],

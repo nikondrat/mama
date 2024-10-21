@@ -54,7 +54,12 @@ class AuthInputBodyWidget extends StatelessWidget {
                                           ),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
-                                              // TODO navigate to term of use screen
+                                              context.pushNamed(
+                                                  AppViews.pdfView,
+                                                  extra: {
+                                                    'path': Assets.docs
+                                                        .consentToProcessPersonalDataMP,
+                                                  });
                                             },
                                         )),
                                 style: textTheme.bodySmall,
@@ -68,27 +73,31 @@ class AuthInputBodyWidget extends StatelessWidget {
                 builder: (context, control, child) {
                   final bool isValid = control.valid;
 
-                  return CustomButton(
-                    title: t.auth.confirm,
-                    height: 48,
-                    isSmall: false,
-                    onTap: isValid
-                        ? () {
-                            verifyStore
-                                .setPhoneNumber(control.value as String? ?? '');
-                            context.pushNamed(
-                              isLogin
-                                  ? AppViews.authVerify
-                                  : AppViews.registerVerify,
-                            );
-                          }
-                        : null,
-                    textStyle: textTheme.titleMedium!.copyWith(
-                      color: isValid
-                          ? AppColors.primaryColor
-                          : AppColors.greyBrighterColor,
-                    ),
-                  );
+                  return Observer(builder: (_) {
+                    final bool isAgree = !isLogin && store.isAgree;
+
+                    return CustomButton(
+                      title: t.auth.confirm,
+                      height: 48,
+                      isSmall: false,
+                      onTap: isValid && isAgree
+                          ? () {
+                              verifyStore.setPhoneNumber(
+                                  control.value as String? ?? '');
+                              context.pushNamed(
+                                isLogin
+                                    ? AppViews.authVerify
+                                    : AppViews.registerVerify,
+                              );
+                            }
+                          : null,
+                      textStyle: textTheme.titleMedium!.copyWith(
+                        color: isValid && isAgree
+                            ? AppColors.primaryColor
+                            : AppColors.greyBrighterColor,
+                      ),
+                    );
+                  });
                 },
               ),
             ],

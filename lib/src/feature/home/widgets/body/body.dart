@@ -33,7 +33,10 @@ class HomeBodyWidget extends StatelessWidget {
           case Role.doctor:
             return const HomeSpecialistBody();
           case Role.onlineSchool:
-            return const HomeSchoolBody();
+            return HomeSchoolBody(
+              articleStore: articleStore,
+              userStore: userStore,
+            );
           default:
             return HomeUserBody(
               articleStore: articleStore,

@@ -9,8 +9,10 @@ class ProfileSwitch extends StatefulWidget {
   final Alignment alignment;
   final bool isShowText;
   final UserStore userStore;
+  final Function()? onTap;
   const ProfileSwitch({
     super.key,
+    this.onTap,
     required this.userStore,
     required this.children,
     this.alignment = Alignment.centerRight,
@@ -30,6 +32,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
     });
     widget.userStore
         .selectChild(child: widget.children[_isFirstCircleOnTop ? 0 : 1]!);
+    if (widget.onTap != null) widget.onTap!();
   }
 
   @override

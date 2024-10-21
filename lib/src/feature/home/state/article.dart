@@ -40,4 +40,20 @@ abstract class _ArticleStore with Store, BaseStore<ArticlesData> {
       return data;
     });
   }
+
+  @observable
+  ObservableList<ArticleModel> ownListData = ObservableList<ArticleModel>();
+
+  @action
+  Future fetchOwnList(String accountId) async {
+    return await fetchData(
+        () => restClient.get(Endpoint().articleOwn, queryParams: {
+              'account_id': accountId,
+              'limit': '10',
+            }), (v) {
+      final data = ArticlesData.fromJson(v);
+      ownListData = ObservableList.of(data.articles ?? []);
+      return data;
+    });
+  }
 }

@@ -61,8 +61,6 @@ everythingFine:
 goodAfternoon:
   title: "Good afternoon!"
 
-todayIsFridaySeptemberTwentySecond:
-  title: "Today is Friday, September 22nd"
 
 FiveMonthsEighteenDays:
   title: "5 months and 18 days"
@@ -132,9 +130,6 @@ switch_hint: "Switch"
 septemberTwentySecond:
   title: "22 september"
 
-today:
-  title: "Today"
-
 timeScheduleOne:
   title: "9:00-9:15"
 
@@ -149,3 +144,35 @@ express:
 
 tutorFullNameOne:
   title: "Марина Алексеева"
+
+yourArticles: Your articles
+
+
+or: or
+
+months:
+  one: "1 month"
+  two: "$n months"
+  few: "$n months"
+  many: "$n months"
+  other: "$n months"
+
+days:
+  one: $n day
+  two: $n days
+  few: $n days
+  many: $n days
+  other: $n days
+
+
+weeks:
+  one: $n week
+  two: $n weeks
+  few: $n weeks
+  many: $n weeks
+  other: $n weeks
+
+
+today: Today
+
+monthsData: [january, february, march, april, may, june, july, august, september, october, november, december]

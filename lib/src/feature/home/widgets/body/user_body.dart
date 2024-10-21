@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:mama/src/data.dart';
 import 'package:provider/provider.dart';
 
@@ -30,14 +29,6 @@ class _HomeUserBodyState extends State<HomeUserBody> {
   Widget build(BuildContext context) {
     final UserStore userStore = context.watch();
     final ArticleStore articleStore = context.watch<ArticleStore>();
-    final String locale =
-        TranslationProvider.of(context).flutterLocale.languageCode;
-
-    final DateTime today = DateTime.now();
-
-    String dayOfWeek = DateFormat.EEEE(locale).format(today);
-    String day = DateFormat.d(locale).format(today);
-    String month = DateFormat.MMMM(locale).format(today);
 
     return Observer(builder: (context) {
       return ListView(
@@ -49,13 +40,9 @@ class _HomeUserBodyState extends State<HomeUserBody> {
           ),
 
           /// #today's date subtitle
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: DateSubtitle(
-                subtitle: 'Сегодня $dayOfWeek $day $month',
-
-                // t.home.todayIsFridaySeptemberTwentySecond.title,
-              )),
+          const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: DateSubtitle()),
 
           if (userStore.children.isNotEmpty) ...[
             24.h,
@@ -123,7 +110,7 @@ class _HomeUserBodyState extends State<HomeUserBody> {
 
           if (articleStore.hasResults)
 
-            /// #current
+          /// #current
             CustomBackground(
               height: null,
               padding: 0,
@@ -165,25 +152,26 @@ class _HomeUserBodyState extends State<HomeUserBody> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 16),
+                      16.h,
 
                       /// #article category text
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Text(
                           t.home.forYou.title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      SizedBox(height: 16),
+                      16.h,
 
                       /// #articles
                       ArticlesListView(
                         listData: articleStore.listForMe.toList(),
                       ),
+                      24.h,
                     ])),
 
           16.h

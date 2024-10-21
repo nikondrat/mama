@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -51,11 +52,13 @@ abstract class _ChildStore with Store {
     });
   }
 
-  void updateAvatar({required String id, required String path}) {
-    restClient.patch(Endpoint().childAvatar, body: {
+  void updateAvatar({required XFile file, required String id}) {
+    FormData formData = FormData.fromMap({
       'child_id': id,
-      'avatar': MultipartFile.fromFileSync(path),
+      'avatar': MultipartFile.fromFileSync(file.path, filename: file.name),
     });
+
+    restClient.put('${Endpoint().childAvatar}/', body: formData);
   }
 
   void deleteAvatar({required String id}) {

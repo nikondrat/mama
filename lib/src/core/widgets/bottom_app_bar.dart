@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/core/core.dart';
 
+class _Item {
+  final String title;
+  final String iconPath;
+  final String iconPathTap;
+  _Item({
+    required this.title,
+    required this.iconPath,
+    required this.iconPathTap,
+  });
+}
+
 class BottomBar extends StatefulWidget {
   final TabController tabController;
+  final bool isUser;
   const BottomBar({
     super.key,
+    required this.isUser,
     required this.tabController,
   });
 
@@ -22,6 +35,30 @@ class _BottomBarState extends State<BottomBar> {
     });
   }
 
+  late List<_Item> items = [
+    _Item(
+      title: t.profile.bottomBarHome,
+      iconPath: Assets.icons.icBnHome.path,
+      iconPathTap: Assets.icons.icBnHomeTap.path,
+    ),
+    if (widget.isUser)
+      _Item(
+        title: t.profile.bottomBarDiaries,
+        iconPath: Assets.icons.icBnDiary.path,
+        iconPathTap: Assets.icons.icBnDiary.path,
+      ),
+    _Item(
+      title: t.profile.bottomBarChats,
+      iconPath: Assets.icons.icBnChats.path,
+      iconPathTap: Assets.icons.icBnChatsTap.path,
+    ),
+    _Item(
+      title: t.profile.bottomBarServices,
+      iconPath: Assets.icons.icBnServices.path,
+      iconPathTap: Assets.icons.icBnServicesTap.path,
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -37,45 +74,54 @@ class _BottomBarState extends State<BottomBar> {
           child: SizedBox(
             height: 90,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                barItem(t.profile.bottomBarHome, Assets.icons.icBnHome.path,
-                    Assets.icons.icBnHomeTap.path, 0),
-                barItem(t.profile.bottomBarDiaries, Assets.icons.icBnDiary.path,
-                    Assets.icons.icBnDiary.path, 1),
-                barItem(t.profile.bottomBarChats, Assets.icons.icBnChats.path,
-                    Assets.icons.icBnChatsTap.path, 2),
-                barItem(
-                    t.profile.bottomBarServices,
-                    Assets.icons.icBnServices.path,
-                    Assets.icons.icBnServicesTap.path,
-                    3),
-              ],
-            ),
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: items.map((e) {
+                  final int index = items.indexOf(e);
+                  return _ItemWidget(
+                      item: items[index],
+                      index: index,
+                      selectedIndex: _selectedIndex,
+                      onItemTapped: _onItemTapped);
+                }).toList()),
           ),
         )
       ],
     );
   }
+}
 
-  Widget barItem(String text, String iconPath, String iconPatTap, int index) {
+class _ItemWidget extends StatelessWidget {
+  final _Item item;
+  final int index;
+  final int selectedIndex;
+  final Function(int) onItemTapped;
+  const _ItemWidget({
+    required this.item,
+    required this.index,
+    required this.selectedIndex,
+    required this.onItemTapped,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextTheme textTheme = theme.textTheme;
+
     return GestureDetector(
-      onTap: () => _onItemTapped(index),
+      onTap: () => onItemTapped(index),
       child: SizedBox(
         width: MediaQuery.of(context).size.width / 4.5,
-        child: _selectedIndex != index
+        child: selectedIndex != index
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     height: 28,
-                    iconPath,
+                    item.iconPath,
                   ),
                   Text(
-                    text,
+                    item.title,
                     style: textTheme.labelSmall,
                   ),
                 ],
@@ -94,11 +140,11 @@ class _BottomBarState extends State<BottomBar> {
                     children: [
                       Image.asset(
                         height: 28,
-                        iconPatTap,
+                        item.iconPathTap,
                         color: AppColors.primaryColor,
                       ),
                       Text(
-                        text,
+                        item.title,
                         style: textTheme.labelSmall!
                             .copyWith(color: AppColors.primaryColor),
                       ),

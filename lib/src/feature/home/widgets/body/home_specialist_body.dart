@@ -43,9 +43,7 @@ class HomeSpecialistBody extends StatelessWidget {
               GreetingTitle(title: t.home.goodAfternoon.title),
 
               /// #today's date subtitle
-              DateSubtitle(
-                subtitle: t.home.todayIsFridaySeptemberTwentySecond.title,
-              ),
+              DateSubtitle(),
             ],
           ),
         ),

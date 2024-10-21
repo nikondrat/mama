@@ -5,9 +5,9 @@ part 'user_data.g.dart';
 
 @JsonSerializable()
 class UserData {
-  final AccountModel account;
+  final AccountModel? account;
 
-  final List<ChildModel> childs;
+  final List<ChildModel>? childs;
 
   @JsonKey(name: 'user')
   final UserModel user;
