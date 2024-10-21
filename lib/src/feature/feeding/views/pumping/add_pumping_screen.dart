@@ -97,7 +97,7 @@ class AddPumpingScreen extends StatelessWidget {
                       width: double.infinity,
                       type: CustomButtonType.filled,
                       icon: IconModel(iconPath: Assets.icons.icClose),
-                      title: "Отменить",
+                      title: 'Отменить',
                       onTap: () {},
                     ),
                   ),
@@ -108,7 +108,7 @@ class AddPumpingScreen extends StatelessWidget {
                 backgroundColor: AppColors.greenLighterBackgroundColor,
                 height: 48,
                 width: double.infinity,
-                title: "Подтвердить",
+                title: 'Подтвердить',
                 textStyle: textTheme.bodyMedium
                     ?.copyWith(color: AppColors.greenTextColor),
                 onTap: () {},

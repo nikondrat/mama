@@ -12,6 +12,7 @@ class BottleScreen extends StatelessWidget {
     final listOfData = historyOfPumping;
     return FeedingBody(
       children: [
+        BottleGraphicWidget(),
         TableHistory(
           listOfData: listOfData,
           firstColumnName: t.feeding.feedingEndTime,

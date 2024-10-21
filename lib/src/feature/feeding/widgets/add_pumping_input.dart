@@ -30,8 +30,6 @@ class AddPumpingInput extends StatelessWidget {
           final model = context.watch<AddPumping>();
           return Observer(
             builder: (context) {
-              log('value -- ${model.right.value}');
-              log('value -- ${model.left.value}');
               return DecoratedBox(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),

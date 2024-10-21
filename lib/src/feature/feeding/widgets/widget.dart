@@ -10,3 +10,5 @@ export 'manually_input_container.dart';
 export 'add_pumping_button.dart';
 export 'table_history.dart';
 export 'feeding_input.dart';
+export 'graphic_widget.dart';
+export 'bottle_graphic_widget.dart';
