@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
-
-import 'package:mama/src/feature/auth/view/register_baby_name_screen.dart';
-import 'package:mama/src/feature/auth/view/register_fill_another_baby_info_screen.dart';
-import 'package:mama/src/feature/auth/view/register_info_about_childbirth.dart';
-import 'package:mama/src/feature/home/home.dart';
 import 'package:mama/src/feature/services/knowledge/views/ages_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/authors_screens.dart';
 import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
 import 'package:mama/src/feature/services/knowledge/views/service_screen.dart';
-
-import 'package:provider/provider.dart';
-
-import '../../feature/feature.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
@@ -205,17 +196,6 @@ final GoRouter router = GoRouter(
                 path: _Paths.addWeightView,
                 builder: (context, state) => AddWeight(),
               )
-            ]),
-        GoRoute(
-            path: _Paths.feeding,
-            name: AppViews.feeding,
-            builder: (context, state) => const FeedingScreen(),
-            routes: [
-              GoRoute(
-                name: AppViews.addManually,
-                path: _Paths.addManually,
-                builder: (context, state) => const AddManuallyScreen(),
-              ),
             ]),
         GoRoute(
           path: _Paths.feeding,
