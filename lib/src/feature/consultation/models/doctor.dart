@@ -18,6 +18,9 @@ class DoctorModel extends BaseModel {
   @JsonKey(name: 'profession')
   final String? profession;
 
+  @JsonKey(name: 'time_work')
+  final DoctorWorkTime? workTime;
+
   DoctorModel({
     this.id,
     this.account,
@@ -26,6 +29,7 @@ class DoctorModel extends BaseModel {
     this.profession,
     super.updatedAt,
     super.createdAt,
+    this.workTime,
   });
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) =>

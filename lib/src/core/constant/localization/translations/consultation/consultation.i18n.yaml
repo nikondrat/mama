@@ -1,4 +1,7 @@
-title: Consultation
+title: Consultations
+
+consultTitle: Consultation
+
 records: Records
 professionals: Professionals 
 schools: Schools
@@ -7,3 +10,30 @@ type:
   chat: Consultation in chat
   video: Video-consultation
   express: Express-consultation
+
+format: Consultation format
+
+type_short:
+  chat: 
+    title: In chat
+    desc: "Quickly consult with an expert via live chat for any questions you may have. Convenient and simple format\n\nConsultation time: 15 minutes"
+  video: 
+    title: Video
+    desc: "Video consultation to discuss issues of any complexity\n\nThe time of consultation: 1 hour"
+  express: 
+    title: Express
+    desc: "Video counseling in an accessible format. Takes half the time, while allowing you to discuss virtually any issue\n\nThe consultation time: 30 minutes"
+
+comment: 
+  title: Comment
+  desc: Leave a comment for an expert to help you save time with your consultation
+  action: Leave a comment
+
+
+
+timeOfConsultation: Time of consultation
+
+
+tomorrow: Tomorrow
+select: Select
+selectTime: Select time

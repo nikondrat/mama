@@ -75,8 +75,7 @@ class _RegisterFillAnotherBabyInfoScreenState
               10.h,
               ReactiveForm(
                 formGroup: store.childData,
-                child: BodyGroup(title: '',
-                    items: [
+                child: BodyGroup(title: '', items: [
                   BodyItemWidget(
                     item: ItemWithInput(
                         inputItem: InputItem(
@@ -144,7 +143,7 @@ class _RegisterFillAnotherBabyInfoScreenState
                     return Center(
                       child: Text(
                           isValid
-                              ? t.register.thankYou
+                              ? t.register.thankYou(emoji: '😇')
                               : t.register.ifInconvenientToSearch,
                           textAlign: TextAlign.center,
                           style: textTheme.labelLarge?.copyWith(

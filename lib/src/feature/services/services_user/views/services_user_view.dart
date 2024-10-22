@@ -39,16 +39,26 @@ class ServicesUserView extends StatelessWidget {
                       ButtonModel(
                         title: t.services.myRecords.title,
                         onTap: () {
-                          context.pushNamed(AppViews.consultation);
+                          context.pushNamed(AppViews.consultations, extra: {
+                            'selectedTab': 0,
+                          });
                         },
                       ),
                       ButtonModel(
                         title: t.services.specialists.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.consultations, extra: {
+                            'selectedTab': 1,
+                          });
+                        },
                       ),
                       ButtonModel(
                         title: t.services.onlineSchools.title,
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppViews.consultations, extra: {
+                            'selectedTab': 2,
+                          });
+                        },
                       )
                     ],
                   ),

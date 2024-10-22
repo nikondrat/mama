@@ -1,6 +1,6 @@
 registration: Регистрация
 phoneNumber: Номер телефона
-termOfUse(rich): Согласен с ${tapHere(условием использования)}
+termOfUse(rich): Согласен с ${tapHere(условиями использования)}
 agreement: Согласен с
 withTermOfUse: условием использования
 hurrah: Ура!
@@ -28,7 +28,7 @@ whatCityYouLive: В каком городе вы живете?
 searchPlace: Поиск места
 complete: Завершить
 enter: Ввести
-thankYou: Спасибо, что ввели все данные сразу\nДавайте продолжим
+thankYou: Спасибо, что ввели все данные сразу $emoji\nДавайте продолжим
 ifInconvenientToSearch: Если сейчас неудобно искать какие-то данные, можете добавить их позже
 headCircumference: Окружность головы при рождении
 heightAtBirth: Рост при рождении

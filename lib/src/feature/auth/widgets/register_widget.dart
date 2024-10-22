@@ -98,8 +98,13 @@ class _CityTextFieldState extends State<CityTextField> {
 
 class CityContainer extends StatelessWidget {
   final City city;
+  final bool isSelected;
   final Function() onTap;
-  const CityContainer({super.key, required this.city, required this.onTap});
+  const CityContainer(
+      {super.key,
+      required this.isSelected,
+      required this.city,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -111,10 +116,16 @@ class CityContainer extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
         onTap: onTap,
-        child: Container(
+        child: DecoratedBox(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Colors.white,
+              border: isSelected
+                  ? Border.all(
+                      color: AppColors.primaryColor,
+                      width: 2,
+                    )
+                  : null,
               boxShadow: [
                 BoxShadow(
                     blurRadius: 1,

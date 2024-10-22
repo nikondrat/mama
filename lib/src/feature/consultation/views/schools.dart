@@ -19,6 +19,8 @@ class SchoolsView extends StatelessWidget {
             // final DoctorModel? doctor = widget.store.listData[index];
 
             return ConsultationItem(
+                // TODO: add url
+                // url: ,
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

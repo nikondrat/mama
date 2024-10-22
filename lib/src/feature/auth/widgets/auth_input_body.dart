@@ -55,11 +55,8 @@ class AuthInputBodyWidget extends StatelessWidget {
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
                                               context.pushNamed(
-                                                  AppViews.pdfView,
-                                                  extra: {
-                                                    'path': Assets.docs
-                                                        .consentToProcessPersonalDataMP,
-                                                  });
+                                                AppViews.docs,
+                                              );
                                             },
                                         )),
                                 style: textTheme.bodySmall,
