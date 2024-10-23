@@ -10,3 +10,4 @@ export 'manually_input_container.dart';
 export 'add_pumping_button.dart';
 export 'table_history.dart';
 export 'feeding_input.dart';
+export 'grapich_widget.dart';

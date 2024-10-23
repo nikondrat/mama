@@ -1,13 +1,13 @@
 
-class PumpingData {
+class GraphicData {
   final String weekDay;
-  final int ml;
-  final int left;
-  final int right;
+  final int general;
+  final int firstPart;
+  final int secondPart;
 
-  PumpingData(
+  GraphicData(
       {required this.weekDay,
-        required this.ml,
-        required this.left,
-        required this.right});
+        required this.general,
+        required this.firstPart,
+        required this.secondPart});
 }
