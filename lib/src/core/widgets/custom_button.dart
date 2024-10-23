@@ -63,8 +63,9 @@ class CustomButton extends StatelessWidget {
 
     final bool isFilled = type == CustomButtonType.filled;
 
-    final Color bgColor =
-        backgroundColor ?? AppColors.purpleLighterBackgroundColor;
+    final Color bgColor = onTap == null
+        ? AppColors.greyColor
+        : backgroundColor ?? AppColors.purpleLighterBackgroundColor;
 
     final Color textColor = _getDarkerColor(bgColor);
 

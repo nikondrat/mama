@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
 
 class SpecialistsView extends StatefulWidget {
@@ -34,33 +35,39 @@ class _SpecialistsViewState extends State<SpecialistsView> {
             final DoctorModel? doctor = widget.store.listData[index];
 
             return ConsultationItem(
+                url: doctor?.account?.avatarUrl,
+                onTap: () {
+                  context.pushNamed(AppViews.consultation, extra: {
+                    'doctor': doctor,
+                  });
+                },
                 child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ConsultationItemTitle(
-                    name:
-                        '${doctor?.account?.firstName} ${doctor?.account?.secondName}',
-                    badgeTitle: doctor?.profession),
-                if (doctor?.account?.info != null)
-                  Row(children: [
-                    Expanded(
-                      child: AutoSizeText(
-                        doctor?.account?.info ?? '',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: textTheme.bodySmall!
-                            .copyWith(color: textTheme.bodyLarge!.color),
-                      ),
-                    ),
-                  ]),
-                ConsultationTags(tags: [
-                  'sdf',
-                  'sdf',
-                  'sdf',
-                  'sdf',
-                ])
-              ],
-            ));
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ConsultationItemTitle(
+                        name:
+                            '${doctor?.account?.firstName} ${doctor?.account?.secondName}',
+                        badgeTitle: doctor?.profession),
+                    if (doctor?.account?.info != null)
+                      Row(children: [
+                        Expanded(
+                          child: AutoSizeText(
+                            doctor?.account?.info ?? '',
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.bodySmall!
+                                .copyWith(color: textTheme.bodyLarge!.color),
+                          ),
+                        ),
+                      ]),
+                    ConsultationTags(tags: [
+                      'sdf',
+                      'sdf',
+                      'sdf',
+                      'sdf',
+                    ])
+                  ],
+                ));
           }),
     );
   }

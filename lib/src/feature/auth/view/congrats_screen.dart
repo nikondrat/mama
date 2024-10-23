@@ -17,7 +17,9 @@ class CongratsScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            160.h,
+            const Spacer(
+              flex: 2,
+            ),
             const CongratsBodyWidget(),
             const Spacer(),
             CustomButton(
@@ -28,7 +30,7 @@ class CongratsScreen extends StatelessWidget {
                 context.pushReplacementNamed(AppViews.registerFillName);
               },
             ),
-            const SizedBox(height: 60)
+            120.h,
           ],
         ),
       ),

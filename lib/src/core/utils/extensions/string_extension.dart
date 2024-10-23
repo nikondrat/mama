@@ -16,4 +16,12 @@ extension StringExtension on String {
     }
     return 0;
   }
+
+  String capitalizeFirstLetter() {
+    if (isEmpty) {
+      return this;
+    }
+
+    return this[0].toUpperCase() + substring(1);
+  }
 }

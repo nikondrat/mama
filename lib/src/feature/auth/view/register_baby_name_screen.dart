@@ -54,15 +54,9 @@ class RegisterBabyNameScreen extends StatelessWidget {
                 20.h,
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: FlutterToggleButton(
-                    outerContainerMargin: 3,
-                    buttonWidth: MediaQuery.of(context).size.width * .4,
-                    buttonHeight: 38,
-                    buttonColor: Colors.white,
-                    enableTextColor: AppColors.primaryColor,
-                    buttonTextFontSize: 17,
-                    borderRadius: 6,
-                    outerContainerColor: const Color(0xFFE1E6FF),
+                  child: CustomToggleButton(
+                    btnHeight: 38,
+                    btnWidth: MediaQuery.of(context).size.width * .4,
                     initialIndex: 0,
                     onTap: (index) {
                       store.child.setGender(Gender.values[index]);

@@ -28,7 +28,7 @@ whatCityYouLive: What city do you live in?
 searchPlace: Search for a place
 complete: Complete
 enter: Enter
-thankYou: Thank you for entering all the data at once\nLet's continue
+thankYou: Thank you for entering all the data at once $emoji\nLet's continue
 ifInconvenientToSearch: If it is inconvenient to search for some data now, you can add it later
 headCircumference: Head circumference at birth
 heightAtBirth: Height at birth

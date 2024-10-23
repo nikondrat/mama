@@ -93,7 +93,11 @@ final class InitializationProcessor {
       baseUrl: const Config().apiUrl,
       followRedirects: true,
     ));
-    dio.interceptors.add(PrettyDioLogger(requestBody: true));
+    dio.interceptors.add(PrettyDioLogger(
+        requestBody: true,
+        request: true,
+        responseBody: true,
+        requestHeader: true));
     dio.interceptors.add(storage);
 
     return RestClientDio(baseUrl: config.apiUrl, dio: dio);

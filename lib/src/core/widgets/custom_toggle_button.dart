@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mama/src/data.dart';
 
+class ToggleButtonItem {
+  final String text;
+  final IconModel? icon;
+
+  const ToggleButtonItem({required this.text, this.icon});
+}
+
 class CustomToggleButton extends StatelessWidget {
   final int initialIndex;
-  final List<String> items;
+
+  final List<dynamic> items;
   final Function(int index) onTap;
   final double btnWidth;
   final double btnHeight;
@@ -147,7 +155,8 @@ class FlutterToggleButton extends StatefulWidget {
                 item is String ||
                 item is double ||
                 item is int ||
-                item is Widget),
+                item is Widget ||
+                item is ToggleButtonItem),
             'items list must contain either String, int, double or a Widget'),
         assert((outerContainerColor == null || outerContainerGradient == null),
             'Provide either outerContainerColor or outerContainerGradient, not both.'),
@@ -171,7 +180,7 @@ class FlutterToggleButtonState extends State<FlutterToggleButton> {
 
   @override
   void initState() {
-    selectedOptionIndex = 1;
+    selectedOptionIndex = 0;
     super.initState();
   }
 
@@ -216,60 +225,86 @@ class FlutterToggleButtonState extends State<FlutterToggleButton> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
               widget.items.length,
-              (index) => GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedOptionIndex = index;
-                  });
-                  if (widget.onTap != null) {
-                    widget.onTap!(index);
-                  }
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  width: widget.buttonWidth,
-                  height: widget.buttonHeight,
-                  decoration: BoxDecoration(
+              (index) {
+                final item = widget.items[index];
+
+                final Widget title = Text(
+                  item is ToggleButtonItem
+                      ? item.text
+                      : '${widget.items[index]}',
+                  style: TextStyle(
+                    fontSize: widget.buttonTextFontSize,
+                    fontWeight: selectedOptionIndex == index
+                        ? widget.enableTextFontWeight
+                        : widget.disableTextFontWeight,
                     color: selectedOptionIndex == index
-                        ? effectiveButtonColor
-                        : null,
-                    gradient: selectedOptionIndex == index
-                        ? effectiveButtonGradient
-                        : null,
-                    borderRadius: BorderRadius.circular(widget.borderRadius),
-                    border: selectedOptionIndex == index
-                        ? widget.buttonBorderWidth > 0
-                            ? Border.all(
-                                color: widget.buttonBorderColor,
-                                width: widget.buttonBorderWidth,
-                              )
-                            : null
-                        : null,
+                        ? widget.enableTextColor
+                        : widget.disableTextColor,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  alignment: Alignment.center,
-                  child: FittedBox(
-                    child: widget.items[index].runtimeType == String ||
-                            widget.items[index].runtimeType == double ||
-                            widget.items[index].runtimeType == int
-                        ? Text(
-                            widget.items[index].toString(),
-                            style: TextStyle(
-                              fontSize: widget.buttonTextFontSize,
-                              fontWeight: selectedOptionIndex == index
-                                  ? widget.enableTextFontWeight
-                                  : widget.disableTextFontWeight,
-                              color: selectedOptionIndex == index
-                                  ? widget.enableTextColor
-                                  : widget.disableTextColor,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          )
-                        : widget.items[index],
+                );
+
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedOptionIndex = index;
+                    });
+                    if (widget.onTap != null) {
+                      widget.onTap!(index);
+                    }
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    width: widget.buttonWidth,
+                    height: widget.buttonHeight,
+                    decoration: BoxDecoration(
+                      color: selectedOptionIndex == index
+                          ? effectiveButtonColor
+                          : null,
+                      gradient: selectedOptionIndex == index
+                          ? effectiveButtonGradient
+                          : null,
+                      borderRadius: BorderRadius.circular(widget.borderRadius),
+                      border: selectedOptionIndex == index
+                          ? widget.buttonBorderWidth > 0
+                              ? Border.all(
+                                  color: widget.buttonBorderColor,
+                                  width: widget.buttonBorderWidth,
+                                )
+                              : null
+                          : null,
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    alignment: Alignment.center,
+                    child: FittedBox(
+                      child: item.runtimeType == String ||
+                              item.runtimeType == double ||
+                              item.runtimeType == int
+                          ? title
+                          : item.runtimeType == ToggleButtonItem
+                              ? Row(
+                                  children: [
+                                    if (item.icon != null) ...[
+                                      IconWidget(
+                                        model: (item as ToggleButtonItem)
+                                            .icon!
+                                            .copyWith(
+                                                color: selectedOptionIndex ==
+                                                        index
+                                                    ? widget.enableTextColor
+                                                    : widget.disableTextColor),
+                                      ),
+                                      4.w,
+                                    ],
+                                    title,
+                                  ],
+                                )
+                              : item,
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ),
         ),
