@@ -1,0 +1,155 @@
+evolution: Развитие
+sleepAndCrying: Сон и плач
+feeding: Кормление
+diapers: Подгузники
+
+weight:
+  title: Вес
+  add: Добавить вес
+
+growth: 
+  title: Рост
+  add: Добавить рост
+
+head: 
+  title: Голова
+  add: Добавить окружность
+
+table: Таблица
+
+health:
+  title: Здоровье
+
+temperature:
+  title: Температура
+
+medicines:
+  title: Лекарства
+
+doctorsAppointment:
+  title: Прием врача
+
+vaccinations:
+  title: Прививки
+
+findOutMore:
+  title: Узнать больше
+
+findOutMoreTextOne:
+  title: Здесь вы можете фиксировать температуру малыша и отслеживать ее изменение.
+
+findOutMoreTextTwo:
+  title: "Узнайте, от чего может подниматься температура ребенка, в Центре Знаний:"
+
+date:
+  title: Дата
+
+weeks:
+  title: Неделя
+
+time:
+  title: Время
+
+pdf:
+  title: ПДФ
+
+add:
+  title: Добавить
+
+addTemperature:
+  title: Добавить температуру
+
+now:
+  title: Сейчас
+
+sixTeenThirtyTwo:
+  title: "16:32"
+
+fourteensOfSeptember:
+  title: 14 сентября
+
+note:
+  title: Заметка
+
+knowMoreOne:
+  title: Здесь вы можете следить за весом своего ребенка и контролировать его развитие, сравнивая с нормативами Всемирной Организации Здравоохранения.
+
+knowMoreTwo:
+  title: Узнайте больше про эти нормативы и научитесь правильно измерять вес в нашем Центре Знаний
+
+knowMoreText:
+  title: Узнать больше
+
+current:
+  title: Текущий
+
+dynamics:
+  title: Динамика
+
+kg:
+  title: КГ
+
+g:
+  title: Г
+
+stories:
+  title: История
+
+news:
+  title: Новые
+
+old:
+  title: Старые
+
+showCompleted:
+  title: Показывать завершенные
+
+pillTitleOne:
+  title: Сироп Нурофен детский
+
+pillDescriptionOne:
+  title: 1 ложку после еды
+
+pillExactTimeOne:
+  title: В 20:00
+
+pillRemainingTimeOne:
+  title: Через 2 часа 12 минут
+
+
+cm: 
+  title: см
+m: 
+  title: м
+
+diaper:
+  diapers: Подгузники
+  add: Добавить подгузник
+
+wet:
+  wet: Мокрый
+  littleBit: Мало
+  average: Средне
+  many: Много
+
+mixed:
+  mixed: Смешанный
+  solid: Твердый
+  soft: Мягкий
+  liquid: Жидкий
+  dense: Плотный
+  sticky: Липкий
+  grainy: Зернистый
+  diarrhea: Диарея
+
+dirty: 
+  dirty: Грязный
+  solid: Твердый
+  soft: Мягкий
+  liquid: Жидкий
+  dense: Плотный
+  sticky: Липкий
+  grainy: Зернистый
+  diarrhea: Диарея
+
+diaperforday: 6 подгузников в день в среднем

@@ -1,0 +1,155 @@
+evolution: Evolution
+sleepAndCrying: Sleep and crying
+feeding: Feeding
+diapers: Diapers
+
+weight:
+  title: Weight
+  add: Add weight
+
+growth: 
+  title: Growth
+  add: Add growth
+
+head: 
+  title: Head
+  add: Add head
+
+table: Table
+
+health:
+  title: Health
+
+temperature:
+  title: Temperature
+
+medicines:
+  title: Medicines
+
+doctorsAppointment:
+  title: Doctor's appointment
+
+vaccinations:
+  title: Vaccinations
+
+findOutMore:
+  title: Find out more
+
+findOutMoreTextOne:
+  title: Here you can record your baby's temperature and track its changes.
+
+findOutMoreTextTwo:
+  title: "Find out what can cause a child's temperature to rise in the Knowledge Center:"
+
+date:
+  title: Date
+
+weeks:
+  title: Weeks
+
+time:
+  title: Time
+
+pdf:
+  title: PDF
+
+add:
+  title: Add
+
+addTemperature:
+  title: Add Temperature
+
+now:
+  title: Now
+
+sixTeenThirtyTwo:
+  title: "16:32"
+
+fourteensOfSeptember:
+  title: 14 september
+
+note:
+  title: Note
+
+knowMoreOne:
+  title: Here you can monitor your child's weight and control its development, comparing it with the standards of the World Health Organization.
+
+knowMoreTwo:
+  title: Find out more about these standards and learn how to measure weight correctly in our Knowledge Center;
+
+knowMoreText:
+  title: Know More
+
+current:
+  title: Current
+
+dynamics:
+  title: Dynamics
+
+kg:
+  title: KG
+
+g:
+  title: G
+
+stories:
+  title: Stories
+
+news:
+  title: News
+
+old:
+  title: Old
+
+showCompleted:
+  title: Show completed
+
+pillTitleOne:
+  title: Сироп Нурофен детский
+
+pillDescriptionOne:
+  title: 1 spoon after a meal
+
+pillExactTimeOne:
+  title: В 20:00
+
+pillRemainingTimeOne:
+  title: In 2 hours 12 minutes
+
+
+cm:  
+  title: cm
+m: 
+  title: m
+
+diaper:
+  diapers: Diapers
+  add: Add diaper
+
+wet:
+  wet: Wet
+  littleBit: Little Bit
+  average: Average
+  many: Many
+
+mixed:
+  mixed: Mixed
+  solid: Solid
+  soft: Soft
+  liquid: Liquid
+  dense: Dense
+  sticky: Sticky
+  grainy: Grainy
+  diarrhea: Diarrhea
+
+dirty: 
+  dirty: Dirty
+  solid: Solid
+  soft: Soft
+  liquid: Liquid
+  dense: Dense
+  sticky: Sticky
+  grainy: Grainy
+  diarrhea: Diarrhea
+
+diaperforday: 6 diapers a day on average

@@ -1,0 +1,41 @@
+registration: Регистрация
+phoneNumber: Номер телефона
+termOfUse(rich): Согласен с ${tapHere(условием использования)}
+agreement: Согласен с
+withTermOfUse: условием использования
+hurrah: Ура!
+youWithUs: Вы теперь с нами
+letsFillAcc: Давайте заполним аккаунт, чтобы подобрать вам самые полезные материалы
+letsStart: Начинаем
+next: Дальше
+whatIsYourName: Как вас зовут?
+name: Имя
+surname: Фамилия
+clickToEnterName: Нажмите, чтобы ввести имя
+clickToEnterSurname: Нажмите, чтобы ввести фамилию
+whatIsBabyName: Как зовут вашего ребенка?
+isThereMoreChild: Если детей больше одного, вы сможете добавить остальных чуть позже
+childName: Имя ребенка
+girl: Девочка
+boy: Мальчик
+howWasBirth: Как прошли роды?
+natural: Естественные
+caesarean: Кесерево
+wasComplications: Были осложнения
+skip: Пропустить
+goToAcc: Перейти в аккаунт
+whatCityYouLive: В каком городе вы живете?
+searchPlace: Поиск места
+complete: Завершить
+enter: Ввести
+thankYou: Спасибо, что ввели все данные сразу\nДавайте продолжим
+ifInconvenientToSearch: Если сейчас неудобно искать какие-то данные, можете добавить их позже
+headCircumference: Окружность головы при рождении
+heightAtBirth: Рост при рождении
+birthWeight: Вес при рождении
+rememberWhenShe: А вы помните, какой она была, когда только родилась?
+beautifulName: красивое имя
+
+rememberWhenWasBorn(context=GenderContext):
+  female: А вы помните, какой она была, когда только родилась?
+  male: А вы помните, какой он был, когда только родился?

@@ -1,0 +1,178 @@
+name: мама
+title: Mama project
+
+bornMale:
+  title: "Born"
+
+bornFemale:
+  title: "Born"
+
+firstWeek:
+  title: "First Week"
+
+twoWeeks:
+  title: "Two Weeks"
+
+threeWeeks:
+  title: "Three Weeks"
+
+alreadyMonth:
+  title: "Already A Month"
+
+twoMonths:
+  title: "Two Months"
+
+threeMonths:
+  title: "Three Months"
+
+fourMonths:
+  title: "Four Months"
+
+fiveMonths:
+  title: "Five Months"
+
+soonSixMonths:
+  title: "Soon Six Months"
+
+alreadySixMonths:
+  title: "Already Six Months"
+
+soonBirthday:
+  title: "Soon Birthday"
+
+happyBirthday:
+  title: "Happy Birthday!"
+
+soonOneAndHalfYear:
+  title: "Soon One And A Half Year"
+
+oneAndHalfHear:
+  title: "One And A Half Year"
+
+medicine:
+  title: "Medicine!"
+
+gettingVaccinatedSoon:
+  title: "Getting vaccinated soon"
+
+everythingFine:
+  title: "Everything is fine"
+
+goodAfternoon:
+  title: "Good afternoon!"
+
+
+FiveMonthsEighteenDays:
+  title: "5 months and 18 days"
+
+orTwentyFourWeeks:
+  title: "or 24 weeks"
+
+supportChats:
+  title: "Support Chats"
+
+onlineConsultation:
+  title: "Online-Consultation"
+
+progressDiary:
+  title: "Progress Diary"
+
+musicForSleep:
+  title: "Music For Sleep"
+
+knowledgeCenter:
+  title: "Knowledge Center"
+
+current:
+  title: "Current"
+
+sixMonths:
+  title: "6 months"
+
+childDevelopmentAtSixMonths:
+  title: "Child development at 6 months"
+
+babyFromSixToSevenMonthsWhatToDoWithHim:
+  title: "Baby from 6 to 7 months, what to do with him"
+
+whatCanBabyDoAtSixMonths:
+  title: "What can a baby do at six months?"
+
+forYou:
+  title: "For you"
+
+cesarean:
+  title: "cesarean"
+
+twoChildren:
+  title: "2 children"
+
+chest:
+  title: "chest"
+
+recoveryAfterCesareanSection:
+  title: "Recovery after cesarean section"
+
+howToMakeChildrenInOneFamilyFriends:
+  title: "How to make children in one family friends"
+
+debunkingFourteenBreastfeedingMyths:
+  title: "Debunking 14 breastfeeding myths"
+
+articleTitleOne:
+  title: "Child development at 6 months"
+
+articleTitleTwo:
+  title: "Recovery after cesarean section"
+
+switch_hint: "Switch"
+
+septemberTwentySecond:
+  title: "22 september"
+
+timeScheduleOne:
+  title: "9:00-9:15"
+
+chat:
+  title: "Chat"
+
+video:
+  title: "Video"
+
+express:
+  title: "Express"
+
+tutorFullNameOne:
+  title: "Марина Алексеева"
+
+yourArticles: Your articles
+
+
+or: or
+
+months:
+  one: "1 month"
+  two: "$n months"
+  few: "$n months"
+  many: "$n months"
+  other: "$n months"
+
+days:
+  one: $n day
+  two: $n days
+  few: $n days
+  many: $n days
+  other: $n days
+
+
+weeks:
+  one: $n week
+  two: $n weeks
+  few: $n weeks
+  many: $n weeks
+  other: $n weeks
+
+
+today: Today
+
+monthsData: [january, february, march, april, may, june, july, august, september, october, november, december]

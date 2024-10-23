@@ -1,0 +1,71 @@
+knowledgeCenter:
+  title: Knowledge center
+
+onlineConsultation:
+  title: Online consultation
+
+myRecords:
+  title: My records
+
+specialists:
+  title: Specialists
+
+onlineSchools:
+  title: Online schools
+
+sleepMusic:
+  title: Music for sleep
+
+music:
+  title: Music
+
+whiteNoise:
+  title: White noise
+
+fairyTales:
+  title: Fairy tales
+
+back:
+  title: Back
+
+placeholderOne:
+  title: Концерт для валторны №3 в ми-бемоль мажоре
+
+placeholderTwo:
+  title: Вольфгант Амадей Моцарт
+
+placeholderThree:
+  title: "3:34"
+
+placeholderFour:
+  title: Звуки утробы матери
+
+placeHhlderFive:
+  title: White noise
+
+placeholderSix:
+  title: Конек-горбунок
+
+placeholderSeven:
+  title: Fairy tales
+
+categoriesBtn:
+  title: Categories
+
+ageBtn:
+  title: Age
+
+authorBtn:
+  title: Author
+
+obstetrician:
+  title: Obstetrician
+
+childDevelopment:
+  title: Child development at 6 months of age
+
+sixMonth:
+  title: 6 months of age
+
+toSave: 
+  title: Favorites  

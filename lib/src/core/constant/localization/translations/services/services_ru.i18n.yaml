@@ -1,0 +1,71 @@
+knowledgeCenter:
+  title: Центр знаний
+
+onlineConsultation:
+  title: Онлайн-консультации
+
+myRecords:
+  title: Мои записи
+
+specialists:
+  title: Специалисты
+
+onlineSchools:
+  title: Онлайн-школы
+
+sleepMusic:
+  title: Музыка для сна
+
+music:
+  title: Музыка
+
+whiteNoise:
+  title: Белый шум
+
+fairyTales:
+  title: Сказки
+
+back:
+  title: Назад
+
+placeholderOne:
+  title: Концерт для валторны №3 в ми-бемоль мажоре
+
+placeholderTwo:
+  title: Вольфгант Амадей Моцарт
+
+placeholderThree:
+  title: "3:34"
+
+placeholderFour:
+  title: Звуки утробы матери
+
+placeHhlderFive:
+  title: Белый шум
+
+placeholderSix:
+  title: Конек-горбунок
+
+placeholderSeven:
+  title: Сказка
+
+categoriesBtn:
+  title: Категории
+
+ageBtn:
+  title: Возраст
+
+authorBtn:
+  title: Автор
+
+obstetrician:
+   title: Акушер  
+
+childDevelopment:
+  title: Развитие ребенка в 6 месяцев
+
+sixMonth: 
+   title: 6 месяцев
+
+toSave: 
+  title: В избранное
