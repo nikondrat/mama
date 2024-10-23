@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fresh/fresh.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class TokenStorageImpl implements TokenStorage<OAuth2Token> {
   static const FlutterSecureStorage storage = FlutterSecureStorage();
@@ -18,7 +19,17 @@ class TokenStorageImpl implements TokenStorage<OAuth2Token> {
     final String? accessToken = await storage.read(key: _accessToken);
     final String? refreshToken = await storage.read(key: _refreshToken);
 
-    if (accessToken == null || refreshToken == null) return null;
+    if (accessToken == null || refreshToken == null) {
+      return null;
+    }
+    final Map<String, dynamic> decodedToken = JwtDecoder.decode(refreshToken);
+
+    final expirationDate = DateTime.fromMillisecondsSinceEpoch(0)
+        .add(Duration(seconds: (decodedToken['exp'] as int?) ?? 0));
+    if (DateTime.now().isAfter(expirationDate)) {
+      await delete();
+      return null;
+    }
 
     return OAuth2Token(accessToken: accessToken, refreshToken: refreshToken);
   }

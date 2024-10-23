@@ -31,8 +31,9 @@ class LoadingWidget<T> extends StatelessWidget {
                 );
           case FutureStatus.rejected:
             return errorWidget ??
-                const Center(
-                  child: Text('error loading'),
+                Center(
+                  child: Text(
+                      'Error loading. Error: ${future.error} \n result: ${future.result} \n status: ${future.status}'),
                 );
           case FutureStatus.fulfilled:
             final T data = future.value as T;

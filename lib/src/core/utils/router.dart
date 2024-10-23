@@ -61,9 +61,9 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
-  // initialLocation:
-  // '${_Paths.registerFillBabyName}/${_Paths.registerFillAnotherBabyInfo}/${_Paths.registerInfoAboutChildbirth}/${_Paths.citySearch}',
+  // initialLocation: '/',
+  initialLocation:
+      '${_Paths.registerFillBabyName}/${_Paths.registerFillAnotherBabyInfo}/${_Paths.registerInfoAboutChildbirth}/${_Paths.citySearch}',
   routes: [
     GoRoute(
         path: _Paths.webView,
