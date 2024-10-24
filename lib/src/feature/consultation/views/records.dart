@@ -30,21 +30,22 @@ class _ConsultationRecordsState extends State<ConsultationRecords> {
               final Consultation? consultation = widget.store.listData[index];
 
               return ConsultationItem(
+                  url: consultation?.doctor?.account?.avatarUrl,
                   child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ConsultationTime(
-                    startDate: consultation?.startedAt ?? DateTime.now(),
-                    endDate: consultation?.endedAt ?? DateTime.now(),
-                  ),
-                  ConsultationItemTitle(
-                      name: 'FirstName SecondName',
-                      badgeTitle: consultation?.doctor?.profession),
-                  ConsultationTypeWidget(
-                    type: consultation?.type ?? ConsultationType.chat,
-                  ),
-                ],
-              ));
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ConsultationTime(
+                        startDate: consultation?.startedAt ?? DateTime.now(),
+                        endDate: consultation?.endedAt ?? DateTime.now(),
+                      ),
+                      ConsultationItemTitle(
+                          name: 'FirstName SecondName',
+                          badgeTitle: consultation?.doctor?.profession),
+                      ConsultationTypeWidget(
+                        type: consultation?.type ?? ConsultationType.chat,
+                      ),
+                    ],
+                  ));
             }));
     // );
   }

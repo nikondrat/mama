@@ -58,6 +58,7 @@ abstract class AppViews {
   static const doc = 'doc';
 
   static const consultation = 'consultation';
+  static const consultations = 'consultations';
 
   static const webView = 'webView';
   static const pdfView = 'pdfView';
@@ -73,8 +74,9 @@ final GlobalKey<NavigatorState> navKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navKey,
-  initialLocation: '/',
-  // initialLocation: _Paths.homeScreen,
+  // initialLocation: '/',
+  initialLocation:
+      '${_Paths.registerFillBabyName}/${_Paths.registerFillAnotherBabyInfo}/${_Paths.registerInfoAboutChildbirth}/${_Paths.citySearch}',
   routes: [
     GoRoute(
       path: _Paths.startScreen,
@@ -140,6 +142,31 @@ final GoRouter router = GoRouter(
             appBar: CustomAppBar(),
           ),
           routes: [
+            GoRoute(
+                path: _Paths.consultations,
+                name: AppViews.consultations,
+                routes: [
+                  GoRoute(
+                    path: _Paths.consultation,
+                    name: AppViews.consultation,
+                    builder: (context, state) {
+                      final Map? extra = state.extra as Map?;
+                      final DoctorModel? doctor =
+                          extra?['doctor'] as DoctorModel?;
+                      return ConsultationView(
+                        doctor: doctor,
+                      );
+                    },
+                  )
+                ],
+                builder: (context, state) {
+                  final Map? extra = state.extra as Map?;
+                  final int? selectedTab = extra?['selectedTab'] as int?;
+
+                  return ConsultationsView(
+                    initialIndex: selectedTab ?? 0,
+                  );
+                }),
             GoRoute(
               name: AppViews.servicesSleepMusicView,
               path: _Paths.servicesSleepMusicPath,
@@ -332,8 +359,14 @@ abstract class _Paths {
 
   static const addManually = AppViews.addManually;
   static const addPumping = AppViews.addPumping;
+  static const diapersView = AppViews.diapersView;
+  static const addDiaper = AppViews.addDiaper;
 
-  static const serviceKnowledge = AppViews.serviceKnowlegde;
+  static const docs = '/${AppViews.docs}';
+  static const doc = AppViews.doc;
+
+  static const consultation = AppViews.consultation;
+  static const consultations = AppViews.consultations;
 
   static const serviceKnowledgeInfo = AppViews.serviceKnowledgeInfo;
   static const categories = AppViews.categories;

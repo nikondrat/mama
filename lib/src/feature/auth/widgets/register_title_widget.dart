@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mama/src/data.dart';
 
 class TitleWidget extends StatelessWidget {
   final String text;
@@ -12,7 +13,10 @@ class TitleWidget extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: textTheme.titleLarge,
+      style: textTheme.headlineSmall!.copyWith(
+        color: AppColors.primaryColor,
+        fontSize: 20,
+      ),
     );
   }
 }

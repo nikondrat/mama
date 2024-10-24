@@ -65,6 +65,7 @@ class _CitySearchBodyState extends State<CitySearchBody> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
+
     return Observer(builder: (value) {
       switch (widget.store.fetchCitiesFuture.status) {
         case FutureStatus.pending:
@@ -81,6 +82,8 @@ class _CitySearchBodyState extends State<CitySearchBody> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return CityContainer(
+                          isSelected:
+                              selectedCity == widget.store.cities[index],
                           city: widget.store.cities[index],
                           onTap: () {
                             setState(() {

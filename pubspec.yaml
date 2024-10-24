@@ -5,7 +5,7 @@ description: >
 # Prevent accidental publishing to pub.dev.
 publish_to: "none"
 
-version: 0.2.1+40
+version: 0.2.1+43
 
 environment:
   sdk: ">=3.0.5 <4.0.0"
@@ -38,6 +38,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   fresh_dio: ^0.4.2
   fresh: ^0.4.3
+  jwt_decoder: ^2.0.1
 
   # Persisting
   drift: ^2.13.1

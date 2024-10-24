@@ -14,10 +14,10 @@ class CongratsBodyWidget extends StatelessWidget {
         Text(
           t.register.hurrah,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 64,
-              color: AppColors.primaryColor),
+          style: textTheme.headlineSmall!.copyWith(
+            color: AppColors.primaryColor,
+            fontSize: 64,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(25),
@@ -26,15 +26,19 @@ class CongratsBodyWidget extends StatelessWidget {
               Text(
                 '${t.register.youWithUs} 🙂',
                 textAlign: TextAlign.center,
-                style: textTheme.bodyLarge
-                    ?.copyWith(color: AppColors.primaryColor),
+                style: textTheme.headlineSmall!.copyWith(
+                  color: AppColors.primaryColor,
+                  fontSize: 20,
+                ),
               ),
               8.h,
               Text(
                 t.register.letsFillAcc,
                 textAlign: TextAlign.center,
-                style: textTheme.bodyLarge
-                    ?.copyWith(color: AppColors.primaryColor),
+                style: textTheme.headlineSmall!.copyWith(
+                  color: AppColors.primaryColor,
+                  fontSize: 20,
+                ),
               )
             ],
           ),
