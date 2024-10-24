@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mama/src/data.dart';
 import 'package:mobx/mobx.dart';
 
@@ -9,6 +11,7 @@ class UserStore extends _UserStore with _$UserStore {
   UserStore({
     required super.restClient,
   });
+
 }
 
 abstract class _UserStore with Store {
@@ -113,8 +116,8 @@ abstract class _UserStore with Store {
         restClient.get(Endpoint().userData).then((v) {
       if (v != null) {
         final data = UserData.fromJson(v);
-        selectedChild = data.childs.first;
-        children = ObservableList.of(data.childs);
+        selectedChild = data.childs?.first;
+        children = ObservableList.of(data.childs as Iterable<ChildModel>);
         return data;
       }
       return emptyResponse;

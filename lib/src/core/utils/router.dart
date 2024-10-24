@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mama/src/data.dart';
+import 'package:mama/src/feature/services/knowledge/views/ages_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/authors_screens.dart';
+import 'package:mama/src/feature/services/knowledge/views/category_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/saved_files_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/service_info_screen.dart';
+import 'package:mama/src/feature/services/knowledge/views/service_screen.dart';
 
 abstract class AppViews {
   static const String startScreen = 'startScreen';
@@ -43,6 +49,7 @@ abstract class AppViews {
 
   static const feeding = 'feeding';
   static const addManually = 'addManually';
+  static const addPumping = 'addPumping';
 
   static const diapersView = 'diapersView';
   static const addDiaper = 'addDiaper';
@@ -55,6 +62,12 @@ abstract class AppViews {
 
   static const webView = 'webView';
   static const pdfView = 'pdfView';
+  static const serviceKnowlegde = 'serviceKnowlegde';
+  static const serviceKnowledgeInfo = 'serviceKnowledgeInfo';
+  static const categories = 'categories';
+  static const ages = 'ages';
+  static const author = 'author';
+  static const savedFiles = 'savedFiles';
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey();
@@ -65,43 +78,6 @@ final GoRouter router = GoRouter(
   initialLocation:
       '${_Paths.registerFillBabyName}/${_Paths.registerFillAnotherBabyInfo}/${_Paths.registerInfoAboutChildbirth}/${_Paths.citySearch}',
   routes: [
-    GoRoute(
-        path: _Paths.webView,
-        name: AppViews.webView,
-        builder: (context, state) {
-          final Map? extra = state.extra as Map?;
-          final String url = extra?['url'] as String;
-
-          return WebView(
-            url: url,
-          );
-        }),
-    GoRoute(
-        path: _Paths.pdfView,
-        name: AppViews.pdfView,
-        builder: (context, state) {
-          final Map? extra = state.extra as Map?;
-          final String path = extra?['path'] as String;
-
-          return PdfView(
-            path: path,
-          );
-        }),
-    GoRoute(
-        path: _Paths.docs,
-        name: AppViews.docs,
-        builder: (context, state) {
-          return const DocsView();
-        },
-        routes: [
-          GoRoute(
-            path: _Paths.doc,
-            name: AppViews.doc,
-            builder: (context, state) {
-              return const DocView();
-            },
-          ),
-        ]),
     GoRoute(
       path: _Paths.startScreen,
       name: AppViews.startScreen,
@@ -162,7 +138,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           name: AppViews.servicesUserView,
           path: _Paths.servicesUserPath,
-          builder: (context, state) => const ServicesUserView(
+          builder: (context, state) => ServicesUserView(
             appBar: CustomAppBar(),
           ),
           routes: [
@@ -203,40 +179,50 @@ final GoRouter router = GoRouter(
                 );
               },
             ),
+            GoRoute(
+              name: AppViews.serviceKnowlegde,
+              path: _Paths.serviceKnowledge,
+              builder: (context, state) => const ServiceKnowledgeScreen(),
+              routes: [
+                GoRoute(
+                  name: AppViews.categories,
+                  path: _Paths.categories,
+                  builder: (context, state) => const CategoryScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.ages,
+                  path: _Paths.ages,
+                  builder: (context, state) => const AgesScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.author,
+                  path: _Paths.author,
+                  builder: (context, state) => const AuthorsScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.savedFiles,
+                  path: _Paths.savedFiles,
+                  builder: (context, state) => const SavedFilesScreen(),
+                ),
+                GoRoute(
+                  name: AppViews.serviceKnowledgeInfo,
+                  path: _Paths.serviceKnowledgeInfo,
+                  builder: (context, state) => const ServiceInfoScreen(),
+                ),
+              ],
+            ),
           ],
         ),
         GoRoute(
-          path: _Paths.evolutionView,
-          name: AppViews.evolutionView,
-          builder: (context, state) => const EvolutionView(),
-          routes: [
-            GoRoute(
-              name: AppViews.addWeightView,
-              path: _Paths.addWeightView,
-              builder: (context, state) => const AddWeight(),
-            ),
-            GoRoute(
-              path: _Paths.addGrowthView,
-              name: AppViews.addGrowthView,
-              builder: (context, state) => const AddGrowth(),
-            ),
-            GoRoute(
-              path: _Paths.addHeadView,
-              name: AppViews.addHeadView,
-              builder: (context, state) => const AddHead(),
-            ),
-          ],
-        ),
-        GoRoute(
-            name: AppViews.diapersView,
-            path: _Paths.diapersView,
-            builder: (context, state) => const DiapersView(),
+            path: _Paths.evolutionView,
+            name: AppViews.evolutionView,
+            builder: (context, state) => const EvolutionView(),
             routes: [
               GoRoute(
-                name: AppViews.addDiaper,
-                path: _Paths.addDiaper,
-                builder: (context, state) => const AddDiaper(),
-              ),
+                name: AppViews.addWeightView,
+                path: _Paths.addWeightView,
+                builder: (context, state) => AddWeight(),
+              )
             ]),
         GoRoute(
           path: _Paths.feeding,
@@ -248,22 +234,22 @@ final GoRouter router = GoRouter(
               path: _Paths.addManually,
               builder: (context, state) => const AddManuallyScreen(),
             ),
+            GoRoute(
+              name: AppViews.addPumping,
+              path: _Paths.addPumping,
+              builder: (context, state) => const AddPumpingScreen(),
+            ),
           ],
         ),
         GoRoute(
           name: AppViews.trackersHealthView,
           path: _Paths.trackersHealthPath,
-          builder: (context, state) => const TrackersHealthView(),
+          builder: (context, state) => TrackersHealthView(),
           routes: [
             GoRoute(
-              name: AppViews.addTemperature,
+              name: AppViews.trackersHealthAddMedicineView,
               path: _Paths.trackersHealthAddTemperaturePath,
-              builder: (context, state) => const TrackersHealthAddTemperature(),
-            ),
-            GoRoute(
-              path: _Paths.addMedicine,
-              name: AppViews.addMedicine,
-              builder: (context, state) => const AddMedicine(),
+              builder: (context, state) => TrackersHealthAddTemperature(),
             )
           ],
         ),
@@ -372,7 +358,7 @@ abstract class _Paths {
   static const feeding = AppViews.feeding;
 
   static const addManually = AppViews.addManually;
-
+  static const addPumping = AppViews.addPumping;
   static const diapersView = AppViews.diapersView;
   static const addDiaper = AppViews.addDiaper;
 
@@ -382,6 +368,9 @@ abstract class _Paths {
   static const consultation = AppViews.consultation;
   static const consultations = AppViews.consultations;
 
-  static const webView = '/${AppViews.webView}';
-  static const pdfView = '/${AppViews.pdfView}';
+  static const serviceKnowledgeInfo = AppViews.serviceKnowledgeInfo;
+  static const categories = AppViews.categories;
+  static const ages = AppViews.ages;
+  static const author = AppViews.author;
+  static const savedFiles = AppViews.savedFiles;
 }

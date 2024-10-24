@@ -10,7 +10,7 @@ class TableScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: TableHistory(
           listOfData: listOfTableData,
           firstColumnName: 'Дата',

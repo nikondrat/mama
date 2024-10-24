@@ -25,9 +25,16 @@ class ServicesUserView extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   /// #knowledge center box
-                  MainBox(
-                    mainText: t.services.knowledgeCenter.title,
-                    image: Assets.images.imgHat4x.path,
+                  InkWell(
+                    highlightColor: Colors.transparent,
+                    splashFactory: NoSplash.splashFactory,
+                    onTap: () {
+                      context.pushNamed(AppViews.serviceKnowlegde);
+                    },
+                    child: MainBox(
+                      mainText: t.services.knowledgeCenter.title,
+                      image: Assets.images.imgHat4x.path,
+                    ),
                   ),
                   const SizedBox(height: 8),
 
@@ -94,7 +101,7 @@ class ServicesUserView extends StatelessWidget {
                                 'selectedTab': 2,
                               });
                         },
-                      )
+                      ),
                     ],
                   ),
                 ],

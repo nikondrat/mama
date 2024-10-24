@@ -4,7 +4,7 @@ import 'package:mama/src/feature/feeding/widgets/table_history.dart';
 import 'package:mama/src/feature/feeding/widgets/pumping_graphic_widget.dart';
 import 'package:mama/src/feature/feeding/widgets/widget.dart';
 
-import '../../../core/core.dart';
+import '../../../../core/core.dart';
 
 class PumpingScreen extends StatelessWidget {
   const PumpingScreen({super.key});
@@ -16,6 +16,8 @@ class PumpingScreen extends StatelessWidget {
     return FeedingBody(
       children: [
         const PumpingGraphicWidget(),
+        30.h,
+        const AddPumpingButton(),
         TableHistory(
           listOfData: listOfData,
           firstColumnName: t.feeding.endTimeOfPumping,
